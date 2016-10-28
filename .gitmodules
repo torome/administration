@@ -1,0 +1,3 @@
+[submodule "resources/assets"]
+	path = resources/assets
+	url = https://git.oschina.net/owwo/notadd-dashboard-core.git
