@@ -15,10 +15,5 @@
         "psr-4": {
             "Notadd\\Administration\\": "src/"
         }
-    },
-    "require": {
-        "php": ">=7.0",
-        "ext-mbstring": "*",
-        "ext-openssl": "*"
     }
 }
