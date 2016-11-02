@@ -38,10 +38,11 @@ class Extension extends ExtensionRegistrar {
      */
     public function register(Administration $administration) {
         $administrator = new Administrator($this->container['events'], $this->container['router']);
-        $administrator->registerAdministrationUrl('admin');
-        $administrator->registerAdministrationHandler(function() {
+        $administrator->registerPath('admin');
+        $administrator->registerHandler(function() {
             return view('admin::index');
         });
         $administration->setAdministrator($administrator);
+        $this->router->middleware('auth.admin', 'djskdfjskdf');
     }
 }
