@@ -9,3 +9,4 @@ export class Shared {
 }
 Shared.routerMap = {};
 Shared.state = {};
+Shared.authToken = {};
