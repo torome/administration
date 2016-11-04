@@ -1,9 +1,11 @@
-import UiHeader from "../UiHeader";
-import UiSidebar from "../UiSidebar";
-import UiFooter from "../UiFooter";
-import UiLogo from "../UiLogo";
-import UiNavbarMenu from "../UiNavbarMenu";
-import UiLayout from "../UiLayout";
+import UiHeader from '../UiHeader'
+import UiSidebar from '../UiSidebar'
+import UiFooter from '../UiFooter'
+import UiLogo from '../UiLogo'
+import UiNavbarMenu from '../UiNavbarMenu'
+import UiLayout from '../UiLayout'
+
+import { Shared } from 'src/shared'
 
 export default {
   components: {UiLayout, UiHeader, UiSidebar, UiFooter, UiLogo, UiNavbarMenu},
@@ -21,6 +23,16 @@ export default {
           "uri": "/article"
         }
       ]
+    }
+  },
+  route: {
+    activate: function (transition) {
+      if (!Shared.accessToken) {
+        this.$router.go('/login')
+        transition.next()
+      } else {
+        transition.next()
+      }
     }
   }
 }
