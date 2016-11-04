@@ -4,7 +4,7 @@
 @endsection
 @section('script')
     <script>
-        window.Laravel = { csrfToken: 'xxxxxxxxxxxxxxxxxx' }
+        window.Laravel = { "csrfToken": "{{ csrf_token() }}" }
     </script>
     <script type="text/javascript" src="http://localhost:8080/app.js"></script>
 @endsection

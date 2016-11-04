@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>{{ set('title') }}</title>
-    <meta name="description" content="Notadd">
-    <meta name="keyword" content="Notadd">
+    <title>{{ seo('title') }}</title>
+    <meta name="description" content="{{ seo('description') }}">
+    <meta name="keyword" content="{{ seo('keywords') }}">
     @section('css')@show
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
