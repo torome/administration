@@ -32,8 +32,8 @@ Vue.http.interceptors.push((request, next) => {
 });
 BasicModule(Shared);
 let router = new VueRouter({
-    hashbang: false,
-    history: true
+    hashbang: true,
+    history: false
 });
 router.beforeEach((transition) => {
     /* eslint-disable */

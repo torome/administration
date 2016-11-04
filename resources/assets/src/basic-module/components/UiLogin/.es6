@@ -1,16 +1,13 @@
 export default {
     data: () => {
         return {
-            username: "",
-            password: ""
+            username: "admin",
+            password: "123456789"
         }
     },
     methods: {
         onSubmit: function () {
-            console.log(this.username);
-            console.log(this.password);
-            console.log("submit");
-            this.$http.post("http://localhost:8000/oauth/token", {
+            this.$http.post("http://notadd.io/oauth/token", {
                 "form_Params": {
                     "grant_type": "password",
                     "client_id": "client-id",

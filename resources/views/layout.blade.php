@@ -7,7 +7,7 @@
     <meta name="keyword" content="Notadd">
     @section('css')@show
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
 @yield('content')
 @section('script')@show
 </body>
