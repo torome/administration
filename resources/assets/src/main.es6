@@ -24,10 +24,8 @@ Vue.use(VueResource);
 Vue.use(VueValidator);
 Vue.http.options.root = "/static/mock-data";
 Vue.http.interceptors.push((request, next) => {
-    /* eslint-disable */
     request.headers.set("X-CSRF-TOKEN", Laravel.csrfToken);
     console.log(Laravel.csrfToken);
-    /* eslint-enable */
     next();
 });
 BasicModule(Shared);
@@ -36,9 +34,8 @@ let router = new VueRouter({
     history: false
 });
 router.beforeEach((transition) => {
-    /* eslint-disable */
-    if (!Cookies.get("Authorization")) {
-        /* eslint-enable */
+    if (!({} in Shared.authToken)) {
+        console.log(Shared.authToken);
         router.go("/login");
         transition.next();
     } else {
