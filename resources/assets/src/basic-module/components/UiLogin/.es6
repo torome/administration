@@ -1,5 +1,4 @@
-import { Shared } from 'src/shared'
-
+import {Shared} from "src/shared";
 export default {
     data: () => {
         return {
@@ -17,9 +16,10 @@ export default {
                 "password": this.password,
                 "scope": "*"
             }).then((response) => {
-                console.log(response.status);
                 if (response.status == 200) {
                     Shared.authToken = response.body;
+                    this.$cookie.set("access_token", response.body);
+                    this.$router.go("http://notadd.io/admin");
                 }
             }, (response) => {
                 if (response.status == 401) {

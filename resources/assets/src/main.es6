@@ -11,6 +11,7 @@ import "meat-dashboard/less/skins/skin-blue.less";
 import "meat-dashboard";
 // vue
 import Vue from "vue";
+import VueCookie from "vue-cookie";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
 import VueValidator from "vue-validator";
@@ -19,13 +20,15 @@ import {Shared} from "./shared";
 import {UiAuth} from "./components";
 import BasicModule from "./basic-module/bootstrap";
 // 启动并初始化应用
+Vue.use(VueCookie);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);
 Vue.http.options.root = "/static/mock-data";
 Vue.http.interceptors.push((request, next) => {
+    /* eslint-disable */
     request.headers.set("X-CSRF-TOKEN", Laravel.csrfToken);
-    console.log(Laravel.csrfToken);
+    /* eslint-enable */
     next();
 });
 BasicModule(Shared);
@@ -33,9 +36,9 @@ let router = new VueRouter({
     hashbang: true,
     history: false
 });
+Shared.authToken = VueCookie.get("access_token");
 router.beforeEach((transition) => {
-    if (!({} in Shared.authToken)) {
-        console.log(Shared.authToken);
+    if (!Shared.authToken) {
         router.go("/login");
         transition.next();
     } else {
