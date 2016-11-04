@@ -1,0 +1,28 @@
+{
+  "modules": [
+    {
+      "name": "ext1",
+      "auth": "自己",
+      "description": "",
+      "version": "",
+      "path": "src/ext1/bootstrap",
+      "enabled": true
+    },
+    {
+      "name": "ext2",
+      "auth": "自己",
+      "description": "",
+      "version": "",
+      "path": "src/ext1/bootstrap",
+      "enabled": false
+    },
+    {
+      "name": "ext3",
+      "auth": "自己",
+      "description": "",
+      "version": "",
+      "path": "src/ext1/bootstrap",
+      "enabled": true
+    }
+  ]
+}

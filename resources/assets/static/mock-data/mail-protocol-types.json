@@ -1,0 +1,10 @@
+[
+  {
+    "name": "smtp",
+    "value": "smtp"
+  },
+  {
+    "name": "pop3",
+    "value": "pop3"
+  }
+]

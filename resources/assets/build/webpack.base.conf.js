@@ -7,7 +7,7 @@ var merge = require('merge')
 
 module.exports = {
   entry: {
-    app: './src/bootstrap.es6'
+    app: './src/main.es6'
   },
   output: {
     path: config.build.assetsRoot,
@@ -19,9 +19,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'views': path.resolve(__dirname, '../src/views')
+      'components': path.resolve(__dirname, '../src/components')
     }
   },
   resolveLoader: {
@@ -89,7 +87,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      'window.jQuery': 'jquery',
+      Cookies: 'js-cookie'
     })
   ]
 }

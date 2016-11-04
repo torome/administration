@@ -1,0 +1,31 @@
+[
+  {
+    "page": "文章单页",
+    "arguments": [
+      "{name}"
+    ],
+    "format": "{name}",
+    "enable": true
+  },
+  {
+    "page": "文章列表页",
+    "arguments": [
+      "{name}",
+      "{id}",
+      "{page}"
+    ],
+    "format": "{id}-{name}-{page}",
+    "enable": false
+  },
+  {
+    "page": "文章内容页",
+    "arguments": [
+      "{name}",
+      "{tid}",
+      "{id}",
+      "{page}"
+    ],
+    "format": "{tid}-{id}-{name}-{page}",
+    "enable": true
+  }
+]

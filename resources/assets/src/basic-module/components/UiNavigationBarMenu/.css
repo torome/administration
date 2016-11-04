@@ -1,0 +1,27 @@
+.tree-view .tree-view {
+    margin-left: 2em;
+}
+
+.tree-view.drag {
+    display: none;
+}
+
+.item {
+    padding: 5px;
+}
+
+.item > .item-content {
+    padding: 5px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+
+.item.slot {
+    display: none;
+}
+
+.item.slot > .item-content {
+    color: #ddd;
+    background-color: transparent;
+    border-style: dashed;
+}

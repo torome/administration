@@ -1,0 +1,26 @@
+[
+  {
+    "name": "全局SEO",
+    "data": {
+      "title": "demo",
+      "description": "demo",
+      "keyword": "lol, wow, wuw"
+    }
+  },
+  {
+    "name": "支付",
+    "data": {
+      "title": "demo",
+      "description": "demo",
+      "keyword": "lol, wow, wuw"
+    }
+  },
+  {
+    "name": "测试",
+    "data": {
+      "title": "test",
+      "description": "test",
+      "keyword": "set, set, set"
+    }
+  }
+]

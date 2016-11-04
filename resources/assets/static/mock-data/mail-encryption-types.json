@@ -1,0 +1,10 @@
+[
+  {
+    "name": "SSL",
+    "value": "ssl"
+  },
+  {
+    "name": "TLS",
+    "value": "tls"
+  }
+]

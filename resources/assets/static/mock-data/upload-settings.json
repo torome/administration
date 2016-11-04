@@ -1,0 +1,20 @@
+{
+  "imageProcessingEngine": "",
+  "imageProcessingEngineRadioGroup": [
+    {
+      "text": "GD 库",
+      "value": "gd",
+      "checked": "checked"
+    },
+    {
+      "text": "Image Magic",
+      "value": "image_magic"
+    }
+  ],
+  "fileMaxSize": "2048",
+  "imageMaxSize": "2048",
+  "videoMaxSize": "2048",
+  "canUploadExtension": ".zip, .rar, .tar",
+  "canDownloadExtension": ".video, .test",
+  "canManagementExtension": ".management"
+}

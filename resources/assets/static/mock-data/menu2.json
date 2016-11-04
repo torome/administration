@@ -1,0 +1,9 @@
+{
+  "menu": [
+    {
+      "text": "文章模块",
+      "icon": "fa fa-circle-o",
+      "uri": "/article/test"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "recipients": [
+    "test@test.com",
+    "test1995@test.com",
+    "test1993@test.com",
+    "test1990@test.com",
+    "mail@mail.com"
+  ],
+  "subject": "demo",
+  "content": "content"
+}

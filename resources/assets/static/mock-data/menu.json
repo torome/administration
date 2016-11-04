@@ -1,0 +1,105 @@
+{
+  "menu": [
+    {
+      "text": "全局设置",
+      "icon": "fa fa-circle-o",
+      "uri": "/"
+    },
+    {
+      "text": "附件设置",
+      "icon": "fa fa-circle-o",
+      "uri": "",
+      "menu": [
+        {
+          "text": "上传设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "存储设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "水印设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "CDN 加速",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        }
+      ]
+    },
+    {
+      "text": "模块管理",
+      "icon": "fa fa-circle-o",
+      "uri": ""
+    },
+    {
+      "text": "系统组件",
+      "icon": "fa fa-circle-o",
+      "uri": "",
+      "menu": [
+        {
+          "text": "导航栏",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "SEO 设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "SiteMap",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "邮箱设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "伪静态设置",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "路由管理",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        }
+      ]
+    },
+    {
+      "text": "插件管理",
+      "icon": "fa fa-circle-o",
+      "uri": "",
+      "menu": [
+        {
+          "text": "多平台支付",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        },
+        {
+          "text": "WebP 云转化",
+          "icon": "fa fa-circle-o",
+          "uri": ""
+        }
+      ]
+    },
+    {
+      "text": "开发工具",
+      "icon": "fa fa-circle-o",
+      "uri": ""
+    },
+    {
+      "text": "缓存管理",
+      "icon": "fa fa-circle-o",
+      "uri": "/cache"
+    }
+  ]
+}

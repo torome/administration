@@ -1,0 +1,11 @@
+<ul class="treeview-menu">
+    <li v-for="item in menu">
+        <a v-link="item.uri">
+            <i class="{{ item.icon }}"></i> {{ item.text }}
+            <span v-show="item.menu" class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ui-tree-view-menu :menu="item.menu"></ui-tree-view-menu>
+    </li>
+</ul>

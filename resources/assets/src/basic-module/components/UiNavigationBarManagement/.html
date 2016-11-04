@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="box box-solid">
+            <div class="box-body">
+                <ui-menu v-ref:menu @edit="onEdit" @create="onCreate"></ui-menu>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <ui-item-editor v-if="status == edit" v-ref:item-editor
+                                     @update="onUpdate"></ui-item-editor>
+        <ui-item-creator v-if="status == create" v-ref:item-creator
+                                       @store="onStore"></ui-item-creator>
+    </div>
+</div>
