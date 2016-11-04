@@ -1,7 +1,6 @@
 export default {
-  methods: {
-    onSubmit: function () {
-      
+    methods: {
+        onSubmit: function () {
+        }
     }
-  }
 }

@@ -1,12 +1,11 @@
 export class Shared {
-  static registerRouterMap (routerMap) {
-    Shared.routerMap = Object.assign(Shared.routerMap, routerMap)
-  }
+    static registerRouterMap (routerMap) {
+        Shared.routerMap = Object.assign(Shared.routerMap, routerMap);
+    }
 
-  static registerState (state) {
-    Shared.state = Object.assign(Shared.state, state)
-  }
+    static registerState (state) {
+        Shared.state = Object.assign(Shared.state, state);
+    }
 }
-
-Shared.routerMap = {}
-Shared.state = {}
+Shared.routerMap = {};
+Shared.state = {};

@@ -1,5 +1,5 @@
 export default {
-  name: 'ui-tree-view-menu',
+  name: "ui-tree-view-menu",
   props: {
     menu: {
       type: Array,

@@ -1,4 +1,4 @@
-import UiTreeViewMenu from '../UiTreeViewMenu'
+import UiTreeViewMenu from "../UiTreeViewMenu"
 
 export default {
   components: {UiTreeViewMenu},

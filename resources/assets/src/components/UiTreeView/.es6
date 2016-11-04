@@ -1,5 +1,5 @@
 export default {
-  name: 'ui-tree-view',
+  name: "ui-tree-view",
 
   props: {
     tree: {

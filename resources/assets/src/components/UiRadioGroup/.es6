@@ -2,7 +2,7 @@ export default {
   props: {
     name: {
       Type: String,
-      default: ''
+      default: ""
     },
     group: {
       Type: Array,
@@ -10,7 +10,7 @@ export default {
     },
     model: {
       Type: String,
-      default: ''
+      default: ""
     }
   }
 }

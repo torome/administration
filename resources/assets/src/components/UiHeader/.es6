@@ -1,4 +1,4 @@
-import UiLogo from '../UiLogo'
+import UiLogo from "../UiLogo"
 
 export default {
   components: {UiLogo}

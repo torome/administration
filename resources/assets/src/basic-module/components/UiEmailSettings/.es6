@@ -1,8 +1,7 @@
-import UiSendSettings from '../UiSendEmailSettings'
-import UiSendTest from '../UiSendEmailTest'
-
+import UiSendSettings from "../UiSendEmailSettings";
+import UiSendTest from "../UiSendEmailTest";
 export default {
-  components: {
-    UiSendSettings, UiSendTest
-  }
+    components: {
+        UiSendSettings, UiSendTest
+    }
 }

@@ -1,2 +1,2 @@
-import VueTemplate from './.vue'
-export default VueTemplate
+import VueTemplate from "./.vue";
+export default VueTemplate;

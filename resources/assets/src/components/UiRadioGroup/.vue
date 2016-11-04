@@ -1,2 +1,2 @@
-<template src='./.html'></template>
-<script src='./.es6'></script>
+<template src="./.html"></template>
+<script src="./.es6"></script>

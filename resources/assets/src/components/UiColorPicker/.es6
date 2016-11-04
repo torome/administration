@@ -1,4 +1,4 @@
-import 'bootstrap-colorpicker'
+import "bootstrap-colorpicker"
 
 export default {
   props: {
@@ -25,7 +25,7 @@ export default {
     let colorpicker = $(this.$el).colorpicker(this.options)
 
     if (vModel != undefined) {
-      colorpicker.on('changeColor', (e) => {
+      colorpicker.on("changeColor", (e) => {
         this.$parent[this.vModel] = e.color.toHex()
       })
     }

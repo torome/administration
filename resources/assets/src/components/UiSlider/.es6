@@ -1,4 +1,4 @@
-import Slider from 'bootstrap-slider'
+import Slider from "bootstrap-slider"
 
 export default {
   props: {
@@ -26,7 +26,7 @@ export default {
 
     let slider = new Slider(this.$el, this.options)
     if (vModel != undefined) {
-      slider.on('slide', (e) => {
+      slider.on("slide", (e) => {
         this.$parent[this.vModel] = e
       })
     }

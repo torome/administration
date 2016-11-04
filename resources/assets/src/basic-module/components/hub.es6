@@ -1,1 +1,2 @@
-export default class Hub {}
+export default class Hub {
+}
