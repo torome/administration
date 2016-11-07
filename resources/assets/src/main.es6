@@ -5,13 +5,15 @@ import "ionicons/dist/scss/ionicons.scss";
 import "meat-dashboard/less/AdminLTE.less";
 import "meat-dashboard/less/skins/skin-blue.less";
 import "meat-dashboard";
+import Auth from "./components/Auth.vue";
 import Vue from "vue";
+import VueCookie from "vue-cookie";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
 import VueValidator from "vue-validator";
 import {Shared} from "./shared";
-import {UiAuth} from "./components";
-import BasicModule from "./basic-module/bootstrap";
+import BasicModule from "./bootstrap";
+Vue.use(VueCookie);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);
@@ -21,7 +23,5 @@ let router = new VueRouter({
     hashbang: true,
     history: false
 });
-/* eslint-disable */
-Shared.accessToken = Cookies.get("access_token");
-/* eslint-enable */
-router.map(Shared.routerMap).start(UiAuth, "app");
+Shared.accessToken = VueCookie.get("access_token");
+router.map(Shared.routerMap).start(Auth, "app");

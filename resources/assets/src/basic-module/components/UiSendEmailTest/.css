@@ -1,8 +1,0 @@
-.table > thead > tr.top > th,
-.table > tbody > tr.top > th,
-.table > tfoot > tr.top > th,
-.table > thead > tr.top > td,
-.table > tbody > tr.top > td,
-.table > tfoot > tr.top > td {
-    border-top-color: transparent;
-}

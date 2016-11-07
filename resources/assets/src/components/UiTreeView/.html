@@ -1,6 +1,0 @@
-<div v-for="subtree in tree" :class="subtree.class">
-    {{{ subtree.html }}}
-    <template v-if="subtree.tree">
-        <ui-tree-view :tree="subtree.tree"></ui-tree-view>
-    </template>
-</div>
