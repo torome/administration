@@ -1,4 +1,3 @@
-// bootstrap
 import "bootstrap/less/bootstrap.less";
 import "bootstrap";
 import "font-awesome/less/font-awesome.less";
@@ -13,12 +12,6 @@ import VueValidator from "vue-validator";
 import {Shared} from "./shared";
 import {UiAuth} from "./components";
 import BasicModule from "./basic-module/bootstrap";
-// font-awesome
-// ionicons
-// meat-dashboard
-// vue
-// 导出根视图组件
-// 启动并初始化应用
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);

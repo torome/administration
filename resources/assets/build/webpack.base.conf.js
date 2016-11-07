@@ -1,9 +1,9 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
-var webpack = require('webpack')
-var merge = require('merge')
+var path = require('path');
+var config = require('../config');
+var utils = require('./utils');
+var projectRoot = path.resolve(__dirname, '../');
+var webpack = require('webpack');
+var merge = require('merge');
 module.exports = {
     entry: {
         app: './src/main.es6'
