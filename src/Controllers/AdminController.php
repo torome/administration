@@ -8,6 +8,7 @@
 namespace Notadd\Administration\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
 use Notadd\Foundation\Passport\Responses\ApiResponse;
@@ -21,10 +22,10 @@ class AdminController extends Controller {
     /**
      * @param \Illuminate\Auth\AuthManager $auth
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+     * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      */
     public function access(AuthManager $auth, ApiResponse $response) {
-        if($auth->guard()->user()) {
+        if($auth->guard('api')->user()) {
             $http = new Client();
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
@@ -35,7 +36,6 @@ class AdminController extends Controller {
                 ],
             ]);
             $back = json_decode((string)$back->getBody(), true);
-            dd($back);
             if(isset($back['access_token'])) {
                 return $response->withParams([
                     'status' => 'success'
@@ -55,7 +55,7 @@ class AdminController extends Controller {
     }
     /**
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+     * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      */
     public function token(ApiResponse $response) {
         $this->validateLogin($this->request);

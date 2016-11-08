@@ -15,13 +15,10 @@
         },
         methods: {
             onSubmit: function (e) {
-                console.log("submit");
                 this.$http.post("/", this.$data);
                 e.preventDefault();
             },
             onBind: function (e) {
-                console.log(e);
-                console.log("bind");
             }
         }
     };

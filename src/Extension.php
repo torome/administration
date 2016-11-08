@@ -45,7 +45,7 @@ class Extension extends ExtensionRegistrar {
         $this->router->group(['middleware' => 'web', 'prefix' => 'admin'], function() {
             $this->router->post('token', AdminController::class . '@token');
         });
-        $this->router->group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function() {
+        $this->router->group(['middleware' => ['web', 'auth:api'], 'prefix' => 'admin'], function() {
             $this->router->post('/', AdminController::class . '@access');
         });
     }

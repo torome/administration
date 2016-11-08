@@ -1,9 +1,0 @@
-{
-  "protocol": "smtp",
-  "encryption": "tls",
-  "port": 7777,
-  "host": "smtp.test.com",
-  "mail": "test@test.com",
-  "username": "username",
-  "password": "password"
-}

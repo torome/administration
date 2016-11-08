@@ -20,6 +20,9 @@ Vue.use(VueValidator);
 Vue.use(Vuex);
 Storage.commit("url", window.url);
 Storage.commit("csrf_token", window.csrf_token);
+Storage.commit("access_token", window.localStorage.getItem("access_token"));
+Storage.commit("expires_in", window.localStorage.getItem("expires_in"));
+Storage.commit("refresh_token", window.localStorage.getItem("refresh_token"));
 BasicModule(Shared);
 let router = new VueRouter({
     hashbang: true,

@@ -26,23 +26,16 @@
         route: {
             activate: function (transition) {
                 if (Storage.state.access_token === null) {
-                    this.$http.post(Storage.state.url + "/admin", {
-                        _token: Storage.state.csrf_token
-                    }).then(response => {
-                        if (response.body.status === "success") {
-                            Storage.commit("access_token", response.body.access_token);
-                            Storage.commit("expires_in", response.body.expires_in);
-                            Storage.commit("refresh_token", response.body.refresh_token);
-                        }
-                    }, response => {
-                        if (response.status === 401) {
-                            this.$router.go("login");
-                        }
-                    });
+                    this.$router.go("login");
+                    transition.next();
                 }
                 if (Storage.state.settings === null) {
                     this.$http.post("http://notadd.io/api/setting/all", {
-                        _token: Storage.state.csrf_token
+                        _token: Storage.state.csrf_token,
+                        headers: {
+                            "Accept": "application/json",
+                            "Authorization": "Bearer " + Storage.state.access_token
+                        }
                     }).then((response) => {
                         console.log(response);
                     });

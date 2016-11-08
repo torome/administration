@@ -52,6 +52,9 @@
                         Storage.commit("access_token", response.body.access_token);
                         Storage.commit("expires_in", response.body.expires_in);
                         Storage.commit("refresh_token", response.body.refresh_token);
+                        window.localStorage.setItem("access_token", response.body.access_token);
+                        window.localStorage.setItem("expires_in", response.body.expires_in);
+                        window.localStorage.setItem("refresh_token", response.body.refresh_token);
                         this.$router.go("/");
                     } else {
                         window.alert("登录失败，请重新登录！");
@@ -60,6 +63,14 @@
                     if (response.status === 401) {
                     }
                 });
+            }
+        },
+        route: {
+            activate: function (transition) {
+                if (Storage.state.access_token) {
+                    this.$router.go("/");
+                }
+                transition.next();
             }
         }
     };
