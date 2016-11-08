@@ -1,10 +1,10 @@
 <script>
-    import {Shared} from "src/shared";
-    import Sidebar from "./Sidebar.vue";
-    import NavbarMenu from "./NavbarMenu.vue";
     import Layout from "./Layout.vue";
     import LayoutHeader from "./LayoutHeader.vue";
     import Logo from "./Logo.vue";
+    import NavbarMenu from "./NavbarMenu.vue";
+    import Sidebar from "./Sidebar.vue";
+    import Storage from "../libraries/Storage";
     export default {
         components: {Layout, LayoutHeader, Sidebar, Logo, NavbarMenu},
         data: () => {
@@ -25,7 +25,7 @@
         },
         route: {
             activate: function (transition) {
-                if (!Shared.accessToken) {
+                if (Storage.state.access_token === null) {
                     this.$router.go("/login");
                     transition.next();
                 } else {

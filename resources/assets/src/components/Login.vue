@@ -32,48 +32,37 @@
     </div>
 </template>
 <script>
-import {Shared} from "src/shared";
-let oauth = {
-    "id": "4",
-    "secret": "kI6stFinNexkZkvtIn3MdJIGCErbJcjnubFBwM4H"
-};
-export default {
-    data: () => {
-        return {
-            username: "",
-            password: "",
-            authFailed: false
-        };
-    },
-    methods: {
-        onSubmit: function () {
-            console.log(this.username);
-            console.log(this.password);
-            console.log("submit");
-            this.$http.post("http://notadd.io/oauth/access", {
-                "grant_type": "password",
-                "client_id": oauth.id,
-                "client_secret": oauth.secret,
-                "username": this.username,
-                "password": this.password
-            }).then((response) => {
-                console.log(response);
-                Shared.accessToken = response.body;
-                this.$cookie.set("access_token", Shared.accessToken);
-                this.$router.go("/");
-            }, (response) => {
-                if (response.status === 401) {
-                }
-            });
-        }
-    },
-    route: {
-        activate: function (transition) {
-            if (Shared.accessToken) {
-                this.$router.go("/");
+    import Storage from "../libraries/Storage";
+    let oauth = {
+        "id": "4",
+        "secret": "kI6stFinNexkZkvtIn3MdJIGCErbJcjnubFBwM4H"
+    };
+    export default {
+        data: () => {
+            return {
+                username: "admin",
+                password: "123456789",
+                authFailed: false
+            };
+        },
+        methods: {
+            onSubmit: function () {
+                this.$http.post("http://notadd.io/oauth/access", {
+                    "grant_type": "password",
+                    "client_id": oauth.id,
+                    "client_secret": oauth.secret,
+                    "username": this.username,
+                    "password": this.password
+                }).then((response) => {
+                    Storage.commit("access_token", response.body.access_token);
+                    Storage.commit("expires_in", response.body.expires_in);
+                    Storage.commit("refresh_token", response.body.refresh_token);
+                    this.$router.go("/");
+                }, (response) => {
+                    if (response.status === 401) {
+                    }
+                });
             }
-            transition.next();
         }
-    }
-};
+    };
 </script>
