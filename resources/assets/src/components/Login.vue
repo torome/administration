@@ -33,10 +33,6 @@
 </template>
 <script>
     import Storage from "../libraries/Storage";
-    let oauth = {
-        "id": "4",
-        "secret": "kI6stFinNexkZkvtIn3MdJIGCErbJcjnubFBwM4H"
-    };
     export default {
         data: () => {
             return {
@@ -47,17 +43,19 @@
         },
         methods: {
             onSubmit: function () {
-                this.$http.post("http://notadd.io/oauth/access", {
-                    "grant_type": "password",
-                    "client_id": oauth.id,
-                    "client_secret": oauth.secret,
-                    "username": this.username,
-                    "password": this.password
+                this.$http.post(Storage.state.url + "/admin/token", {
+                    _token: Storage.state.csrf_token,
+                    name: this.username,
+                    password: this.password
                 }).then((response) => {
-                    Storage.commit("access_token", response.body.access_token);
-                    Storage.commit("expires_in", response.body.expires_in);
-                    Storage.commit("refresh_token", response.body.refresh_token);
-                    this.$router.go("/");
+                    if (response.body.status === "success") {
+                        Storage.commit("access_token", response.body.access_token);
+                        Storage.commit("expires_in", response.body.expires_in);
+                        Storage.commit("refresh_token", response.body.refresh_token);
+                        this.$router.go("/");
+                    } else {
+                        window.alert("登录失败，请重新登录！");
+                    }
                 }, (response) => {
                     if (response.status === 401) {
                     }

@@ -6,6 +6,7 @@
  * @datetime 2016-10-25 17:42
  */
 namespace Notadd\Administration;
+use Notadd\Administration\Controllers\AdminController;
 use Notadd\Foundation\Administration\Administration;
 use Notadd\Foundation\Extension\Abstracts\ExtensionRegistrar;
 /**
@@ -39,10 +40,13 @@ class Extension extends ExtensionRegistrar {
     public function register(Administration $administration) {
         $administrator = new Administrator($this->container['events'], $this->container['router']);
         $administrator->registerPath('admin');
-        $administrator->registerHandler(function() {
-            return view('admin::index');
-        });
+        $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
-        $this->router->middleware('auth.admin', 'djskdfjskdf');
+        $this->router->group(['middleware' => 'web', 'prefix' => 'admin'], function() {
+            $this->router->post('token', AdminController::class . '@token');
+        });
+        $this->router->group(['middleware' => ['web', 'auth'], 'prefix' => 'admin'], function() {
+            $this->router->post('/', AdminController::class . '@access');
+        });
     }
 }

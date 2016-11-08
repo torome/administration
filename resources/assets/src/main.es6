@@ -13,10 +13,13 @@ import VueValidator from "vue-validator";
 import Vuex from "vuex";
 import {Shared} from "./shared";
 import BasicModule from "./bootstrap";
+import Storage from "./libraries/Storage";
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);
 Vue.use(Vuex);
+Storage.commit("url", window.url);
+Storage.commit("csrf_token", window.csrf_token);
 BasicModule(Shared);
 let router = new VueRouter({
     hashbang: true,
