@@ -25,16 +25,16 @@
         },
         route: {
             activate: function (transition) {
-                if (Storage.state.access_token === null) {
+                if (window.localStorage.getItem("access_token") === null) {
                     this.$router.go("login");
-                    transition.next();
                 }
-                if (Storage.state.settings === null) {
+                if (Storage.state.settings === null && transition.to.path !== "login") {
                     this.$http.post("http://notadd.io/api/setting/all", {
-                        _token: Storage.state.csrf_token,
+                    }, {
                         headers: {
                             "Accept": "application/json",
-                            "Authorization": "Bearer " + Storage.state.access_token
+                            "Authorization": "Bearer " + window.localStorage.getItem("access_token"),
+                            "X-CSRF-TOKEN": window.csrf_token
                         }
                     }).then((response) => {
                         console.log(response);

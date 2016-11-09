@@ -1,3 +1,44 @@
+
+<script>
+    export default {
+        data: () => {
+            return {
+                username: "admin",
+                password: "123456789",
+                authFailed: false
+            };
+        },
+        methods: {
+            onSubmit: function () {
+                this.$http.post(window.url + "/admin/token", {
+                    _token: window.csrf_token,
+                    name: this.username,
+                    password: this.password
+                }).then((response) => {
+                    if (response.body.status === "success") {
+                        window.localStorage.setItem("access_token", response.body.access_token);
+                        window.localStorage.setItem("expires_in", response.body.expires_in);
+                        window.localStorage.setItem("refresh_token", response.body.refresh_token);
+                        this.$router.go("/");
+                    } else {
+                        window.alert("登录失败，请重新登录！");
+                    }
+                }, (response) => {
+                    if (response.status === 401) {
+                    }
+                });
+            }
+        },
+        route: {
+            activate: function (transition) {
+                if (window.localStorage.getItem("access_token")) {
+                    this.$router.go("/");
+                }
+                transition.next();
+            }
+        }
+    };
+</script>
 <template>
     <div class="login-box">
         <div class="login-logo">登录</div>
@@ -31,47 +72,3 @@
         </div>
     </div>
 </template>
-<script>
-    import Storage from "../libraries/Storage";
-    export default {
-        data: () => {
-            return {
-                username: "admin",
-                password: "123456789",
-                authFailed: false
-            };
-        },
-        methods: {
-            onSubmit: function () {
-                this.$http.post(Storage.state.url + "/admin/token", {
-                    _token: Storage.state.csrf_token,
-                    name: this.username,
-                    password: this.password
-                }).then((response) => {
-                    if (response.body.status === "success") {
-                        Storage.commit("access_token", response.body.access_token);
-                        Storage.commit("expires_in", response.body.expires_in);
-                        Storage.commit("refresh_token", response.body.refresh_token);
-                        window.localStorage.setItem("access_token", response.body.access_token);
-                        window.localStorage.setItem("expires_in", response.body.expires_in);
-                        window.localStorage.setItem("refresh_token", response.body.refresh_token);
-                        this.$router.go("/");
-                    } else {
-                        window.alert("登录失败，请重新登录！");
-                    }
-                }, (response) => {
-                    if (response.status === 401) {
-                    }
-                });
-            }
-        },
-        route: {
-            activate: function (transition) {
-                if (Storage.state.access_token) {
-                    this.$router.go("/");
-                }
-                transition.next();
-            }
-        }
-    };
-</script>
