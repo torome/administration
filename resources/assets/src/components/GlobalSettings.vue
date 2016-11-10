@@ -6,19 +6,31 @@
         },
         data: () => {
             return {
-                siteEnabled: window.settings["site.enabled"],
-                siteName: window.settings["site.title"],
-                siteDomain: window.settings["site.domain"],
-                siteBeian: window.settings["site.beian"],
-                companyName: window.settings["site.company"],
-                siteCopyright: window.settings["site.copyright"],
-                statisticsCode: window.settings["site.statistics"]
+                enabled: window.settings["site.enabled"],
+                name: window.settings["site.title"],
+                domain: window.settings["site.domain"],
+                beian: window.settings["site.beian"],
+                company: window.settings["site.company"],
+                copyright: window.settings["site.copyright"],
+                statistics: window.settings["site.statistics"]
             };
         },
         methods: {
             onSubmit: function (e) {
-                this.$http.post("/", this.$data);
                 e.preventDefault();
+                this.$http.post(window.url + "/api/setting/set", this.$data, {
+                    headers: {
+                        "Accept": "application/json",
+                        "Authorization": "Bearer " + window.localStorage.getItem("access_token"),
+                        "X-CSRF-TOKEN": window.csrf_token
+                    }
+                }).then(response => {
+                    window.localStorage.setItem("settings", JSON.stringify(response.body));
+                    window.settings = response.body;
+                    this.$router.go("/");
+                }, response => {
+                    window.alert("更新设置失败！");
+                });
             }
         }
     };
@@ -39,61 +51,61 @@
                     <div class="form-group">
                         <label for="site-enabled" class="col-sm-4 control-label">站点开启</label>
                         <div class="col-sm-4" id="site-enabled">
-                            <label class="checkbox-inline"><input type="checkbox" v-model="siteEnabled">启用</label>
+                            <label class="checkbox-inline"><input type="checkbox" v-model="enabled">启用</label>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.siteName.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.name.invalid }">
                         <label class="col-sm-4 control-label">网站名称</label>
                         <div class="col-sm-4">
-                            <input v-model="siteName" type="text" class="form-control" placeholder="请输入网站名称" v-validate:site-name="{ required: { rule: true, message: '网站名称不能为空' } }">
+                            <input v-model="name" type="text" class="form-control" placeholder="请输入网站名称" v-validate:site-name="{ required: { rule: true, message: '网站名称不能为空' } }">
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.siteName.required" class="help-block">{{ $validation.siteName.required }}</span>
+                            <span v-if="$validation.name.required" class="help-block">{{ $validation.name.required }}</span>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.siteDomain.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.domain.invalid }">
                         <label class="col-sm-4 control-label">网站域名</label>
                         <div class="col-sm-4">
-                            <input v-model="siteDomain" type="text" class="form-control" placeholder="请输入网站域名" v-validate:site-domain="{ required: { rule: true, message: '网站域名不能为空' } }">
+                            <input v-model="domain" type="text" class="form-control" placeholder="请输入网站域名" v-validate:site-domain="{ required: { rule: true, message: '网站域名不能为空' } }">
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.siteDomain.required" class="help-block">{{ $validation.siteDomain.required }}</span>
+                            <span v-if="$validation.domain.required" class="help-block">{{ $validation.domain.required }}</span>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.siteBeian.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.beian.invalid }">
                         <label class="col-sm-4 control-label">备案信息</label>
                         <div class="col-sm-4">
-                            <input v-model="siteBeian" type="text" class="form-control" placeholder="请输入备案信息" v-validate:site-shui-biao="{ required: { rule: true, message: '备案信息不能为空' } }">
+                            <input v-model="beian" type="text" class="form-control" placeholder="请输入备案信息" v-validate:site-shui-biao="{ required: { rule: true, message: '备案信息不能为空' } }">
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.siteBeian.required" class="help-block">{{ $validation.siteBeian.required }}</span>
+                            <span v-if="$validation.beian.required" class="help-block">{{ $validation.beian.required }}</span>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.companyName.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.company.invalid }">
                         <label class="col-sm-4 control-label">公司名称</label>
                         <div class="col-sm-4">
-                            <input v-model="companyName" type="text" class="form-control" placeholder="请输入公司名称" v-validate:company-name="{ required: { rule: true, message: '公司名称不能为空' } }">
+                            <input v-model="company" type="text" class="form-control" placeholder="请输入公司名称" v-validate:company-name="{ required: { rule: true, message: '公司名称不能为空' } }">
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.companyName.required" class="help-block">{{ $validation.companyName.required }}</span>
+                            <span v-if="$validation.company.required" class="help-block">{{ $validation.company.required }}</span>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.siteCopyright.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.copyright.invalid }">
                         <label class="col-sm-4 control-label">版权信息</label>
                         <div class="col-sm-4">
-                            <input v-model="siteCopyright" type="text" class="form-control" placeholder="请输入版权信息" v-validate:site-copyright="{ required: { rule: true, message: '版权信息不能为空' } }">
+                            <input v-model="copyright" type="text" class="form-control" placeholder="请输入版权信息" v-validate:site-copyright="{ required: { rule: true, message: '版权信息不能为空' } }">
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.siteCopyright.required" class="help-block">{{ $validation.siteCopyright.required }}</span>
+                            <span v-if="$validation.copyright.required" class="help-block">{{ $validation.copyright.required }}</span>
                         </div>
                     </div>
-                    <div class="form-group" :class="{ 'has-error': $validation.statisticsCode.invalid }">
+                    <div class="form-group" :class="{ 'has-error': $validation.statistics.invalid }">
                         <label class="col-sm-4 control-label">统计代码</label>
                         <div class="col-sm-4">
-                            <textarea v-model="statisticsCode" class="form-control" rows="6" placeholder="请输入统计代码" v-validate:statistics-code="{ required: { rule: true, message: '统计代码不能为空' } }"></textarea>
+                            <textarea v-model="statistics" class="form-control" rows="6" placeholder="请输入统计代码" v-validate:statistics-code="{ required: { rule: true, message: '统计代码不能为空' } }"></textarea>
                         </div>
                         <div class="col-sm-4">
-                            <span v-if="$validation.statisticsCode.required" class="help-block">{{ $validation.statisticsCode.required }}</span>
+                            <span v-if="$validation.statistics.required" class="help-block">{{ $validation.statistics.required }}</span>
                         </div>
                     </div>
                 </div>
