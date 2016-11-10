@@ -30,8 +30,8 @@ class AdminController extends Controller {
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
                     'grant_type' => 'client_credentials',
-                    'client_id' => '4',
-                    'client_secret' => 'kI6stFinNexkZkvtIn3MdJIGCErbJcjnubFBwM4H',
+                    'client_id' => '2',
+                    'client_secret' => 'xgBiTxWccEZExZu5PaFHFf5qXbol4yuZUnTod410',
                     'scope' => '*',
                 ],
             ]);
@@ -76,8 +76,8 @@ class AdminController extends Controller {
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => '4',
-                    'client_secret' => 'kI6stFinNexkZkvtIn3MdJIGCErbJcjnubFBwM4H',
+                    'client_id' => '2',
+                    'client_secret' => 'xgBiTxWccEZExZu5PaFHFf5qXbol4yuZUnTod410',
                     'username' => $this->request->offsetGet($this->username()),
                     'password' => $this->request->offsetGet('password'),
                     'scope' => '*',
