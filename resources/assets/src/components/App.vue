@@ -4,7 +4,6 @@
     import Logo from "./Logo.vue";
     import NavbarMenu from "./NavbarMenu.vue";
     import Sidebar from "./Sidebar.vue";
-    import Storage from "../libraries/Storage";
     export default {
         components: {Layout, LayoutHeader, Sidebar, Logo, NavbarMenu},
         data: () => {
@@ -28,7 +27,7 @@
                 if (window.localStorage.getItem("access_token") === null) {
                     this.$router.go("login");
                 }
-                if (Storage.state.settings === null && transition.to.path !== "login") {
+                if (window.localStorage.getItem("settings") === null && transition.to.path !== "login") {
                     this.$http.post("http://notadd.io/api/setting/all", {
                     }, {
                         headers: {
@@ -37,8 +36,14 @@
                             "X-CSRF-TOKEN": window.csrf_token
                         }
                     }).then((response) => {
-                        console.log(response);
+                        window.localStorage.setItem("settings", JSON.stringify(response.body));
+                        window.settings = response.body;
+                    }, response => {
+                        window.alert("初始化失败！");
                     });
+                }
+                if (window.localStorage.getItem("settings") !== null) {
+                    window.settings = JSON.parse(window.localStorage.getItem("settings"));
                 }
                 transition.next();
             }
