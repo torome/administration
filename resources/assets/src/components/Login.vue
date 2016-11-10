@@ -1,8 +1,8 @@
-
 <script>
     export default {
         data: () => {
             return {
+                errors: "",
                 username: "admin",
                 password: "123456789",
                 authFailed: false
@@ -21,10 +21,13 @@
                         window.localStorage.setItem("refresh_token", response.body.refresh_token);
                         this.$router.go("/");
                     } else {
-                        window.alert("登录失败，请重新登录！");
+                        this.errors = "登录失败，请重新登录！";
                     }
                 }, (response) => {
                     if (response.status === 401) {
+                        this.errors = response.body.error;
+                    } else if (response.status === 500) {
+                        this.errors = "服务器无响应或服务器错误！";
                     }
                 });
             }
@@ -45,26 +48,24 @@
         <div class="login-box-body">
             <validator name="validation">
                 <form novalidate @submit.prevent="onSubmit">
-                    <div class="form-group has-feedback" :class="{ 'has-error': $validation.username.invalid }">
+                    <div class="form-group has-feedback" :class="{ 'has-error': $validation.username.touched && $validation.username.invalid }">
                         <input v-model="username" type="text" class="form-control" placeholder="请输入用户名" v-validate:username="{ required: { rule: true, message: '用户名不能为空' } }">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <span v-if="$validation.username.required" class="help-block">{{ $validation.username.required }}</span>
+                        <span v-if="$validation.username.touched && $validation.username.required" class="help-block">{{ $validation.username.required }}</span>
                     </div>
-                    <div class="form-group has-feedback" :class="{ 'has-error': $validation.password.invalid }">
+                    <div class="form-group has-feedback" :class="{ 'has-error': $validation.password.touched && $validation.password.invalid }">
                         <input v-model="password" type="password" class="form-control" placeholder="请输入密码"  v-validate:password="{ required: { rule: true, message: '密码不能为空' } }">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <span v-if="$validation.password.required" class="help-block">{{ $validation.password.required }}</span>
+                        <span v-if="$validation.password.touched && $validation.password.required" class="help-block">{{ $validation.password.required }}</span>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> 记住我
-                                </label>
-                            </div>
+                        <div class="col-xs-12">
+                            <div class="callout callout-danger right" v-show="errors.length > 0">{{ errors }}</div>
                         </div>
-                        <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat" :class="{ 'disabled': $validation.invalid }" :disabled="$validation.invalid">登录</button>
                         </div>
                     </div>
                 </form>
