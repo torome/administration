@@ -63,7 +63,7 @@ module.exports = {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('images/[name].[ext]')
                 }
             },
             {
@@ -71,7 +71,7 @@ module.exports = {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('fonts/[name].[ext]')
                 }
             }
         ]
@@ -86,8 +86,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Cookies: 'js-cookie'
+            'window.jQuery': 'jquery'
         })
     ]
 }
