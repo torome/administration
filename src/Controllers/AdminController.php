@@ -6,10 +6,10 @@
  * @datetime 2016-11-08 13:51
  */
 namespace Notadd\Administration\Controllers;
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Auth\AuthManager;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Laravel\Passport\Client as PassportClient;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
 use Notadd\Foundation\Passport\Responses\ApiResponse;
 use Notadd\Foundation\Routing\Abstracts\Controller;
@@ -20,18 +20,35 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 class AdminController extends Controller {
     use AuthenticatesUsers;
     /**
+     * @var int
+     */
+    protected $client_id;
+    /**
+     * @var string
+     */
+    protected $client_secret;
+    /**
+     * AdminController constructor.
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->client_id = 1;
+        $client = PassportClient::query()->findOrFail($this->client_id);
+        $this->client_secret = $client->getAttribute('secret');
+    }
+    /**
      * @param \Illuminate\Auth\AuthManager $auth
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
      */
     public function access(AuthManager $auth, ApiResponse $response) {
         if($auth->guard('api')->user()) {
-            $http = new Client();
+            $http = new GuzzleClient();
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
                     'grant_type' => 'client_credentials',
-                    'client_id' => '2',
-                    'client_secret' => 'xgBiTxWccEZExZu5PaFHFf5qXbol4yuZUnTod410',
+                    'client_id' => $this->client_id,
+                    'client_secret' => $this->client_secret,
                     'scope' => '*',
                 ],
             ]);
@@ -72,12 +89,12 @@ class AdminController extends Controller {
         if($this->guard()->attempt($credentials, $this->request->has('remember'))) {
             $this->request->session()->regenerate();
             $this->clearLoginAttempts($this->request);
-            $http = new Client();
+            $http = new GuzzleClient();
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => '2',
-                    'client_secret' => 'xgBiTxWccEZExZu5PaFHFf5qXbol4yuZUnTod410',
+                    'client_id' => $this->client_id,
+                    'client_secret' => $this->client_secret,
                     'username' => $this->request->offsetGet($this->username()),
                     'password' => $this->request->offsetGet('password'),
                     'scope' => '*',
