@@ -8,6 +8,7 @@
 namespace Notadd\Administration\Controllers;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Lang;
 use Laravel\Passport\Client as PassportClient;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
@@ -28,6 +29,10 @@ class AdminController extends Controller {
      */
     protected $client_secret;
     /**
+     * @var \Illuminate\Routing\UrlGenerator
+     */
+    protected $url;
+    /**
      * AdminController constructor.
      */
     public function __construct() {
@@ -35,6 +40,7 @@ class AdminController extends Controller {
         $this->client_id = 1;
         $client = PassportClient::query()->findOrFail($this->client_id);
         $this->client_secret = $client->getAttribute('secret');
+        $this->url = $this->container->make(UrlGenerator::class);
     }
     /**
      * @param \Illuminate\Auth\AuthManager $auth
@@ -90,7 +96,7 @@ class AdminController extends Controller {
             $this->request->session()->regenerate();
             $this->clearLoginAttempts($this->request);
             $http = new GuzzleClient();
-            $back = $http->post($this->container->make('url')->to('oauth/access'), [
+            $back = $http->post($this->url->to('oauth/access'), [
                 'form_params' => [
                     'grant_type' => 'password',
                     'client_id' => $this->client_id,

@@ -5,11 +5,6 @@
         components: {
             Menu
         },
-        ready: function () {
-            this.$http.get("navbar.json").then((response) => {
-                this.$refs.menu.menu = response.body;
-            });
-        },
         data: () => {
             return {
                 status: 0,

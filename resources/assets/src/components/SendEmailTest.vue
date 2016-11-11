@@ -7,11 +7,6 @@
                 content: "content"
             };
         },
-        ready: function () {
-            this.$http.get("send-mail-test.json").then((response) => {
-                this.$data = response.body;
-            });
-        },
         methods: {
             onSubmit: function () {
             },

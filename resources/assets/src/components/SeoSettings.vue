@@ -8,12 +8,6 @@
             return {
                 forms: {}
             };
-        },
-        ready: function () {
-            this.$http.get("seo.json").then((response) => {
-                let data = response.body;
-                this.forms = data;
-            });
         }
     };
 </script>

@@ -17,12 +17,6 @@
                 canManagementExtension: ".management"
             };
         },
-        ready: function () {
-            this.$http.get("upload-settings.json").then((response) => {
-                let data = response.body;
-                this.$data = data;
-            });
-        },
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();

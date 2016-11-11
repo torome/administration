@@ -46,12 +46,6 @@
                 ]
             };
         },
-        ready: function () {
-            this.$http.get("watermark.json").then((response) => {
-                let data = response.body;
-                this.$data = Object.assign(this.$data, data);
-            });
-        },
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();

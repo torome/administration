@@ -6,11 +6,6 @@
                 rules: []
             };
         },
-        ready: function () {
-            this.$http.get("rewrite-rules.json").then((response) => {
-                this.rules = response.body;
-            });
-        },
         methods: {
             onSubmit: function () {
             }
