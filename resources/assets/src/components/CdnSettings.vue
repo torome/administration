@@ -53,7 +53,7 @@
                     <component :is="cdnTypeSettings"></component>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :disabled="$validation.invalid || cdnTypeSettingsValidation.invalid">保存
+                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid || cdnTypeSettingsValidation.invalid }" :disabled="$validation.invalid || cdnTypeSettingsValidation.invalid">保存
                     </button>
                 </div>
             </form>

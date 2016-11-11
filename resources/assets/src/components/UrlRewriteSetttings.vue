@@ -80,10 +80,7 @@
                                 </template>
                             </td>
                             <td>
-                                <input type="text" v-model="rule.format"
-                                       :class="{ 'error': ($validation['format' + $index] === undefined ? false : $validation['format' + $index].invalid) }"
-                                       :field="'format' + $index"
-                                       v-validate="{ required: { rule: true, message: '附件大小不能为空' } }">
+                                <input type="text" v-model="rule.format" :class="{ 'error': ($validation['format' + $index] === undefined ? false : $validation['format' + $index].invalid) }" :field="'format' + $index" v-validate="{ required: { rule: true, message: '附件大小不能为空' } }">
                             </td>
                             <td>
                                 <input type="checkbox" v-model="rule.enable">
@@ -92,7 +89,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :disabled="$validation.invalid">保存</button>
+                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
                 </div>
             </form>
         </validator>

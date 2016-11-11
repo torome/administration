@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :disabled="$validation.invalid">保存</button>
+                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
                 </div>
             </form>
         </validator>

@@ -67,8 +67,7 @@
                         <div class="col-sm-10">
                             <div class="input-group">
                                 <div class="input-group-addon">宽</div>
-                                <input v-model="minAddWidth" type="text" class="form-control" placeholder="请输入宽度"
-                                       v-validate:min-add-width="{ required: { rule: true, message: '宽度不能为空' } }">
+                                <input v-model="minAddWidth" type="text" class="form-control" placeholder="请输入宽度" v-validate:min-add-width="{ required: { rule: true, message: '宽度不能为空' } }">
                                 <div class="input-group-addon">像素</div>
                             </div>
                             <span v-if="$validation.minAddWidth.required" class="help-block">{{ $validation.minAddWidth.required }}</span>
@@ -78,8 +77,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="input-group">
                                 <div class="input-group-addon">高</div>
-                                <input v-model="minAddHeight" type="text" class="form-control" placeholder="请输入高度"
-                                       v-validate:min-add-height="{ required: { rule: true, message: '高度不能为空' } }">
+                                <input v-model="minAddHeight" type="text" class="form-control" placeholder="请输入高度" v-validate:min-add-height="{ required: { rule: true, message: '高度不能为空' } }">
                                 <div class="input-group-addon">像素</div>
                             </div>
                             <span v-if="$validation.minAddHeight.required" class="help-block">{{ $validation.minAddHeight.required }}</span>
@@ -112,8 +110,7 @@
                     <div class="form-group" :class="{ 'has-error': $validation.text.invalid }">
                         <label for="text" class="col-sm-2 control-label">水印文本</label>
                         <div class="col-sm-10">
-                        <textarea v-model="text" id="text" class="form-control" rows="6" placeholder="请输入水印文本"
-                                  v-validate:text="{ required: { rule: true, message: '水印文本不能为空' } }"></textarea>
+                        <textarea v-model="text" id="text" class="form-control" rows="6" placeholder="请输入水印文本" v-validate:text="{ required: { rule: true, message: '水印文本不能为空' } }"></textarea>
                             <span v-if="$validation.text.required" class="help-block">{{ $validation.text.required }}</span>
                         </div>
                     </div>
@@ -161,7 +158,7 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :disabled="$validation.invalid">保存</button>
+                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
                 </div>
             </form>
         </validator>

@@ -80,7 +80,6 @@
                 {{ item.name }}
                 <div class="pull-right">
                     <a class="fa fa-trash-o" @click.stop="onDestroy(menu, $index)">刪除</a>
-                    &nbsp;
                     <a class="fa fa-plus" @click.stop="onCreate(item, $index)">添加</a>
                 </div>
             </div>
