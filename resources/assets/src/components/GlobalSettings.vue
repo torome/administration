@@ -6,13 +6,13 @@
         },
         data: () => {
             return {
-                enabled: window.settings["site.enabled"],
-                name: window.settings["site.title"],
-                domain: window.settings["site.domain"],
-                beian: window.settings["site.beian"],
-                company: window.settings["site.company"],
-                copyright: window.settings["site.copyright"],
-                statistics: window.settings["site.statistics"]
+                enabled: "site.enabled" in window.settings ? window.settings["site.enabled"] : false,
+                name: "site.name" in window.settings ? window.settings["site.name"] : "",
+                domain: "site.domain" in window.settings ? window.settings["site.domain"] : "",
+                beian: "site.beian" in window.settings ? window.settings["site.beian"] : "",
+                company: "site.company" in window.settings ? window.settings["site.company"] : "",
+                copyright: "site.copyright" in window.settings ? window.settings["site.copyright"] : "",
+                statistics: "site.statistics" in window.settings ? window.settings["site.statistics"] : ""
             };
         },
         methods: {

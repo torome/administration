@@ -14,6 +14,10 @@
                     _token: window.csrf_token,
                     name: this.username,
                     password: this.password
+                }, {
+                    headers: {
+                        "X-CSRF-TOKEN": window.csrf_token
+                    }
                 }).then((response) => {
                     if (response.body.status === "success") {
                         window.localStorage.setItem("access_token", response.body.access_token);
