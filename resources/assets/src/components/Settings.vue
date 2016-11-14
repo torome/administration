@@ -105,8 +105,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <div class="col-sm-4 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-flat" :class="$validation.invalid" :disabled="$validation.invalid">保存</button>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary btn-flat" :class="$validation.invalid" :disabled="$validation.invalid">保存</button>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -1,28 +1,5 @@
 <script>
-    import Layout from "./Layout.vue";
-    import LayoutHeader from "./LayoutHeader.vue";
-    import Logo from "./Logo.vue";
-    import NavbarMenu from "./NavbarMenu.vue";
-    import Sidebar from "./Sidebar.vue";
     export default {
-        components: {
-            Layout,
-            LayoutHeader,
-            Sidebar,
-            Logo,
-            NavbarMenu
-        },
-        data: () => {
-            return {
-                "menu": [
-                    {
-                        "text": "基础",
-                        "icon": "fa fa-cogs",
-                        "uri": "/"
-                    }
-                ]
-            };
-        },
         route: {
             activate: function (transition) {
                 if (window.localStorage.getItem("access_token") === null) {
@@ -53,19 +30,10 @@
     };
 </script>
 <style>
-    .form-horizontal > .box-footer > .col-sm-offset-3 > button {
+    .form-horizontal > .box-footer > .form-group > .col-sm-offset-3 > button {
         width: 100%;
     }
 </style>
 <template>
-    <layout>
-        <layout-header>
-            <navbar-menu slot="menu" :menu="menu"></navbar-menu>
-        </layout-header>
-        <router-view></router-view>
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">Anything you want</div>
-            <strong>Copyright &copy; 2016 <a v-link="{ 'path': '/' }">Notadd</a>.</strong> All rights reserved.
-        </footer>
-    </layout>
+    <router-view></router-view>
 </template>

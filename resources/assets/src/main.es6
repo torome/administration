@@ -2,9 +2,10 @@ import "font-awesome/less/font-awesome.less";
 import "bootstrap/less/bootstrap.less";
 import "./less/main.less";
 import "./less/skins/all-skins.less";
+import "slimscroll/example/ssmaster/jquery.slimscroll";
 import "bootstrap";
 import "../statices/scripts/app";
-import Auth from "./components/Auth.vue";
+import App from "./components/App.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
@@ -21,4 +22,4 @@ let router = new VueRouter({
     hashbang: true,
     history: false
 });
-router.map(Shared.routerMap).start(Auth, "app");
+router.map(Shared.routerMap).start(App, "app");

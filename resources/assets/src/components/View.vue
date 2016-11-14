@@ -2,13 +2,30 @@
     import Sidebar from "./Sidebar.vue";
     import SidebarMenu from "./SidebarMenu.vue";
     import Content from "./Content.vue";
+    import Layout from "./Layout.vue";
+    import LayoutHeader from "./LayoutHeader.vue";
+    import Logo from "./Logo.vue";
+    import NavbarMenu from "./NavbarMenu.vue";
     export default {
         components: {
-            Sidebar, SidebarMenu, Content
+            Sidebar,
+            SidebarMenu,
+            Content,
+            Layout,
+            LayoutHeader,
+            Logo,
+            NavbarMenu
         },
         data: () => {
             return {
                 menu: [
+                    {
+                        "text": "基础",
+                        "icon": "fa fa-cogs",
+                        "uri": "/"
+                    }
+                ],
+                nav: [
                     {
                         text: "全局设置",
                         icon: "fa fa-globe",
@@ -92,10 +109,19 @@
     };
 </script>
 <template>
-    <sidebar>
-        <sidebar-menu :menu="menu"></sidebar-menu>
-    </sidebar>
-    <content>
-        <router-view></router-view>
-    </content>
+    <layout>
+        <layout-header>
+            <navbar-menu slot="menu" :menu="menu"></navbar-menu>
+        </layout-header>
+        <sidebar>
+            <sidebar-menu :menu="nav"></sidebar-menu>
+        </sidebar>
+        <content>
+            <router-view></router-view>
+        </content>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">Anything you want</div>
+            <strong>Copyright &copy; 2016 <a v-link="{ 'path': '/' }">Notadd</a>.</strong> All rights reserved.
+        </footer>
+    </layout>
 </template>
