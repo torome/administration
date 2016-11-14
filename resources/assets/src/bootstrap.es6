@@ -3,7 +3,7 @@ import CdnSettings from "./components/CdnSettings.vue";
 import DatabaseManagement from "./components/DatabaseManagement.vue";
 import DebugTools from "./components/DebugTools.vue";
 import EmailSettings from "./components/EmailSettings.vue";
-import GlobalSettings from "./components/GlobalSettings.vue";
+import Settings from "./components/Settings.vue";
 import Login from "./components/Login.vue";
 import ModuleManagement from "./components/ModuleManagement.vue";
 import NavigationBarManagement from "./components/NavigationBarManagement.vue";
@@ -24,7 +24,7 @@ export default (shared) => {
                     component: View,
                     subRoutes: {
                         "/": {
-                            component: GlobalSettings
+                            component: Settings
                         },
                         "upload": {
                             component: UploadSettings

@@ -7,7 +7,7 @@
     <meta name="keyword" content="{{ seo('keywords') }}">
     @section('css')@show
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
 <app>加载中...</app>
 <script>
     window.csrf_token = "{{ csrf_token() }}";

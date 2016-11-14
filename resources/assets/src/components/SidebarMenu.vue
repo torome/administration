@@ -1,18 +1,19 @@
 <script>
     import TreeViewMenu from "./TreeViewMenu.vue";
     export default {
-        components: {TreeViewMenu},
+        components: {
+            TreeViewMenu
+        },
         props: {
             menu: {
-                type: Array,
-                default: []
+                type: Array
             }
         }
     };
 </script>
 <template>
     <ul class="sidebar-menu">
-        <li v-for="item in menu" class="treeview">
+        <li v-for="item in menu" class="treeview" :class="{ 'active': router.path === item.uri }">
             <a v-link="item.uri">
                 <i class="{{ item.icon }}"></i> <span>{{item.text}}</span>
                 <span v-show="item.menu" class="pull-right-container">
