@@ -9,7 +9,7 @@ namespace Notadd\Administration\Controllers;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Routing\UrlGenerator;
-use Illuminate\Support\Facades\Lang;
+use Illuminate\Translation\Translator;
 use Laravel\Passport\Client as PassportClient;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
 use Notadd\Foundation\Passport\Responses\ApiResponse;
@@ -33,13 +33,19 @@ class AdminController extends Controller {
      */
     protected $url;
     /**
-     * AdminController constructor.
+     * @var \Illuminate\Translation\Translator
      */
-    public function __construct() {
+    protected $translator;
+    /**
+     * AdminController constructor.
+     * @param \Illuminate\Translation\Translator $translator
+     */
+    public function __construct(Translator $translator) {
         parent::__construct();
         $this->client_id = 1;
         $client = PassportClient::query()->findOrFail($this->client_id);
         $this->client_secret = $client->getAttribute('secret');
+        $this->translator = $translator;
         $this->url = $this->container->make(UrlGenerator::class);
     }
     /**
@@ -85,7 +91,7 @@ class AdminController extends Controller {
         if($this->hasTooManyLoginAttempts($this->request)) {
             $this->fireLockoutEvent($this->request);
             $seconds = $this->limiter()->availableIn($this->throttleKey($this->request));
-            $message = Lang::get('auth.throttle', ['seconds' => $seconds]);
+            $message = $this->translator->get('auth.throttle', ['seconds' => $seconds]);
             return $response->withParams([
                 'status' => 'error',
                 'message' => $message
