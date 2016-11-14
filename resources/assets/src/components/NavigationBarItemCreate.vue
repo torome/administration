@@ -2,12 +2,10 @@
     export default {
         props: {
             name: {
-                Type: String,
-                default: ""
+                Type: String
             },
             alias: {
-                Type: String,
-                default: ""
+                Type: String
             }
         },
         methods: {

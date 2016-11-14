@@ -11,7 +11,8 @@
 <app>加载中...</app>
 <script>
     window.csrf_token = "{{ csrf_token() }}";
-    window.url = "{{ url('') }}";
+    window.api = "{{ url('api') }}";
+    window.url = "{{ url('admin') }}";
 </script>
 <script type="text/javascript" src="http://localhost:8080/app.js"></script>
 </body>

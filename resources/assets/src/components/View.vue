@@ -17,16 +17,16 @@
                     {
                         text: "附件设置",
                         icon: "fa fa-cloud-upload",
-                        uri: "#",
+                        uri: "",
                         menu: [
                             {
                                 text: "上传设置",
-                                icon: "fa fa-circle-o",
+                                icon: "fa fa-upload",
                                 uri: "/upload"
                             },
                             {
                                 text: "存储设置",
-                                icon: "fa fa-circle-o",
+                                icon: "fa fa-cloud",
                                 uri: "/storage"
                             },
                             {
@@ -41,7 +41,7 @@
                             },
                             {
                                 text: "模块管理",
-                                icon: "fa fa-circle-o",
+                                icon: "fa fa-maxcdn",
                                 uri: "/module"
                             }
                         ]
@@ -88,10 +88,6 @@
                     }
                 ]
             };
-        },
-        methods: {
-            onBind: function (data) {
-            }
         }
     };
 </script>

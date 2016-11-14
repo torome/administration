@@ -29,7 +29,7 @@
                     this.$router.go("login");
                 } else {
                     if (window.localStorage.getItem("settings") === null && transition.to.path !== "login") {
-                        this.$http.post(window.url + "/api/setting/all", {
+                        this.$http.post(window.api + "/setting/all", {
                         }, {
                             headers: {
                                 "Accept": "application/json",

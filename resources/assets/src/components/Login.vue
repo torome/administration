@@ -10,7 +10,7 @@
         },
         methods: {
             onSubmit: function () {
-                this.$http.post(window.url + "/admin/token", {
+                this.$http.post(window.url + "/token", {
                     _token: window.csrf_token,
                     name: this.username,
                     password: this.password

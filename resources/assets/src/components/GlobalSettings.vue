@@ -6,19 +6,19 @@
         },
         data: () => {
             return {
-                enabled: "site.enabled" in window.settings ? window.settings["site.enabled"] : false,
-                name: "site.name" in window.settings ? window.settings["site.name"] : "",
-                domain: "site.domain" in window.settings ? window.settings["site.domain"] : "",
-                beian: "site.beian" in window.settings ? window.settings["site.beian"] : "",
-                company: "site.company" in window.settings ? window.settings["site.company"] : "",
-                copyright: "site.copyright" in window.settings ? window.settings["site.copyright"] : "",
-                statistics: "site.statistics" in window.settings ? window.settings["site.statistics"] : ""
+                enabled: window.settings.hasOwnProperty("site.enabled") ? window.settings["site.enabled"] : false,
+                name:  window.settings.hasOwnProperty("site.name") ? window.settings["site.name"] : "",
+                domain:  window.settings.hasOwnProperty("site.domain") ? window.settings["site.domain"] : "",
+                beian:  window.settings.hasOwnProperty("site.beian") ? window.settings["site.beian"] : "",
+                company:  window.settings.hasOwnProperty("site.company") ? window.settings["site.company"] : "",
+                copyright:  window.settings.hasOwnProperty("site.copyright") ? window.settings["site.copyright"] : "",
+                statistics:  window.settings.hasOwnProperty("site.statistics") ? window.settings["site.statistics"] : ""
             };
         },
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();
-                this.$http.post(window.url + "/api/setting/set", this.$data, {
+                this.$http.post(window.api + "/setting/set", this.$data, {
                     headers: {
                         "Accept": "application/json",
                         "Authorization": "Bearer " + window.localStorage.getItem("access_token"),

@@ -19,7 +19,7 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
-            <tree-view-menu :menu="item.menu"></tree-view-menu>
+            <tree-view-menu :menu="item.menu" v-if="item.hasOwnProperty('menu')"></tree-view-menu>
         </li>
     </ul>
 </template>
