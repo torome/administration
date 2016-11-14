@@ -7,12 +7,12 @@
         data: () => {
             return {
                 enabled: window.settings.hasOwnProperty("site.enabled") ? window.settings["site.enabled"] : false,
-                name:  window.settings.hasOwnProperty("site.name") ? window.settings["site.name"] : "",
-                domain:  window.settings.hasOwnProperty("site.domain") ? window.settings["site.domain"] : "",
-                beian:  window.settings.hasOwnProperty("site.beian") ? window.settings["site.beian"] : "",
-                company:  window.settings.hasOwnProperty("site.company") ? window.settings["site.company"] : "",
-                copyright:  window.settings.hasOwnProperty("site.copyright") ? window.settings["site.copyright"] : "",
-                statistics:  window.settings.hasOwnProperty("site.statistics") ? window.settings["site.statistics"] : ""
+                name: window.settings.hasOwnProperty("site.name") ? window.settings["site.name"] : "",
+                domain: window.settings.hasOwnProperty("site.domain") ? window.settings["site.domain"] : "",
+                beian: window.settings.hasOwnProperty("site.beian") ? window.settings["site.beian"] : "",
+                company: window.settings.hasOwnProperty("site.company") ? window.settings["site.company"] : "",
+                copyright: window.settings.hasOwnProperty("site.copyright") ? window.settings["site.copyright"] : "",
+                statistics: window.settings.hasOwnProperty("site.statistics") ? window.settings["site.statistics"] : ""
             };
         },
         methods: {

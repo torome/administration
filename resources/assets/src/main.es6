@@ -1,10 +1,9 @@
-import "bootstrap/less/bootstrap.less";
-import "bootstrap";
 import "font-awesome/less/font-awesome.less";
-import "ionicons/dist/scss/ionicons.scss";
-import "meat-dashboard/less/AdminLTE.less";
-import "meat-dashboard/less/skins/skin-blue.less";
-import "meat-dashboard";
+import "bootstrap/less/bootstrap.less";
+import "./less/main.less";
+import "./less/skins/all-skins.less";
+import "bootstrap";
+import "../statices/scripts/app";
 import Auth from "./components/Auth.vue";
 import Vue from "vue";
 import VueRouter from "vue-router";
