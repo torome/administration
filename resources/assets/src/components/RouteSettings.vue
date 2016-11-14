@@ -86,10 +86,12 @@
                 <div class="box-body">
                     <div class="form-group" v-for="formGroup in form">
                         <template v-if="formGroup.label">
-                            <label class="control-label" :for="'form-group-' + $index">{{ formGroup.label }}</label>
+                            <label class="col-sm-3 control-label">{{ formGroup.label }}</label>
                         </template>
                         <template v-if="formGroup.text">
-                            <input type="text" class="form-control" :placeholder="formGroup.text.placeholder" :id="'form-group-' + $index" :field="'form-group-' + $index" v-validate="formGroup.text.validate" v-model="formGroup.text.model">
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" :placeholder="formGroup.text.placeholder" :field="'form-group-' + $index" v-validate="formGroup.text.validate" v-model="formGroup.text.model">
+                            </div>
                         </template>
                     </div>
                     <div v-for="uiRouter in ui.routers" class="form-group" :class="{ 'has-error': $validation['uiRouter' + $index].invalid }">
@@ -110,7 +112,9 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
+                    <div class="col-sm-4 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
+                    </div>
                 </div>
             </form>
         </validator>
