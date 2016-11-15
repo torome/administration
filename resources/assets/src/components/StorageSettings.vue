@@ -44,8 +44,8 @@
             <form class="form-horizontal" novalidate @submit="onSubmit">
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">存储类型</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label">存储类型</label>
+                        <div class="col-sm-4">
                             <label v-for="type in storageTypes" class="radio-inline">
                                 <input type="radio" :value="type.value" v-model="storageType"> {{ type.name }}
                             </label>
@@ -54,9 +54,11 @@
                     <component :is="storageTypeSettings"></component>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right"
-                            :disabled="$validation.invalid || storageTypeSettingsValidation.invalid">保存
-                    </button>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary btn-flat" :disabled="$validation.invalid || storageTypeSettingsValidation.invalid">保存</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </validator>

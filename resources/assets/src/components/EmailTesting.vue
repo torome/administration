@@ -87,7 +87,11 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: recipients.length == 0 }" :disabled="recipients.length == 0">开始测试</button>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: recipients.length == 0 }" :disabled="recipients.length == 0">开始测试</button>
+                    </div>
+                </div>
             </div>
         </validator>
     </div>

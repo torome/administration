@@ -43,8 +43,8 @@
             <form class="form-horizontal" novalidate @submit="onSubmit">
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">CDN 类型</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label">CDN 类型</label>
+                        <div class="col-sm-4">
                             <label v-for="type in cdnTypes" class="radio-inline">
                                 <input type="radio" :value="type.value" v-model="cdnType"> {{ type.name }}
                             </label>
@@ -53,8 +53,11 @@
                     <component :is="cdnTypeSettings"></component>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary pull-right" :class="{ disabled: $validation.invalid || cdnTypeSettingsValidation.invalid }" :disabled="$validation.invalid || cdnTypeSettingsValidation.invalid">保存
-                    </button>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid || cdnTypeSettingsValidation.invalid }" :disabled="$validation.invalid || cdnTypeSettingsValidation.invalid">保存</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </validator>

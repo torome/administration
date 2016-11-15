@@ -34,7 +34,7 @@
                     {
                         text: "附件设置",
                         icon: "fa fa-cloud-upload",
-                        uri: "",
+                        uri: "/upload",
                         menu: [
                             {
                                 text: "上传设置",
@@ -55,11 +55,6 @@
                                 text: "CDN 设置",
                                 icon: "fa fa-circle-o",
                                 uri: "/cdn"
-                            },
-                            {
-                                text: "模块管理",
-                                icon: "fa fa-maxcdn",
-                                uri: "/module"
                             }
                         ]
                     },
@@ -81,7 +76,19 @@
                     {
                         text: "邮件设置",
                         icon: "fa fa-envelope-o",
-                        uri: "/email"
+                        uri: "/email",
+                        menu: [
+                            {
+                                text: "邮件设置",
+                                icon: "fa fa-envelope-o",
+                                uri: "/email"
+                            },
+                            {
+                                text: "邮件测试",
+                                icon: "fa fa-cloud",
+                                uri: "/email/test"
+                            }
+                        ]
                     },
                     {
                         text: "伪静态设置",
