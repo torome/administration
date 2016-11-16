@@ -77,7 +77,7 @@
     };
 </script>
 <template>
-    <div class="box box-solid">
+    <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">路由管理</h3>
         </div>
@@ -112,8 +112,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <div class="col-sm-4 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">保存</button>
+                        </div>
                     </div>
                 </div>
             </form>

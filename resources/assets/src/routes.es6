@@ -1,7 +1,7 @@
 import App from "./components/layouts/App";
 import Cdn from "./components/pages/Cdn";
 import Database from "./components/pages/Database";
-import DebugTools from "./components/pages/DebugTools";
+import Debug from "./components/pages/Debug";
 import Email from "./components/pages/Email";
 import EmailTesting from "./components/pages/EmailTesting";
 import Layout from "./components/layouts/Layout";
@@ -63,7 +63,7 @@ export default {
                         component: Route
                     },
                     "debug": {
-                        component: DebugTools
+                        component: Debug
                     },
                     "database": {
                         component: Database

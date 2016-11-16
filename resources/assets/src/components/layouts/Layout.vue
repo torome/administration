@@ -38,7 +38,7 @@
                         menu: [
                             {
                                 text: "上传设置",
-                                icon: "fa fa-upload",
+                                icon: "fa fa-file-o",
                                 uri: "/upload"
                             },
                             {

@@ -50,7 +50,7 @@
 <template>
     <div class="row">
         <div class="col-sm-12">
-            <div class="box box-solid">
+            <div class="box">
                 <div class="box-body">
                     <menu v-ref:menu @edit="onEdit" @create="onCreate"></menu>
                 </div>

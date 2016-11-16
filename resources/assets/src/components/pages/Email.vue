@@ -21,7 +21,7 @@
     };
 </script>
 <template>
-    <div class="box box-solid">
+    <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">邮件发送设置</h3>
         </div>
