@@ -18,13 +18,7 @@
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();
-                this.$http.post(window.api + "/setting/set", this.$data, {
-                    headers: {
-                        "Accept": "application/json",
-                        "Authorization": "Bearer " + window.localStorage.getItem("access_token"),
-                        "X-CSRF-TOKEN": window.csrf_token
-                    }
-                }).then(response => {
+                this.$http.post(window.api + "/setting/set", this.$data).then(response => {
                     window.localStorage.setItem("settings", JSON.stringify(response.body));
                     window.settings = response.body;
                     this.$router.go("/");

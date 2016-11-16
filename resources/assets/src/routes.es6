@@ -1,4 +1,3 @@
-import App from "./components/layouts/App";
 import Cdn from "./components/pages/Cdn";
 import Database from "./components/pages/Database";
 import Debug from "./components/pages/Debug";
@@ -18,57 +17,52 @@ import UrlRewrite from "./components/pages/UrlRewrite";
 import Watermark from "./components/pages/Watermark";
 export default {
     "": {
-        component: App,
+        component: Layout,
         subRoutes: {
-            "": {
-                component: Layout,
-                subRoutes: {
-                    "/": {
-                        component: Settings
-                    },
-                    "upload": {
-                        component: Upload
-                    },
-                    "storage": {
-                        component: Storage
-                    },
-                    "watermark": {
-                        component: Watermark
-                    },
-                    "cdn": {
-                        component: Cdn
-                    },
-                    "module": {
-                        component: Module
-                    },
-                    "navbar": {
-                        component: NavigationBar
-                    },
-                    "seo": {
-                        component: Seo
-                    },
-                    "sitemap": {
-                        component: SiteMap
-                    },
-                    "email": {
-                        component: Email
-                    },
-                    "email/testing": {
-                        component: EmailTesting
-                    },
-                    "rewrite": {
-                        component: UrlRewrite
-                    },
-                    "route": {
-                        component: Route
-                    },
-                    "debug": {
-                        component: Debug
-                    },
-                    "database": {
-                        component: Database
-                    }
-                }
+            "/": {
+                component: Settings
+            },
+            "upload": {
+                component: Upload
+            },
+            "storage": {
+                component: Storage
+            },
+            "watermark": {
+                component: Watermark
+            },
+            "cdn": {
+                component: Cdn
+            },
+            "module": {
+                component: Module
+            },
+            "navbar": {
+                component: NavigationBar
+            },
+            "seo": {
+                component: Seo
+            },
+            "sitemap": {
+                component: SiteMap
+            },
+            "email": {
+                component: Email
+            },
+            "email/testing": {
+                component: EmailTesting
+            },
+            "rewrite": {
+                component: UrlRewrite
+            },
+            "route": {
+                component: Route
+            },
+            "debug": {
+                component: Debug
+            },
+            "database": {
+                component: Database
             }
         }
     },
