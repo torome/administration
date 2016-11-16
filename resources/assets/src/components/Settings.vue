@@ -1,5 +1,5 @@
 <script>
-    import UiRouteSettings from "./RouteSettings";
+    import UiRouteSettings from "./Route";
     export default {
         components: {
             UiRouteSettings

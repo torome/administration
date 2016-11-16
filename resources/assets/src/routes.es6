@@ -1,68 +1,72 @@
 import App from "./components/App.vue";
-import CdnSettings from "./components/CdnSettings.vue";
-import DatabaseManagement from "./components/DatabaseManagement.vue";
+import Cdn from "./components/Cdn.vue";
+import Database from "./components/Database.vue";
 import DebugTools from "./components/DebugTools.vue";
-import EmailSettings from "./components/EmailSettings.vue";
-import Settings from "./components/Settings.vue";
+import Email from "./components/Email.vue";
+import EmailTesting from "./components/EmailTesting.vue";
+import Layout from "./components/Layout.vue";
 import Login from "./components/Login.vue";
-import ModuleManagement from "./components/ModuleManagement.vue";
-import NavigationBarManagement from "./components/NavigationBarManagement.vue";
-import RouteSettings from "./components/RouteSettings.vue";
-import SeoSettings from "./components/SeoSettings.vue";
-import SiteMapSettings from "./components/SiteMapSettings.vue";
-import StorageSettings from "./components/StorageSettings.vue";
-import UploadSettings from "./components/UploadSettings.vue";
-import UrlRewriteSettings from "./components/UrlRewriteSetttings.vue";
-import View from "./components/View.vue";
-import WatermarkSettings from "./components/WatermarkSettings.vue";
+import Module from "./components/Module.vue";
+import NavigationBar from "./components/NavigationBar.vue";
+import Route from "./components/Route.vue";
+import Seo from "./components/Seo.vue";
+import Settings from "./components/Settings.vue";
+import SiteMap from "./components/SiteMap.vue";
+import Storage from "./components/Storage.vue";
+import Upload from "./components/Upload.vue";
+import UrlRewrite from "./components/UrlRewrite.vue";
+import Watermark from "./components/Watermark.vue";
 export default {
     "": {
         component: App,
         subRoutes: {
             "": {
-                component: View,
+                component: Layout,
                 subRoutes: {
                     "/": {
                         component: Settings
                     },
                     "upload": {
-                        component: UploadSettings
+                        component: Upload
                     },
                     "storage": {
-                        component: StorageSettings
+                        component: Storage
                     },
                     "watermark": {
-                        component: WatermarkSettings
+                        component: Watermark
                     },
                     "cdn": {
-                        component: CdnSettings
+                        component: Cdn
                     },
                     "module": {
-                        component: ModuleManagement
+                        component: Module
                     },
                     "navbar": {
-                        component: NavigationBarManagement
+                        component: NavigationBar
                     },
                     "seo": {
-                        component: SeoSettings
+                        component: Seo
                     },
                     "sitemap": {
-                        component: SiteMapSettings
+                        component: SiteMap
                     },
                     "email": {
-                        component: EmailSettings
+                        component: Email
+                    },
+                    "email/testing": {
+                        component: EmailTesting
                     },
                     "rewrite": {
-                        component: UrlRewriteSettings
+                        component: UrlRewrite
                     },
                     "route": {
-                        component: RouteSettings
+                        component: Route
                     },
                     "debug": {
                         component: DebugTools
                     },
                     "database": {
-                        component: DatabaseManagement
+                        component: Database
                     }
                 }
             }

@@ -14,5 +14,5 @@
     window.api = "{{ url('api') }}";
     window.url = "{{ url('admin') }}";
 </script>
-<script type="text/javascript" src="http://localhost:8080/app.js"></script>
+<script type="text/javascript" src="http://192.168.31.119:8080/app.js"></script>
 </body>

@@ -1,5 +1,5 @@
 <script>
-    import UriCdnSettings from "./UriCdnSettings.vue";
+    import UriCdnSettings from "./UriCdn.vue";
     export default {
         components: {
             UriCdnSettings
