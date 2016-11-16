@@ -6,7 +6,7 @@
         },
         data: () => {
             return {
-                enabled: window.settings.hasOwnProperty("site.enabled") ? window.settings["site.enabled"] : false,
+                enabled: window.settings.hasOwnProperty("site.enabled") ? window.settings["site.enabled"] : "0",
                 name: window.settings.hasOwnProperty("site.name") ? window.settings["site.name"] : "",
                 domain: window.settings.hasOwnProperty("site.domain") ? window.settings["site.domain"] : "",
                 beian: window.settings.hasOwnProperty("site.beian") ? window.settings["site.beian"] : "",
@@ -45,8 +45,15 @@
                 <div class="box-body">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">站点开启</label>
-                        <div class="col-sm-5">
-                            <label class="checkbox-inline"><input type="checkbox" v-model="enabled">启用</label>
+                        <div class="col-sm-4">
+                            <div class="btn-group btn-switch">
+                                <label class="btn btn-primary btn-flat" :class="{ active: enabled === '1' }">
+                                    <input type="radio" v-model="enabled" value="1"> 开启
+                                </label>
+                                <label class="btn btn-primary btn-flat" :class="{ active: enabled === '0' }">
+                                    <input type="radio" v-model="enabled" value="0"> 关闭
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group" :class="{ 'has-error': $validation.name.invalid }">
