@@ -1,11 +1,11 @@
 <script>
-    import SidebarMenu from "./SidebarMenu.vue";
-    import LayoutContent from "./Content.vue";
-    import LayoutFooter from "./LayoutFooter.vue";
-    import LayoutHeader from "./LayoutHeader.vue";
-    import LayoutSidebar from "./Sidebar.vue";
-    import Logo from "./Logo.vue";
-    import NavbarMenu from "./NavbarMenu.vue";
+    import SidebarMenu from "./SidebarMenu";
+    import LayoutContent from "./Content";
+    import LayoutFooter from "./LayoutFooter";
+    import LayoutHeader from "./LayoutHeader";
+    import LayoutSidebar from "./Sidebar";
+    import Logo from "./Logo";
+    import NavbarMenu from "./NavbarMenu";
     export default {
         components: {
             SidebarMenu,

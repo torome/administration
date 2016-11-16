@@ -1,5 +1,5 @@
 <script>
-    import FtpStorageSettings from "./FtpStorage.vue";
+    import FtpStorageSettings from "./FtpStorage";
     export default {
         components: {
             FtpStorageSettings

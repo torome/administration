@@ -1,5 +1,5 @@
 <script>
-    import SeoSettingsForm from "./SeoSettingsForm.vue";
+    import SeoSettingsForm from "./SeoSettingsForm";
     export default {
         components: {
             SeoSettingsForm

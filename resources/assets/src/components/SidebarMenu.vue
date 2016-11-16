@@ -1,5 +1,5 @@
 <script>
-    import TreeViewMenu from "./TreeViewMenu.vue";
+    import TreeViewMenu from "./TreeViewMenu";
     export default {
         components: {
             TreeViewMenu

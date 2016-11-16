@@ -1,6 +1,6 @@
 <script>
-    import ColorPicker from "./ColorPicker.vue";
-    import Slider from "./Slider.vue";
+    import ColorPicker from "./ColorPicker";
+    import Slider from "./Slider";
     export default {
         components: {
             ColorPicker,
