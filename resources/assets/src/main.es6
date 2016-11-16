@@ -11,15 +11,12 @@ import VueRouter from "vue-router";
 import VueResource from "vue-resource";
 import VueValidator from "vue-validator";
 import Vuex from "vuex";
-import {Shared} from "./shared";
-import BasicModule from "./bootstrap";
+import routes from "./routes";
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(VueValidator);
 Vue.use(Vuex);
-BasicModule(Shared);
-let router = new VueRouter({
+(new VueRouter({
     hashbang: true,
     history: false
-});
-router.map(Shared.routerMap).start(App, "app");
+})).map(routes).start(App, "app");
