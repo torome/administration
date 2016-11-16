@@ -1,6 +1,6 @@
 <script>
-    import ColorPicker from "./ColorPicker";
-    import Slider from "./Slider";
+    import ColorPicker from "../ColorPicker";
+    import Slider from "../Slider";
     export default {
         components: {
             ColorPicker,

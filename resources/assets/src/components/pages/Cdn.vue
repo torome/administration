@@ -1,5 +1,5 @@
 <script>
-    import UriCdnSettings from "./UriCdn";
+    import UriCdnSettings from "../UriCdn";
     export default {
         components: {
             UriCdnSettings

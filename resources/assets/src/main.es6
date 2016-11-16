@@ -5,7 +5,7 @@ import "./less/skins/all-skins.less";
 import "slimscroll/example/ssmaster/jquery.slimscroll";
 import "bootstrap";
 import "../statices/scripts/app";
-import App from "./components/App";
+import App from "./components/layouts/App";
 import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";

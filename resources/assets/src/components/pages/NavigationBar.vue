@@ -1,5 +1,5 @@
 <script>
-    import Menu from "./NavigationBarMenu";
+    import Menu from "../NavigationBarMenu";
     let createRoot, editItem;
     export default {
         components: {

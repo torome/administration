@@ -1,11 +1,11 @@
 <script>
-    import SidebarMenu from "./SidebarMenu";
-    import LayoutContent from "./Content";
+    import SidebarMenu from "../SidebarMenu";
+    import LayoutContent from "../Content";
     import LayoutFooter from "./LayoutFooter";
     import LayoutHeader from "./LayoutHeader";
-    import LayoutSidebar from "./Sidebar";
-    import Logo from "./Logo";
-    import NavbarMenu from "./NavbarMenu";
+    import LayoutSidebar from "../Sidebar";
+    import Logo from "../Logo";
+    import NavbarMenu from "../NavbarMenu";
     export default {
         components: {
             SidebarMenu,
