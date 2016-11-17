@@ -12,7 +12,7 @@ import Seo from "./components/pages/Seo";
 import Settings from "./components/pages/Settings";
 import SiteMap from "./components/pages/Sitemap";
 import Storage from "./components/pages/Storage";
-import Upload from "./components/pages/Upload";
+import Upload from "./components/pages/Attachment";
 import UrlRewrite from "./components/pages/UrlRewrite";
 import Watermark from "./components/pages/Watermark";
 export default {

@@ -26,7 +26,6 @@ $.AdminLTE.options = {
     sidebarSlimScroll: true,
     sidebarExpandOnHover: false,
     enableBoxRefresh: true,
-    enableBSToppltip: true,
     BSTooltipSelector: "[data-toggle='tooltip']",
     enableFastclick: false,
     enableControlSidebar: true,
@@ -100,11 +99,6 @@ $(function () {
     }
     if (o.sidebarPushMenu) {
         $.AdminLTE.pushMenu.activate(o.sidebarToggleSelector);
-    }
-    if (o.enableBSToppltip) {
-        $('body').tooltip({
-            selector: o.BSTooltipSelector
-        });
     }
     if (o.enableBoxWidget) {
         $.AdminLTE.boxWidget.activate();
