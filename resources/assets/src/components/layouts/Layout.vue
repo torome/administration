@@ -82,34 +82,36 @@
                                 text: "邮件设置",
                                 icon: "fa fa-envelope-o",
                                 uri: "/email"
-                            },
-                            {
-                                text: "邮件测试",
-                                icon: "fa fa-cloud",
-                                uri: "/email/testing"
                             }
+//                            },
+//                            {
+//                                text: "邮件测试",
+//                                icon: "fa fa-cloud",
+//                                uri: "/email/testing"
+//                            }
                         ]
                     },
-                    {
-                        text: "伪静态设置",
-                        icon: "fa fa-link",
-                        uri: "/rewrite"
-                    },
-                    {
-                        text: "路由设置",
-                        icon: "fa fa-cogs",
-                        uri: "/route"
-                    },
+//                    {
+//                        text: "伪静态设置",
+//                        icon: "fa fa-link",
+//                        uri: "/rewrite"
+//                    },
+//                    {
+//                        text: "路由设置",
+//                        icon: "fa fa-cogs",
+//                        uri: "/route"
+//                    },
                     {
                         text: "调试工具",
                         icon: "fa fa-exclamation",
                         uri: "/debug"
-                    },
-                    {
-                        text: "数据库管理",
-                        icon: "fa fa-database",
-                        uri: "/database"
                     }
+//                    },
+//                    {
+//                        text: "数据库管理",
+//                        icon: "fa fa-database",
+//                        uri: "/database"
+//                    }
                 ]
             };
         }
