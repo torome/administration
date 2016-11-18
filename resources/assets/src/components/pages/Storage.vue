@@ -18,8 +18,15 @@
         },
         methods: {
             onSubmit: function (e) {
-                this.$broadcast("submit", e);
                 e.preventDefault();
+                this.$http.post(window.api + "/storage", {
+                    "default": this.storageType
+                }).then(response => {
+                    window.localStorage.setItem("settings", JSON.stringify(response.body));
+                    window.settings = response.body;
+                }, response => {
+                    console.log("更新设置失败！");
+                });
             }
         },
         computed: {
@@ -46,9 +53,11 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">存储类型</label>
                         <div class="col-sm-4">
-                            <label v-for="type in storageTypes" class="radio-inline">
-                                <input type="radio" :value="type.value" v-model="storageType"> {{ type.name }}
-                            </label>
+                            <div class="btn-group btn-switch">
+                                <label v-for="type in storageTypes" class="btn btn-primary btn-flat" :class="{ 'active': storageType === type.value }">
+                                    <input type="radio" :value="type.value" v-model="storageType"> {{ type.name }}
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <component :is="storageTypeSettings"></component>
