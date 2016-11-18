@@ -12,14 +12,14 @@
                     {name: "又拍云存储", value: "yp"},
                     {name: "七牛云存储", value: "qn"}
                 ],
-                storageType: "ftp",
+                storageType: window.settings.hasOwnProperty("storage.default") ? window.settings["storage.default"] : "local",
                 storageTypeSettingsValidation: {}
             };
         },
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();
-                this.$http.post(window.api + "/storage", {
+                this.$http.post(window.api + "/attachment/storage", {
                     "default": this.storageType
                 }).then(response => {
                     window.localStorage.setItem("settings", JSON.stringify(response.body));

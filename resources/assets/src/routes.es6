@@ -11,7 +11,7 @@ import Route from "./components/pages/Route";
 import Seo from "./components/pages/Seo";
 import Settings from "./components/pages/Settings";
 import SiteMap from "./components/pages/Sitemap";
-import Storage from "./components/pages/Storage";
+import Storage from "./components/pages/AttachmentStorage";
 import Upload from "./components/pages/Attachment";
 import UrlRewrite from "./components/pages/UrlRewrite";
 import Watermark from "./components/pages/Watermark";
