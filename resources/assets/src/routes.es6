@@ -1,4 +1,4 @@
-import Cdn from "./components/pages/Cdn";
+import Cdn from "./components/pages/AttachmentCdn";
 import Database from "./components/pages/Database";
 import Debug from "./components/pages/Debug";
 import Email from "./components/pages/Email";

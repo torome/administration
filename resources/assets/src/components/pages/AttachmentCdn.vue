@@ -7,18 +7,23 @@
         data: () => {
             return {
                 cdnTypes: [
-                    {name: "不使用", value: "none"},
-                    {name: "BootCDN", value: "boot"},
-                    {name: "全站CDN", value: "uri", settings: "ui-uri-cdn-settings"}
+                    {name: "不使用", value: "none"}
                 ],
-                cdnType: "uri",
+                cdnType: window.settings.hasOwnProperty("attachment.cnd.default") ? window.settings["attachment.cnd.default"] : "none",
                 cdnTypeSettingsValidation: {}
             };
         },
         methods: {
             onSubmit: function (e) {
-                this.$broadcast("submit", e);
                 e.preventDefault();
+                this.$http.post(window.api + "/attachment/cdn", {
+                    "default": this.cdnType
+                }).then(response => {
+                    window.localStorage.setItem("settings", JSON.stringify(response.body));
+                    window.settings = response.body;
+                }, response => {
+                    console.log("更新设置失败！");
+                });
             }
         },
         computed: {

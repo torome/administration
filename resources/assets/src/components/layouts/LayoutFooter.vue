@@ -4,7 +4,7 @@
 </script>
 <template>
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">Anything you want</div>
+        <div class="pull-right hidden-xs"></div>
         <strong>Copyright &copy; 2016 <a v-link="{ 'path': '/' }">Notadd</a>.</strong> All rights reserved.
     </footer>
 </template>
