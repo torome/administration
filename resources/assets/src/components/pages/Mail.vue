@@ -14,7 +14,7 @@
         methods: {
             onSubmit: function (e) {
                 e.preventDefault();
-                this.$http.post(window.api + "/email", this.data).then(response => {
+                this.$http.post(window.api + "/mail", this.$data).then(response => {
                     window.localStorage.setItem("settings", JSON.stringify(response.body));
                     window.settings = response.body;
                 }, response => {

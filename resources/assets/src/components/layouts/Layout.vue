@@ -58,21 +58,21 @@
                             }
                         ]
                     },
-                    {
-                        text: "导航栏",
-                        icon: "fa fa-navicon",
-                        uri: "/navbar"
-                    },
+//                    {
+//                        text: "导航栏",
+//                        icon: "fa fa-navicon",
+//                        uri: "/navbar"
+//                    },
                     {
                         text: "SEO 设置",
                         icon: "fa fa-search",
                         uri: "/seo"
                     },
-                    {
-                        text: "站点地图",
-                        icon: "fa fa-sitemap",
-                        uri: "/sitemap"
-                    },
+//                    {
+//                        text: "站点地图",
+//                        icon: "fa fa-sitemap",
+//                        uri: "/sitemap"
+//                    },
                     {
                         text: "邮件设置",
                         icon: "fa fa-envelope-o",
