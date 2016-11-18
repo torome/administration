@@ -86,7 +86,7 @@
                             {
                                 text: "邮件测试",
                                 icon: "fa fa-cloud",
-                                uri: "/email/test"
+                                uri: "/email/testing"
                             }
                         ]
                     },
@@ -129,6 +129,12 @@
         opacity: 0;
         margin: 0;
         padding: 0;
+    }
+    .form-horizontal > .box-body > .form-group:last-child {
+        margin-bottom: 0;
+    }
+    .form-horizontal > .box-footer > .form-group:last-child {
+        margin-bottom: 0;
     }
     .form-horizontal > .box-footer > .form-group > .col-sm-offset-3 > button {
         width: 100%;

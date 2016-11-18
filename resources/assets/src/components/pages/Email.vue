@@ -2,20 +2,24 @@
     export default {
         data: () => {
             return {
-                protocol: "smtp",
-                encryption: "tls",
-                port: 7777,
-                host: "smtp.test.com",
-                mail: "test.test.com",
-                username: "username",
-                password: "password",
-                protocolTypes: {},
-                encryptionTypes: {}
+                protocol: window.settings.hasOwnProperty("mail.protocol") ? window.settings["mail.protocol"] : "smtp",
+                encryption: window.settings.hasOwnProperty("mail.encryption") ? window.settings["mail.encryption"] : "tls",
+                port: window.settings.hasOwnProperty("mail.port") ? window.settings["mail.port"] : "",
+                host: window.settings.hasOwnProperty("mail.host") ? window.settings["mail.host"] : "",
+                mail: window.settings.hasOwnProperty("mail.mail") ? window.settings["mail.mail"] : "",
+                username: window.settings.hasOwnProperty("mail.username") ? window.settings["mail.username"] : "",
+                password: window.settings.hasOwnProperty("mail.password") ? window.settings["mail.password"] : ""
             };
         },
         methods: {
-            onSubmit: function () {
-                console.log("submit");
+            onSubmit: function (e) {
+                e.preventDefault();
+                this.$http.post(window.api + "/email", this.data).then(response => {
+                    window.localStorage.setItem("settings", JSON.stringify(response.body));
+                    window.settings = response.body;
+                }, response => {
+                    window.alert("更新设置失败！");
+                });
             }
         }
     };
@@ -29,47 +33,40 @@
             <form class="form-horizontal" novalidate @submit="onSubmit">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="protocol" class="col-sm-2 control-label">协议</label>
-                        <div class="col-sm-10">
-                            <select id="protocol" class="form-control" v-model="protocol">
-                                <option v-for="type in protocolTypes" :value="type.value">{{ type.name }}</option>
-                            </select>
+                        <label class="col-sm-3 control-label">协议</label>
+                        <div class="col-sm-4">
+                            <input v-model="protocol" type="text" class="form-control" placeholder="请输入协议" v-validate:protocol="{ required: { rule: true, message: '协议不能为空' } }">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="encryption" class="col-sm-2 control-label">加密方式</label>
-                        <div class="col-sm-10">
-                            <select id="encryption" class="form-control" v-model="encryption">
-                                <option v-for="type in encryptionTypes" :value="type.value">{{ type.name }}</option>
-                            </select>
+                        <label class="col-sm-3 control-label">加密方式</label>
+                        <div class="col-sm-4">
+                            <input v-model="encryption" type="text" class="form-control" placeholder="请输入加密方式" v-validate:encryption="{ required: { rule: true, message: '加密方式不能为空' } }">
                         </div>
                     </div>
-                    <div class="form-group" :class="{ "has-error": $validation.host.invalid }">
-                    <label for="host" class="col-sm-2 control-label">主机</label>
-                    <div class="col-sm-10">
-                        <input v-model="host" id="host" type="text" class="form-control" placeholder="请输入主机地址" v-validate:host="{ required: { rule: true, message: '主机地址不能为空' } }">
-                        <span v-if="$validation.host.required" class="help-block">{{ $validation.host.required }}</span>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">主机</label>
+                        <div class="col-sm-4">
+                            <input v-model="host" type="text" class="form-control" placeholder="请输入主机地址" v-validate:host="{ required: { rule: true, message: '主机地址不能为空' } }">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group" :class="{ 'has-error': $validation.mail.invalid }">
-                    <label for="mail" class="col-sm-2 control-label">邮箱</label>
-                    <div class="col-sm-10">
-                        <input v-model="mail" id="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-validate:mail="{ required: { rule: true, message: '邮箱名称不能为空' } }">
-                        <span v-if="$validation.mail.required" class="help-block">{{ $validation.mail.required }}</span>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">邮箱</label>
+                        <div class="col-sm-4">
+                            <input v-model="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-validate:mail="{ required: { rule: true, message: '邮箱名称不能为空' } }">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group" :class="{ 'has-error': $validation.username.invalid }">
-                    <label for="username" class="col-sm-2 control-label">用户名</label>
-                    <div class="col-sm-10">
-                        <input v-model="username" id="username" type="text" class="form-control" placeholder="请输入用户名称" v-validate:username="{ required: { rule: true, message: '用户名称不能为空' } }">
-                        <span v-if="$validation.username.required" class="help-block">{{ $validation.username.required }}</span>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户名</label>
+                        <div class="col-sm-4">
+                            <input v-model="username" type="text" class="form-control" placeholder="请输入用户名称" v-validate:username="{ required: { rule: true, message: '用户名称不能为空' } }">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group" :class="{ 'has-error': $validation.password.invalid }">
-                    <label for="password" class="col-sm-2 control-label">密码</label>
-                    <div class="col-sm-10">
-                        <input v-model="password" id="password" type="password" class="form-control" placeholder="请输入密码" v-validate:password="{ required: { rule: true, message: '密码不能为空' } }">
-                        <span v-if="$validation.password.required" class="help-block">{{ $validation.password.required }}</span>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码</label>
+                        <div class="col-sm-4">
+                            <input v-model="password" type="password" class="form-control" placeholder="请输入密码" v-validate:password="{ required: { rule: true, message: '密码不能为空' } }">
+                        </div>
                     </div>
                 </div>
                 <div class="box-footer">
