@@ -14,7 +14,7 @@ import SiteMap from "./components/pages/Sitemap";
 import Storage from "./components/pages/AttachmentStorage";
 import Upload from "./components/pages/Attachment";
 import UrlRewrite from "./components/pages/UrlRewrite";
-import Watermark from "./components/pages/Watermark";
+import Watermark from "./components/pages/AttachmentWatermark";
 export default {
     "": {
         component: Layout,
