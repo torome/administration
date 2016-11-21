@@ -21,8 +21,9 @@ Vue.use(Vuex);
 })).beforeEach(transition => {
     if (transition.to.path === "/login") {
         Vue.http.headers.common["X-CSRF-TOKEN"] = window.csrf_token;
+        transition.next();
     } else {
-        if (window.localStorage.getItem("access_token") === null || window.localStorage.getItem("access_token") === null) {
+        if (window.localStorage.getItem("access_token") === null || window.localStorage.getItem("refresh_token") === null) {
             transition.redirect("login");
         } else {
             Vue.http.headers.common["Accept"] = "application/json";
