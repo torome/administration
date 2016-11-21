@@ -30,7 +30,17 @@ class Extension extends ExtensionRegistrar
      */
     public function getExtensionPath()
     {
-        return realpath(__DIR__.'/../');
+        return realpath(__DIR__ . '/../');
+    }
+
+    /**
+     * @return array
+     */
+    public function loadPublishesFrom()
+    {
+        return [
+            base_path('extensions/administration/resources/assets/dist') => public_path('assets/admin')
+        ];
     }
 
     /**
@@ -39,7 +49,7 @@ class Extension extends ExtensionRegistrar
     public function loadViewsFrom()
     {
         return [
-            'admin' => __DIR__.'/../resources/views',
+            'admin' => __DIR__ . '/../resources/views',
         ];
     }
 
@@ -50,13 +60,13 @@ class Extension extends ExtensionRegistrar
     {
         $administrator = new Administrator($this->container['events'], $this->container['router']);
         $administrator->registerPath('admin');
-        $administrator->registerHandler(AdminController::class.'@handle');
+        $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
         $this->router->group(['middleware' => 'web', 'prefix' => 'admin'], function () {
-            $this->router->post('token', AdminController::class.'@token');
+            $this->router->post('token', AdminController::class . '@token');
         });
         $this->router->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
-            $this->router->post('/', AdminController::class.'@access');
+            $this->router->post('/', AdminController::class . '@access');
         });
     }
 }
