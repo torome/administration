@@ -36,35 +36,37 @@ var webpackConfig = merge(baseWebpackConfig, {
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
-        new HtmlWebpackPlugin({
-            filename: process.env.NODE_ENV === 'testing'
-                ? 'index.html'
-                : config.build.index,
-            template: 'index.html',
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-            },
-            chunksSortMode: 'dependency'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: function (module, count) {
-                return (
-                    module.resource &&
-                    /\.js$/.test(module.resource) &&
-                    module.resource.indexOf(
-                        path.join(__dirname, '../node_modules')
-                    ) === 0
-                )
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest',
-            chunks: ['vendor']
-        })
+        // new HtmlWebpackPlugin({
+        //     filename: process.env.NODE_ENV === 'testing'
+        //         ? 'index.html'
+        //         : config.build.index,
+        //     template: 'index.html',
+        //     inject: true,
+        //     minify: {
+        //         removeComments: true,
+        //         collapseWhitespace: true,
+        //         removeAttributeQuotes: true
+        //     },
+        //     chunksSortMode: 'dependency'
+        // }),
+
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'vendor',
+        //     minChunks: function (module, count) {
+        //         return (
+        //             module.resource &&
+        //             /\.js$/.test(module.resource) &&
+        //             module.resource.indexOf(
+        //                 path.join(__dirname, '../node_modules')
+        //             ) === 0
+        //         )
+        //     }
+        // }),
+
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'manifest',
+        //     chunks: ['vendor']
+        // })
     ]
 });
 if (config.build.productionGzip) {
