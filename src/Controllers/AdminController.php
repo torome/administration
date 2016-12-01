@@ -23,18 +23,22 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
 class AdminController extends Controller
 {
     use AuthenticatesUsers;
+
     /**
      * @var int
      */
     protected $client_id;
+
     /**
      * @var string
      */
     protected $client_secret;
+
     /**
      * @var \Illuminate\Routing\UrlGenerator
      */
     protected $url;
+
     /**
      * @var \Illuminate\Translation\Translator
      */
@@ -67,10 +71,10 @@ class AdminController extends Controller
             $http = new GuzzleClient();
             $back = $http->post($this->container->make('url')->to('oauth/access'), [
                 'form_params' => [
-                    'grant_type' => 'client_credentials',
-                    'client_id' => $this->client_id,
+                    'grant_type'    => 'client_credentials',
+                    'client_id'     => $this->client_id,
                     'client_secret' => $this->client_secret,
-                    'scope' => '*',
+                    'scope'         => '*',
                 ],
             ]);
             $back = json_decode((string)$back->getBody(), true);
@@ -82,7 +86,7 @@ class AdminController extends Controller
         }
 
         return $response->withParams([
-            'status' => 'error',
+            'status'  => 'error',
             'message' => 'Please Login!',
         ])->generateHttpResponse();
     }
@@ -109,7 +113,7 @@ class AdminController extends Controller
             $message = $this->translator->get('auth.throttle', ['seconds' => $seconds]);
 
             return $response->withParams([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => $message,
             ])->generateHttpResponse();
         }
@@ -120,12 +124,12 @@ class AdminController extends Controller
             $http = new GuzzleClient();
             $back = $http->post($this->url->to('oauth/access'), [
                 'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => $this->client_id,
+                    'grant_type'    => 'password',
+                    'client_id'     => $this->client_id,
                     'client_secret' => $this->client_secret,
-                    'username' => $this->request->offsetGet($this->username()),
-                    'password' => $this->request->offsetGet('password'),
-                    'scope' => '*',
+                    'username'      => $this->request->offsetGet($this->username()),
+                    'password'      => $this->request->offsetGet('password'),
+                    'scope'         => '*',
                 ],
             ]);
             $back = json_decode((string)$back->getBody(), true);
@@ -137,7 +141,7 @@ class AdminController extends Controller
         }
 
         return $response->withParams([
-            'status' => 'error',
+            'status'  => 'error',
             'message' => 'Login Error!',
         ])->generateHttpResponse();
     }
