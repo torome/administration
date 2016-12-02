@@ -1,7 +1,7 @@
 {
     "name": "notadd/administration",
     "description": "A Notadd Extension.",
-    "type": "notadd-extension",
+    "type": "notadd-module",
     "keywords": ["notadd", "cms", "administration", "extension"],
     "homepage": "https://notadd.com",
     "license": "Apache-2.0",
