@@ -60,6 +60,8 @@ class AdminController extends Controller
     }
 
     /**
+     * TODO: Method access Description
+     *
      * @param \Illuminate\Auth\AuthManager                      $auth
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
@@ -92,6 +94,8 @@ class AdminController extends Controller
     }
 
     /**
+     * TODO: Method handle Description
+     *
      * @return \Illuminate\Contracts\View\View
      */
     public function handle()
@@ -100,6 +104,8 @@ class AdminController extends Controller
     }
 
     /**
+     * TODO: Method token Description
+     *
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
      * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
@@ -147,6 +153,8 @@ class AdminController extends Controller
     }
 
     /**
+     * TODO: Method username Description
+     *
      * @return string
      */
     public function username()
