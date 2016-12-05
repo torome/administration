@@ -51,7 +51,7 @@ class Extension extends ExtensionRegistrar
     }
 
     /**
-     * TODO: Method loadPublishesFrom Description
+     * Publishes define by extension.
      *
      * @return array
      */
@@ -75,7 +75,7 @@ class Extension extends ExtensionRegistrar
     }
 
     /**
-     * TODO: Method register Description
+     * Extension's register.
      *
      * @param \Notadd\Foundation\Administration\Administration $administration
      */
