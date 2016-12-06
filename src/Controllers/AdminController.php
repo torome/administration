@@ -60,12 +60,12 @@ class AdminController extends Controller
     }
 
     /**
-     * TODO: Method access Description
+     * Get access token.
      *
      * @param \Illuminate\Auth\AuthManager                      $auth
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse
      */
     public function access(AuthManager $auth, ApiResponse $response)
     {
@@ -89,12 +89,12 @@ class AdminController extends Controller
 
         return $response->withParams([
             'status'  => 'error',
-            'message' => 'Please Login!',
+            'message' => 'Please Login !',
         ])->generateHttpResponse();
     }
 
     /**
-     * TODO: Method handle Description
+     * Return index content.
      *
      * @return \Illuminate\Contracts\View\View
      */
@@ -108,7 +108,7 @@ class AdminController extends Controller
      *
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
-     * @return \Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse
      */
     public function token(ApiResponse $response)
     {
@@ -153,7 +153,7 @@ class AdminController extends Controller
     }
 
     /**
-     * TODO: Method username Description
+     * Username id.
      *
      * @return string
      */

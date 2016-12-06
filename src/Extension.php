@@ -31,7 +31,7 @@ class Extension extends ExtensionRegistrar
     }
 
     /**
-     * TODO: Method getExtensionName Description
+     * Name for extension.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class Extension extends ExtensionRegistrar
     }
 
     /**
-     * TODO: Method getExtensionPath Description
+     * Path for extension.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class Extension extends ExtensionRegistrar
     }
 
     /**
-     * TODO: Method loadViewsFrom Description
+     * Views define by extension.
      *
      * @return array
      */
