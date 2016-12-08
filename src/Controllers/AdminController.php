@@ -104,7 +104,7 @@ class AdminController extends Controller
     }
 
     /**
-     * TODO: Method token Description
+     * Exchange token by username and password.
      *
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
