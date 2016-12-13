@@ -8,88 +8,35 @@
  */
 namespace Notadd\Administration;
 
+use Illuminate\Support\ServiceProvider;
 use Notadd\Administration\Controllers\AdminController;
 use Notadd\Foundation\Administration\Administration;
-use Notadd\Foundation\Extension\Abstracts\ExtensionRegistrar;
 
 /**
  * Class Extension.
  */
-class ModuleServiceProvider extends ExtensionRegistrar
+class ModuleServiceProvider extends ServiceProvider
 {
     /**
-     * Info for extension.
-     *
-     * @return array
-     */
-    public function getExtensionInfo()
-    {
-        return [
-            'author'      => 'twilroad <269044570@qq.com>',
-            'description' => 'A module for Notadd',
-        ];
-    }
-
-    /**
-     * Name for extension.
-     *
-     * @return string
-     */
-    public function getExtensionName()
-    {
-        return 'notadd/administration';
-    }
-
-    /**
-     * Path for extension.
-     *
-     * @return string
-     */
-    public function getExtensionPath()
-    {
-        return realpath(__DIR__ . '/../');
-    }
-
-    /**
-     * Publishes define by extension.
-     *
-     * @return array
-     */
-    public function loadPublishesFrom()
-    {
-        return [
-            base_path('modules/administration/resources/assets/dist') => public_path('assets/admin'),
-        ];
-    }
-
-    /**
-     * Views define by extension.
-     *
-     * @return array
-     */
-    public function loadViewsFrom()
-    {
-        return [
-            'admin' => __DIR__ . '/../resources/views',
-        ];
-    }
-
-    /**
-     * Extension's register.
+     * Boot service provider.
      *
      * @param \Notadd\Foundation\Administration\Administration $administration
      */
-    public function register(Administration $administration)
+    public function boot(Administration $administration)
     {
-        $administrator = new Administrator($this->container['events'], $this->container['router']);
+        $administrator = new Administrator($this->app['events'], $this->app['router']);
         $administrator->registerPath('admin');
         $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
-        $this->router->group(['middleware' => 'web', 'prefix' => 'admin'], function () {
-            $this->router->post('token', AdminController::class . '@token');
+        $this->app->make('router')->group(['middleware' => 'web', 'prefix' => 'admin'], function () {
+            $this->app->make('router')->post('token', AdminController::class . '@token');
         });
-        $this->router->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
-            $this->router->post('/', AdminController::class . '@access');
+        $this->app->make('router')->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
+            $this->app->make('router')->post('/', AdminController::class . '@access');
         });
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
+        $this->publishes([
+            base_path('modules/administration/resources/assets/dist') => public_path('assets/admin'),
+        ], 'public');
     }
 }
