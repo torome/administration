@@ -58,7 +58,7 @@ class Extension extends ExtensionRegistrar
     public function loadPublishesFrom()
     {
         return [
-            base_path('extensions/administration/resources/assets/dist') => public_path('assets/admin'),
+            base_path('modules/administration/resources/assets/dist') => public_path('assets/admin'),
         ];
     }
 
