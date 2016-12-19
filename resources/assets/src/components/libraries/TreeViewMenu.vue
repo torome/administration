@@ -12,12 +12,12 @@
 <template>
     <ul class="treeview-menu">
         <li v-for="item in menu">
-            <a v-link="item.uri">
+            <router-link :to="item.uri">
                 <i :class="item.icon"></i> {{ item.text }}
-                <span v-show="item.menu" class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-            </a>
+                    <span v-show="item.menu" class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </router-link>
             <tree-view-menu :menu="item.menu"></tree-view-menu>
         </li>
     </ul>
