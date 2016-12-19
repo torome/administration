@@ -19,9 +19,19 @@
       return {
         menu: [
           {
-            'text': '基础',
+            'text': '基础配置',
             'icon': 'fa fa-cogs',
             'uri': '/'
+          },
+          {
+            'text': '内容管理',
+            'icon': 'fa fa-cogs',
+            'uri': '/content'
+          },
+          {
+            'text': '公众平台',
+            'icon': 'fa fa-cogs',
+            'uri': '/wechat'
           }
         ],
         nav: [
