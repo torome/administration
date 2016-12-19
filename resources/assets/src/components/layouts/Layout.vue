@@ -34,7 +34,7 @@
 <template>
     <div class="wrapper">
         <layout-header>
-            <navbar-menu :menu="menu"></navbar-menu>
+            <navbar-menu slot="menu" :menu="menu"></navbar-menu>
         </layout-header>
         <layout-sidebar>
             <sidebar-menu :menu="nav"></sidebar-menu>

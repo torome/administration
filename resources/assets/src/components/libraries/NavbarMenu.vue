@@ -12,10 +12,10 @@
     <div class="navbar-custom-menu pull-left">
         <ul class="nav navbar-nav">
             <li v-for="item in menu">
-                <a v-link="item.uri">
+                <router-link :to="item.uri">
                     <i :class="item.icon"></i>
                     <span class="hidden-xs">{{ item.text }}</span>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
