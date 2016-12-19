@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from './components/Dashboard'
-import Layout from './components/Layout'
+import Layout from './components/layouts/Layout'
 import Setting from './components/pages/Setting'
 
 Vue.use(VueRouter)
