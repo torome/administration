@@ -13,8 +13,9 @@
     <ul class="treeview-menu">
         <li v-for="item in menu">
             <router-link :to="item.uri">
-                <i :class="item.icon"></i> {{ item.text }}
-                    <span v-show="item.menu" class="pull-right-container">
+                <i :class="item.icon"></i>
+                {{ item.text }}
+                <span v-show="item.menu" class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </router-link>

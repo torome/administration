@@ -19,6 +19,7 @@
         "slimscroll": "^0.9.1",
         "vue": "^2.1.0",
         "vue-router": "^2.1.1",
+        "vue-validator": "^3.0.0-alpha.1",
         "vuex": "^2.1.1"
     },
     "devDependencies": {

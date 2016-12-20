@@ -38,7 +38,7 @@
           {
             text: '全局设置',
             icon: 'fa fa-globe',
-            uri: '/'
+            uri: '/setting'
           },
           {
             text: '附件设置',
