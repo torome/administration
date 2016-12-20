@@ -1,23 +1,25 @@
 <script>
-  import $ from 'jquery'
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
-    computed: mapGetters([
+    computed: mapState([
       'message'
     ]),
-    ready: function () {
-      $(() => {
-        $.AdminLTE.layout.activate()
-      })
+    methods: {
+      close: function () {
+        this.$store.commit('message', {
+          type: 'error',
+          text: 'Has error!'
+        })
+      }
     }
   }
 </script>
 <template>
     <div class="content-wrapper">
         <section class="content">
-            <div class="alert alert-dismissible" :class="message.type">
-                <button type="button" class="close" @click="hide">×</button>
+            <div class="alert alert-dismissible" :class="'alert-' + message.type">
+                <button type="button" class="close" @click="close">×</button>
                 <h4><i class="icon fa fa-check"></i>提示：</h4>
                 <p>{{ message.text }}</p>
             </div>

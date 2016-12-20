@@ -6,8 +6,6 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  error: '',
-  success: '',
   history: [],
   message: {
     type: 'success',
@@ -15,9 +13,23 @@ const state = {
   }
 }
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state,
   getters,
   mutations,
   strict: process.env.NODE_ENV !== 'production'
 })
+
+if (module.hot) {
+  module.hot.accept([
+    './getters',
+    './mutations'
+  ], () => {
+    store.hotUpdate({
+      getters: require('./getters'),
+      mutations: require('./mutations')
+    })
+  })
+}
+
+export default store
