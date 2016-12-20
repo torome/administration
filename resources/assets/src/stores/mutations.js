@@ -1,9 +1,4 @@
-const error = (state, error) => {
-  state.error = error
-  state.history.push('error')
-}
-
-const success = (state, success) => {
-  state.success = success
-  state.history.push('success')
+export const message = (state, message) => {
+  state.message = message
+  state.history.push('message')
 }
