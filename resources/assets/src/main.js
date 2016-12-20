@@ -7,8 +7,11 @@ import './assets/less/main.less'
 import './assets/less/skins/all-skins.less'
 import '../static/js/app'
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import App from './components/App'
 import router from './router'
+
+Vue.use(VueResource)
 
 /* eslint-disable no-new */
 new Vue({
