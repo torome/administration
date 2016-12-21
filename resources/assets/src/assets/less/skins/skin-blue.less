@@ -46,7 +46,27 @@
     .content-header {
         background: transparent;
     }
-    .skin-dark-sidebar(@light-blue);
+    .sidebar-menu > li {
+        &.header {
+            color: lighten(@sidebar-dark-bg, 20%);
+            background: darken(@sidebar-dark-bg, 4%);
+        }
+        > a {
+            border-left: none;
+            color: #a3a5a5;
+            height: 60px;
+            padding-left: 80px;
+        }
+        &:hover > a, &.active > a {
+            color: @sidebar-dark-hover-color;
+            background: #323636;
+        }
+        > .treeview-menu {
+            background: #323636;
+            margin: 0;
+            padding-left: 0;
+        }
+    }
 }
 .skin-blue.layout-top-nav .main-header > .logo {
     .logo-variant(@light-blue);
