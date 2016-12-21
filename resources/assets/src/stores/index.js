@@ -6,8 +6,8 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  history: [],
   message: {
+    show: false,
     type: 'success',
     text: 'This is a message'
   }
