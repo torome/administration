@@ -8,8 +8,7 @@
     methods: {
       close: function () {
         this.$store.commit('message', {
-          type: 'error',
-          text: 'Has error!'
+          show: false
         })
       }
     }
@@ -18,7 +17,7 @@
 <template>
     <div class="content-wrapper">
         <section class="content">
-            <div class="alert alert-dismissible" :class="'alert-' + message.type">
+            <div class="alert alert-dismissible" :class="'alert-' + message.type" v-show="message.show">
                 <button type="button" class="close" @click="close">×</button>
                 <h4><i class="icon fa fa-check"></i>提示：</h4>
                 <p>{{ message.text }}</p>
