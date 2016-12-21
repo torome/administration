@@ -10,7 +10,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">路由管理</h3>
         </div>
-        <validator name="validation">
+        <validation name="validation">
             <form class="form-horizontal" novalidate @submit.prevent="onSubmit">
                 <div class="box-body">
                     <div class="form-group" v-for="formGroup in form">
@@ -48,6 +48,6 @@
                     </div>
                 </div>
             </form>
-        </validator>
+        </validation>
     </div>
 </template>

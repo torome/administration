@@ -19,7 +19,7 @@
             <h3 class="box-title">全局设置</h3>
             <span @click="show">显示信息</span>
         </div>
-        <validator name="validation">
+        <validation name="validation">
             <form class="form-horizontal" novalidate @submit="onSubmit">
                 <div class="box-body">
                     <div class="form-group">
@@ -98,6 +98,6 @@
                     </div>
                 </div>
             </form>
-        </validator>
+        </validation>
     </div>
 </template>

@@ -9,7 +9,7 @@
     <div class="login-box">
         <div class="login-logo">登录</div>
         <div class="login-box-body">
-            <validator name="validation">
+            <validation name="validation">
                 <form novalidate @submit.prevent="onSubmit">
                     <div class="form-group has-feedback" :class="{ 'has-error': $validation.username.touched && $validation.username.invalid }">
                         <input v-model="username" type="text" class="form-control" placeholder="请输入用户名" v-validate:username="{ required: { rule: true, message: '用户名不能为空' } }">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </form>
-            </validator>
+            </validation>
         </div>
     </div>
 </template>

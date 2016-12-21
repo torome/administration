@@ -10,7 +10,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">数据备份</h3>
         </div>
-        <validator name="validation">
+        <validation name="validation">
             <form novalidate @submit="onSubmit">
                 <div class="box-body">
                     <div class="form-group">
@@ -71,6 +71,6 @@
                     </table>
                 </div>
             </form>
-        </validator>
+        </validation>
     </div>
 </template>
