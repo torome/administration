@@ -11,7 +11,7 @@
             <h3 class="box-title">SEO管理</h3>
         </div>
         <validation name="validation">
-            <form class="form-horizontal" novalidate @submit.prevent="onSubmit">
+            <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group" :class="{ 'has-error': $validation.title.invalid }">
                         <label for="title" class="col-sm-3 control-label">标题</label>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </validation>
     </div>
 </template>

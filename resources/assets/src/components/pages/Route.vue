@@ -11,7 +11,7 @@
             <h3 class="box-title">路由管理</h3>
         </div>
         <validation name="validation">
-            <form class="form-horizontal" novalidate @submit.prevent="onSubmit">
+            <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group" v-for="formGroup in form">
                         <template v-if="formGroup.label">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </validation>
     </div>
 </template>

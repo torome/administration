@@ -11,7 +11,7 @@
             <h3 class="box-title">邮件管理</h3>
         </div>
         <validation name="validation">
-            <form class="form-horizontal" novalidate @submit="onSubmit">
+            <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">协议</label>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </validation>
     </div>
 </template>

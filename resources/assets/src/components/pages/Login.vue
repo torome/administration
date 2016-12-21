@@ -10,7 +10,7 @@
         <div class="login-logo">登录</div>
         <div class="login-box-body">
             <validation name="validation">
-                <form novalidate @submit.prevent="onSubmit">
+                <div class="form-horizontal">
                     <div class="form-group has-feedback" :class="{ 'has-error': $validation.username.touched && $validation.username.invalid }">
                         <input v-model="username" type="text" class="form-control" placeholder="请输入用户名" v-validate:username="{ required: { rule: true, message: '用户名不能为空' } }">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -31,7 +31,7 @@
                             <button type="submit" class="btn btn-primary btn-block btn-flat" :class="{ 'disabled': $validation.invalid }" :disabled="$validation.invalid">登录</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </validation>
         </div>
     </div>

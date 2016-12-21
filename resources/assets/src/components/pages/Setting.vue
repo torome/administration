@@ -20,7 +20,7 @@
             <span @click="show">显示信息</span>
         </div>
         <validation name="validation">
-            <form class="form-horizontal" novalidate @submit="onSubmit">
+            <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">站点开启</label>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </validation>
     </div>
 </template>

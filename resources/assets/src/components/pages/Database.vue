@@ -11,7 +11,7 @@
             <h3 class="box-title">数据备份</h3>
         </div>
         <validation name="validation">
-            <form novalidate @submit="onSubmit">
+            <div class="form-horizontal">
                 <div class="box-body">
                     <div class="form-group">
                         <label class="control-label">备份类型</label>
@@ -70,7 +70,7 @@
                         </tr>
                     </table>
                 </div>
-            </form>
+            </div>
         </validation>
     </div>
 </template>
