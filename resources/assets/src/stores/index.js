@@ -10,7 +10,8 @@ const state = {
     show: false,
     type: 'success',
     text: 'This is a message'
-  }
+  },
+  setting: {}
 }
 
 const store = new Vuex.Store({
