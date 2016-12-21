@@ -1,5 +1,6 @@
 <script>
   export default {
+    computed: {},
     methods: {
       show: function () {
         this.$store.commit('message', {

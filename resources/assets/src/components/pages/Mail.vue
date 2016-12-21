@@ -1,5 +1,8 @@
 <script>
-  export default {}
+  export default {
+    computed: {},
+    methods: {}
+  }
 </script>
 <style></style>
 <template>
