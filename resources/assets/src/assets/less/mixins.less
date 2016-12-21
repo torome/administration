@@ -1,7 +1,11 @@
 .navbar-variant(@color; @font-color: rgba(255, 255, 255, 0.8); @hover-color: #f6f6f6; @hover-bg: rgba(0, 0, 0, 0.1)) {
     background-color: @color;
     .nav > li > a {
+        font-size: 18px;
         color: @font-color;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        line-height: 20px;
     }
     .nav > li > a:hover,
     .nav > li > a:active,
@@ -11,7 +15,7 @@
     .nav .open > a:focus,
     .nav > .active > a {
         background: @hover-bg;
-        color: @hover-color;
+        color: #9d9696;
     }
     .sidebar-toggle {
         color: @font-color;

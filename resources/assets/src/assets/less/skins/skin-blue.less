@@ -5,11 +5,16 @@
 .skin-blue {
     .main-header {
         .navbar {
-            .navbar-variant(@light-blue; #ffffff);
+            .navbar-variant(#ffffff; #9d9696; #f6f6f6; #f7f7f7);
             .sidebar-toggle {
-                color: #ffffff;
+                color: #9d9696;
+                font-size: 18px;
+                line-height: 20px;
+                padding-top: 35px;
+                padding-bottom: 35px;
                 &:hover {
-                    background-color: darken(@light-blue, 5%);
+                    color: #9d9696;
+                    background-color: #f7f7f7;
                 }
             }
             @media (max-width: @screen-header-collapse) {
@@ -29,7 +34,10 @@
             }
         }
         .logo {
-            .logo-variant(darken(@light-blue, 5%));
+            background-color: #3498db;
+            border-bottom: 0 solid transparent;
+            color: #ffffff;
+            font-size: 24px;
         }
         li.user-header {
             background-color: @light-blue;
