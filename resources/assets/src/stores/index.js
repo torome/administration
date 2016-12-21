@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as actions from './actions'
 import * as getters from './getters'
 import * as mutations from './mutations'
 
@@ -16,6 +17,7 @@ const state = {
 
 const store = new Vuex.Store({
   state,
+  actions,
   getters,
   mutations,
   strict: process.env.NODE_ENV !== 'production'
