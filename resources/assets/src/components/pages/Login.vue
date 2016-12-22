@@ -12,16 +12,16 @@
             <div class="form-horizontal">
                 <validity field="username" :validators="{ required: { rule: true, message: '用户名不能为空' } }">
                     <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                        <input v-model="username" type="text" class="form-control" placeholder="请输入用户名" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
+                        <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username" v-validate data-vv-rules="required">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
+                        <span class="help-block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
                     </div>
                 </validity>
                 <validity field="password" :validators="{ required: { rule: true, message: '密码不能为空' } }">
                     <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                        <input v-model="password" type="password" class="form-control" placeholder="请输入密码" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
+                        <span class="help-block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
                     </div>
                 </validity>
                 <div class="row">

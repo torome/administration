@@ -25,7 +25,7 @@
                 <div v-for="uiRouter in ui.routers" class="form-group" :class="{ 'has-error': $validation['uiRouter' + $index].invalid }">
                     <label :for="'uiRouter' + $index" class="col-sm-2 control-label">{{ uiRouter.label }}</label>
                     <div class="col-sm-8">
-                        <input v-model="model.routers[$index]" :id="'uiRouter' + $index" type="text" class="form-control" :placeholder="uiRouter.text.placeholder" v-validate="uiRouter.text.validate" :field="'uiRouter' + $index">
+                        <input name="model.routers[$index]" :id="'uiRouter' + $index" type="text" class="form-control" :placeholder="uiRouter.text.placeholder" v-validate="uiRouter.text.validate" :field="'uiRouter' + $index">
                         <span v-if="$validation['uiRouter' + $index].required" class="help-block">{{ $validation['uiRouter' + $index].required }}</span>
                     </div>
                     <div class="col-sm-2">

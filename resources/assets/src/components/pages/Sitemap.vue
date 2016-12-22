@@ -29,10 +29,10 @@
                         <label class="col-sm-3 control-label">更新周期</label>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <input v-model="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
+                                <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
                                 <div class="input-group-addon">小时</div>
                             </div>
-                            <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
+                            <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
                         </div>
                     </div>
                 </validity>
