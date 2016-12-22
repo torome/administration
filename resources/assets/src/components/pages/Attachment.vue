@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('fileMaxSize')">{{ errors.first('fileMaxSize') }}</span>
+                        <span class="help-block" v-show="errors.has('fileMaxSize')">附件大小不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('imageMaxSize')">{{ errors.first('imageMaxSize') }}</span>
+                        <span class="help-block" v-show="errors.has('imageMaxSize')">图片大小不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('videoMaxSize')">{{ errors.first('videoMaxSize') }}</span>
+                        <span class="help-block" v-show="errors.has('videoMaxSize')">视频大小不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -84,7 +84,7 @@
                         <textarea name="canUploadImageExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canUploadImageExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canUploadImageExtension')">{{ errors.first('canUploadImageExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canUploadImageExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -93,7 +93,7 @@
                         <textarea name="canUploadCatcherExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canUploadCatcherExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canUploadCatcherExtension')">{{ errors.first('canUploadCatcherExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canUploadCatcherExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -102,7 +102,7 @@
                         <textarea name="canUploadVideoExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canUploadVideoExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canUploadVideoExtension')">{{ errors.first('canUploadVideoExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canUploadVideoExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -111,7 +111,7 @@
                         <textarea name="canUploadFileExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canUploadFileExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canUploadFileExtension')">{{ errors.first('canUploadFileExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canUploadFileExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -120,7 +120,7 @@
                         <textarea name="canManagementImageExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementImageExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canManagementImageExtension')">{{ errors.first('canManagementImageExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canManagementImageExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -129,7 +129,7 @@
                         <textarea name="canManagementFileExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('canManagementFileExtension')">{{ errors.first('canManagementFileExtension') }}</span>
+                        <span class="help-block" v-show="errors.has('canManagementFileExtension')">扩展名不能为空</span>
                     </div>
                 </div>
                 <div class="form-group">
