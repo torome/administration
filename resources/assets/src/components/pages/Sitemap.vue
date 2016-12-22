@@ -32,7 +32,7 @@
                                 <input v-model="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                                 <div class="input-group-addon">小时</div>
                             </div>
-                            <span class="help-block">{{ $validation.updateCycle.required }}</span>
+                            <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
                         </div>
                     </div>
                 </validity>
@@ -40,7 +40,7 @@
                     <label class="col-sm-3 control-label">只包含最近的文章</label>
                     <div class="col-sm-4">
                         <label class="checkbox-inline"><input type="checkbox" v-model="onlyContainRecentArticles">启用</label>
-                        <span class="help-block">包含 1000 以内的文章</span>
+                        <span class="help-block" v-show="errors.has('domain')">包含 1000 以内的文章</span>
                     </div>
                 </div>
                 <div class="form-group">

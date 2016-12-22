@@ -19,7 +19,7 @@
                             <input v-model="title" id="title" type="text" class="form-control" placeholder="请输入标题" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
-                            <span class="help-block">{{ $validation.title.required }}</span>
+                            <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
                         </div>
                     </div>
                 </validity>
@@ -30,7 +30,7 @@
                             <input v-model="description" id="description" type="text" class="form-control" placeholder="请输入描述" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
-                            <span class="help-block">{{ $validation.description.required }}</span>
+                            <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
                         </div>
                     </div>
                 </validity>
@@ -41,7 +41,7 @@
                             <input v-model="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
-                            <span class="help-block">{{ $validation.keyword.required }}</span>
+                            <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
                         </div>
                     </div>
                 </validity>
