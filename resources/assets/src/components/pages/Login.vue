@@ -27,7 +27,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors">登录</button>
+                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors.any()">登录</button>
                     </div>
                 </div>
             </div>
