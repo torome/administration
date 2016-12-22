@@ -14,14 +14,14 @@
                     <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
                         <input v-model="username" type="text" class="form-control" placeholder="请输入用户名" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <span v-if="$validation.username.touched && $validation.username.required" class="help-block">{{ $validation.username.required }}</span>
+                        <span class="help-block">{{ $validation.username.required }}</span>
                     </div>
                 </validity>
                 <validity field="password" :validators="{ required: { rule: true, message: '密码不能为空' } }">
                     <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
                         <input v-model="password" type="password" class="form-control" placeholder="请输入密码" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <span v-if="$validation.password.touched && $validation.password.required" class="help-block">{{ $validation.password.required }}</span>
+                        <span class="help-block">{{ $validation.password.required }}</span>
                     </div>
                 </validity>
                 <div class="row">

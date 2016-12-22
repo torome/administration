@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.fileMaxSize.required" class="help-block">{{ $validation.fileMaxSize.required }}</span>
+                            <span class="help-block">{{ $validation.fileMaxSize.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.imageMaxSize.required" class="help-block">{{ $validation.imageMaxSize.required }}</span>
+                            <span class="help-block">{{ $validation.imageMaxSize.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.videoMaxSize.required" class="help-block">{{ $validation.videoMaxSize.required }}</span>
+                            <span class="help-block">{{ $validation.videoMaxSize.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -73,7 +73,7 @@
                             <textarea v-model="canUploadImageExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canUploadImageExtension.required" class="help-block">{{ $validation.canUploadImageExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canUploadImageExtension.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -84,7 +84,7 @@
                             <textarea v-model="canUploadCatcherExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canUploadCatcherExtension.required" class="help-block">{{ $validation.canUploadCatcherExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canUploadCatcherExtension.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -95,7 +95,7 @@
                             <textarea v-model="canUploadVideoExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canUploadVideoExtension.required" class="help-block">{{ $validation.canUploadVideoExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canUploadVideoExtension.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -106,7 +106,7 @@
                             <textarea v-model="canUploadFileExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canUploadFileExtension.required" class="help-block">{{ $validation.canUploadFileExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canUploadFileExtension.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -117,7 +117,7 @@
                             <textarea v-model="canManagementImageExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canManagementImageExtension.required" class="help-block">{{ $validation.canManagementImageExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canManagementImageExtension.required }}</span>
                         </div>
                     </div>
                 </validity>
@@ -128,7 +128,7 @@
                             <textarea v-model="canManagementFileExtension" class="form-control" rows="6" placeholder="请输入扩展名并用英文逗号对多个扩展名分隔" v-model="canManagementFileExtension" v-validate data-vv-rules="required"></textarea>
                         </div>
                         <div class="col-sm-5">
-                            <span v-if="$validation.canManagementFileExtension.required" class="help-block">{{ $validation.canManagementFileExtension.required }}</span>
+                            <span class="help-block">{{ $validation.canManagementFileExtension.required }}</span>
                         </div>
                     </div>
                 </validity>

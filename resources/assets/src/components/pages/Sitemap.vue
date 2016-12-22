@@ -32,7 +32,7 @@
                                 <input v-model="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                                 <div class="input-group-addon">小时</div>
                             </div>
-                            <span v-if="$validation.updateCycle.required" class="help-block">{{ $validation.updateCycle.required }}</span>
+                            <span class="help-block">{{ $validation.updateCycle.required }}</span>
                         </div>
                     </div>
                 </validity>
