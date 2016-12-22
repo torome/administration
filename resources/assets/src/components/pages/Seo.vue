@@ -22,7 +22,7 @@
                         <input name="title" id="title" type="text" class="form-control" placeholder="请输入标题" v-model="title" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('title')">{{ errors.first('title') }}</span>
+                        <span class="help-block" v-show="errors.has('title')">标题不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -31,7 +31,7 @@
                         <input name="description" id="description" type="text" class="form-control" placeholder="请输入描述" v-model="description" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('description')">{{ errors.first('description') }}</span>
+                        <span class="help-block" v-show="errors.has('description')">描述不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -40,7 +40,7 @@
                         <input name="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="keyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-5">
-                        <span class="help-block" v-show="errors.has('keyword')">{{ errors.first('keyword') }}</span>
+                        <span class="help-block" v-show="errors.has('keyword')">关键字不能为空</span>
                     </div>
                 </div>
             </div>
