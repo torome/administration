@@ -15,6 +15,7 @@
       }
     },
     methods: {
+      submit: function (e) {}
     }
   }
 </script>

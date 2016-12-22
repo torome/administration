@@ -1,9 +1,27 @@
 <script>
   export default {
-    computed: {
-
+    data: () => {
+      return {
+        imageProcessingEngine: '',
+        imageProcessingEngineRadioGroup: [
+          {text: 'GD 库', value: 'gd', checked: 'checked'},
+          {text: 'Image Magic', value: 'imagick'}
+        ],
+        fileMaxSize: '',
+        imageMaxSize: '',
+        videoMaxSize: '',
+        canUploadImageExtension: '',
+        canUploadCatcherExtension: '',
+        canUploadVideoExtension: '',
+        canUploadFileExtension: '',
+        canManagementImageExtension: '',
+        canManagementFileExtension: '',
+        enableWatermark: ''
+      };
     },
-    methods: {}
+    methods: {
+      submit: function (e) {}
+    }
   }
 </script>
 <style></style>

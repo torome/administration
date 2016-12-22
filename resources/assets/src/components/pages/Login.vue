@@ -1,7 +1,16 @@
 <script>
   export default {
-    computed: {},
-    methods: {}
+    data: () => {
+      return {
+        errors: "",
+        username: "admin",
+        password: "123456789",
+        authFailed: false
+      };
+    },
+    methods: {
+      submit: function (e) {}
+    }
   }
 </script>
 <style></style>

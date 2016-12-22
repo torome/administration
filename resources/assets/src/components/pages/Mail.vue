@@ -1,7 +1,19 @@
 <script>
   export default {
-    computed: {},
-    methods: {}
+    data: () => {
+      return {
+        protocol: '',
+        encryption: '',
+        port: '',
+        host: '',
+        mail: '',
+        username: '',
+        password: ''
+      };
+    },
+    methods: {
+      submit: function (e) {}
+    }
   }
 </script>
 <style></style>

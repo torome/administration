@@ -1,7 +1,13 @@
 <script>
   export default {
-    computed: {},
-    methods: {}
+    data: () => {
+      return {
+        enabled: '0'
+      };
+    },
+    methods: {
+      submit: function (e) {}
+    }
   }
 </script>
 <style></style>

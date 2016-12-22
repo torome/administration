@@ -1,7 +1,17 @@
 <script>
   export default {
-    computed: {},
-    methods: {}
+    data: () => {
+      return {
+        enableXmlMap: false,
+        enableHtmlMap: false,
+        updateCycle: 0,
+        onlyContainRecentArticles: false,
+        enableModules: []
+      };
+    },
+    methods: {
+      submit: function (e) {}
+    }
   }
 </script>
 <style></style>
