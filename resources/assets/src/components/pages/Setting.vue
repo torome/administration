@@ -1,14 +1,20 @@
 <script>
   export default {
-    computed: {},
-    methods: {
-      show: function () {
-        this.$store.commit('message', {
-          show: true,
-          type: 'success',
-          text: '这是一个成功消息'
-        })
+    computed: {
+      enabled: {
+        get () {
+          return this.$store.state.setting.enabled
+        },
+        set (value) {
+        }
+      },
+      name: {
+        get () {
+          return this.$store.state.setting.name
+        }
       }
+    },
+    methods: {
     }
   }
 </script>
@@ -17,99 +23,84 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">全局设置</h3>
-            <span @click="show">显示信息</span>
         </div>
-        <validation name="validation">
-            <div class="form-horizontal">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">站点开启</label>
-                        <div class="col-sm-4">
-                            <div class="btn-group btn-switch">
-                                <label class="btn btn-primary btn-flat" :class="{ active: enabled === '1' }">
-                                    <input type="radio" v-model="enabled" value="1"> 开启
-                                </label>
-                                <label class="btn btn-primary btn-flat" :class="{ active: enabled === '0' }">
-                                    <input type="radio" v-model="enabled" value="0"> 关闭
-                                </label>
-                            </div>
+        <div class="form-horizontal">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">站点开启</label>
+                    <div class="col-sm-4">
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary btn-flat" :class="{ active: enabled === '1' }">
+                                <input type="radio" v-model="enabled" value="1"> 开启
+                            </label>
+                            <label class="btn btn-primary btn-flat" :class="{ active: enabled === '0' }">
+                                <input type="radio" v-model="enabled" value="0"> 关闭
+                            </label>
                         </div>
                     </div>
-                    <validity field="form-group" :validators="{ required: { rule: true, message: '网站名称不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.name.invalid }">
-                            <label class="col-sm-3 control-label">网站名称</label>
-                            <div class="col-sm-4">
-                                <input v-model="name" type="text" class="form-control" placeholder="请输入网站名称">
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.name.required" class="help-block">{{ $validation.name.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
-                    <validity field="domain" :validators="{ required: { rule: true, message: '网站域名不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.domain.invalid }">
-                            <label class="col-sm-3 control-label">网站域名</label>
-                            <div class="col-sm-4">
-                                <input v-model="domain" type="text" class="form-control" placeholder="请输入网站域名">
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.domain.required" class="help-block">{{ $validation.domain.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
-                    <validity field="beian" :validators="{ required: { rule: true, message: '备案信息不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.beian.invalid }">
-                            <label class="col-sm-3 control-label">备案信息</label>
-                            <div class="col-sm-4">
-                                <input v-model="beian" type="text" class="form-control" placeholder="请输入备案信息">
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.beian.required" class="help-block">{{ $validation.beian.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
-                    <validity field="company" :validators="{ required: { rule: true, message: '公司名称不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.company.invalid }">
-                            <label class="col-sm-3 control-label">公司名称</label>
-                            <div class="col-sm-4">
-                                <input v-model="company" type="text" class="form-control" placeholder="请输入公司名称">
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.company.required" class="help-block">{{ $validation.company.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
-                    <validity field="copyright" :validators="{ required: { rule: true, message: '版权信息不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.copyright.invalid }">
-                            <label class="col-sm-3 control-label">版权信息</label>
-                            <div class="col-sm-4">
-                                <input v-model="copyright" type="text" class="form-control" placeholder="请输入版权信息">
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.copyright.required" class="help-block">{{ $validation.copyright.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
-                    <validity field="statistics" :validators="{ required: { rule: true, message: '统计代码不能为空' } }">
-                        <div class="form-group" :class="{ 'has-error': $validation.statistics.invalid }">
-                            <label class="col-sm-3 control-label">统计代码</label>
-                            <div class="col-sm-4">
-                                <textarea v-model="statistics" class="form-control" rows="6" placeholder="请输入统计代码"></textarea>
-                            </div>
-                            <div class="col-sm-5">
-                                <span v-if="$validation.statistics.required" class="help-block">{{ $validation.statistics.required }}</span>
-                            </div>
-                        </div>
-                    </validity>
                 </div>
-                <div class="box-footer">
-                    <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-3">
-                            <button type="submit" class="btn btn-primary btn-flat" :class="$validation.invalid" :disabled="$validation.invalid">保存</button>
-                        </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('name') }">
+                    <label class="col-sm-3 control-label">网站名称</label>
+                    <div class="col-sm-4">
+                        <input name="name" type="text" class="form-control" placeholder="请输入网站名称" v-model="name" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('name')">{{ errors.first('name') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">网站域名</label>
+                    <div class="col-sm-4">
+                        <input name="domain" type="text" class="form-control" placeholder="请输入网站域名" v-model="domain" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('domain')">{{ errors.first('name') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('beian') }">
+                    <label class="col-sm-3 control-label">备案信息</label>
+                    <div class="col-sm-4">
+                        <input name="beian" type="text" class="form-control" placeholder="请输入备案信息" v-model="beian" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('beian')">{{ errors.first('beian') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('company') }">
+                    <label class="col-sm-3 control-label">公司名称</label>
+                    <div class="col-sm-4">
+                        <input name="company" type="text" class="form-control" placeholder="请输入公司名称" v-model="company" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('company')">{{ errors.first('company') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('copyright') }">
+                    <label class="col-sm-3 control-label">版权信息</label>
+                    <div class="col-sm-4">
+                        <input name="copyright" type="text" class="form-control" placeholder="请输入版权信息" v-model="copyright" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('copyright')">{{ errors.first('copyright') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('statistics') }">
+                    <label class="col-sm-3 control-label">统计代码</label>
+                    <div class="col-sm-4">
+                        <textarea name="statistics" class="form-control" rows="6" placeholder="请输入统计代码"></textarea>
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('statistics')">{{ errors.first('statistics') }}</span>
                     </div>
                 </div>
             </div>
-        </validation>
+        </div>
+        <div class="box-footer">
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <button type="submit" class="btn btn-primary btn-flat" :disabled="errors">保存</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
