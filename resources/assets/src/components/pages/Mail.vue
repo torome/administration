@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">协议</label>
                         <div class="col-sm-4">
-                            <input v-model="protocol" type="text" class="form-control" placeholder="请输入协议">
+                            <input v-model="protocol" type="text" class="form-control" placeholder="请输入协议" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">加密方式</label>
                         <div class="col-sm-4">
-                            <input v-model="encryption" type="text" class="form-control" placeholder="请输入加密方式">
+                            <input v-model="encryption" type="text" class="form-control" placeholder="请输入加密方式" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">主机</label>
                         <div class="col-sm-4">
-                            <input v-model="host" type="text" class="form-control" placeholder="请输入主机地址">
+                            <input v-model="host" type="text" class="form-control" placeholder="请输入主机地址" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">邮箱</label>
                         <div class="col-sm-4">
-                            <input v-model="mail" type="text" class="form-control" placeholder="请输入邮箱名称">
+                            <input v-model="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">用户名</label>
                         <div class="col-sm-4">
-                            <input v-model="username" type="text" class="form-control" placeholder="请输入用户名称">
+                            <input v-model="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">密码</label>
                         <div class="col-sm-4">
-                            <input v-model="password" type="password" class="form-control" placeholder="请输入密码">
+                            <input v-model="password" type="password" class="form-control" placeholder="请输入密码" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                     </div>
                 </validity>

@@ -16,7 +16,7 @@
                     <div class="form-group" :class="{ 'has-error': $validation.title.invalid }">
                         <label for="title" class="col-sm-3 control-label">标题</label>
                         <div class="col-sm-4">
-                            <input v-model="title" id="title" type="text" class="form-control" placeholder="请输入标题">
+                            <input v-model="title" id="title" type="text" class="form-control" placeholder="请输入标题" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
                             <span v-if="$validation.title.required" class="help-block">{{ $validation.title.required }}</span>
@@ -27,7 +27,7 @@
                     <div class="form-group" :class="{ 'has-error': $validation.description.invalid }">
                         <label for="description" class="col-sm-3 control-label">描述</label>
                         <div class="col-sm-4">
-                            <input v-model="description" id="description" type="text" class="form-control" placeholder="请输入描述">
+                            <input v-model="description" id="description" type="text" class="form-control" placeholder="请输入描述" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
                             <span v-if="$validation.description.required" class="help-block">{{ $validation.description.required }}</span>
@@ -38,7 +38,7 @@
                     <div class="form-group" :class="{ 'has-error': $validation.keyword.invalid }">
                         <label for="keyword" class="col-sm-3 control-label">关键字</label>
                         <div class="col-sm-4">
-                            <input v-model="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称">
+                            <input v-model="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="canManagementFileExtension" v-validate data-vv-rules="required">
                         </div>
                         <div class="col-sm-5">
                             <span v-if="$validation.keyword.required" class="help-block">{{ $validation.keyword.required }}</span>
