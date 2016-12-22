@@ -7,13 +7,13 @@ import './assets/less/main.less'
 import './assets/less/skins/all-skins.less'
 import '../static/js/app'
 import Vue from 'vue'
-import VueValidator from 'vue-validator'
+import VeeValidate from 'vee-validate'
 import VueResource from 'vue-resource'
 import App from './components/App'
 import router from './router'
 import store from './stores'
 
-Vue.use(VueValidator)
+Vue.use(VeeValidate)
 Vue.use(VueResource)
 
 /* eslint-disable no-new */
