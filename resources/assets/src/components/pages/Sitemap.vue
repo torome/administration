@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <validity field="updateCycle" :validators="{ required: { rule: true, message: '更新周期不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': $validation.updateCycle.invalid }">
+                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
                         <label class="col-sm-3 control-label">更新周期</label>
                         <div class="col-sm-4">
                             <div class="input-group">
