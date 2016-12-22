@@ -12,39 +12,33 @@
     </div>
         <div class="form-horizontal">
             <div class="box-body">
-                <validity field="title" :validators="{ required: { rule: true, message: '网站标题不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label for="title" class="col-sm-3 control-label">标题</label>
-                        <div class="col-sm-4">
-                            <input name="title" id="title" type="text" class="form-control" placeholder="请输入标题" v-model="title" v-validate data-vv-rules="required">
-                        </div>
-                        <div class="col-sm-5">
-                            <span class="help-block" v-show="errors.has('title')">{{ errors.first('title') }}</span>
-                        </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label for="title" class="col-sm-3 control-label">标题</label>
+                    <div class="col-sm-4">
+                        <input name="title" id="title" type="text" class="form-control" placeholder="请输入标题" v-model="title" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="description" :validators="{ required: { rule: true, message: '网站描述不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label for="description" class="col-sm-3 control-label">描述</label>
-                        <div class="col-sm-4">
-                            <input name="description" id="description" type="text" class="form-control" placeholder="请输入描述" v-model="description" v-validate data-vv-rules="required">
-                        </div>
-                        <div class="col-sm-5">
-                            <span class="help-block" v-show="errors.has('description')">{{ errors.first('description') }}</span>
-                        </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('title')">{{ errors.first('title') }}</span>
                     </div>
-                </validity>
-                <validity field="keyword" :validators="{ required: { rule: true, message: '关键词不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label for="keyword" class="col-sm-3 control-label">关键字</label>
-                        <div class="col-sm-4">
-                            <input name="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="keyword" v-validate data-vv-rules="required">
-                        </div>
-                        <div class="col-sm-5">
-                            <span class="help-block" v-show="errors.has('keyword')">{{ errors.first('keyword') }}</span>
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label for="description" class="col-sm-3 control-label">描述</label>
+                    <div class="col-sm-4">
+                        <input name="description" id="description" type="text" class="form-control" placeholder="请输入描述" v-model="description" v-validate data-vv-rules="required">
                     </div>
-                </validity>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('description')">{{ errors.first('description') }}</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label for="keyword" class="col-sm-3 control-label">关键字</label>
+                    <div class="col-sm-4">
+                        <input name="keyword" id="keyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="keyword" v-validate data-vv-rules="required">
+                    </div>
+                    <div class="col-sm-5">
+                        <span class="help-block" v-show="errors.has('keyword')">{{ errors.first('keyword') }}</span>
+                    </div>
+                </div>
             </div>
             <div class="box-footer">
                 <div class="form-group">

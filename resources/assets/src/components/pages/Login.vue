@@ -10,20 +10,16 @@
         <div class="login-logo">登录</div>
         <div class="login-box-body">
             <div class="form-horizontal">
-                <validity field="username" :validators="{ required: { rule: true, message: '用户名不能为空' } }">
-                    <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                        <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username" v-validate data-vv-rules="required">
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                        <span class="help-block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
-                    </div>
-                </validity>
-                <validity field="password" :validators="{ required: { rule: true, message: '密码不能为空' } }">
-                    <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                        <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        <span class="help-block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
-                    </div>
-                </validity>
+                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
+                    <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username" v-validate data-vv-rules="required">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    <span class="help-block" v-show="errors.has('username')">{{ errors.first('username') }}</span>
+                </div>
+                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
+                    <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    <span class="help-block" v-show="errors.has('password')">{{ errors.first('password') }}</span>
+                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="callout callout-danger right" v-show="errors.length > 0">{{ errors }}</div>

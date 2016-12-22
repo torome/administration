@@ -24,18 +24,16 @@
                         <label class="checkbox-inline"><input type="checkbox" v-model="enableHtmlMap">启用</label>
                     </div>
                 </div>
-                <validity field="updateCycle" :validators="{ required: { rule: true, message: '更新周期不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">更新周期</label>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
-                                <div class="input-group-addon">小时</div>
-                            </div>
-                            <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">更新周期</label>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
+                            <div class="input-group-addon">小时</div>
                         </div>
+                        <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
                     </div>
-                </validity>
+                </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">只包含最近的文章</label>
                     <div class="col-sm-4">

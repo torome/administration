@@ -12,54 +12,42 @@
         </div>
         <div class="form-horizontal">
             <div class="box-body">
-                <validity field="protocol" :validators="{ required: { rule: true, message: '协议不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">协议</label>
-                        <div class="col-sm-4">
-                            <input name="protocol" type="text" class="form-control" placeholder="请输入协议" v-model="protocol" v-validate data-vv-rules="required">
-                        </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">协议</label>
+                    <div class="col-sm-4">
+                        <input name="protocol" type="text" class="form-control" placeholder="请输入协议" v-model="protocol" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="encryption" :validators="{ required: { rule: true, message: '加密方式不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">加密方式</label>
-                        <div class="col-sm-4">
-                            <input name="encryption" type="text" class="form-control" placeholder="请输入加密方式" v-model="encryption" v-validate data-vv-rules="required">
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">加密方式</label>
+                    <div class="col-sm-4">
+                        <input name="encryption" type="text" class="form-control" placeholder="请输入加密方式" v-model="encryption" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="host" :validators="{ required: { rule: true, message: '主机地址不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">主机</label>
-                        <div class="col-sm-4">
-                            <input name="host" type="text" class="form-control" placeholder="请输入主机地址" v-model="host" v-validate data-vv-rules="required">
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">主机</label>
+                    <div class="col-sm-4">
+                        <input name="host" type="text" class="form-control" placeholder="请输入主机地址" v-model="host" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="mail" :validators="{ required: { rule: true, message: '邮箱名称不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">邮箱</label>
-                        <div class="col-sm-4">
-                            <input name="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-model="mail" v-validate data-vv-rules="required">
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">邮箱</label>
+                    <div class="col-sm-4">
+                        <input name="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-model="mail" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="username" :validators="{ required: { rule: true, message: '用户名称不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">用户名</label>
-                        <div class="col-sm-4">
-                            <input name="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="username" v-validate data-vv-rules="required">
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">用户名</label>
+                    <div class="col-sm-4">
+                        <input name="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="username" v-validate data-vv-rules="required">
                     </div>
-                </validity>
-                <validity field="password" :validators="{ required: { rule: true, message: '密码不能为空' } }">
-                    <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                        <label class="col-sm-3 control-label">密码</label>
-                        <div class="col-sm-4">
-                            <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
-                        </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label class="col-sm-3 control-label">密码</label>
+                    <div class="col-sm-4">
+                        <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
                     </div>
-                </validity>
+                </div>
             </div>
             <div class="box-footer">
                 <div class="form-group">
