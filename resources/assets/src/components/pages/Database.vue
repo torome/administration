@@ -10,7 +10,12 @@
       };
     },
     methods: {
-      submit: function (e) {}
+      submit: function (e) {
+        this.$validator.validateAll()
+        if (this.errors.any()) {
+          return false
+        }
+      }
     }
   }
 </script>

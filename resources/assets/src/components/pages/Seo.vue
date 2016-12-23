@@ -4,7 +4,12 @@
       return {}
     },
     methods: {
-      submit: function (e) {}
+      submit: function (e) {
+        this.$validator.validateAll()
+        if (this.errors.any()) {
+          return false
+        }
+      }
     }
   }
 </script>
@@ -13,7 +18,7 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">SEO管理</h3>
-    </div>
+        </div>
         <div class="form-horizontal">
             <div class="box-body">
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
@@ -47,7 +52,7 @@
             <div class="box-footer">
                 <div class="form-group">
                     <div class="col-sm-4 col-sm-offset-3">
-                        <button class="btn btn-primary btn-flat" :disabled="errors.any()">保存</button>
+                        <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
                     </div>
                 </div>
             </div>

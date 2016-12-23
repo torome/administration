@@ -9,7 +9,12 @@
       };
     },
     methods: {
-      submit: function (e) {}
+      submit: function (e) {
+        this.$validator.validateAll()
+        if (this.errors.any()) {
+          return false
+        }
+      }
     }
   }
 </script>
@@ -36,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors.any()">登录</button>
+                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors.any()" @click="submit">登录</button>
                     </div>
                 </div>
             </div>
