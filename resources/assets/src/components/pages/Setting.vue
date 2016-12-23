@@ -1,17 +1,14 @@
 <script>
   export default {
-    computed: {
-      enabled: {
-        get () {
-          return this.$store.state.setting.enabled
-        },
-        set (value) {
-        }
-      },
-      name: {
-        get () {
-          return this.$store.state.setting.name
-        }
+    data: function () {
+      return {
+        enabled: this.$store.state.setting.enabled,
+        name: this.$store.state.setting.name,
+        domain: this.$store.state.setting.domain,
+        beian: this.$store.state.setting.beian,
+        company: this.$store.state.setting.company,
+        copyright: this.$store.state.setting.copyright,
+        statistics: this.$store.state.setting.statistics
       }
     },
     methods: {
@@ -88,7 +85,7 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('statistics') }">
                     <label class="col-sm-3 control-label">统计代码</label>
                     <div class="col-sm-4">
-                        <textarea name="statistics" class="form-control" rows="6" placeholder="请输入统计代码"></textarea>
+                        <textarea name="statistics" class="form-control" rows="6" placeholder="请输入统计代码" v-model="statistics" v-validate data-vv-rules="required"></textarea>
                     </div>
                     <div class="col-sm-5">
                         <span class="help-block" v-show="errors.has('statistics')">统计代码不能为空</span>
