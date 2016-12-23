@@ -1,7 +1,6 @@
 <script>
   export default {
-    data: () => {
-      return {}
+    computed: {
     },
     methods: {
       submit: function (e) {

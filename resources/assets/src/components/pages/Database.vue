@@ -1,13 +1,15 @@
 <script>
   export default {
-    data: () => {
-      return {
-        backupTypeOptions: [
+    computed: {
+      backupTypeOptions () {
+        return [
           {text: "2M 分卷", value: "2m"},
           {text: "GZIP 压缩", value: "gzip"}
-        ],
-        backupType: "2m"
-      };
+        ]
+      },
+      backupType () {
+        return "2m"
+      }
     },
     methods: {
       submit: function (e) {
@@ -38,7 +40,9 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid }" :disabled="$validation.invalid">备份</button>
+                    <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid }"
+                            :disabled="$validation.invalid">备份
+                    </button>
                 </div>
                 <div class="box-body no-padding">
                     <table class="table">

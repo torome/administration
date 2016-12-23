@@ -1,13 +1,21 @@
 <script>
   export default {
-    data: () => {
-      return {
-        enableXmlMap: false,
-        enableHtmlMap: false,
-        updateCycle: 0,
-        onlyContainRecentArticles: false,
-        enableModules: []
-      };
+    computed: {
+      enableXmlMap () {
+        return false
+      },
+      enableHtmlMap () {
+        return false
+      },
+      updateCycle () {
+        return 0
+      },
+      onlyContainRecentArticles () {
+        return false
+      },
+      enableModules () {
+        return []
+      }
     },
     methods: {
       submit: function (e) {
@@ -43,23 +51,28 @@
                     <label class="col-sm-3 control-label">更新周期</label>
                     <div class="col-sm-4">
                         <div class="input-group">
-                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
+                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期"
+                                   v-model="updateCycle" v-validate data-vv-rules="required">
                             <div class="input-group-addon">小时</div>
                         </div>
-                        <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
+                        <span class="help-block"
+                              v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">只包含最近的文章</label>
                     <div class="col-sm-4">
-                        <label class="checkbox-inline"><input type="checkbox" v-model="onlyContainRecentArticles">启用</label>
+                        <label class="checkbox-inline"><input type="checkbox"
+                                                              v-model="onlyContainRecentArticles">启用</label>
                         <span class="help-block" v-show="errors.has('domain')">包含 1000 以内的文章</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">链接包括</label>
                     <div class="col-sm-4">
-                        <label class="checkbox-inline" v-for="enableModule in enableModules"><input type="checkbox" v-model="enableModule.enable">{{ enableModule.name }}</label>
+                        <label class="checkbox-inline" v-for="enableModule in enableModules"><input type="checkbox"
+                                                                                                    v-model="enableModule.enable">{{
+                            enableModule.name }}</label>
                     </div>
                 </div>
             </div>

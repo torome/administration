@@ -1,9 +1,9 @@
 <script>
   export default {
-    data: () => {
-      return {
-        enabled: '0'
-      };
+    computed: {
+      enabled () {
+        return '0'
+      }
     },
     methods: {
       submit: function (e) {

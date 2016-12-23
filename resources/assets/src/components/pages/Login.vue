@@ -1,12 +1,18 @@
 <script>
   export default {
-    data: () => {
-      return {
-        errors: "",
-        username: "admin",
-        password: "123456789",
-        authFailed: false
-      };
+    computed: {
+      errors () {
+        return ""
+      },
+      username () {
+        return "admin"
+      },
+      password () {
+        return "123456789"
+      },
+      authFailed () {
+        return false
+      }
     },
     methods: {
       submit: function (e) {
@@ -25,12 +31,14 @@
         <div class="login-box-body">
             <div class="form-horizontal">
                 <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                    <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username" v-validate data-vv-rules="required">
+                    <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username"
+                           v-validate data-vv-rules="required">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     <span class="help-block" v-show="errors.has('username')">用户名不能为空</span>
                 </div>
                 <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
-                    <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password" v-validate data-vv-rules="required">
+                    <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password"
+                           v-validate data-vv-rules="required">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     <span class="help-block" v-show="errors.has('password')">密码不能为空</span>
                 </div>
@@ -41,7 +49,8 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors.any()" @click="submit">登录</button>
+                        <button class="btn btn-primary btn-block btn-flat" :disabled="errors.any()" @click="submit">登录
+                        </button>
                     </div>
                 </div>
             </div>
