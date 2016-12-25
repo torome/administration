@@ -2,48 +2,50 @@
 @import "../bootstrap/variables.less";
 @import "../variables.less";
 @import "../mixins.less";
-.skin-blue-light {
-    .main-header {
-        .navbar {
-            .navbar-variant(@light-blue; #ffffff);
-            .sidebar-toggle {
-                color: #ffffff;
-                &:hover {
-                    background-color: darken(@light-blue, 5%);
-                }
-            }
-            @media (max-width: @screen-header-collapse) {
-                .dropdown-menu {
-                    li {
-                        &.divider {
-                            background-color: rgba(255, 255, 255, 0.1);
-                        }
-                        a {
-                            color: #ffffff;
-                            &:hover {
-                                background: darken(@light-blue, 5%);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .logo {
-            .logo-variant(@light-blue);
-        }
 
-        li.user-header {
-            background-color: @light-blue;
+.skin-blue-light {
+  .main-header {
+    .navbar {
+      .navbar-variant(@light-blue; #ffffff);
+      .sidebar-toggle {
+        color: #ffffff;
+        &:hover {
+          background-color: darken(@light-blue, 5%);
         }
+      }
+      @media (max-width: @screen-header-collapse) {
+        .dropdown-menu {
+          li {
+            &.divider {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+            a {
+              color: #ffffff;
+              &:hover {
+                background: darken(@light-blue, 5%);
+              }
+            }
+          }
+        }
+      }
     }
-    .content-header {
-        background: transparent;
+    .logo {
+      .logo-variant(@light-blue);
     }
-    .skin-light-sidebar(@light-blue);
-    .main-footer {
-        border-top-color: @gray;
+
+    li.user-header {
+      background-color: @light-blue;
     }
+  }
+  .content-header {
+    background: transparent;
+  }
+  .skin-light-sidebar(@light-blue);
+  .main-footer {
+    border-top-color: @gray;
+  }
 }
+
 .skin-blue.layout-top-nav .main-header > .logo {
-    .logo-variant(@light-blue);
+  .logo-variant(@light-blue);
 }

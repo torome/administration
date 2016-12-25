@@ -1,42 +1,46 @@
 .alert {
-    .border-radius(10px);
-    border-width: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    h4 {
-        font-weight: 600;
+  .border-radius(10px);
+  border-width: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  h4 {
+    font-weight: 600;
+  }
+  .icon {
+    float: left;
+    font-size: 50px;
+    margin-right: 10px;
+  }
+  .close {
+    color: #000000;
+    font-size: 30px;
+    .opacity(.2);
+    &:hover {
+      .opacity(.5);
     }
-    .icon {
-        float: left;
-        font-size: 50px;
-        margin-right: 10px;
-    }
-    .close {
-        color: #000000;
-        font-size: 30px;
-        .opacity(.2);
-        &:hover {
-            .opacity(.5);
-        }
-    }
-    a {
-        color: #ffffff;
-        text-decoration: underline;
-    }
+  }
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
 }
+
 .alert-success {
-    &:extend(.bg-green);
-    border-color: darken(@green, 5%);
+  &:extend(.bg-green);
+  border-color: darken(@green, 5%);
 }
+
 .alert-danger,
 .alert-error {
-    &:extend(.bg-red);
-    border-color: darken(@red, 5%);
+  &:extend(.bg-red);
+  border-color: darken(@red, 5%);
 }
+
 .alert-warning {
-    &:extend(.bg-yellow);
-    border-color: darken(@yellow, 5%);
+  &:extend(.bg-yellow);
+  border-color: darken(@yellow, 5%);
 }
+
 .alert-info {
-    &:extend(.bg-aqua);
-    border-color: darken(@aqua, 5%);
+  &:extend(.bg-aqua);
+  border-color: darken(@aqua, 5%);
 }

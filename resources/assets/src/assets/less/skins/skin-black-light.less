@@ -2,52 +2,53 @@
 @import "../bootstrap/variables.less";
 @import "../variables.less";
 @import "../mixins.less";
+
 .skin-black-light {
-    .main-header {
-        .box-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
-        .navbar-toggle {
-            color: #333333;
-        }
-        .navbar-brand {
-            color: #333333;
-            border-right: 1px solid #eeeeee;
-        }
-        .navbar {
-            .navbar-variant(#ffffff; #333333; #999999; #ffffff);
-            > .sidebar-toggle {
-                color: #333333;
-                border-right: 1px solid #eeeeee;
-            }
-            .navbar-nav {
-                > li > a {
-                    border-right: 1px solid #eeeeee;
-                }
-            }
-            .navbar-custom-menu .navbar-nav,
-            .navbar-right {
-                > li {
-                    > a {
-                        border-left: 1px solid #eeeeee;
-                        border-right-width: 0;
-                    }
-                }
-            }
-        }
-        > .logo {
-            .logo-variant(#ffffff; #333333);
-            border-right: 1px solid #eeeeee;
-            @media (max-width: @screen-header-collapse) {
-                .logo-variant(#222222; #ffffff);
-                border-right: none;
-            }
-        }
-        li.user-header {
-            background-color: #222222;
-        }
+  .main-header {
+    .box-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
+    .navbar-toggle {
+      color: #333333;
     }
-    .content-header {
-        background: transparent;
-        box-shadow: none;
+    .navbar-brand {
+      color: #333333;
+      border-right: 1px solid #eeeeee;
     }
-    .skin-light-sidebar(#ffffff);
+    .navbar {
+      .navbar-variant(#ffffff; #333333; #999999; #ffffff);
+      > .sidebar-toggle {
+        color: #333333;
+        border-right: 1px solid #eeeeee;
+      }
+      .navbar-nav {
+        > li > a {
+          border-right: 1px solid #eeeeee;
+        }
+      }
+      .navbar-custom-menu .navbar-nav,
+      .navbar-right {
+        > li {
+          > a {
+            border-left: 1px solid #eeeeee;
+            border-right-width: 0;
+          }
+        }
+      }
+    }
+    > .logo {
+      .logo-variant(#ffffff; #333333);
+      border-right: 1px solid #eeeeee;
+      @media (max-width: @screen-header-collapse) {
+        .logo-variant(#222222; #ffffff);
+        border-right: none;
+      }
+    }
+    li.user-header {
+      background-color: #222222;
+    }
+  }
+  .content-header {
+    background: transparent;
+    box-shadow: none;
+  }
+  .skin-light-sidebar(#ffffff);
 }
