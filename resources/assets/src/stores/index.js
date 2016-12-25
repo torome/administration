@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   message: {
-    show: false,
+    show: true,
     type: 'success',
     text: 'This is a message'
   },

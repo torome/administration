@@ -19,8 +19,11 @@
         <section class="content">
             <div class="alert alert-dismissible" :class="'alert-' + message.type" v-show="message.show">
                 <button type="button" class="close" @click="close">×</button>
-                <h4><i class="icon fa fa-check"></i>提示：</h4>
-                <p>{{ message.text }}</p>
+                <i class="icon fa fa-check"></i>
+                <div>
+                    <h4>提示：</h4>
+                    <p>{{ message.text }}</p>
+                </div>
             </div>
             <slot></slot>
         </section>
