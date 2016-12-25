@@ -1,6 +1,6 @@
 {
     "name": "notadd/administration",
-    "description": "A Notadd Module.",
+    "description": "Notadd's Administration Module.",
     "type": "notadd-module",
     "keywords": ["notadd", "cms", "administration", "extension"],
     "homepage": "https://notadd.com",
