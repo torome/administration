@@ -36,43 +36,59 @@
         <div class="form-horizontal">
             <div class="box-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">生成 XML 地图</label>
-                    <div class="col-sm-4">
-                        <label class="checkbox-inline"><input type="checkbox" v-model="enableXmlMap">启用</label>
+                    <label class="col-sm-1 control-label">生成 XML 地图</label>
+                    <div class="col-sm-3">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" v-model="enableXmlMap">启用
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">生成 HTML 地图</label>
-                    <div class="col-sm-4">
-                        <label class="checkbox-inline"><input type="checkbox" v-model="enableHtmlMap">启用</label>
+                    <label class="col-sm-1 control-label">生成 HTML 地图</label>
+                    <div class="col-sm-3">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" v-model="enableHtmlMap">启用
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                    <label class="col-sm-3 control-label">更新周期</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-1 control-label">更新周期</label>
+                    <div class="col-sm-3">
                         <div class="input-group">
-                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期"
-                                   v-model="updateCycle" v-validate data-vv-rules="required">
+                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
                             <div class="input-group-addon">小时</div>
                         </div>
-                        <span class="help-block"
-                              v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">只包含最近的文章</label>
-                    <div class="col-sm-4">
-                        <label class="checkbox-inline"><input type="checkbox"
-                                                              v-model="onlyContainRecentArticles">启用</label>
+                    <label class="col-sm-1 control-label">只包含最近的文章</label>
+                    <div class="col-sm-3">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" v-model="onlyContainRecentArticles">启用
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('domain')">包含 1000 以内的文章</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">链接包括</label>
-                    <div class="col-sm-4">
-                        <label class="checkbox-inline" v-for="enableModule in enableModules"><input type="checkbox"
-                                                                                                    v-model="enableModule.enable">{{
-                            enableModule.name }}</label>
+                    <label class="col-sm-1 control-label">链接包括</label>
+                    <div class="col-sm-3">
+                        <label class="checkbox-inline" v-for="enableModule in enableModules">
+                            <input type="checkbox" v-model="enableModule.enable">{{ enableModule.name }}
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+
                     </div>
                 </div>
             </div>
