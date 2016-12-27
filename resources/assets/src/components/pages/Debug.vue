@@ -24,8 +24,8 @@
         <div class="form-horizontal">
             <div class="box-body">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">DEBUG 模式</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-1 control-label">DEBUG 模式</label>
+                    <div class="col-sm-3">
                         <div class="btn-group btn-switch">
                             <label class="btn btn-primary btn-flat" :class="{ 'active': enabled === '1' }">
                                 <input type="radio" autocomplete="off" value="1" v-model="enabled"> 开启
