@@ -43,7 +43,7 @@
           {
             text: '附件设置',
             icon: 'fa fa-cloud-upload',
-            uri: '/upload',
+            uri: '#',
             menu: [
               {
                 text: '上传设置',
