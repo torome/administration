@@ -75,18 +75,6 @@
                     <label for="file-max-size" class="col-sm-1 control-label">附件大小</label>
                     <div class="col-sm-3">
                         <div class="input-group">
-                            <input name="fileMaxSize" id="" type="text" class="form-control"
-                                   placeholder="请输入附件大小" v-model="fileMaxSize" v-validate data-vv-rules="required">
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('fileMaxSize')">附件大小不能为空</span>
-                    </div>
-                </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                    <label for="file-max-size" class="col-sm-1 control-label">附件大小</label>
-                    <div class="col-sm-3">
-                        <div class="input-group">
                             <input name="fileMaxSize" id="file-max-size" type="text" class="form-control"
                                    placeholder="请输入附件大小" v-model="fileMaxSize" v-validate data-vv-rules="required">
                             <div class="input-group-addon">MB</div>
