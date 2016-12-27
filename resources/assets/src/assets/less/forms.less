@@ -120,6 +120,21 @@
 
         }
       }
+      .input-group {
+        .input-group-addon {
+          border-radius: 6px;
+          &:last-child {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+          }
+        }
+        .form-control {
+          &:first-child {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+          }
+        }
+      }
     }
     .control-label {
       color: #656565;
