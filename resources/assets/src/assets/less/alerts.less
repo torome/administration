@@ -2,8 +2,22 @@
   .border-radius(10px);
   border-width: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  padding-left: 80px;
+  padding-top: 20px;
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
   h4 {
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
   }
   .icon {
     float: left;
@@ -11,33 +25,67 @@
     margin-right: 10px;
   }
   .close {
-    color: #000000;
-    font-size: 30px;
-    .opacity(.2);
-    &:hover {
-      .opacity(.5);
-    }
-  }
-  a {
     color: #ffffff;
-    text-decoration: underline;
+    font-size: 30px;
+    font-weight: lighter;
+    .opacity(1);
+    &:hover {
+      .opacity(1);
+    }
   }
 }
 
 .alert-success {
-  &:extend(.bg-green);
-  border-color: darken(@green, 5%);
+  background: #e2fff1 url("../../../static/images/success.svg") 20px center no-repeat;
+  background-size: 40px;
+  > div {
+    h4 {
+      color: #02A845;
+    }
+    p {
+      color: #02A845;
+    }
+  }
 }
 
 .alert-danger,
 .alert-error {
-  &:extend(.bg-red);
-  border-color: darken(@red, 5%);
+  background: #ffe0ea url("../../../static/images/error.svg") 20px center no-repeat;
+  background-size: 40px;
+  > div {
+    h4 {
+      color: #c61a1a;
+    }
+    p {
+      color: #c61a1a;
+    }
+  }
+}
+
+.alert-notice {
+  background: #dcf4ff url("../../../static/images/notice.svg") 20px center no-repeat;
+  background-size: 40px;
+  > div {
+    h4 {
+      color: #1271AC;
+    }
+    p {
+      color: #1271AC;
+    }
+  }
 }
 
 .alert-warning {
-  &:extend(.bg-yellow);
-  border-color: darken(@yellow, 5%);
+  background: #f8e3cf url("../../../static/images/warning.svg") 20px center no-repeat;
+  background-size: 40px;
+  > div {
+    h4 {
+      color: #e17a13;
+    }
+    p {
+      color: #e17a13;
+    }
+  }
 }
 
 .alert-info {

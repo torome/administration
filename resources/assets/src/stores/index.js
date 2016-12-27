@@ -1,11 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import state from './state'
 import * as actions from './actions'
 import * as getters from './getters'
 import * as mutations from './mutations'
 
 Vue.use(Vuex)
+
+const state = {
+  message: {
+    show: false,
+    type: 'info',
+    text: 'This is a message'
+  },
+  setting: {}
+}
 
 const store = new Vuex.Store({
   state,
