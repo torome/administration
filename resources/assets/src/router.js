@@ -5,7 +5,7 @@ import Debug from './components/pages/Debug'
 import Layout from './components/layouts/Layout'
 import Mail from './components/pages/Mail'
 import Seo from './components/pages/Seo'
-import Storage from './components/pages/Attachment'
+import Upload from './components/pages/Upload'
 import Setting from './components/pages/Setting'
 
 Vue.use(VueRouter)
@@ -26,8 +26,12 @@ export default new VueRouter({
           component: Setting
         },
         {
+          path: '/upload',
+          component: Upload
+        },
+        {
           path: '/storage',
-          component: Storage
+          component: Upload
         },
         {
           path: '/seo',
