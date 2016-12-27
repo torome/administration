@@ -39,8 +39,8 @@
         <div class="box-header with-border">
             <h3 class="box-title">全局设置</h3>
         </div>
-        <div class="form-horizontal">
-            <div class="box-body">
+        <div class="box-body">
+            <div class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">站点开启</label>
                     <div class="col-sm-3">

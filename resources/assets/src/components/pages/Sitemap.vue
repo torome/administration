@@ -33,8 +33,8 @@
         <div class="box-header with-border">
             <h3 class="box-title">Sitemap 管理</h3>
         </div>
-        <div class="form-horizontal">
-            <div class="box-body">
+        <div class="box-body">
+            <div class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">生成 XML 地图</label>
                     <div class="col-sm-3">
@@ -92,11 +92,11 @@
                     </div>
                 </div>
             </div>
-            <div class="box-footer">
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-3">
-                        <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
-                    </div>
+        </div>
+        <div class="box-footer">
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
                 </div>
             </div>
         </div>

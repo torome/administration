@@ -57,8 +57,8 @@
         <div class="box-header with-border">
             <h3 class="box-title">Sitemap 管理</h3>
         </div>
-        <div class="form-horizontal">
-            <div class="box-body">
+        <div class="box-body">
+            <div class="form-horizontal">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">图片处理引擎</label>
                     <div class="col-sm-3">
@@ -72,7 +72,19 @@
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                    <label for="file-max-size" class="col-sm-3 control-label">附件大小</label>
+                    <label for="file-max-size" class="col-sm-1 control-label">附件大小</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <input name="fileMaxSize" id="" type="text" class="form-control"
+                                   placeholder="请输入附件大小" v-model="fileMaxSize" v-validate data-vv-rules="required">
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <span class="help-block" v-show="errors.has('fileMaxSize')">附件大小不能为空</span>
+                    </div>
+                </div>
+                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                    <label for="file-max-size" class="col-sm-1 control-label">附件大小</label>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <input name="fileMaxSize" id="file-max-size" type="text" class="form-control"
@@ -85,7 +97,7 @@
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                    <label for="image-max-size" class="col-sm-3 control-label">图片大小</label>
+                    <label for="image-max-size" class="col-sm-1 control-label">图片大小</label>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <input name="imageMaxSize" id="image-max-size" type="text" class="form-control"
@@ -98,7 +110,7 @@
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
-                    <label for="video-max-size" class="col-sm-3 control-label">视频大小</label>
+                    <label for="video-max-size" class="col-sm-1 control-label">视频大小</label>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <input name="videoMaxSize" id="video-max-size" type="text" class="form-control"
@@ -190,11 +202,11 @@
                     </div>
                 </div>
             </div>
-            <div class="box-footer">
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-3">
-                        <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
-                    </div>
+        </div>
+        <div class="box-footer">
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
                 </div>
             </div>
         </div>
