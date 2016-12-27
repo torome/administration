@@ -104,11 +104,7 @@
             </div>
         </div>
         <div class="box-footer">
-            <div class="form-group">
-                <div class="col-sm-4 col-sm-offset-3">
-                    <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
-                </div>
-            </div>
+            <button class="btn btn-primary btn-flat" :disabled="errors.any()" @click="submit">保存</button>
         </div>
     </div>
 </template>
