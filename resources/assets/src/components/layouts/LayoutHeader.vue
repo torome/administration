@@ -1,7 +1,38 @@
 <script>
-  export default {}
+  export default {
+    props: [
+      'menu'
+    ]
+  }
 </script>
 <style scoped>
+    .icon {
+        padding-left: 36px;
+    }
+    .icon-home {
+        background: url("../../../static/images/home.svg") 10px center no-repeat;
+        background-size: 20px;
+    }
+    .icon-home:hover {
+        background: #f7f7f7 url("../../../static/images/home.svg") 10px center no-repeat !important;
+        background-size: 20px !important;
+    }
+    .icon-article {
+        background: url("../../../static/images/article-manage.svg") 10px center no-repeat;
+        background-size: 20px;
+    }
+    .icon-article:hover {
+        background: #f7f7f7 url("../../../static/images/article-manage.svg") 10px center no-repeat !important;
+        background-size: 20px !important;
+    }
+    .icon-wechat {
+        background: url("../../../static/images/wechat.svg") 10px center no-repeat;
+        background-size: 20px;
+    }
+    .icon-wechat:hover {
+        background: #f7f7f7 url("../../../static/images/wechat.svg") 10px center no-repeat !important;
+        background-size: 20px !important;
+    }
     .logo-mini {
         background: url(../../../static/images/logo.svg);
         height: 90px;
@@ -26,7 +57,15 @@
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
-            <slot name="menu"></slot>
+            <div class="navbar-custom-menu pull-left">
+                <ul class="nav navbar-nav">
+                    <li v-for="item in menu">
+                        <router-link :to="item.uri" :class="item.icon">
+                            <span class="hidden-xs">{{ item.text }}</span>
+                        </router-link>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
 </template>

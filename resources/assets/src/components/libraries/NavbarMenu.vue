@@ -8,12 +8,16 @@
     }
   }
 </script>
+<style>
+    .icon {
+        padding-left: 100px;
+    }
+</style>
 <template>
     <div class="navbar-custom-menu pull-left">
         <ul class="nav navbar-nav">
             <li v-for="item in menu">
-                <router-link :to="item.uri">
-                    <i :class="item.icon"></i>
+                <router-link :to="item.uri" :class="item.icon">
                     <span class="hidden-xs">{{ item.text }}</span>
                 </router-link>
             </li>

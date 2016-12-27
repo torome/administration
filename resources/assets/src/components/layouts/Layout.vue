@@ -20,17 +20,17 @@
         menu: [
           {
             'text': '基础配置',
-            'icon': 'fa fa-cogs',
+            'icon': 'icon icon-home',
             'uri': '/'
           },
           {
             'text': '内容管理',
-            'icon': 'fa fa-cogs',
+            'icon': 'icon icon-article',
             'uri': '/content'
           },
           {
             'text': '公众平台',
-            'icon': 'fa fa-cogs',
+            'icon': 'icon icon-wechat',
             'uri': '/wechat'
           }
         ],
@@ -94,13 +94,9 @@
     }
   }
 </script>
-<style>
-</style>
 <template>
     <div class="wrapper">
-        <layout-header>
-            <navbar-menu slot="menu" :menu="menu"></navbar-menu>
-        </layout-header>
+        <layout-header :menu="menu"></layout-header>
         <layout-sidebar>
             <sidebar-menu :menu="nav"></sidebar-menu>
         </layout-sidebar>
