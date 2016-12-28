@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary btn-flat" :class="{ disabled: $validation.invalid }"
+                <button type="submit" class="btn btn-primary" :class="{ disabled: $validation.invalid }"
                         :disabled="$validation.invalid">备份
                 </button>
             </div>
