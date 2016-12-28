@@ -28,7 +28,7 @@ class ModuleServiceProvider extends ServiceProvider
         $administrator->registerPath('admin');
         $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
-        $this->app->make('router')->group(['middleware' => 'web', 'prefix' => 'admin'], function () {
+        $this->app->make('router')->group(['middleware' => ['web', 'cross'], 'prefix' => 'admin'], function () {
             $this->app->make('router')->post('token', AdminController::class . '@token');
         });
         $this->app->make('router')->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
