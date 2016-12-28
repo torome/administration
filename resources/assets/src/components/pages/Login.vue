@@ -23,7 +23,7 @@
         }).then(function (response) {
           console.log(response)
         }, function (response) {
-          alert('请求失败！')
+          window.alert('请求失败！')
         })
       }
     }
