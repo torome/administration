@@ -5,14 +5,13 @@
     <title>{{ seo('title') }}</title>
     <meta name="description" content="{{ seo('description') }}">
     <meta name="keyword" content="{{ seo('keywords') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/app.css') }}">
 </head>
-<body class="hold-transition skin-blue sidebar-mini fixed">
-<app>加载中...</app>
+<body class="skin-blue sidebar-mini fixed">
+<div id="app"></div>
 <script>
     window.csrf_token = "{{ csrf_token() }}";
     window.api = "{{ url('api') }}";
     window.url = "{{ url('admin') }}";
 </script>
-<script src="{{ asset('assets/admin/js/app.js') }}"></script>
+<script src="{{ asset('http://192.168.31.204:8080/app.js') }}"></script>
 </body>
