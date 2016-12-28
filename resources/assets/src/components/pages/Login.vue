@@ -1,14 +1,11 @@
 <script>
   export default {
     computed: {
-      errors () {
-        return ""
-      },
       username () {
-        return "admin"
+        return 'admin'
       },
       password () {
-        return "123456789"
+        return '123456789'
       },
       authFailed () {
         return false
@@ -30,13 +27,13 @@
         <div class="login-logo">登录</div>
         <div class="login-box-body">
             <div class="form-horizontal">
-                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('username') }">
                     <input name="username" type="text" class="form-control" placeholder="请输入用户名" v-model="username"
                            v-validate data-vv-rules="required">
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                     <span class="help-block" v-show="errors.has('username')">用户名不能为空</span>
                 </div>
-                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group has-feedback" :class="{ 'has-error': errors.has('password') }">
                     <input name="password" type="password" class="form-control" placeholder="请输入密码" v-model="password"
                            v-validate data-vv-rules="required">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
