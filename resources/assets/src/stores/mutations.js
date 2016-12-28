@@ -5,3 +5,7 @@ export const message = (state, message) => {
 export const setting = (state, setting) => {
   state.setting = setting
 }
+
+export const token = (state, token) => {
+  state.token = token
+}
