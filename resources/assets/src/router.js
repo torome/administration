@@ -8,6 +8,8 @@ import Seo from './components/pages/Seo'
 import Upload from './components/pages/Upload'
 import Setting from './components/pages/Setting'
 
+import requireAuth from './middlewares/auth'
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -19,31 +21,38 @@ export default new VueRouter({
       children: [
         {
           path: '/',
-          component: Dashboard
+          component: Dashboard,
+          beforeEnter: requireAuth
         },
         {
           path: '/setting',
-          component: Setting
+          component: Setting,
+          beforeEnter: requireAuth
         },
         {
           path: '/upload',
-          component: Upload
+          component: Upload,
+          beforeEnter: requireAuth
         },
         {
           path: '/storage',
-          component: Upload
+          component: Upload,
+          beforeEnter: requireAuth
         },
         {
           path: '/seo',
-          component: Seo
+          component: Seo,
+          beforeEnter: requireAuth
         },
         {
           path: '/email',
-          component: Mail
+          component: Mail,
+          beforeEnter: requireAuth
         },
         {
           path: '/debug',
-          component: Debug
+          component: Debug,
+          beforeEnter: requireAuth
         }
       ]
     }
