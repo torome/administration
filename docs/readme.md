@@ -1,6 +1,6 @@
 # Notadd Administration
 
-Notadd Framework 的一个插件，用于实现独立的后台管理框架，能对整站进行管理。
+Notadd Framework 的后台管理模块，用于实现独立的后台管理框架，能对整站进行管理。
 
 ## 使用的技术栈
 
