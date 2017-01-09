@@ -48,6 +48,8 @@ class AdminController extends Controller
      * AdminController constructor.
      *
      * @param \Illuminate\Translation\Translator $translator
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function __construct(Translator $translator)
     {
@@ -66,6 +68,7 @@ class AdminController extends Controller
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function access(AuthManager $auth, ApiResponse $response)
     {
@@ -109,6 +112,7 @@ class AdminController extends Controller
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function token(ApiResponse $response)
     {
