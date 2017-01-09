@@ -1,26 +1,82 @@
 <script>
   export default {
     computed: {
-      protocol () {
-        return ''
+      protocol: {
+        get () {
+          return this.$store.state.setting['mail.protocol']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.protocol',
+            value: value
+          })
+        }
       },
-      encryption () {
-        return ''
+      encryption: {
+        get () {
+          return this.$store.state.setting['mail.encryption']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.encryption',
+            value: value
+          })
+        }
       },
-      port () {
-        return ''
+      port: {
+        get () {
+          return this.$store.state.setting['mail.port']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.port',
+            value: value
+          })
+        }
       },
-      host () {
-        return ''
+      host: {
+        get () {
+          return this.$store.state.setting['mail.host']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.host',
+            value: value
+          })
+        }
       },
-      mail () {
-        return ''
+      mail: {
+        get () {
+          return this.$store.state.setting['mail.mail']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.mail',
+            value: value
+          })
+        }
       },
-      username () {
-        return ''
+      username: {
+        get () {
+          return this.$store.state.setting['mail.username']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.username',
+            value: value
+          })
+        }
       },
-      password () {
-        return ''
+      password: {
+        get () {
+          return this.$store.state.setting['mail.password']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'mail.password',
+            value: value
+          })
+        }
       }
     },
     methods: {

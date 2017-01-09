@@ -1,7 +1,7 @@
 <script>
   export default {
     computed: {
-      enabled:{
+      enabled: {
         get () {
           return this.$store.state.setting['debug.enabled']
         },
