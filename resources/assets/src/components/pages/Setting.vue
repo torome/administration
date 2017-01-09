@@ -1,26 +1,82 @@
 <script>
   export default {
     computed: {
-      enabled () {
-        return this.$store.state.setting.enabled
+      enabled: {
+        get () {
+          return this.$store.state.setting['site.enabled']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.enabled',
+            value: value
+          })
+        }
       },
-      name () {
-        return this.$store.state.setting.name
+      name: {
+        get () {
+          return this.$store.state.setting['site.name']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.name',
+            value: value
+          })
+        }
       },
-      domain () {
-        return this.$store.state.setting.domain
+      domain: {
+        get () {
+          return this.$store.state.setting['site.domain']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.domain',
+            value: value
+          })
+        }
       },
-      beian () {
-        return this.$store.state.setting.beian
+      beian: {
+        get () {
+          return this.$store.state.setting['site.beian']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.beian',
+            value: value
+          })
+        }
       },
-      company () {
-        return this.$store.state.setting.company
+      company: {
+        get () {
+          return this.$store.state.setting['site.company']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.company',
+            value: value
+          })
+        }
       },
-      copyright () {
-        return this.$store.state.setting.copyright
+      copyright: {
+        get () {
+          return this.$store.state.setting['site.copyright']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.copyright',
+            value: value
+          })
+        }
       },
-      statistics () {
-        return this.$store.state.setting.statistics
+      statistics: {
+        get () {
+          return this.$store.state.setting['site.statistics']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'site.statistics',
+            value: value
+          })
+        }
       }
     },
     methods: {
@@ -29,11 +85,25 @@
         if (this.errors.any()) {
           return false
         }
+        this.$http.post(window.api + '/setting/set', {
+          enabled: this.enabled,
+          name: this.name,
+          domain: this.domain,
+          beian: this.beian,
+          company: this.company,
+          copyright: this.copyright,
+          statistics: this.statistics
+        }).then(response => {
+          window.settings = response.body
+          this.$store.commit('setting', response.body.data)
+          this.$router.push('/setting')
+        }, response => {
+          window.alert('更新设置失败！')
+        })
       }
     }
   }
 </script>
-<style></style>
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
@@ -44,14 +114,14 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">站点开启</label>
                     <div class="col-sm-3">
-                        <!--<div class="btn-group btn-switch">-->
-                            <!--<label class="btn btn-primary btn-flat" :class="{ active: enabled === '1' }">-->
-                                <!--<input type="radio" v-model="enabled" value="1"> 开启-->
-                            <!--</label>-->
-                            <!--<label class="btn btn-primary btn-flat" :class="{ active: enabled === '0' }">-->
-                                <!--<input type="radio" v-model="enabled" value="0"> 关闭-->
-                            <!--</label>-->
-                        <!--</div>-->
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary" :class="{ active: enabled === '1' }">
+                                <input type="radio" v-model="enabled" value="1"> 开启
+                            </label>
+                            <label class="btn btn-primary" :class="{ active: enabled === '0' }">
+                                <input type="radio" v-model="enabled" value="0"> 关闭
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('name') }">
