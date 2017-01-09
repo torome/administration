@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
   mode: 'hash',
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',

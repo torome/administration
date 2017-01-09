@@ -7,5 +7,6 @@ export const setting = (state, setting) => {
 }
 
 export const token = (state, token) => {
+  window.localStorage.setItem('token', JSON.stringify(token))
   state.token = token
 }
