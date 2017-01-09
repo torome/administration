@@ -46,6 +46,9 @@
         padding-top: 5px;
         text-align: left;
     }
+    .navbar-static-top {
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+    }
 </style>
 <template>
     <header class="main-header">
