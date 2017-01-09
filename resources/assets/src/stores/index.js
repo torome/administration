@@ -16,7 +16,9 @@ const state = {
   token: {
     access_token: '',
     expires_in: '',
-    refresh_token: ''
+    refresh_token: '',
+    status: '',
+    token_type: ''
   }
 }
 
