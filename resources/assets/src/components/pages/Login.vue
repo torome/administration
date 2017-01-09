@@ -21,7 +21,8 @@
           name: this.username,
           password: this.password
         }).then(function (response) {
-          console.log(response)
+          this.$store.commit('token', response.body)
+          this.$router.push('/')
         }, function (response) {
           window.alert('请求失败！')
         })
