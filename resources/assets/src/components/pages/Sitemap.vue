@@ -1,17 +1,49 @@
 <script>
   export default {
     computed: {
-      enableXmlMap () {
-        return false
+      enableXmlMap: {
+        get () {
+          return this.$store.state.setting['sitemap.enable.xml']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'sitemap.enable.xml',
+            value: value
+          })
+        }
       },
-      enableHtmlMap () {
-        return false
+      enableHtmlMap: {
+        get () {
+          return this.$store.state.setting['sitemap.enable.html']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'sitemap.enable.html',
+            value: value
+          })
+        }
       },
-      updateCycle () {
-        return 0
+      updateCycle: {
+        get () {
+          return this.$store.state.setting['sitemap.cycle']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'sitemap.cycle',
+            value: value
+          })
+        }
       },
-      onlyContainRecentArticles () {
-        return false
+      onlyContainRecentArticles: {
+        get () {
+          return this.$store.state.setting['sitemap.recent']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'sitemap.recent',
+            value: value
+          })
+        }
       },
       enableModules () {
         return []
@@ -57,7 +89,7 @@
 
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('updateCycle') }">
                     <label class="col-sm-1 control-label">更新周期</label>
                     <div class="col-sm-3">
                         <div class="input-group">
@@ -77,7 +109,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('domain')">包含 1000 以内的文章</span>
+                        <span class="help-block">包含 1000 以内的文章</span>
                     </div>
                 </div>
                 <div class="form-group">
