@@ -1,8 +1,16 @@
 <script>
   export default {
     computed: {
-      enabled () {
-        return '0'
+      enabled:{
+        get () {
+          return this.$store.state.setting['debug.enabled']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'debug.enabled',
+            value: value
+          })
+        }
       }
     },
     methods: {
