@@ -36,7 +36,7 @@ class ModuleServiceProvider extends ServiceProvider
         });
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
         $this->publishes([
-            base_path('modules/administration/resources/assets/dist') => public_path('assets/admin'),
+            base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
         ], 'public');
     }
 }
