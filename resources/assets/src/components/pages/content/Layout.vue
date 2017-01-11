@@ -65,12 +65,36 @@
           {
             text: '页面管理',
             icon: 'fa fa-circle-o',
-            uri: '/content/page'
+            uri: '#',
+            menu: [
+              {
+                text: '全部页面',
+                icon: 'fa fa-circle-o',
+                uri: '/content/page'
+              },
+              {
+                text: '页面分类',
+                icon: 'fa fa-circle-o',
+                uri: '/content/page/category'
+              }
+            ]
           },
           {
             text: '系统组件',
             icon: 'fa fa-circle-o',
-            uri: '/content/component'
+            uri: '#',
+            menu: [
+              {
+                text: '组件管理',
+                icon: 'fa fa-circle-o',
+                uri: '/content/component'
+              },
+              {
+                text: 'SEO设置',
+                icon: 'fa fa-circle-o',
+                uri: '/content/component/seo'
+              }
+            ]
           },
           {
             text: '模板管理',
@@ -81,6 +105,11 @@
             text: '插件管理',
             icon: 'fa fa-circle-o',
             uri: '/content/extension'
+          },
+          {
+            text: '评论功能',
+            icon: 'fa fa-circle-o',
+            uri: '/content/comment'
           }
         ]
       }
