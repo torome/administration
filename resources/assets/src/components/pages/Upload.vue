@@ -2,16 +2,14 @@
   export default {
     computed: {
       imageProcessingEngine: {
-        enabled: {
-          get () {
-            return this.$store.state.setting['attachment.engine']
-          },
-          set (value) {
-            this.$store.commit('single', {
-              key: 'attachment.engine',
-              value: value
-            })
-          }
+        get () {
+          return this.$store.state.setting['attachment.engine']
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'attachment.engine',
+            value: value
+          })
         }
       },
       imageProcessingEngineRadioGroup () {
