@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from './components/Dashboard'
+import BaseDashboard from './components/Dashboard'
+import ContentDashboard from './components/pages/content/Dashboard'
+import ContentLayout from './components/pages/content/Layout'
 import Debug from './components/pages/base/Debug'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
@@ -23,7 +25,7 @@ export default new VueRouter({
       children: [
         {
           path: '/',
-          component: Dashboard,
+          component: BaseDashboard,
           beforeEnter: requireAuth
         },
         {
@@ -54,6 +56,17 @@ export default new VueRouter({
         {
           path: '/debug',
           component: Debug,
+          beforeEnter: requireAuth
+        }
+      ]
+    },
+    {
+      path: '/content',
+      component: ContentLayout,
+      children: [
+        {
+          path: '/',
+          component: ContentDashboard,
           beforeEnter: requireAuth
         }
       ]
