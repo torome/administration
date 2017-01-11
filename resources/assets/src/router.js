@@ -11,6 +11,8 @@ import ContentDashboard from './components/pages/content/Dashboard'
 import ContentExtension from './components/pages/content/Extension'
 import ContentLayout from './components/pages/content/Layout'
 import ContentPage from './components/pages/content/Page'
+import ContentPageCreate from './components/pages/content/PageCreate'
+import ContentPageEdit from './components/pages/content/PageEdit'
 import ContentRecycle from './components/pages/content/Recycle'
 import ContentTemplate from './components/pages/content/Template'
 import ContentTag from './components/pages/content/Tag'
@@ -113,6 +115,16 @@ export default new VueRouter({
         {
           path: '/content/page',
           component: ContentPage,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/content/page/create',
+          component: ContentPageCreate,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/content/page/:id/edit',
+          component: ContentPageEdit,
           beforeEnter: requireAuth
         },
         {
