@@ -35,10 +35,10 @@
                     <label class="col-sm-1 control-label">DEBUG 模式</label>
                     <div class="col-sm-3">
                         <div class="btn-group btn-switch">
-                            <label class="btn btn-primary btn-flat" :class="{ 'active': enabled === '1' }">
+                            <label class="btn btn-primary" :class="{ 'active': enabled === '1' }">
                                 <input type="radio" autocomplete="off" value="1" v-model="enabled"> 开启
                             </label>
-                            <label class="btn btn-primary btn-flat" :class="{ 'active': enabled === '0' }">
+                            <label class="btn btn-primary" :class="{ 'active': enabled === '0' }">
                                 <input type="radio" autocomplete="off" value="0" v-model="enabled"> 关闭
                             </label>
                         </div>

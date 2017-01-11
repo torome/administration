@@ -153,7 +153,7 @@
                     <label class="col-sm-1 control-label">图片处理引擎</label>
                     <div class="col-sm-3">
                         <div class="btn-group btn-switch">
-                            <label v-for="radio in imageProcessingEngineRadioGroup" class="btn btn-primary btn-flat"
+                            <label v-for="radio in imageProcessingEngineRadioGroup" class="btn btn-primary"
                                    :class="{ 'active': imageProcessingEngine === radio.value }">
                                 <input type="radio" autocomplete="off" :value="radio.value"
                                        v-model="imageProcessingEngine"> {{ radio.text }}
@@ -270,10 +270,10 @@
                     <label class="col-sm-1 control-label">开启水印功能</label>
                     <div class="col-sm-3">
                         <div class="btn-group btn-switch">
-                            <label class="btn btn-primary btn-flat" :class="{ 'active': enableWatermark === '1' }">
+                            <label class="btn btn-primary" :class="{ 'active': enableWatermark === '1' }">
                                 <input type="radio" autocomplete="off" value="1" v-model="enableWatermark"> 开启
                             </label>
-                            <label class="btn btn-primary btn-flat" :class="{ 'active': enableWatermark === '0' }">
+                            <label class="btn btn-primary" :class="{ 'active': enableWatermark === '0' }">
                                 <input type="radio" autocomplete="off" value="0" v-model="enableWatermark"> 关闭
                             </label>
                         </div>
