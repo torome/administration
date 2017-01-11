@@ -1,8 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import BaseDashboard from './components/Dashboard'
+import ContentArticle from './components/pages/content/Article'
+import ContentCategory from './components/pages/content/Category'
+import ContentComponent from './components/pages/content/Component'
 import ContentDashboard from './components/pages/content/Dashboard'
+import ContentExtension from './components/pages/content/Extension'
 import ContentLayout from './components/pages/content/Layout'
+import ContentPage from './components/pages/content/Page'
+import ContentRecycle from './components/pages/content/Recycle'
+import ContentTemplate from './components/pages/content/Template'
+import ContentTag from './components/pages/content/Tag'
 import Debug from './components/pages/base/Debug'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
@@ -67,6 +76,46 @@ export default new VueRouter({
         {
           path: '/',
           component: ContentDashboard,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/article',
+          component: ContentArticle,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/category',
+          component: ContentCategory,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/tag',
+          component: ContentTag,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/recycle',
+          component: ContentRecycle,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/page',
+          component: ContentPage,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/component',
+          component: ContentComponent,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/template',
+          component: ContentTemplate,
+          beforeEnter: requireAuth
+        },
+        {
+          path: '/extension',
+          component: ContentExtension,
           beforeEnter: requireAuth
         }
       ]
