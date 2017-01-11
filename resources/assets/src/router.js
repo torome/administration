@@ -42,32 +42,32 @@ export default new VueRouter({
           beforeEnter: requireAuth
         },
         {
-          path: '/setting',
+          path: 'setting',
           component: Setting,
           beforeEnter: requireAuth
         },
         {
-          path: '/upload',
+          path: 'upload',
           component: Upload,
           beforeEnter: requireAuth
         },
         {
-          path: '/storage',
+          path: 'storage',
           component: Upload,
           beforeEnter: requireAuth
         },
         {
-          path: '/seo',
+          path: 'seo',
           component: Seo,
           beforeEnter: requireAuth
         },
         {
-          path: '/email',
+          path: 'email',
           component: Mail,
           beforeEnter: requireAuth
         },
         {
-          path: '/debug',
+          path: 'debug',
           component: Debug,
           beforeEnter: requireAuth
         }
@@ -83,62 +83,62 @@ export default new VueRouter({
           beforeEnter: requireAuth
         },
         {
-          path: '/content/article',
+          path: 'article',
           component: ContentArticle,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/article/create',
+          path: 'article/create',
           component: ContentArticleCreate,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/article/:id/edit',
+          path: 'article/:id/edit',
           component: ContentArticleEdit,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/category',
+          path: 'category',
           component: ContentCategory,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/tag',
+          path: 'tag',
           component: ContentTag,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/recycle',
+          path: 'recycle',
           component: ContentRecycle,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/page',
+          path: 'page',
           component: ContentPage,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/page/create',
+          path: 'page/create',
           component: ContentPageCreate,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/page/:id/edit',
+          path: 'page/:id/edit',
           component: ContentPageEdit,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/component',
+          path: 'component',
           component: ContentComponent,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/template',
+          path: 'template',
           component: ContentTemplate,
           beforeEnter: requireAuth
         },
         {
-          path: '/content/extension',
+          path: 'extension',
           component: ContentExtension,
           beforeEnter: requireAuth
         }
