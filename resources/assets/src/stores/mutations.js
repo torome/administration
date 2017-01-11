@@ -8,6 +8,7 @@ export const setting = (state, setting) => {
 
 export const single = (state, payload) => {
   state.setting[payload.key] = payload.value
+  state.setting = Object.assign({}, state.setting)
 }
 
 export const token = (state, token) => {
