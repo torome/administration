@@ -135,6 +135,24 @@
         if (this.errors.any()) {
           return false
         }
+        this.$http.post(window.api + '/attachment', {
+          engine: this.imageProcessingEngine,
+          limit_file: this.fileMaxSize,
+          limit_image: this.imageMaxSize,
+          limit_video: this.videoMaxSize,
+          allow_image: this.canUploadImageExtension,
+          allow_catcher: this.canUploadCatcherExtension,
+          allow_video: this.canUploadVideoExtension,
+          allow_file: this.canUploadFileExtension,
+          allow_manager_image: this.canManagementImageExtension,
+          allow_manager_file: this.canManagementFileExtension,
+          allow_watermark: this.enableWatermark
+        }).then(response => {
+          this.$store.commit('setting', response.body.data)
+          this.$router.push('/upload')
+        }, response => {
+          window.alert('更新设置失败！')
+        })
       }
     }
   }
