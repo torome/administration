@@ -79,42 +79,42 @@ export default new VueRouter({
           beforeEnter: requireAuth
         },
         {
-          path: '/article',
+          path: '/content/article',
           component: ContentArticle,
           beforeEnter: requireAuth
         },
         {
-          path: '/category',
+          path: '/content/category',
           component: ContentCategory,
           beforeEnter: requireAuth
         },
         {
-          path: '/tag',
+          path: '/content/tag',
           component: ContentTag,
           beforeEnter: requireAuth
         },
         {
-          path: '/recycle',
+          path: '/content/recycle',
           component: ContentRecycle,
           beforeEnter: requireAuth
         },
         {
-          path: '/page',
+          path: '/content/page',
           component: ContentPage,
           beforeEnter: requireAuth
         },
         {
-          path: '/component',
+          path: '/content/component',
           component: ContentComponent,
           beforeEnter: requireAuth
         },
         {
-          path: '/template',
+          path: '/content/template',
           component: ContentTemplate,
           beforeEnter: requireAuth
         },
         {
-          path: '/extension',
+          path: '/content/extension',
           component: ContentExtension,
           beforeEnter: requireAuth
         }
