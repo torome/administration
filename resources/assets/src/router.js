@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from './components/Dashboard'
-import Debug from './components/pages/Debug'
+import Debug from './components/pages/base/Debug'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
-import Mail from './components/pages/Mail'
-import Seo from './components/pages/Seo'
-import Upload from './components/pages/Upload'
-import Setting from './components/pages/Setting'
+import Mail from './components/pages/base/Mail'
+import Seo from './components/pages/base/Seo'
+import Upload from './components/pages/base/Upload'
+import Setting from './components/pages/base/Setting'
 
 import requireAuth from './middlewares/auth'
 
