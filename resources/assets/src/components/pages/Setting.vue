@@ -94,7 +94,6 @@
           copyright: this.copyright,
           statistics: this.statistics
         }).then(response => {
-          window.settings = response.body
           this.$store.commit('setting', response.body.data)
           this.$router.push('/setting')
         }, response => {

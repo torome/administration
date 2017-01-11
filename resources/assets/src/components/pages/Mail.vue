@@ -85,6 +85,20 @@
         if (this.errors.any()) {
           return false
         }
+        this.$http.post(window.api + '/mail', {
+          protocol: this.protocol,
+          encryption: this.encryption,
+          port: this.port,
+          host: this.host,
+          mail: this.mail,
+          username: this.username,
+          password: this.password
+        }).then(response => {
+          this.$store.commit('setting', response.body.data)
+          this.$router.push('/email')
+        }, response => {
+          window.alert('更新设置失败！')
+        })
       }
     }
   }
