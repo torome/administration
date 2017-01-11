@@ -14,4 +14,6 @@
     }
   }
 </script>
-<template></template>
+<template>
+    <div class="box box-solid"></div>
+</template>
