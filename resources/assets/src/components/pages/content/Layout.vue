@@ -3,8 +3,8 @@
   import LayoutFooter from '../../layouts/LayoutFooter'
   import LayoutHeader from '../../layouts/LayoutHeader'
   import LayoutSidebar from '../../layouts/LayoutSidebar'
-  import NavbarMenu from '../../libraries/NavbarMenu.vue'
-  import SidebarMenu from '../../libraries/SidebarMenu.vue'
+  import NavbarMenu from '../../libraries/NavbarMenu'
+  import SidebarMenu from '../../libraries/SidebarMenu'
 
   export default {
     components: {
@@ -88,11 +88,6 @@
                 text: '组件管理',
                 icon: 'fa fa-circle-o',
                 uri: '/content/component'
-              },
-              {
-                text: 'SEO设置',
-                icon: 'fa fa-circle-o',
-                uri: '/content/component/seo'
               }
             ]
           },

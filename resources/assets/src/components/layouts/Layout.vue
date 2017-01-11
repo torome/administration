@@ -3,8 +3,8 @@
   import LayoutFooter from './LayoutFooter'
   import LayoutHeader from './LayoutHeader'
   import LayoutSidebar from './LayoutSidebar'
-  import NavbarMenu from '../libraries/NavbarMenu.vue'
-  import SidebarMenu from '../libraries/SidebarMenu.vue'
+  import NavbarMenu from '../libraries/NavbarMenu'
+  import SidebarMenu from '../libraries/SidebarMenu'
 
   export default {
     components: {
