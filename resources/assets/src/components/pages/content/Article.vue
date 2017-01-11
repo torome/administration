@@ -1,5 +1,8 @@
 <script>
-  export default {}
+  export default {
+    created () {
+    }
+  }
 </script>
 <style></style>
 <template></template>

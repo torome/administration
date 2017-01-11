@@ -1,11 +1,11 @@
 <script>
-  export default {
-  }
+  export default {}
 </script>
 <style lang="css">
     .btn-switch > .btn {
         position: relative;
     }
+
     .btn-switch > .btn > input {
         position: absolute;
         top: 0;

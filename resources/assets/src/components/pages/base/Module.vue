@@ -1,5 +1,7 @@
 <script>
   export default {
+    created () {
+    },
     computed: {
     },
     methods: {
