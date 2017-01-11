@@ -41,11 +41,20 @@
         if (this.errors.any()) {
           return false
         }
+        this.$http.post(window.api + '/seo', {
+          description: this.description,
+          keyword: this.keyword,
+          title: this.title
+        }).then(response => {
+          this.$store.commit('setting', response.body.data)
+          this.$router.push('/seo')
+        }, response => {
+          window.alert('更新设置失败！')
+        })
       }
     }
   }
 </script>
-<style></style>
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
