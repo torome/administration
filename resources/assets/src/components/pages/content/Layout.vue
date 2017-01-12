@@ -46,12 +46,12 @@
                 uri: '/content/article'
               },
               {
-                text: '分类',
+                text: '分类管理',
                 icon: 'fa fa-circle-o',
                 uri: '/content/category'
               },
               {
-                text: '标签',
+                text: '标签管理',
                 icon: 'fa fa-circle-o',
                 uri: '/content/tag'
               },
