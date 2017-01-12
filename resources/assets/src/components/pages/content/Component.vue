@@ -101,7 +101,7 @@
             value: value
           })
         }
-      },
+      }
     },
     methods: {
       submit: function (e) {
