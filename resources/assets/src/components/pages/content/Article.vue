@@ -49,6 +49,9 @@
         margin-top: 1px;
         width: 290px;
     }
+    .box-body > .table > tbody > tr > td {
+        vertical-align: middle;
+    }
 </style>
 <template>
     <div class="box">
