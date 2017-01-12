@@ -100,22 +100,22 @@ export default new VueRouter({
           beforeEnter: requireAuth
         },
         {
-          path: 'category',
+          path: 'article/category',
           component: ContentCategory,
           beforeEnter: requireAuth
         },
         {
-          path: 'tag',
+          path: 'article/tag',
           component: ContentTag,
           beforeEnter: requireAuth
         },
         {
-          path: 'recycle',
+          path: 'article/recycle',
           component: ContentRecycle,
           beforeEnter: requireAuth
         },
         {
-          path: 'draft',
+          path: 'article/draft',
           component: ContentDraft,
           beforeEnter: requireAuth
         },
