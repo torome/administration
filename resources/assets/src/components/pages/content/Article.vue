@@ -60,7 +60,7 @@
             <div class="pull-right clearfix">
                 <div class="box-search">
                     <div class="input-group input-group-sm">
-                        <input class="form-control pull-right" placeholder="请输入附件大小" type="text">
+                        <input class="form-control pull-right" placeholder="请输入搜索关键字" type="text">
                         <div class="input-group-btn">
                             <button class="btn btn-primary">
                                 <i class="fa fa-search"></i>
@@ -93,280 +93,676 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
-                        <td>Everything</td>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Everything is Article</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary">查看</button>
+                                <button class="btn btn-info">编辑</button>
+                                <button class="btn btn-danger">删除</button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
                 <tfoot>
@@ -383,7 +779,7 @@
             <div class="pull-right clearfix">
                 <div class="box-search">
                     <div class="input-group input-group-sm">
-                        <input class="form-control pull-right" placeholder="请输入附件大小" type="text">
+                        <input class="form-control pull-right" placeholder="请输入搜索关键字" type="text">
                         <div class="input-group-btn">
                             <button class="btn btn-primary">
                                 <i class="fa fa-search"></i>
