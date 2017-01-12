@@ -12,6 +12,7 @@ import ContentDraft from './components/pages/content/Draft'
 import ContentExtension from './components/pages/content/Extension'
 import ContentLayout from './components/pages/content/Layout'
 import ContentPage from './components/pages/content/Page'
+import ContentPageCategory from './components/pages/content/PageCategory'
 import ContentPageCreate from './components/pages/content/PageCreate'
 import ContentPageEdit from './components/pages/content/PageEdit'
 import ContentRecycle from './components/pages/content/Recycle'
@@ -131,6 +132,11 @@ export default new VueRouter({
         {
           path: 'page/:id/edit',
           component: ContentPageEdit,
+          beforeEnter: requireAuth
+        },
+        {
+          path: 'page/category',
+          component: ContentPageCategory,
           beforeEnter: requireAuth
         },
         {
