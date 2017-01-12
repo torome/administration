@@ -8,6 +8,7 @@ import ContentArticleDraft from './components/pages/content/ArticleDraft'
 import ContentArticleEdit from './components/pages/content/ArticleEdit'
 import ContentArticleRecycle from './components/pages/content/ArticleRecycle'
 import ContentCategory from './components/pages/content/ArticleCategory'
+import ContentComment from './components/pages/content/Comment'
 import ContentComponent from './components/pages/content/Component'
 import ContentDashboard from './components/pages/content/Dashboard'
 import ContentExtension from './components/pages/content/Extension'
@@ -152,6 +153,11 @@ export default new VueRouter({
         {
           path: 'extension',
           component: ContentExtension,
+          beforeEnter: requireAuth
+        },
+        {
+          path: 'comment',
+          component: ContentComment,
           beforeEnter: requireAuth
         }
       ]
