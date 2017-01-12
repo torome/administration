@@ -8,6 +8,7 @@ import ContentArticleEdit from './components/pages/content/ArticleEdit'
 import ContentCategory from './components/pages/content/Category'
 import ContentComponent from './components/pages/content/Component'
 import ContentDashboard from './components/pages/content/Dashboard'
+import ContentDraft from './components/pages/content/Draft'
 import ContentExtension from './components/pages/content/Extension'
 import ContentLayout from './components/pages/content/Layout'
 import ContentPage from './components/pages/content/Page'
@@ -110,6 +111,11 @@ export default new VueRouter({
         {
           path: 'recycle',
           component: ContentRecycle,
+          beforeEnter: requireAuth
+        },
+        {
+          path: 'draft',
+          component: ContentDraft,
           beforeEnter: requireAuth
         },
         {
