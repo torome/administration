@@ -52,6 +52,11 @@
     .box-body > .table > tbody > tr > td {
         vertical-align: middle;
     }
+    .box-footer > .pagination {
+        bottom: 25px;
+        position: absolute;
+        top: 25px;
+    }
 </style>
 <template>
     <div class="box">
@@ -799,6 +804,13 @@
                     </div>
                 </div>
             </div>
+            <ul class="pagination pagination-sm no-margin">
+                <li><a href="#">«</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
         </div>
     </div>
 </template>
