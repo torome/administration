@@ -59,6 +59,11 @@
                 text: '回收站',
                 icon: 'fa fa-circle-o',
                 uri: '/content/recycle'
+              },
+              {
+                text: '草稿箱',
+                icon: 'fa fa-circle-o',
+                uri: '/content/draft'
               }
             ]
           },
