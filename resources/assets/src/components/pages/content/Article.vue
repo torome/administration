@@ -14,7 +14,42 @@
     }
   }
 </script>
-<style></style>
+<style scoped>
+    .box {
+        border-top: none;
+    }
+    .box-footer,
+    .box-header {
+        height: 80px;
+        position: relative;
+    }
+    .box-header > .pull-right,
+    .box-footer > .pull-right {
+        padding-bottom: 25px;
+        padding-top: 25px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 500px;
+    }
+    .box-footer > .pull-right .btn {
+        border-radius: 3px;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    .box-header > .pull-right > .box-search,
+    .box-footer > .pull-right > .box-search {
+        float: left;
+        margin-right: 10px;
+        width: 200px;
+    }
+    .box-header > .pull-right > .box-extend,
+    .box-footer > .pull-right > .box-extend {
+        float: left;
+        margin-top: 1px;
+        width: 290px;
+    }
+</style>
 <template>
     <div class="box">
         <div class="box-header with-border">
