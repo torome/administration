@@ -6,6 +6,7 @@ import ContentArticle from './components/pages/content/Article'
 import ContentArticleCreate from './components/pages/content/ArticleCreate'
 import ContentArticleDraft from './components/pages/content/ArticleDraft'
 import ContentArticleEdit from './components/pages/content/ArticleEdit'
+import ContentArticleRecycle from './components/pages/content/ArticleRecycle'
 import ContentCategory from './components/pages/content/ArticleCategory'
 import ContentComponent from './components/pages/content/Component'
 import ContentDashboard from './components/pages/content/Dashboard'
@@ -15,7 +16,6 @@ import ContentPage from './components/pages/content/Page'
 import ContentPageCategory from './components/pages/content/PageCategory'
 import ContentPageCreate from './components/pages/content/PageCreate'
 import ContentPageEdit from './components/pages/content/PageEdit'
-import ContentRecycle from './components/pages/content/Recycle'
 import ContentTemplate from './components/pages/content/Template'
 import ContentTag from './components/pages/content/ArticleTag'
 import Debug from './components/pages/base/Debug'
@@ -111,7 +111,7 @@ export default new VueRouter({
         },
         {
           path: 'article/recycle',
-          component: ContentRecycle,
+          component: ContentArticleRecycle,
           beforeEnter: requireAuth
         },
         {
