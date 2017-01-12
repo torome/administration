@@ -1,29 +1,20 @@
 <script>
-  import LayoutHeader from './LayoutHeader'
+  import LayoutContent from '../../layouts/LayoutContent'
+  import LayoutFooter from '../../layouts/LayoutFooter'
+  import LayoutSidebar from '../../layouts/LayoutSidebar'
+  import NavbarMenu from '../../libraries/NavbarMenu'
+  import SidebarMenu from '../../libraries/SidebarMenu'
 
   export default {
     components: {
-      LayoutHeader
+      LayoutContent,
+      LayoutFooter,
+      LayoutSidebar,
+      NavbarMenu,
+      SidebarMenu
     },
     data: () => {
       return {
-        menu: [
-          {
-            'text': '基础配置',
-            'icon': 'icon icon-home',
-            'uri': '/'
-          },
-          {
-            'text': '内容管理',
-            'icon': 'icon icon-article',
-            'uri': '/content'
-          },
-          {
-            'text': '公众平台',
-            'icon': 'icon icon-wechat',
-            'uri': '/wechat'
-          }
-        ],
         nav: [
           {
             text: '全局设置',
@@ -85,8 +76,13 @@
   }
 </script>
 <template>
-    <div class="wrapper">
-        <layout-header :menu="menu"></layout-header>
-        <router-view></router-view>
+    <div>
+        <layout-sidebar>
+            <sidebar-menu :menu="nav"></sidebar-menu>
+        </layout-sidebar>
+        <layout-content>
+            <router-view></router-view>
+        </layout-content>
+        <layout-footer></layout-footer>
     </div>
 </template>

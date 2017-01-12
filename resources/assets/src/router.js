@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import BaseDashboard from './components/Dashboard'
+import BaseLayout from './components/pages/base/Layout'
 import ContentArticle from './components/pages/content/Article'
 import ContentArticleCreate from './components/pages/content/ArticleCreate'
 import ContentArticleDraft from './components/pages/content/ArticleDraft'
@@ -41,124 +42,130 @@ export default new VueRouter({
       children: [
         {
           path: '/',
-          component: BaseDashboard,
-          beforeEnter: requireAuth
+          component: BaseLayout,
+          children: [
+            {
+              path: '/',
+              component: BaseDashboard,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'setting',
+              component: Setting,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'upload',
+              component: Upload,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'storage',
+              component: Upload,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'seo',
+              component: Seo,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'email',
+              component: Mail,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'debug',
+              component: Debug,
+              beforeEnter: requireAuth
+            }
+          ]
         },
         {
-          path: 'setting',
-          component: Setting,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'upload',
-          component: Upload,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'storage',
-          component: Upload,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'seo',
-          component: Seo,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'email',
-          component: Mail,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'debug',
-          component: Debug,
-          beforeEnter: requireAuth
-        }
-      ]
-    },
-    {
-      path: '/content',
-      component: ContentLayout,
-      children: [
-        {
-          path: '/',
-          component: ContentDashboard,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article',
-          component: ContentArticle,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/create',
-          component: ContentArticleCreate,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/:id/edit',
-          component: ContentArticleEdit,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/category',
-          component: ContentCategory,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/tag',
-          component: ContentTag,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/recycle',
-          component: ContentArticleRecycle,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'article/draft',
-          component: ContentArticleDraft,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'page',
-          component: ContentPage,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'page/create',
-          component: ContentPageCreate,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'page/:id/edit',
-          component: ContentPageEdit,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'page/category',
-          component: ContentPageCategory,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'component',
-          component: ContentComponent,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'template',
-          component: ContentTemplate,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'extension',
-          component: ContentExtension,
-          beforeEnter: requireAuth
-        },
-        {
-          path: 'comment',
-          component: ContentComment,
-          beforeEnter: requireAuth
+          path: '/content',
+          component: ContentLayout,
+          children: [
+            {
+              path: '/',
+              component: ContentDashboard,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article',
+              component: ContentArticle,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/create',
+              component: ContentArticleCreate,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/:id/edit',
+              component: ContentArticleEdit,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/category',
+              component: ContentCategory,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/tag',
+              component: ContentTag,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/recycle',
+              component: ContentArticleRecycle,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/draft',
+              component: ContentArticleDraft,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'page',
+              component: ContentPage,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'page/create',
+              component: ContentPageCreate,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'page/:id/edit',
+              component: ContentPageEdit,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'page/category',
+              component: ContentPageCategory,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'component',
+              component: ContentComponent,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'template',
+              component: ContentTemplate,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'extension',
+              component: ContentExtension,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'comment',
+              component: ContentComment,
+              beforeEnter: requireAuth
+            }
+          ]
         }
       ]
     },

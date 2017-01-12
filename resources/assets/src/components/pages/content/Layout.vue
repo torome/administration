@@ -1,7 +1,6 @@
 <script>
   import LayoutContent from '../../layouts/LayoutContent'
   import LayoutFooter from '../../layouts/LayoutFooter'
-  import LayoutHeader from '../../layouts/LayoutHeader'
   import LayoutSidebar from '../../layouts/LayoutSidebar'
   import NavbarMenu from '../../libraries/NavbarMenu'
   import SidebarMenu from '../../libraries/SidebarMenu'
@@ -10,30 +9,12 @@
     components: {
       LayoutContent,
       LayoutFooter,
-      LayoutHeader,
       LayoutSidebar,
       NavbarMenu,
       SidebarMenu
     },
     data: () => {
       return {
-        menu: [
-          {
-            'text': '基础配置',
-            'icon': 'icon icon-home',
-            'uri': '/'
-          },
-          {
-            'text': '内容管理',
-            'icon': 'icon icon-article',
-            'uri': '/content'
-          },
-          {
-            'text': '公众平台',
-            'icon': 'icon icon-wechat',
-            'uri': '/wechat'
-          }
-        ],
         nav: [
           {
             text: '文章管理',
@@ -117,8 +98,7 @@
   }
 </script>
 <template>
-    <div class="wrapper">
-        <layout-header :menu="menu"></layout-header>
+    <div>
         <layout-sidebar>
             <sidebar-menu :menu="nav"></sidebar-menu>
         </layout-sidebar>
