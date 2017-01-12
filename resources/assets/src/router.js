@@ -4,11 +4,11 @@ import VueRouter from 'vue-router'
 import BaseDashboard from './components/Dashboard'
 import ContentArticle from './components/pages/content/Article'
 import ContentArticleCreate from './components/pages/content/ArticleCreate'
+import ContentArticleDraft from './components/pages/content/ArticleDraft'
 import ContentArticleEdit from './components/pages/content/ArticleEdit'
 import ContentCategory from './components/pages/content/ArticleCategory'
 import ContentComponent from './components/pages/content/Component'
 import ContentDashboard from './components/pages/content/Dashboard'
-import ContentDraft from './components/pages/content/Draft'
 import ContentExtension from './components/pages/content/Extension'
 import ContentLayout from './components/pages/content/Layout'
 import ContentPage from './components/pages/content/Page'
@@ -116,7 +116,7 @@ export default new VueRouter({
         },
         {
           path: 'article/draft',
-          component: ContentDraft,
+          component: ContentArticleDraft,
           beforeEnter: requireAuth
         },
         {
