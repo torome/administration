@@ -23,3 +23,57 @@ Token 验证处理指向的路由：
 
 * Accept
 * Authorization
+
+Token 验证算法实现：
+
+```php
+/**
+ * Exchange token by username and password.
+ *
+ * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
+ *
+ * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+ * @throws \Illuminate\Validation\ValidationException
+ */
+public function token(ApiResponse $response)
+{
+    $this->validateLogin($this->request);
+    if ($this->hasTooManyLoginAttempts($this->request)) {
+        $this->fireLockoutEvent($this->request);
+        $seconds = $this->limiter()->availableIn($this->throttleKey($this->request));
+        $message = $this->translator->get('auth.throttle', ['seconds' => $seconds]);
+
+        return $response->withParams([
+            'status'  => 'error',
+            'message' => $message,
+        ])->generateHttpResponse();
+    }
+    $credentials = $this->credentials($this->request);
+    if ($this->guard()->attempt($credentials, $this->request->has('remember'))) {
+        $this->request->session()->regenerate();
+        $this->clearLoginAttempts($this->request);
+        $http = new GuzzleClient();
+        $back = $http->post($this->url->to('oauth/access'), [
+            'form_params' => [
+                'grant_type'    => 'password',
+                'client_id'     => $this->client_id,
+                'client_secret' => $this->client_secret,
+                'username'      => $this->request->offsetGet($this->username()),
+                'password'      => $this->request->offsetGet('password'),
+                'scope'         => '*',
+            ],
+        ]);
+        $back = json_decode((string)$back->getBody(), true);
+        if (isset($back['access_token']) && isset($back['refresh_token'])) {
+            return $response->withParams([
+                'status' => 'success',
+            ])->withParams($back)->generateHttpResponse();
+        }
+    }
+
+    return $response->withParams([
+        'status'  => 'error',
+        'message' => 'Login Error!',
+    ])->generateHttpResponse();
+}
+```
