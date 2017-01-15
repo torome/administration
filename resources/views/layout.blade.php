@@ -13,5 +13,5 @@
     window.api = "{{ url('api') }}";
     window.url = "{{ url('admin') }}";
 </script>
-<script src="{{ asset('http://127.0.0.1:8080/app.js') }}"></script>
+<script src="{{ asset('/assets/admin/js/app.js') }}"></script>
 </body>
