@@ -34,7 +34,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->make('router')->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
             $this->app->make('router')->post('/', AdminController::class . '@access');
         });
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
+        $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
             base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
         ], 'public');
