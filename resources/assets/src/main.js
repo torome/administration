@@ -1,3 +1,11 @@
+/**
+ * This file is part of Notadd.
+ *
+ * @author TwilRoad <269044570@qq.com>
+ * @copyright (c) 2017, iBenchu.org
+ * @datetime 2017-01-17 14:16
+ */
+
 import 'font-awesome/less/font-awesome.less'
 import 'bootstrap/less/bootstrap.less'
 import 'slimscroll/example/ssmaster/jquery.slimscroll'
