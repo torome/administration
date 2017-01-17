@@ -112,6 +112,7 @@ class AdminController extends Controller
      * @param \Notadd\Foundation\Passport\Responses\ApiResponse $response
      *
      * @return \Notadd\Foundation\Passport\Responses\ApiResponse
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \Illuminate\Validation\ValidationException
      */
     public function token(ApiResponse $response)

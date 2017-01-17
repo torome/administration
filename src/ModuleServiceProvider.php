@@ -21,6 +21,8 @@ class ModuleServiceProvider extends ServiceProvider
      * Boot service provider.
      *
      * @param \Notadd\Foundation\Administration\Administration $administration
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     public function boot(Administration $administration)
     {
