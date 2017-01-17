@@ -37,6 +37,7 @@ class ModuleServiceProvider extends ServiceProvider
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
             base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
+            base_path('modules/administration/resources/ueditor') => public_path('assets/ueditor'),
         ], 'public');
     }
 }
