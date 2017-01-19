@@ -1,5 +1,4 @@
 <script>
-  import $ from 'jquery'
   export default {
     computed: {},
     methods: {
@@ -11,8 +10,8 @@
       }
     },
     mounted () {
-      console.log(this.$jquery)
-      $(this.$el).find('ul, ol').sortable({
+      console.log(this.$jquery(this.$el).find('ul, ol'))
+      this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })
     }
