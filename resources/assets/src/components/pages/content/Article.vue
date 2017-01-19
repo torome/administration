@@ -116,6 +116,18 @@
         border-color: #ef5151;
         color: #ffffff;
     }
+    .box-header > .box-extend > .btn-create {
+        background: #3498db;
+        color: #ffffff;
+        letter-spacing: 0;
+    }
+    .box-header > .box-extend > .btn-create:hover {
+        background: #258cd1;
+    }
+    .box-header > .box-extend > .btn-create:active,
+    .box-header > .box-extend > .btn-create:focus {
+        background: #2b7cb3;
+    }
     .pagination > li > a {
         background: transparent;
         border-color: transparent;
@@ -157,6 +169,7 @@
                 </div>
             </div>
             <div class="box-extend">
+                <router-link to="article/create" class="btn btn-primary btn-create">添加文章</router-link>
                 <button class="btn btn-primary">全选</button>
                 <button class="btn btn-primary" disabled>反选</button>
                 <button class="btn btn-info">回收站</button>
