@@ -21,13 +21,7 @@ const state = {
     text: 'This is a message'
   },
   setting: {},
-  token: {
-    access_token: '',
-    expires_in: '',
-    refresh_token: '',
-    status: '',
-    token_type: ''
-  }
+  token: {}
 }
 
 const store = new Vuex.Store({

@@ -16,13 +16,17 @@ export default {
       if (token.access_token && token.refresh_token) {
         Vue.http.headers.common['Accept'] = 'application/json'
         Vue.http.headers.common['Authorization'] = 'Bearer ' + token.access_token
-        store.commit('token', token)
+
+        JSON.stringify(store.state.token) === '{}' && store.commit('token', token)
+
         let setting = store.state.setting
-        if (!setting.hasOwnProperty()) {
+
+        if (JSON.stringify(setting) === '{}') {
           Vue.http.post(window.api + '/setting/all').then(response => {
             store.commit('setting', response.body.data)
           })
         }
+
         return true
       } else {
         return false
