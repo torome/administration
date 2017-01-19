@@ -12,9 +12,11 @@ import 'slimscroll/example/ssmaster/jquery.slimscroll'
 import './assets/less/main.less'
 import './assets/less/skins/all-skins.less'
 import '../static/js/app'
+
 import Vue from 'vue'
 import VeeValidate from 'vee-validate'
 import VueResource from 'vue-resource'
+
 import App from './components/App'
 import router from './router'
 import store from './stores'
