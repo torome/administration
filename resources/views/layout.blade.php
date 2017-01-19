@@ -12,6 +12,7 @@
 <script>
     window.csrf_token = "{{ csrf_token() }}";
     window.api = "{{ url('api') }}";
+    window.asset = "{{ asset('assets') }}";
     window.url = "{{ url('admin') }}";
 </script>
 <script src="{{ asset('/assets/admin/js/manifest.js') }}"></script>
