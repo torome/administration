@@ -54,6 +54,9 @@
           window.alert('更新设置失败！')
         })
       }
+    },
+    mounted () {
+      this.$store.commit('title', 'SEO配置 - Notadd Administration')
     }
   }
 </script>

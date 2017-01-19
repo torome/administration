@@ -11,6 +11,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '储存管理 - Notadd Administration')
     }
   }
 </script>
@@ -18,7 +21,7 @@
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">储存管理</h3>
+            <h3 class="box-title">管理</h3>
         </div>
     </div>
 </template>

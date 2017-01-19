@@ -1,9 +1,13 @@
 <script>
+  import Editor from '../../libraries/Editor'
+
   export default {
+    components: {
+      Editor
+    },
     created () {
     },
-    computed: {
-    },
+    computed: {},
     methods: {
       submit: function (e) {
         this.$validator.validateAll()
@@ -11,26 +15,26 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
     }
   }
 </script>
 <style></style>
 <template>
-    <div class="box box-solid">
-        <div class="box-header with-border">
-            <h3 class="box-title">文章管理 - 添加文章</h3>
-        </div>
-        <div class="box-body">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-1 control-label"></label>
-                    <div class="col-sm-3">
-                    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box box-solid">
+                <div class="box-body">
+                    <editor></editor>
                 </div>
             </div>
         </div>
-        <div class="box-footer">
-            <button class="btn btn-primary" :disabled="errors.any()" @click="submit">保存</button>
+        <div class="col-md-4">
+            <div class="box box-solid">
+                <div class="box-body"></div>
+            </div>
         </div>
     </div>
 </template>

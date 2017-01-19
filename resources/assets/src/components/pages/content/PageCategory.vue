@@ -11,6 +11,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '分类管理 - 页面 - Notadd Administration')
     }
   }
 </script>

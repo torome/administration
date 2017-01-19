@@ -10,6 +10,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '评论管理 - 文章 - Notadd Administration')
     }
   }
 </script>

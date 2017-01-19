@@ -102,6 +102,9 @@
           window.alert('更新设置失败！')
         })
       }
+    },
+    mounted () {
+      this.$store.commit('title', '配置管理 - Notadd Administration')
     }
   }
 </script>

@@ -21,6 +21,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '编辑文章 - 文章 - Notadd Administration')
     }
   }
 </script>

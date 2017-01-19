@@ -11,6 +11,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '路由管理 - Notadd Administration')
     }
   }
 </script>

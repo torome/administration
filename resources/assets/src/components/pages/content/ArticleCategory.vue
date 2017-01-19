@@ -10,7 +10,7 @@
       }
     },
     mounted () {
-      console.log(this.$jquery(this.$el).find('ul, ol'))
+      this.$store.commit('title', '分类管理 - 文章 - Notadd Administration')
       this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })

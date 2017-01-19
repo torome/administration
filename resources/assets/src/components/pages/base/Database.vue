@@ -20,6 +20,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '数据库管理 - Notadd Administration')
     }
   }
 </script>

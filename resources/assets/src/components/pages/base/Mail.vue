@@ -102,6 +102,9 @@
           window.alert('更新设置失败！')
         })
       }
+    },
+    mounted () {
+      this.$store.commit('title', '邮箱配置 - Notadd Administration')
     }
   }
 </script>

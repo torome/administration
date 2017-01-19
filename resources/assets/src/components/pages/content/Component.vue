@@ -110,6 +110,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', 'SEO配置 - 文章 - Notadd Administration')
     }
   }
 </script>

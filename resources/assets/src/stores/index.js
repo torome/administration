@@ -21,6 +21,7 @@ const state = {
     text: 'This is a message'
   },
   setting: {},
+  title: 'Notadd Administration',
   token: {}
 }
 

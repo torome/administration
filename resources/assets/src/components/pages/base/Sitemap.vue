@@ -58,6 +58,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', 'Sitemap管理 - Notadd Administration')
     }
   }
 </script>

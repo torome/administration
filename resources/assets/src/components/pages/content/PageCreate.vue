@@ -11,6 +11,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '添加页面 - 文章 - Notadd Administration')
     }
   }
 </script>

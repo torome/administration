@@ -19,6 +19,7 @@
         if (this.errors.any()) {
           return false
         }
+
         this.$http.post('http://notadd.io/admin/token', {
           name: this.username,
           password: this.password
@@ -29,6 +30,9 @@
           window.alert('请求失败！')
         })
       }
+    },
+    mounted () {
+      this.$store.commit('title', '登陆 - Notadd Administration')
     }
   }
 </script>

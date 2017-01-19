@@ -11,6 +11,9 @@
           return false
         }
       }
+    },
+    mounted () {
+      this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
     }
   }
 </script>
@@ -131,7 +134,7 @@
     .pagination > li > a {
         background: transparent;
         border-color: transparent;
-        margin: 0 10px;
+        margin: 0 5px;
     }
     .pagination > li:first-child > a,
     .pagination > li:last-child > a {
@@ -141,8 +144,10 @@
     }
     .pagination > li:first-child > a {
         margin-left: 0;
+        margin-right: 10px;
     }
     .pagination > li:last-child > a {
+        margin-left: 10px;
         margin-right: 0;
     }
     .pagination > li > a:hover,

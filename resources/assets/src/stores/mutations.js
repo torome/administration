@@ -20,6 +20,11 @@ export const single = (state, payload) => {
   Vue.set(state.setting, payload.key, payload.value)
 }
 
+export const title = (state, title) => {
+  state.title = title
+  global.document.title = title
+}
+
 export const token = (state, token) => {
   window.localStorage.setItem('token', JSON.stringify(token))
   state.token = token

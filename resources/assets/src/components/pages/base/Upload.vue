@@ -156,6 +156,9 @@
           window.alert('更新设置失败！')
         })
       }
+    },
+    mounted () {
+      this.$store.commit('title', '上传配置 - Notadd Administration')
     }
   }
 </script>
@@ -163,7 +166,7 @@
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Sitemap 管理</h3>
+            <h3 class="box-title">上传配置</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
