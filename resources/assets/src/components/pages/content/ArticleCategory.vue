@@ -1,14 +1,7 @@
 <script>
+  import $ from 'jquery'
   export default {
     computed: {},
-    data: function () {
-      return {
-        options: {
-          handle: '.handle',
-          filter: '.disabled'
-        }
-      }
-    },
     methods: {
       submit: function (e) {
         this.$validator.validateAll()
@@ -16,10 +9,20 @@
           return false
         }
       }
+    },
+    mounted () {
+      console.log(this.$jquery)
+      $(this.$el).find('ul, ol').sortable({
+        connectWith: 'article-category'
+      })
     }
   }
 </script>
-<style></style>
+<style scoped>
+    ol.list-group {
+        min-height: 10px;
+    }
+</style>
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
@@ -28,13 +31,23 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-8">
-                    <ul class="list-group" v-sortable="options">
-                        <li class="list-group-item">Foo <i class="handle"></i></li>
-                        <li class="list-group-item disabled">Bar <i class="handle"></i></li>
-                        <li class="list-group-item">Baz <i class="handle"></i></li>
+                    <ul class="list-group">
+                        <li class="list-group-item">Foo <i class="handle"></i>
+                            <ol class="list-group"></ol>
+                        </li>
+                        <li class="list-group-item">Bar <i class="handle"></i>
+                            <ol class="list-group"></ol>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item">Foo <i class="handle"></i>
+                            <ol class="list-group"></ol>
+                        </li>
+                        <li class="list-group-item">Bar <i class="handle"></i>
+                            <ol class="list-group"></ol>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-4"></div>
             </div>
         </div>
         <div class="box-footer">

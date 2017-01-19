@@ -13,9 +13,11 @@ import './assets/less/main.less'
 import './assets/less/skins/all-skins.less'
 import '../static/js/app'
 
+import Notadd from './libraries/notadd'
+
 import Vue from 'vue'
-import VeeValidate from 'vee-validate'
 import VueResource from 'vue-resource'
+import VeeValidate from 'vee-validate'
 
 import App from './components/App'
 import router from './router'
@@ -23,6 +25,7 @@ import store from './stores'
 
 Vue.use(VeeValidate)
 Vue.use(VueResource)
+Vue.use(Notadd)
 
 /* eslint-disable no-new */
 new Vue({
