@@ -2,15 +2,10 @@
   export default {
     created () {
     },
-    computed: {
-      username () {
-        return 'admin'
-      },
-      password () {
-        return '123456789'
-      },
-      authFailed () {
-        return false
+    data: function () {
+      return {
+        username: '',
+        password: ''
       }
     },
     methods: {
