@@ -1,5 +1,21 @@
 <script>
   export default {
+    computed: {
+      avatar: {
+        get () {
+          return this.$store.state.user.avatar
+        }
+      },
+      username: {
+        get () {
+          return this.$store.state.user.name
+        }
+      }
+    },
+    methods: {
+      logout: function () {
+      }
+    },
     props: [
       'menu'
     ]

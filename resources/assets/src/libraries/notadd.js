@@ -6,6 +6,8 @@
  * @datetime 2017-01-19 17:23
  */
 
+import 'bootstrap/js/dropdown'
+
 import $ from 'jquery'
 import sortable from 'html5sortable'
 
