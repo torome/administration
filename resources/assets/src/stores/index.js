@@ -22,7 +22,11 @@ const state = {
   },
   setting: {},
   title: 'Notadd Administration',
-  token: {}
+  token: {},
+  user: {
+    avatar: 'https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg',
+    name: 'Administration'
+  }
 }
 
 const store = new Vuex.Store({
