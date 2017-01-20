@@ -49,6 +49,13 @@
     .navbar-static-top {
         box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
     }
+    .extend-menu {
+        margin-right: 20px;
+    }
+    .btn-danger {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 </style>
 <template>
     <header class="main-header">
@@ -66,6 +73,26 @@
                         <router-link :to="item.uri" :class="item.icon">
                             <span class="hidden-xs">{{ item.text }}</span>
                         </router-link>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-custom-menu extend-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <span class="hidden-xs">欢迎您，</span> {{ username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img :src="avatar" class="img-circle" :alt="username">
+                                <p>{{ username }}</p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-right">
+                                    <button class="btn btn-danger" @click="logout">退出</button>
+                                </div>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
