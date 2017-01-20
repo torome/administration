@@ -26,39 +26,20 @@
       }
     },
     mounted () {
+      this.$jquery(this.$el).css({
+        width: this.$jquery(window).width(),
+        height: this.$jquery(window).height()
+      })
       this.$store.commit('title', '登陆 - Notadd Administration')
     }
   }
 </script>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
+<style scoped>
+    .login-page {
+        background: transparent;
     }
-
-    html {
-        font-size: 20px;
-        height: 100%;
-    }
-
-    body {
-        font-family: "Microsoft YaHei", sans-serif;
-        font-size: .7rem;
-        color: #666;
-        background-color: #003a6f;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .clearfix::after {
-        content: '';
-        display: block;
-        clear: both;
-    }
-
-    /* front-login */
     .login-bg {
+        background-color: #003a6f;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -73,7 +54,7 @@
     }
 
     .cylinder.orange1 {
-        height: 16.5rem;
+        height: 130px;
         width: 3.75%;
         background-color: #ff5959;
         position: absolute;
@@ -85,30 +66,30 @@
 
     .cylinder.orange1:before {
         content: '';
-        height: 3.6rem;
+        height: 72px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.8rem;
+        top: -36px;
         left: 0;
         background-color: #ff5959;
         box-shadow: 0 0 2px 0 #ff5959;
     }
 
     .cylinder.orange2 {
-        height: 5rem;
-        width: 10rem;
+        height: 100px;
+        width: 200px;
         background-color: #ff5959;
-        border-radius: 10rem 10rem 0 0;
+        border-radius: 200px 200px 0 0;
         position: absolute;
         left: 33%;
-        bottom: -1rem;
+        bottom: -20px;
         box-shadow: 0 0 2px 0 #ff5959;
         z-index: -100;
     }
 
     .cylinder.orange3 {
-        height: 22rem;
+        height: 440px;
         width: 2.6%;
         background-color: #ff5959;
         position: absolute;
@@ -120,18 +101,18 @@
 
     .cylinder.orange3:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.25rem;
+        top: -25px;
         left: 0;
         background-color: #ff5959;
         box-shadow: 0 0 2px 0 #ff5959;
     }
 
     .cylinder.orange4 {
-        height: 3.9rem;
+        height: 318px;
         width: 2.6%;
         background-color: #ff5959;
         position: absolute;
@@ -143,18 +124,18 @@
 
     .cylinder.orange4:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.4rem;
+        top: -28px;
         left: 0;
         background-color: #ff5959;
         box-shadow: 0 0 2px 0 #ff5959;
     }
 
     .cylinder.yellow1 {
-        height: 28rem;
+        height: 56px;
         width: 4.17%;
         background-color: #ffc56c;
         position: absolute;
@@ -166,18 +147,18 @@
 
     .cylinder.yellow1:before {
         content: '';
-        height: 4rem;
+        height: 80px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -2.1rem;
+        top: -42px;
         left: 0;
         background-color: #ffc56c;
         box-shadow: 0 0 2px 0 #ffc56c;
     }
 
     .cylinder.yellow2 {
-        height: 4.4rem;
+        height: 88px;
         width: 6.67%;
         background-color: #ffc56c;
         position: absolute;
@@ -189,18 +170,18 @@
 
     .cylinder.yellow2:before {
         content: '';
-        height: 6.4rem;
+        height: 128px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -3.3rem;
+        top: -66px;
         left: 0;
         background-color: #ffc56c;
         box-shadow: 0 0 2px 0 #ffc56c;
     }
 
     .cylinder.yellow3 {
-        height: 19.5rem;
+        height: 390px;
         width: 11.9%;
         background-color: #ffc56c;
         position: absolute;
@@ -212,18 +193,18 @@
 
     .cylinder.yellow3:before {
         content: '';
-        height: 11.4rem;
+        height: 228px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -5.8rem;
+        top: -116px;
         left: 0;
         background-color: #ffc56c;
         box-shadow: 0 0 2px 0 #ffc56c;
     }
 
     .cylinder.white1 {
-        height: 3.5rem;
+        height: 70px;
         width: 2.6%;
         background-color: #fff;
         position: absolute;
@@ -235,18 +216,18 @@
 
     .cylinder.white1:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.3rem;
+        top: -26px;
         left: 0;
         background-color: #fff;
         box-shadow: 0 0 2px 0 #fff;
     }
 
     .cylinder.white2 {
-        height: 14.5rem;
+        height: 290px;
         width: 3.75%;
         background-color: #fff;
         position: absolute;
@@ -258,18 +239,18 @@
 
     .cylinder.white2:before {
         content: '';
-        height: 3.6rem;
+        height: 72px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.9rem;
+        top: -118px;
         left: 0;
         background-color: #fff;
         box-shadow: 0 0 2px 0 #fff;
     }
 
     .cylinder.white3 {
-        height: 2rem;
+        height: 40px;
         width: 2.6%;
         background-color: #fff;
         position: absolute;
@@ -281,11 +262,11 @@
 
     .cylinder.white3:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.3rem;
+        top: -26px;
         left: 0;
         background-color: #fff;
         box-shadow: 0 0 2px 0 #fff;
@@ -293,7 +274,7 @@
 
     .cylinder.blue1 {
         width: 3.96%;
-        height: 18.5rem;
+        height: 370px;
         background-color: #205381;
         position: absolute;
         left: 0;
@@ -304,11 +285,11 @@
 
     .cylinder.blue1:before {
         content: '';
-        height: 3.8rem;
+        height: 76px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -2rem;
+        top: -40px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -316,20 +297,20 @@
     }
 
     .cylinder.blue2 {
-        height: 5rem;
-        width: 10rem;
+        height: 100px;
+        width: 200px;
         background-color: #205381;
-        border-radius: 10rem 10rem 0 0;
+        border-radius: 200px 200px 0 0;
         position: absolute;
         left: 6.7%;
-        bottom: -1rem;
+        bottom: -20px;
         box-shadow: 0 0 2px 0 #205381;
         z-index: -150;
     }
 
     .cylinder.blue3 {
         width: 11.67%;
-        height: 26rem;
+        height: 520px;
         background-color: #205381;
         position: absolute;
         left: 24.7%;
@@ -340,11 +321,11 @@
 
     .cylinder.blue3:before {
         content: '';
-        height: 11.2rem;
+        height: 224px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -5.7rem;
+        top: -114px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -353,7 +334,7 @@
 
     .cylinder.blue4 {
         width: 3.6%;
-        height: 10rem;
+        height: 200px;
         background-color: #205381;
         position: absolute;
         left: 38.6%;
@@ -364,11 +345,11 @@
 
     .cylinder.blue4:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.3rem;
+        top: -26px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -378,7 +359,7 @@
     .cylinder.blue5 {
         position: absolute;
         width: 6.67%;
-        height: 18rem;
+        height: 360px;
         left: 44.4%;
         background-color: #205381;
         bottom: 0;
@@ -388,11 +369,11 @@
 
     .cylinder.blue5:before {
         content: '';
-        height: 6.4rem;
+        height: 128px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -3.3rem;
+        top: -66px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -402,7 +383,7 @@
     .cylinder.blue6 {
         position: absolute;
         width: 2.6%;
-        height: 42.3rem;
+        height: 846px;
         left: 53.6%;
         background-color: #205381;
         bottom: 0;
@@ -412,11 +393,11 @@
 
     .cylinder.blue6:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.3rem;
+        top: -26px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -426,7 +407,7 @@
     .cylinder.blue7 {
         position: absolute;
         width: 3.75%;
-        height: 19rem;
+        height: 380px;
         left: 58.75%;
         background-color: #205381;
         bottom: 0;
@@ -436,11 +417,11 @@
 
     .cylinder.blue7:before {
         content: '';
-        height: 3.6rem;
+        height: 72px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.9rem;
+        top: -118px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -450,7 +431,7 @@
     .cylinder.blue8 {
         position: absolute;
         width: 12.5%;
-        height: 5.8rem;
+        height: 116px;
         left: 65%;
         background-color: #205381;
         bottom: 0;
@@ -460,11 +441,11 @@
 
     .cylinder.blue8:before {
         content: '';
-        height: 12rem;
+        height: 240px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -6.1rem;
+        top: -122px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -474,7 +455,7 @@
     .cylinder.blue9 {
         position: absolute;
         width: 3.75%;
-        height: 26rem;
+        height: 520px;
         left: 79.2%;
         background-color: #205381;
         bottom: 0;
@@ -484,11 +465,11 @@
 
     .cylinder.blue9:before {
         content: '';
-        height: 3.6rem;
+        height: 72px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.9rem;
+        top: -118px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -498,7 +479,7 @@
     .cylinder.blue10 {
         position: absolute;
         width: 2.6%;
-        height: 10rem;
+        height: 200px;
         left: 85.9%;
         background-color: #205381;
         bottom: 0;
@@ -508,11 +489,11 @@
 
     .cylinder.blue10:before {
         content: '';
-        height: 2.5rem;
+        height: 50px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.3rem;
+        top: -26px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -522,7 +503,7 @@
     .cylinder.blue11 {
         position: absolute;
         width: 4.69%;
-        height: 37rem;
+        height: 740px;
         left: 91.4%;
         background-color: #205381;
         bottom: 0;
@@ -532,11 +513,11 @@
 
     .cylinder.blue11:before {
         content: '';
-        height: 4.5rem;
+        height: 90px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -2.3rem;
+        top: -46px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -546,7 +527,7 @@
     .cylinder.blue12 {
         position: absolute;
         width: 1.46%;
-        height: 2rem;
+        height: 40px;
         left: 98.5%;
         background-color: #205381;
         bottom: 0;
@@ -556,11 +537,11 @@
 
     .cylinder.blue12:before {
         content: '';
-        height: 1.4rem;
+        height: 28px;
         width: 100%;
         border-top-left-radius: 100%;
         position: absolute;
-        top: -1.4rem;
+        top: -28px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -569,7 +550,7 @@
 
     .cylinder-xs.bluexs1 {
         width: 10%;
-        height: 12rem;
+        height: 240px;
         background-color: #205381;
         position: absolute;
         left: 0;
@@ -580,11 +561,11 @@
 
     .cylinder-xs.bluexs1:before {
         content: '';
-        height: 1.875rem;
+        height: 37.5px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -.9375rem;
+        top: -18.75px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -593,7 +574,7 @@
 
     .cylinder-xs.bluexs2 {
         width: 8%;
-        height: 29.5rem;
+        height: 590px;
         background-color: #205381;
         position: absolute;
         left: 40%;
@@ -604,11 +585,11 @@
 
     .cylinder-xs.bluexs2:before {
         content: '';
-        height: 1.5rem;
+        height: 30px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -.75rem;
+        top: -15px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -618,7 +599,7 @@
     .cylinder-xs.bluexs3 {
         position: absolute;
         width: 12%;
-        height: 7rem;
+        height: 140px;
         left: 22%;
         background-color: #ffc56c;
         bottom: 0;
@@ -628,11 +609,11 @@
 
     .cylinder-xs.bluexs3:before {
         content: '';
-        height: 2.25rem;
+        height: 45px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -1.125rem;
+        top: -22.5px;
         left: 0;
         background-color: #ffc56c;
         box-shadow: 0 0 2px 0 #ffc56c;
@@ -642,7 +623,7 @@
     .cylinder-xs.bluexs4 {
         position: absolute;
         width: 28%;
-        height: 3.5rem;
+        height: 70px;
         left: 62%;
         background-color: #ff5959;
         bottom: 0;
@@ -652,11 +633,11 @@
 
     .cylinder-xs.bluexs4:before {
         content: '';
-        height: 5.25rem;
+        height: 105px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -2.625rem;
+        top: -52.5px;
         left: 0;
         background-color: #ff5959;
         box-shadow: 0 0 2px 0 #ff5959;
@@ -665,7 +646,7 @@
 
     .cylinder-xs.bluexs5 {
         width: 9.2%;
-        height: 6.5rem;
+        height: 130px;
         background-color: #205381;
         position: absolute;
         left: 78%;
@@ -676,11 +657,11 @@
 
     .cylinder-xs.bluexs5:before {
         content: '';
-        height: 1.725rem;
+        height: 34.5px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -.8625rem;
+        top: -17.25px;
         left: 0;
         background-color: #205381;
         box-shadow: 0 0 2px 0 #205381;
@@ -690,7 +671,7 @@
     .cylinder-xs.bluexs6 {
         position: absolute;
         width: 6.8%;
-        height: 2.5rem;
+        height: 50px;
         left: 6%;
         background-color: #fff;
         bottom: 0;
@@ -700,11 +681,11 @@
 
     .cylinder-xs.bluexs6:before {
         content: '';
-        height: 1.275rem;
+        height: 25.5px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
-        top: -.6375rem;
+        top: -12.75px;
         left: 0;
         background-color: #fff;
         box-shadow: 0 0 2px 0 #fff;
@@ -712,33 +693,33 @@
     }
 
     .login-win {
-        max-width: 26rem;
-        height: 20.5rem;
-        margin: 10rem auto;
+        max-width: 520px;
+        height: 410px;
+        margin: 200px auto;
         background-color: #fff;
-        -webkit-border-radius: .5rem;
-        -moz-border-radius: .5rem;
-        border-radius: .5rem;
-        padding: 2rem;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        padding: 40px;
     }
 
     .login-win h3 {
-        margin: 0 0 2.3rem 0;
-        font-size: .9rem;
+        margin: 0 0 46px 0;
+        font-size: 18px;
         color: #666;
-        line-height: .9rem;
+        line-height: 18px;
     }
 
     .login-win input {
-        padding-left: .5rem;
+        padding-left: 10px;
         width: 100%;
-        font-size: .9rem;
+        font-size: 18px;
         color: #666;
         border: none;
         border-bottom: 2px solid #e6e6e6;
-        height: 3rem;
-        padding-top: 1rem;
-        margin-bottom: .8rem;
+        height: 60px;
+        padding-top: 20px;
+        margin-bottom: 16px;
         -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
         -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
@@ -747,49 +728,36 @@
     .login-win input:focus {
         border-color: #66afe9;
         outline: 0;
-        /* -webkit-box-shadow: 0 5px 8px rgba(102, 175, 233, .6);
-         box-shadow: 0 5px 8px rgba(102, 175, 233, .6);*/
     }
 
     .login-win input::-webkit-input-placeholder {
-        font-size: .9rem;
+        font-size: 18px;
         color: #ccc;
     }
 
     .login-win input:-moz-placeholder {
-        font-size: .9rem;
+        font-size: 18px;
         color: #ccc;
     }
 
     .login-win input::-moz-placeholder {
-        font-size: .9rem;
+        font-size: 18px;
         color: #ccc;
     }
 
     .login-win input:-ms-input-placeholder {
-        font-size: .9rem;
+        font-size: 18px;
         color: #ccc;
     }
 
     .login-comfirm {
-        margin-top: 3.2rem;
-        height: 2.5rem;
-    }
-
-    .forget {
-        display: inline-block;
-        font-size: .8rem;
-        color: #ccc;
-        line-height: 2.5rem;
-    }
-
-    .forget:hover, .forget:focus {
-        text-decoration: none;
+        margin-top: 64px;
+        height: 50px;
     }
 
     .btn-login {
-        width: 8rem;
-        height: 2.5rem;
+        width: 160px;
+        height: 50px;
         background-color: #3498d8;
         border: none;
         float: right;
@@ -806,15 +774,14 @@
         color: #fff;
     }
 
-    /*适配移动端*/
     @media (max-width: 767px) {
         .login-win {
-            margin: 4rem auto;
+            margin: 80px auto;
 
         }
 
         .btn-login {
-            width: 6rem;
+            width: 120px;
         }
 
         .cylinder {
@@ -822,10 +789,9 @@
         }
     }
 
-
 </style>
 <template>
-    <div>
+    <div class="login-page">
         <div class="login-bg clearfix">
             <div class="bg-box">
                 <div class="cylinder orange1"></div>

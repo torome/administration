@@ -114,8 +114,11 @@ body.hold-transition {
 
 .content {
   min-height: 250px;
-  padding: 15px;
+  padding: 20px;
   .container-fixed(@grid-gutter-width);
+  & > .box:last-child {
+    margin-bottom: 0;
+  }
 }
 
 h1,
