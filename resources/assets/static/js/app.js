@@ -155,7 +155,6 @@ $(function () {
   // Set up the object
   _init()
   // Activate the layout maker
-  $.AdminLTE.layout.activate()
   // Enable sidebar tree view controls
   $.AdminLTE.tree('.sidebar')
   // Enable control sidebar
@@ -210,80 +209,6 @@ $(function () {
  */
 function _init () {
   'use strict'
-  /* Layout
-   * ======
-   * Fixes the layout height in case min-height fails.
-   *
-   * @type Object
-   * @usage $.AdminLTE.layout.activate()
-   *        $.AdminLTE.layout.fix()
-   *        $.AdminLTE.layout.fixSidebar()
-   */
-  $.AdminLTE.layout = {
-    activate: function () {
-      var _this = this
-      _this.fix()
-      _this.fixSidebar()
-      $('body, html, .wrapper').css('height', 'auto')
-      $(window, '.wrapper').resize(function () {
-        _this.fix()
-        _this.fixSidebar()
-      })
-    },
-    fix: function () {
-      //  Remove overflow from .wrapper if layout-boxed exists
-      $('.layout-boxed > .wrapper').css('overflow', 'hidden')
-      // Get window height and the wrapper height
-      var neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight()
-      var windowHeight = $(window).height()
-      var sidebarHeight = $('.sidebar').height()
-      // Set the min-height of the content and sidebar based on the
-      // the height of the document.
-      if ($('body').hasClass('fixed')) {
-        $('.content-wrapper, .right-side').css('min-height', windowHeight - $('.main-footer').outerHeight())
-      } else {
-        var postSetWidth
-        if (windowHeight >= sidebarHeight) {
-          $('.content-wrapper, .right-side').css('min-height', windowHeight - neg)
-          postSetWidth = windowHeight - neg
-        } else {
-          $('.content-wrapper, .right-side').css('min-height', sidebarHeight)
-          postSetWidth = sidebarHeight
-        }
-        // Fix for the control sidebar height
-        var controlSidebar = $($.AdminLTE.options.controlSidebarOptions.selector)
-        if (typeof controlSidebar !== 'undefined') {
-          if (controlSidebar.height() > postSetWidth) {
-            $('.content-wrapper, .right-side').css('min-height', controlSidebar.height())
-          }
-        }
-      }
-    },
-    fixSidebar: function () {
-      // Make sure the body tag has the .fixed class
-      if (!$('body').hasClass('fixed')) {
-        if (typeof $.fn.slimScroll !== 'undefined') {
-          $('.sidebar').slimScroll({destroy: true}).height('auto')
-        }
-        return
-      } else if (typeof $.fn.slimScroll === 'undefined' && window.console) {
-        window.console.error('Error: the fixed layout requires the slimscroll plugin!')
-      }
-      // Enable slimscroll for fixed layout
-      if ($.AdminLTE.options.sidebarSlimScroll) {
-        if (typeof $.fn.slimScroll !== 'undefined') {
-          // Destroy if it exists
-          $('.sidebar').slimScroll({destroy: true}).height('auto')
-          // Add slimscroll
-          $('.sidebar').slimscroll({
-            height: ($(window).height() - $('.main-header').height()) + 'px',
-            color: 'rgba(0,0,0,0.2)',
-            size: '3px'
-          })
-        }
-      }
-    }
-  }
   /* PushMenu()
    * ==========
    * Adds the push menu functionality to the sidebar.

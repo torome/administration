@@ -1,5 +1,6 @@
 <script>
   import { mapState } from 'vuex'
+  import { fixStyle } from '../../libraries/notadd'
 
   export default {
     computed: mapState([
@@ -11,6 +12,9 @@
           show: false
         })
       }
+    },
+    mounted () {
+      fixStyle()
     }
   }
 </script>
