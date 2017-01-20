@@ -14,7 +14,7 @@
         if (this.errors.any()) {
           return false
         }
-        this.$http.post('http://notadd.io/admin/token', {
+        this.$http.post(window.url + '/token', {
           name: this.username,
           password: this.password
         }).then(function (response) {

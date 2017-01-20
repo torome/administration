@@ -18,7 +18,7 @@
           editor.setAttribute('id', 'ueditor')
           this.$el.appendChild(editor)
           const language = global.document.createElement('script')
-          language.setAttribute('src', 'http://notadd.io/assets/ueditor/lang/zh-cn/zh-cn.js')
+          language.setAttribute('src', window.asset + '/ueditor/lang/zh-cn/zh-cn.js')
           this.$el.appendChild(language)
           language.onload = () => {
             let ue = window.UE.getEditor('ueditor')
