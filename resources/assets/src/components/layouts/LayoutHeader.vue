@@ -14,6 +14,8 @@
     },
     methods: {
       logout: function () {
+        window.localStorage.clear()
+        this.$router.go('login')
       }
     },
     props: [
