@@ -149,20 +149,18 @@
     .border-top-radius(0);
     padding: 1px 0 0 0;
     border-top-width: 0;
-    width: 280px;
+    width: 320px;
     &,
     > .user-body {
       .border-bottom-radius(4px);
     }
     > li.user-header {
-      height: 175px;
-      padding: 10px;
+      padding: 40px;
       text-align: center;
       > img {
         z-index: 5;
         height: 90px;
         width: 90px;
-        border: 3px solid;
         border-color: transparent;
         border-color: rgba(255, 255, 255, 0.2);
       }
@@ -172,6 +170,9 @@
         color: rgba(255, 255, 255, 0.8);
         font-size: 17px;
         margin-top: 10px;
+        &:first-child {
+          margin-top: 20px;
+        }
         > small {
           display: block;
           font-size: 12px;
