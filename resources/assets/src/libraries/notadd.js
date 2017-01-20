@@ -9,6 +9,37 @@
 import $ from 'jquery'
 import sortable from 'html5sortable'
 
+let _fixMenu = function (menu) {
+  let animationSpeed = 500
+  $(document).off('click', menu + ' li a')
+  .on('click', menu + ' li a', function (e) {
+    let $this = $(this)
+    let checkElement = $this.next()
+
+    if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible')) && (!$('body').hasClass('sidebar-collapse'))) {
+      checkElement.slideUp(animationSpeed, function () {
+        checkElement.removeClass('menu-open')
+      })
+      checkElement.parent('li').removeClass('active')
+    } else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {
+      let parent = $this.parents('ul').first()
+      let ul = parent.find('ul:visible').slideUp(animationSpeed)
+      ul.removeClass('menu-open')
+      let parentLi = $this.parent('li')
+
+      checkElement.slideDown(animationSpeed, function () {
+        checkElement.addClass('menu-open')
+        parent.find('li.active').removeClass('active')
+        parentLi.addClass('active')
+        _fixStyle()
+      })
+    }
+    if (checkElement.is('.treeview-menu')) {
+      e.preventDefault()
+    }
+  })
+}
+
 let _fixStyle = function () {
   $('body, html, .wrapper').css('height', 'auto')
   $('.layout-boxed > .wrapper').css('overflow', 'hidden')
@@ -59,6 +90,7 @@ let _fixStyle = function () {
   }
 }
 
+export const fixMenu = _fixMenu
 export const fixStyle = _fixStyle
 
 export default {
@@ -68,6 +100,8 @@ export default {
     if (_this.installed) {
       return
     }
+
+    _fixMenu('.sidebar')
 
     $(window, '.wrapper').resize(function () {
       _fixStyle()
