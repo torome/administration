@@ -69,6 +69,8 @@
         overflow: hidden;
     }
     .box-header > .box-search > .input-group-btn > .btn {
+        padding-bottom: 6px;
+        padding-top: 6px;
         width: 60px;
     }
     .box-header > .box-extend {

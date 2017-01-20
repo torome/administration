@@ -76,7 +76,7 @@
     }
 </style>
 <template>
-    <header class="main-header">
+    <header class="main-header hidden-xs">
         <router-link class="logo" to="/">
             <span class="logo-mini"></span>
             <span class="logo-lg">管理后台</span>
