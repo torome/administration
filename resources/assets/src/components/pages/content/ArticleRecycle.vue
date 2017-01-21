@@ -39,8 +39,8 @@
     }
     .box-body > .table > tbody > tr > td:last-child > .btn {
         border-radius: 4px;
-        padding-left: 10px;
-        padding-right: 10px;
+        letter-spacing: 0;
+        padding: 5px 12px;
     }
     .box-footer {
         text-align: right;
