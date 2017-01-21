@@ -9,27 +9,20 @@
       Editor,
       Tags
     },
-    computed: {
-      content: {
-        get () {
-          return ''
-        },
-        set (val) {
-          this.contentValue = val
-        }
+    data () {
+      return {
+        content: 'This is Text!',
+        tags: [
+          'new',
+          'old',
+          'that',
+          'this'
+        ]
       }
-    },
-    data: {
-      contentValue: '',
-      tags: [
-        'new',
-        'old',
-        'that',
-        'this'
-      ]
     },
     methods: {
       submit: function (e) {
+        console.log(this.content)
         this.$validator.validateAll()
         if (this.errors.any()) {
           return false
@@ -38,6 +31,14 @@
     },
     mounted () {
       this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
+    },
+    watch: {
+      content: {
+        deep: true,
+        handler: function () {
+          console.log('ContentValue')
+        }
+      }
     }
   }
 </script>
@@ -78,7 +79,7 @@
                     </div>
                     <div class="form-group">
                         <label>内容</label>
-                        <editor height="400" width="100%" :content="content"></editor>
+                        <editor height="400" width="100%" v-model="content" :content="content"></editor>
                     </div>
                     <button class="btn btn-primary" @click="submit">保存</button>
                 </div>
