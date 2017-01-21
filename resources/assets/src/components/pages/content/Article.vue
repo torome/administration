@@ -2,7 +2,83 @@
   export default {
     created () {
     },
-    computed: {
+    data () {
+      return {
+        list: [
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          },
+          {
+            id: 29,
+            title: 'Everything is Article',
+            date: '2017年1月12日',
+            category: 'Notadd'
+          }
+        ]
+      }
     },
     methods: {
       submit: function (e) {
@@ -193,133 +269,13 @@
                     <col class="col-md-2">
                 </colgroup>
                 <tbody>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
+                    <tr v-for="article in list">
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.category }}</td>
+                        <td>{{ article.date }}</td>
                         <td>
                             <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Everything is Article</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
-                        <td>
-                            <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
+                            <router-link :to="'/content/article/' + article.id + '/edit'" class="btn btn-info btn-sm">编辑</router-link>
                             <button class="btn btn-danger btn-sm">删除</button>
                         </td>
                     </tr>
