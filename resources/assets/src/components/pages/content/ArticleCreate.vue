@@ -5,7 +5,18 @@
     components: {
       Editor
     },
-    created () {
+    computed: {
+      content: {
+        get () {
+          return ''
+        },
+        set (val) {
+          this.contentValue = val
+        }
+      }
+    },
+    data: {
+      contentValue: ''
     },
     computed: {},
     methods: {
@@ -27,7 +38,7 @@
         <div class="col-md-8">
             <div class="box box-solid">
                 <div class="box-body">
-                    <editor></editor>
+                        <editor height="400" width="100%" :content="content"></editor>
                 </div>
             </div>
         </div>
