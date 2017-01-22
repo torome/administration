@@ -42,7 +42,7 @@
           source: this.source
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
-            window.alert('创建文章成功！')
+            window.alert(response.body.message)
           }
         }, function (response) {
           console.log(response.body)
@@ -91,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <label>内容</label>
-                        <editor height="400" width="100%" v-model="content" content="content"></editor>
+                        <editor height="400" width="100%" v-model="content"></editor>
                     </div>
                     <button class="btn btn-primary" @click="submit" :disabled="errors.any()">保存</button>
                 </div>

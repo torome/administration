@@ -1,5 +1,10 @@
 <script>
   export default {
+    data () {
+      return {
+        list: []
+      }
+    },
     methods: {
       submit: function (e) {
         this.$validator.validateAll()
@@ -9,7 +14,12 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
+      this.$store.commit('title', '全部页面 - 页面 - Notadd Administration')
+      this.$http.post(window.api + '/page/fetch').then(function (response) {
+        this.list = response.body.data
+      }, function (response) {
+        console.log(response.body)
+      })
     }
   }
 </script>
@@ -130,6 +140,21 @@
         color: #ef5151;
     }
 
+    .box-header > .box-extend > .btn-create {
+        background: #3498db;
+        color: #ffffff;
+        letter-spacing: 0;
+    }
+
+    .box-header > .box-extend > .btn-create:hover {
+        background: #258cd1;
+    }
+
+    .box-header > .box-extend > .btn-create:active,
+    .box-header > .box-extend > .btn-create:focus {
+        background: #2b7cb3;
+    }
+
     .box-body > .table > tbody > tr > td:last-child > .btn-danger:hover,
     .box-header > .box-extend > .btn-danger:hover {
         background-color: #ef5151;
@@ -182,9 +207,10 @@
                 </div>
             </div>
             <div class="box-extend">
-                <button class="btn btn-primary">全选</button>
-                <button class="btn btn-primary" disabled>反选</button>
-                <button class="btn btn-danger">删除</button>
+                <router-link to="page/create" class="btn btn-primary btn-create">添加页面</router-link>
+                <!--<button class="btn btn-primary">全选</button>-->
+                <!--<button class="btn btn-primary" disabled>反选</button>-->
+                <!--<button class="btn btn-danger">删除</button>-->
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
@@ -196,147 +222,27 @@
                     <col class="col-md-2">
                 </colgroup>
                 <tbody>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Everything is Page</td>
-                    <td>Notadd</td>
-                    <td>2017年1月12日</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <button class="btn btn-info btn-sm">编辑</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Everything is Page</td>
+                        <td>Notadd</td>
+                        <td>2017年1月12日</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm">查看</button>
+                            <button class="btn btn-info btn-sm">编辑</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <div class="box-footer">
-            <ul class="pagination no-margin">
-                <li><a href="#">上一页</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">下一页</a></li>
-            </ul>
+            <!--<ul class="pagination no-margin">-->
+                <!--<li><a href="#">上一页</a></li>-->
+                <!--<li class="active"><a href="#">1</a></li>-->
+                <!--<li><a href="#">2</a></li>-->
+                <!--<li><a href="#">3</a></li>-->
+                <!--<li><a href="#">下一页</a></li>-->
+            <!--</ul>-->
         </div>
     </div>
 </template>

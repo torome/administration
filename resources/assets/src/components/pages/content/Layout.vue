@@ -30,7 +30,7 @@
                 text: '分类管理',
                 icon: 'fa fa-circle-o',
                 uri: '/content/article/category'
-              },
+              }/* ,
               {
                 text: '标签管理',
                 icon: 'fa fa-circle-o',
@@ -45,7 +45,7 @@
                 text: '草稿箱',
                 icon: 'fa fa-circle-o',
                 uri: '/content/article/draft'
-              }
+              } */
             ]
           },
           {
@@ -57,12 +57,12 @@
                 text: '全部页面',
                 icon: 'fa fa-circle-o',
                 uri: '/content/page'
-              },
+              }/* ,
               {
                 text: '页面分类',
                 icon: 'fa fa-circle-o',
                 uri: '/content/page/category'
-              }
+              } */
             ]
           },
           {
@@ -76,7 +76,7 @@
                 uri: '/content/component'
               }
             ]
-          },
+          }/* ,
           {
             text: '模板管理',
             icon: 'fa fa-circle-o',
@@ -91,7 +91,7 @@
             text: '评论功能',
             icon: 'fa fa-circle-o',
             uri: '/content/comment'
-          }
+          } */
         ]
       }
     }
