@@ -25,7 +25,6 @@
           enabled: this.enabled,
           title: this.title
         }).then(function (response) {
-          console.log(response.body)
           if (response.body.data.id && response.body.data.id > 0) {
             window.alert(response.body.message)
             this.$router.push('/content/page')
