@@ -21,7 +21,9 @@
           vm.summary = article.description
           vm.hidden = article.is_hidden
           vm.sticky = article.is_sticky
-          vm.tags = article.keyword.split(',')
+          if (article.keyword.length) {
+            vm.tags = article.keyword.split(',')
+          }
           vm.source = {
             author: article['source_author'],
             link: article['source_link']

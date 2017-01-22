@@ -1,13 +1,21 @@
 <script>
   export default {
-    created () {
-    },
     data () {
       return {
         list: []
       }
     },
     methods: {
+      remove: function (id) {
+        this.$http.post(window.api + '/article/delete', {
+          id: id
+        }).then(function (response) {
+          window.alert(response.body.message)
+          this.$router.go('login')
+        }, function (response) {
+          console.log(response)
+        })
+      },
       submit: function (e) {
         this.$validator.validateAll()
         if (this.errors.any()) {
@@ -216,11 +224,11 @@
             </div>
             <div class="box-extend">
                 <router-link to="article/create" class="btn btn-primary btn-create">添加文章</router-link>
-                <button class="btn btn-primary">全选</button>
-                <button class="btn btn-primary" disabled>反选</button>
-                <router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>
-                <button class="btn btn-danger">删除</button>
-                <button class="btn btn-danger">彻底删除</button>
+                <!--<button class="btn btn-primary">全选</button>-->
+                <!--<button class="btn btn-primary" disabled>反选</button>-->
+                <!--<router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>-->
+                <!--<button class="btn btn-danger">删除</button>-->
+                <!--<button class="btn btn-danger">彻底删除</button>-->
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
@@ -240,20 +248,20 @@
                         <button class="btn btn-primary btn-sm">查看</button>
                         <router-link :to="'/content/article/' + article.id + '/edit'" class="btn btn-info btn-sm">编辑
                         </router-link>
-                        <button class="btn btn-danger btn-sm">删除</button>
+                        <button class="btn btn-danger btn-sm" @click="remove(article.id)">删除</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="box-footer">
-            <ul class="pagination no-margin">
-                <li><a href="#">上一页</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">下一页</a></li>
-            </ul>
+            <!--<ul class="pagination no-margin">-->
+                <!--<li><a href="#">上一页</a></li>-->
+                <!--<li class="active"><a href="#">1</a></li>-->
+                <!--<li><a href="#">2</a></li>-->
+                <!--<li><a href="#">3</a></li>-->
+                <!--<li><a href="#">下一页</a></li>-->
+            <!--</ul>-->
         </div>
     </div>
 </template>

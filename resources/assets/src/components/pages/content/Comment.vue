@@ -1,8 +1,5 @@
 <script>
   export default {
-    created () {
-    },
-    computed: {},
     methods: {
       submit: function (e) {
         this.$validator.validateAll()

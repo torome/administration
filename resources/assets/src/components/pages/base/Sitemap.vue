@@ -1,7 +1,5 @@
 <script>
   export default {
-    created () {
-    },
     computed: {
       enableXmlMap: {
         get () {

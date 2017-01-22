@@ -1,7 +1,5 @@
 <script>
   export default {
-    created () {
-    },
     computed: {
       protocol: {
         get () {
