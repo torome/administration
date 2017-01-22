@@ -11,6 +11,7 @@
           id: id
         }).then(function (response) {
           window.alert(response.body.message)
+          this.$router.push('/content/article')
         }, function (response) {
           console.log(response)
         })

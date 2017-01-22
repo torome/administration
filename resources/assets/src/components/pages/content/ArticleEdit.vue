@@ -65,7 +65,8 @@
           title: this.title,
           source: this.source
         }).then(function (response) {
-          window.alert('保存成功！')
+          window.alert(response.body.message)
+          this.$router.push('/content/article')
         }, function (response) {
           console.log(response.body)
         })
