@@ -2,7 +2,6 @@
   import DatePicker from 'vuejs-datepicker'
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
-
   export default {
     components: {
       DatePicker,
@@ -11,14 +10,18 @@
     },
     data () {
       return {
-        date: '2017-01-20',
         content: 'This is Text!',
+        date: '',
+        hidden: '0',
+        source: {
+          link: 'http://notadd.com/source/link',
+          title: 'This is Source Title!'
+        },
+        sticky: '0',
+        summary: 'This is Summary!',
         tags: [
-          'new',
-          'old',
-          'that',
-          'this'
-        ]
+        ],
+        title: 'This is Title!'
       }
     },
     methods: {
@@ -28,23 +31,46 @@
         if (this.errors.any()) {
           return false
         }
+        this.$http.post(window.api + '/article/create', {
+          content: this.content,
+          date: this.date,
+          hidden: this.hidden,
+          sticky: this.sticky,
+          summary: this.summary,
+          tags: this.tags,
+          title: this.title,
+          source: this.source
+        }).then(function (response) {
+          console.log(response.body)
+        }, function (response) {
+          console.log(response.body)
+        })
       }
     },
     mounted () {
       this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
+      console.log(Date.now())
     },
     watch: {
       content: {
-        deep: true,
         handler: function () {
           console.log(arguments)
-          console.log('ContentValue')
         }
       },
       date: {
+        handler: function () {
+          console.log(arguments)
+        }
+      },
+      source: {
         deep: true,
         handler: function () {
-          console.log('Date')
+          console.log(arguments)
+        }
+      },
+      tags: {
+        handler: function () {
+          console.log(arguments)
         }
       }
     }
@@ -77,19 +103,19 @@
         <div class="col-md-8">
             <div class="box box-solid">
                 <div class="box-body article-main">
-                    <div class="form-group">
+                    <div class="form-group" :class="{ 'has-error': errors.has('title') }">
                         <label>标题</label>
-                        <input type="text" class="form-control" placeholder="请在此输入标题">
+                        <input class="form-control" name="title" placeholder="请在此输入标题" type="text" v-model="title" v-validate data-vv-rules="required">
                     </div>
                     <div class="form-group">
                         <label>摘要</label>
-                        <textarea name="" class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" v-model="summary"></textarea>
                     </div>
                     <div class="form-group">
                         <label>内容</label>
                         <editor height="400" width="100%" v-model="content" :content="content"></editor>
                     </div>
-                    <button class="btn btn-primary" @click="submit">保存</button>
+                    <button class="btn btn-primary" @click="submit" :disabled="errors.any()">保存</button>
                 </div>
             </div>
         </div>
@@ -102,36 +128,53 @@
                             <div class="col-md-8">
                                 <button class="btn btn-primary"><i class="fa fa-image"></i>上传图片</button>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">置顶</label>
-                                <div class="col-md-8">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">置顶</label>
+                            <div class="col-md-8">
+                                <div class="btn-group btn-switch">
+                                    <label class="btn btn-primary" :class="{ active: hidden === '1' }">
+                                        <input type="radio" v-model="hidden" value="1"> 开启
+                                    </label>
+                                    <label class="btn btn-primary" :class="{ active: hidden === '0' }">
+                                        <input type="radio" v-model="hidden" value="0"> 关闭
+                                    </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">隐藏</label>
-                                <div class="col-md-8">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">隐藏</label>
+                            <div class="col-md-8">
+                                <div class="btn-group btn-switch">
+                                    <label class="btn btn-primary" :class="{ active: sticky === '1' }">
+                                        <input type="radio" v-model="sticky" value="1"> 开启
+                                    </label>
+                                    <label class="btn btn-primary" :class="{ active: sticky === '0' }">
+                                        <input type="radio" v-model="sticky" value="0"> 关闭
+                                    </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">发布时间</label>
-                                <div class="col-md-8">
-                                    <date-picker format="yyyy-MM-dd" language="zh" input-class="form-control" v-model="date"></date-picker>
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">发布时间</label>
+                            <div class="col-md-8">
+                                <date-picker format="yyyy-MM-dd" language="zh" input-class="form-control"
+                                             v-model="date"></date-picker>
                             </div>
-                            <div class="form-group">
-                                <tags placeholder="添加标签" :tags="tags"></tags>
+                        </div>
+                        <div class="form-group">
+                            <tags placeholder="添加标签" :tags="tags"></tags>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">来源</label>
+                            <div class="col-md-8">
+                                <input class="form-control" v-model="source.title">
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">来源</label>
-                                <div class="col-md-8">
-                                    <input class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">来源链接</label>
-                                <div class="col-md-8">
-                                    <input class="form-control">
-                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">来源链接</label>
+                            <div class="col-md-8">
+                                <input class="form-control" v-model="source.link">
                             </div>
                         </div>
                     </div>
