@@ -14,8 +14,8 @@
         date: '',
         hidden: '0',
         source: {
-          link: 'http://notadd.com/source/link',
-          title: 'This is Source Title!'
+          author: 'This is Source Author!',
+          link: 'http://notadd.com/source/link'
         },
         sticky: '0',
         summary: 'This is Summary!',
@@ -41,7 +41,9 @@
           title: this.title,
           source: this.source
         }).then(function (response) {
-          console.log(response.body)
+          if (response.body.data.id && response.body.data.id > 0) {
+            this.$router.go('article')
+          }
         }, function (response) {
           console.log(response.body)
         })
@@ -49,28 +51,23 @@
     },
     mounted () {
       this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
-      console.log(Date.now())
     },
     watch: {
       content: {
         handler: function () {
-          console.log(arguments)
         }
       },
       date: {
         handler: function () {
-          console.log(arguments)
         }
       },
       source: {
         deep: true,
         handler: function () {
-          console.log(arguments)
         }
       },
       tags: {
         handler: function () {
-          console.log(arguments)
         }
       }
     }
@@ -168,7 +165,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">来源</label>
                             <div class="col-md-8">
-                                <input class="form-control" v-model="source.title">
+                                <input class="form-control" v-model="source.author">
                             </div>
                         </div>
                         <div class="form-group">
