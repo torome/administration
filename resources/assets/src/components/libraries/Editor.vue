@@ -37,14 +37,11 @@
             })
 
             ue.addListener('contentChange', () => {
-              this.$emit('change', ue.getContent())
+              this.$emit('input', ue.getContent())
             })
           }
         }
       }
-      this.$on('change', function (content) {
-        this.$parent.content = content
-      })
     },
     props: {
       content: {

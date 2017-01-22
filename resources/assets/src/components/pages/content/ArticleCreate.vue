@@ -11,6 +11,7 @@
     },
     data () {
       return {
+        date: '2017-01-20',
         content: 'This is Text!',
         tags: [
           'new',
@@ -36,7 +37,14 @@
       content: {
         deep: true,
         handler: function () {
+          console.log(arguments)
           console.log('ContentValue')
+        }
+      },
+      date: {
+        deep: true,
+        handler: function () {
+          console.log('Date')
         }
       }
     }
@@ -107,7 +115,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">发布时间</label>
                                 <div class="col-md-8">
-                                    <date-picker format="yyyy-MM-dd" language="zh" input-class="form-control" value="2017-09-23"></date-picker>
+                                    <date-picker format="yyyy-MM-dd" language="zh" input-class="form-control" v-model="date"></date-picker>
                                 </div>
                             </div>
                             <div class="form-group">
