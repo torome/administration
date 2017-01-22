@@ -14,6 +14,7 @@
     window.api = "{{ url('api') }}";
     window.asset = "{{ asset('assets') }}";
     window.url = "{{ url('admin') }}";
+    window.UEDITOR_HOME_URL = "{{ asset('assets/ueditor') }}/";
 </script>
 <script src="{{ asset('/assets/admin/js/manifest.js') }}"></script>
 <script src="{{ asset('/assets/admin/js/vendor.js') }}"></script>
