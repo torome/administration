@@ -222,13 +222,13 @@
                     <col class="col-md-2">
                 </colgroup>
                 <tbody>
-                    <tr>
-                        <td>Everything is Page</td>
-                        <td>Notadd</td>
-                        <td>2017年1月12日</td>
+                    <tr v-for="page in list">
+                        <td>{{ page.title }}</td>
+                        <td></td>
+                        <td>{{ page.created_at }}</td>
                         <td>
                             <button class="btn btn-primary btn-sm">查看</button>
-                            <button class="btn btn-info btn-sm">编辑</button>
+                            <router-link class="btn btn-info btn-sm" :to="'page/' + page.id + '/edit'">编辑</router-link>
                             <button class="btn btn-danger btn-sm">删除</button>
                         </td>
                     </tr>
