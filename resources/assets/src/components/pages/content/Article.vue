@@ -11,7 +11,6 @@
           id: id
         }).then(function (response) {
           window.alert(response.body.message)
-          this.$router.go('login')
         }, function (response) {
           console.log(response)
         })

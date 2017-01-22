@@ -6,6 +6,16 @@
       }
     },
     methods: {
+      remove: function (id) {
+        this.$http.post(window.api + '/page/delete', {
+          id: id
+        }).then(function (response) {
+          window.alert(response.body.message)
+          this.$router.push('page')
+        }, function (response) {
+          console.log(response)
+        })
+      },
       submit: function (e) {
         this.$validator.validateAll()
         if (this.errors.any()) {
@@ -229,7 +239,7 @@
                         <td>
                             <button class="btn btn-primary btn-sm">查看</button>
                             <router-link class="btn btn-info btn-sm" :to="'page/' + page.id + '/edit'">编辑</router-link>
-                            <button class="btn btn-danger btn-sm">删除</button>
+                            <button class="btn btn-danger btn-sm" @click="remove(page.id)">删除</button>
                         </td>
                     </tr>
                 </tbody>
