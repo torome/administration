@@ -4,80 +4,7 @@
     },
     data () {
       return {
-        list: [
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          }
-        ]
+        list: []
       }
     },
     methods: {
@@ -90,6 +17,11 @@
     },
     mounted () {
       this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
+      this.$http.post(window.api + '/article/fetch').then(function (response) {
+        this.list = response.body.data
+      }, function (response) {
+        console.log(response)
+      })
     }
   }
 </script>
@@ -303,7 +235,7 @@
                 <tr v-for="article in list">
                     <td>{{ article.title }}</td>
                     <td>{{ article.category }}</td>
-                    <td>{{ article.date }}</td>
+                    <td>{{ article.created_at }}</td>
                     <td>
                         <button class="btn btn-primary btn-sm">查看</button>
                         <router-link :to="'/content/article/' + article.id + '/edit'" class="btn btn-info btn-sm">编辑

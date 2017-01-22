@@ -2,6 +2,7 @@
   import DatePicker from 'vuejs-datepicker'
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
+
   export default {
     components: {
       DatePicker,
@@ -10,18 +11,17 @@
     },
     data () {
       return {
-        content: 'This is Text!',
+        content: '',
         date: '',
         hidden: '0',
         source: {
-          author: 'This is Source Author!',
-          link: 'http://notadd.com/source/link'
+          author: '',
+          link: ''
         },
         sticky: '0',
-        summary: 'This is Summary!',
-        tags: [
-        ],
-        title: 'This is Title!'
+        summary: '',
+        tags: [],
+        title: ''
       }
     },
     methods: {
@@ -42,7 +42,7 @@
           source: this.source
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
-            this.$router.go('article')
+            window.alert('创建文章成功！')
           }
         }, function (response) {
           console.log(response.body)
@@ -51,25 +51,6 @@
     },
     mounted () {
       this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
-    },
-    watch: {
-      content: {
-        handler: function () {
-        }
-      },
-      date: {
-        handler: function () {
-        }
-      },
-      source: {
-        deep: true,
-        handler: function () {
-        }
-      },
-      tags: {
-        handler: function () {
-        }
-      }
     }
   }
 </script>
@@ -110,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <label>内容</label>
-                        <editor height="400" width="100%" v-model="content" :content="content"></editor>
+                        <editor height="400" width="100%" v-model="content" content="content"></editor>
                     </div>
                     <button class="btn btn-primary" @click="submit" :disabled="errors.any()">保存</button>
                 </div>
@@ -160,7 +141,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <tags placeholder="添加标签" :tags="tags"></tags>
+                            <tags placeholder="添加标签" v-model="tags" :tags="tags"></tags>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label">来源</label>
