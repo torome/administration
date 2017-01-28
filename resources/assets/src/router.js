@@ -99,7 +99,7 @@ export default new VueRouter({
               beforeEnter: requireAuth
             },
             {
-              path: 'article',
+              path: 'article/all',
               component: ContentArticle,
               beforeEnter: requireAuth
             },

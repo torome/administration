@@ -24,7 +24,7 @@
               {
                 text: '全部文章',
                 icon: 'fa fa-circle-o',
-                uri: '/content/article'
+                uri: '/content/article/all'
               },
               {
                 text: '分类管理',
