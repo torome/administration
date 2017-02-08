@@ -559,7 +559,7 @@
 
     .cylinder-xs.bluexs1:before {
         content: '';
-        height: 37.5px;
+        height: 38px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
@@ -655,7 +655,7 @@
 
     .cylinder-xs.bluexs5:before {
         content: '';
-        height: 34.5px;
+        height: 35px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
@@ -679,7 +679,7 @@
 
     .cylinder-xs.bluexs6:before {
         content: '';
-        height: 25.5px;
+        height: 26px;
         width: 100%;
         border-radius: 50%;
         position: absolute;
@@ -824,7 +824,7 @@
         </div>
         <div class="container">
             <div class="login-win">
-                <h3>Notadd Administration</h3>
+                <h3>Notadd 后台管理</h3>
                 <div class="account ">
                     <label for="login-account" class="sr-only">登录</label>
                     <input name="username" type="text" id="login-account" placeholder="登录" v-model="username" v-validate data-vv-rules="required">
