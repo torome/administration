@@ -101,10 +101,15 @@
     mounted () {
       let _this = this
       _this.$store.commit('title', '分类管理 - 文章 - Notadd Administration')
+    },
+    updated () {
+      let _this = this
       let sort = this.$jquery(this.$el).find('ul, ol').sortable({
-        connectWith: 'category'
+        connectWith: 'article-category'
       })
+      console.log(sort)
       _this.$jquery(sort).each(function (key, item) {
+        console.log(item)
         if (parseInt(key) === 0) {
           _this.$jquery(item).on('sortupdate', function (e) {
             let _detail = e.detail
