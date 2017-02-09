@@ -22,7 +22,6 @@
           alias: '',
           background_color: '',
           background_image: '',
-          color: '',
           description: '',
           enabled: '',
           id: 0,
@@ -40,25 +39,44 @@
     },
     methods: {
       create: function () {
-        this.modal.color = ''
+        this.modal.alias = ''
+        this.modal.background_color = ''
+        this.modal.background_image = ''
         this.modal.description = ''
+        this.modal.enabled = ''
+        this.modal.id = 0
         this.modal.link = ''
         this.modal.name = ''
+        this.modal.pattern = 'create'
+        this.modal.pagination = 30
+        this.modal.seo_title = ''
+        this.modal.seo_keyword = ''
+        this.modal.seo_description = ''
         this.modal.title = '创建分类'
-        this.$refs.theModal.open()
+        this.modal.top_image = ''
+        this.$refs.modal.open()
       },
       edit: function (item) {
-        this.modal.id = item.id
-        this.modal.color = item.color
+        this.modal.alias = item.alias
+        this.modal.background_color = item.background_color
+        this.modal.background_image = item.background_image
         this.modal.description = item.description
-        this.modal.name = item.text
-        this.modal.title = '编辑分类：' + item.text
+        this.modal.enabled = item.enabled
+        this.modal.id = item.id
+        this.modal.link = item.link
+        this.modal.name = item.title
         this.modal.pattern = 'edit'
-        this.$refs.theModal.open()
+        this.modal.pagination = 30
+        this.modal.seo_title = item.seo_title
+        this.modal.seo_keyword = item.seo_keyword
+        this.modal.seo_description = item.seo_description
+        this.modal.title = '编辑分类：' + item.title
+        this.modal.top_image = item.top_image
+        this.$refs.modal.open()
       },
       remove: function () {
         if (this.modal.pattern === 'create') {
-          this.$refs.theModal.close()
+          this.$refs.modal.close()
         }
         if (this.modal.pattern === 'edit') {
           this.$http.post(window.api + '/category/edit', this.modal).then(function (response) {
@@ -67,10 +85,16 @@
         }
       },
       submit: function (e) {
-        if (this.modal.pattern === 'create') {
-          console.log('分类创建模式')
-        } else if (this.modal.pattern === 'edit') {
-          console.log('分类编辑模式')
+        let _this = this
+        if (_this.modal.pattern === 'create') {
+          _this.$http.post(window.api + '/category/create', this.modal).then(function (response) {
+            _this.items = response.body.data
+            _this.$refs.modal.close()
+          }, function (response) {
+            console.log(response.body)
+          })
+        }
+        if (_this.modal.pattern === 'edit') {
         }
       }
     },
@@ -83,33 +107,29 @@
       let sort = this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })
-      _this.$jquery(sort).each(function (key, item) {
-        if (parseInt(key) === 0) {
-          _this.$jquery(item).on('sortstop', function () {
-            const order = _this.$jquery('ul.list-group > li').map(function () {
+      _this.$jquery(sort).first().on('sortstop', function () {
+        const order = _this.$jquery('ul.list-group > li').map(function () {
+          return {
+            id: _this.$jquery(this).data('id'),
+            children: _this.$jquery(this).children('ol').children('li').map(function () {
               return {
                 id: _this.$jquery(this).data('id'),
-                children: _this.$jquery(this).children('ol').children('li').map(function () {
+                children: _this.$jquery(this).find('li').map(function () {
                   return {
-                    id: _this.$jquery(this).data('id'),
-                    children: _this.$jquery(this).find('li').map(function () {
-                      return {
-                        id: _this.$jquery(this).data('id')
-                      }
-                    })
+                    id: _this.$jquery(this).data('id')
                   }
-                }).get()
+                })
               }
             }).get()
-            _this.$http.post(window.api + '/category/sort', {
-              data: order
-            }).then(function (response) {
-              console.log(response.body)
-            }, function (response) {
-              console.log(response.body)
-            })
-          })
-        }
+          }
+        }).get()
+        _this.$http.post(window.api + '/category/sort', {
+          data: order
+        }).then(function (response) {
+          console.log(response.body)
+        }, function (response) {
+          console.log(response.body)
+        })
       })
     }
   }
@@ -214,24 +234,24 @@
                     <ul class="list-group">
                         <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">
-                                <em :style="{ background: item.color }"></em>
-                                <span>{{ item.text }}</span>
+                                <em :style="{ background: item.background_color }"></em>
+                                <span>{{ item.title }}</span>
                                 <i class="handle"></i>
                                 <button class="btn" @click="edit(item)"><i class="fa fa-fw fa-pencil"></i></button>
                             </div>
                             <ol class="list-group">
                                 <li class="list-group-item clear-fix" v-for="sub in item.subs" :data-id="sub.id">
                                     <div class="list-group-item-content">
-                                        <em :style="{ background: sub.color }"></em>
-                                        <span>{{ sub.text }}</span>
+                                        <em :style="{ background: sub.background_color }"></em>
+                                        <span>{{ sub.title }}</span>
                                         <i class="handle"></i>
                                         <button class="btn" @click="edit(sub)"><i class="fa fa-fw fa-pencil"></i></button>
                                     </div>
                                     <ol class="list-group">
                                         <li class="list-group-item clear-fix" v-for="child in sub.subs" :data-id="child.id">
                                             <div class="list-group-item-content">
-                                                <em :style="{ background: child.color }"></em>
-                                                <span>{{ child.text }}</span>
+                                                <em :style="{ background: child.background_color }"></em>
+                                                <span>{{ child.title }}</span>
                                                 <i class="handle"></i>
                                                 <button class="btn" @click="edit(child)"><i class="fa fa-fw fa-pencil"></i></button>
                                             </div>
@@ -247,7 +267,7 @@
         <div class="box-footer">
             <button class="btn btn-primary" @click="create">创建分类</button>
         </div>
-        <modal ref="theModal">
+        <modal ref="modal">
             <div slot="title">
                 <div class="modal-title">{{ modal.title }}</div>
             </div>
