@@ -11,7 +11,7 @@
           id: id
         }).then(function (response) {
           window.alert(response.body.message)
-          this.$router.push('page')
+          this.$router.push('/content/page')
         }, function (response) {
           console.log(response)
         })

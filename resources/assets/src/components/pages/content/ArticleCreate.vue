@@ -26,7 +26,6 @@
     },
     methods: {
       submit: function (e) {
-        console.log(this.content)
         this.$validator.validateAll()
         if (this.errors.any()) {
           return false
@@ -43,7 +42,7 @@
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
             window.alert(response.body.message)
-            this.$router.push('article')
+            this.$router.push('/content/article/all')
           }
         }, function (response) {
           console.log(response.body)

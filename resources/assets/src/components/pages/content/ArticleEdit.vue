@@ -66,7 +66,7 @@
           source: this.source
         }).then(function (response) {
           window.alert(response.body.message)
-          this.$router.push('/content/article')
+          this.$router.push('/content/article/all')
         }, function (response) {
           console.log(response.body)
         })
