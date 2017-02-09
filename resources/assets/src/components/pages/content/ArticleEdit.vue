@@ -3,6 +3,7 @@
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
   import Vue from 'vue'
+
   export default {
     components: {
       DatePicker,
@@ -19,8 +20,8 @@
           vm.date = article.created_at
           vm.content = article.content
           vm.summary = article.description
-          vm.hidden = article.is_hidden
-          vm.sticky = article.is_sticky
+          vm.hidden = article.is_hidden.toString()
+          vm.sticky = article.is_sticky.toString()
           if (article.keyword.length) {
             vm.tags = article.keyword.split(',')
           }
@@ -28,9 +29,10 @@
             author: article['source_author'],
             link: article['source_link']
           }
+          vm.$store.commit('title', '编辑文章：' + vm.title + ' - 文章 - Notadd Administration')
         })
       }, function (response) {
-        console.log(response)
+        window.alert('初始化失败！')
       })
     },
     data () {
@@ -71,9 +73,6 @@
           console.log(response.body)
         })
       }
-    },
-    mounted () {
-      this.$store.commit('title', '编辑文章 - 文章 - Notadd Administration')
     }
   }
 </script>
