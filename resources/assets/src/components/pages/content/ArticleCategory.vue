@@ -8,16 +8,19 @@
         next((vm) => {
           vm.items = [
             {
+              id: 1,
               text: '文章',
               description: '这是一个文章',
               color: '#cccccc',
               subs: [
                 {
+                  id: 2,
                   text: '子文章',
                   description: '这是一个文章',
                   color: '#cccccc'
                 },
                 {
+                  id: 3,
                   text: '子文章',
                   description: '这是一个文章',
                   color: '#cccccc'
@@ -25,21 +28,25 @@
               ]
             },
             {
+              id: 4,
               text: '文章',
               description: '这是一个文章',
               color: '#cccccc'
             },
             {
+              id: 5,
               text: '文章',
               description: '这是一个文章',
               color: '#cccccc',
               subs: [
                 {
+                  id: 6,
                   text: '子文章',
                   description: '这是一个文章',
                   color: '#cccccc'
                 },
                 {
+                  id: 7,
                   text: '子文章',
                   description: '这是一个文章',
                   color: '#cccccc'
@@ -61,6 +68,7 @@
         modal: {
           color: '',
           description: '',
+          id: 0,
           link: '',
           name: '',
           pattern: 'create',
@@ -78,6 +86,7 @@
         this.$refs.theModal.open()
       },
       edit: function (item) {
+        this.modal.id = item.id
         this.modal.color = item.color
         this.modal.description = item.description
         this.modal.name = item.text
@@ -102,13 +111,25 @@
       let sort = this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })
-      console.log(sort)
       _this.$jquery(sort).each(function (key, item) {
-        console.log(item)
         if (parseInt(key) === 0) {
-          _this.$jquery(item).on('sortupdate', function (e) {
-            let _detail = e.detail
-            console.log(_detail)
+          _this.$jquery(item).on('sortstop', function () {
+            const order = _this.$jquery('ul.list-group > li').map(function () {
+              return {
+                id: _this.$jquery(this).data('id'),
+                children: _this.$jquery(this).children('ol').children('li').map(function () {
+                  return {
+                    id: _this.$jquery(this).data('id'),
+                    children: _this.$jquery(this).find('li').map(function () {
+                      return {
+                        id: _this.$jquery(this).data('id')
+                      }
+                    })
+                  }
+                }).get()
+              }
+            }).get()
+            console.log(order)
           })
         }
       })
@@ -206,7 +227,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul class="list-group">
-                        <li class="list-group-item clear-fix" v-for="item in items">
+                        <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">
                                 <em :style="{ background: item.color }"></em>
                                 <span>{{ item.text }}</span>
@@ -214,7 +235,7 @@
                                 <button class="btn" @click="edit(item)"><i class="fa fa-fw fa-pencil"></i></button>
                             </div>
                             <ol class="list-group">
-                                <li class="list-group-item clear-fix" v-for="sub in item.subs">
+                                <li class="list-group-item clear-fix" v-for="sub in item.subs" :data-id="sub.id">
                                     <div class="list-group-item-content">
                                         <em :style="{ background: sub.color }"></em>
                                         <span>{{ sub.text }}</span>
@@ -222,7 +243,7 @@
                                         <button class="btn" @click="edit(sub)"><i class="fa fa-fw fa-pencil"></i></button>
                                     </div>
                                     <ol class="list-group">
-                                        <li class="list-group-item clear-fix" v-for="child in sub.subs">
+                                        <li class="list-group-item clear-fix" v-for="child in sub.subs" :data-id="child.id">
                                             <div class="list-group-item-content">
                                                 <em :style="{ background: child.color }"></em>
                                                 <span>{{ child.text }}</span>
