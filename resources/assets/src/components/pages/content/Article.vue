@@ -28,7 +28,7 @@
       this.$http.post(window.api + '/article/fetch').then(function (response) {
         this.list = response.body.data
       }, function (response) {
-        console.log(response)
+        console.log(response.body)
       })
     }
   }
@@ -223,7 +223,7 @@
                 </div>
             </div>
             <div class="box-extend">
-                <router-link to="article/create" class="btn btn-primary btn-create">添加文章</router-link>
+                <router-link to="/content/article/create" class="btn btn-primary btn-create">添加文章</router-link>
                 <!--<button class="btn btn-primary">全选</button>-->
                 <!--<button class="btn btn-primary" disabled>反选</button>-->
                 <!--<router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>-->
