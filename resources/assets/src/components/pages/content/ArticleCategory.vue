@@ -1,28 +1,39 @@
 <script>
   import Modal from 'vue2-bootstrap-modal'
+  import Vue from 'vue'
+
   export default {
+    beforeRouteEnter (to, from, next) {
+      Vue.http.post(window.api + '/article/fetch').then(function (response) {
+        next((vm) => {
+          vm.items = [
+            {
+              text: '文章',
+              description: '这是一个文章',
+              color: '#cccccc',
+            },
+            {
+              text: '文章',
+              description: '这是一个文章',
+              color: '#cccccc'
+            },
+            {
+              text: '文章',
+              description: '这是一个文章',
+              color: '#cccccc',
+            }
+          ]
+        })
+      }, function (response) {
+        window.alert('初始化失败！')
+      })
+    },
     components: {
       Modal
     },
     data () {
       return {
-        items: [
-          {
-            text: '文章',
-            description: '这是一个文章',
-            color: '#cccccc'
-          },
-          {
-            text: '文章',
-            description: '这是一个文章',
-            color: '#cccccc'
-          },
-          {
-            text: '文章',
-            description: '这是一个文章',
-            color: '#cccccc'
-          }
-        ],
+        items: [],
         modal: {
           color: '',
           description: '',
