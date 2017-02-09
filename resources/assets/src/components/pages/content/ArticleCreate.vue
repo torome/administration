@@ -92,7 +92,7 @@
                     </div>
                     <div class="form-group">
                         <label>内容</label>
-                        <editor height="400" width="100%" v-model="content"></editor>
+                        <editor height="400" width="100%" v-model="content" :content="content"></editor>
                     </div>
                     <button class="btn btn-primary" @click="submit" :disabled="errors.any()">保存</button>
                 </div>
