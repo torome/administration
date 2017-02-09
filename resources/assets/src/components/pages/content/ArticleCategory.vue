@@ -4,56 +4,9 @@
 
   export default {
     beforeRouteEnter (to, from, next) {
-      Vue.http.post(window.api + '/article/fetch').then(function (response) {
+      Vue.http.post(window.api + '/category/fetch').then(function (response) {
         next((vm) => {
-          vm.items = [
-            {
-              id: 1,
-              text: '文章',
-              description: '这是一个文章',
-              color: '#cccccc',
-              subs: [
-                {
-                  id: 2,
-                  text: '子文章',
-                  description: '这是一个文章',
-                  color: '#cccccc'
-                },
-                {
-                  id: 3,
-                  text: '子文章',
-                  description: '这是一个文章',
-                  color: '#cccccc'
-                }
-              ]
-            },
-            {
-              id: 4,
-              text: '文章',
-              description: '这是一个文章',
-              color: '#cccccc'
-            },
-            {
-              id: 5,
-              text: '文章',
-              description: '这是一个文章',
-              color: '#cccccc',
-              subs: [
-                {
-                  id: 6,
-                  text: '子文章',
-                  description: '这是一个文章',
-                  color: '#cccccc'
-                },
-                {
-                  id: 7,
-                  text: '子文章',
-                  description: '这是一个文章',
-                  color: '#cccccc'
-                }
-              ]
-            }
-          ]
+          vm.items = response.body.data
         })
       }, function (response) {
         window.alert('初始化失败！')
@@ -66,13 +19,22 @@
       return {
         items: [],
         modal: {
+          alias: '',
+          background_color: '',
+          background_image: '',
           color: '',
           description: '',
+          enabled: '',
           id: 0,
           link: '',
           name: '',
           pattern: 'create',
-          title: '创建分类'
+          pagination: 30,
+          seo_title: '',
+          seo_keyword: '',
+          seo_description: '',
+          title: '创建分类',
+          top_image: ''
         }
       }
     },
@@ -129,7 +91,13 @@
                 }).get()
               }
             }).get()
-            console.log(order)
+            _this.$http.post(window.api + '/category/sort', {
+              data: order
+            }).then(function (response) {
+              console.log(response.body)
+            }, function (response) {
+              console.log(response.body)
+            })
           })
         }
       })
