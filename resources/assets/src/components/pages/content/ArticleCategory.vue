@@ -11,6 +11,18 @@
               text: '文章',
               description: '这是一个文章',
               color: '#cccccc',
+              subs: [
+                {
+                  text: '子文章',
+                  description: '这是一个文章',
+                  color: '#cccccc'
+                },
+                {
+                  text: '子文章',
+                  description: '这是一个文章',
+                  color: '#cccccc'
+                }
+              ]
             },
             {
               text: '文章',
@@ -21,6 +33,18 @@
               text: '文章',
               description: '这是一个文章',
               color: '#cccccc',
+              subs: [
+                {
+                  text: '子文章',
+                  description: '这是一个文章',
+                  color: '#cccccc'
+                },
+                {
+                  text: '子文章',
+                  description: '这是一个文章',
+                  color: '#cccccc'
+                }
+              ]
             }
           ]
         })
@@ -185,7 +209,26 @@
                                 <i class="handle"></i>
                                 <button class="btn" @click="edit(item)"><i class="fa fa-fw fa-pencil"></i></button>
                             </div>
-                            <ol class="list-group"></ol>
+                            <ol class="list-group">
+                                <li class="list-group-item clear-fix" v-for="sub in item.subs">
+                                    <div class="list-group-item-content">
+                                        <em :style="{ background: sub.color }"></em>
+                                        <span>{{ sub.text }}</span>
+                                        <i class="handle"></i>
+                                        <button class="btn" @click="edit(sub)"><i class="fa fa-fw fa-pencil"></i></button>
+                                    </div>
+                                    <ol class="list-group">
+                                        <li class="list-group-item clear-fix" v-for="child in sub.subs">
+                                            <div class="list-group-item-content">
+                                                <em :style="{ background: child.color }"></em>
+                                                <span>{{ child.text }}</span>
+                                                <i class="handle"></i>
+                                                <button class="btn" @click="edit(child)"><i class="fa fa-fw fa-pencil"></i></button>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </li>
+                            </ol>
                         </li>
                     </ul>
                 </div>
