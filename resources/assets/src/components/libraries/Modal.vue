@@ -1,6 +1,5 @@
 <script>
   export default {
-    props: [],
     data () {
       return {
         isOpen: false,
@@ -61,7 +60,7 @@
                 <div class="modal-body">
                     <slot name="body">Body</slot>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="display: none">
                     <slot name="footer"></slot>
                 </div>
             </div>
