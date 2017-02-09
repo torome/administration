@@ -23,7 +23,6 @@
         "vue-datetime-picker": "^0.2.1",
         "vue-resource": "^1.0.3",
         "vue-router": "^2.1.1",
-        "vue2-bootstrap-modal": "^0.1.2",
         "vuejs-datepicker": "^0.5.4",
         "vuex": "^2.1.1"
     },
