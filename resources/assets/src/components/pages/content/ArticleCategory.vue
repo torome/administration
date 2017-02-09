@@ -63,24 +63,13 @@
           description: '',
           link: '',
           name: '',
+          pattern: 'create',
           title: '创建分类'
         }
       }
     },
     methods: {
       create: function () {
-        this.items = [
-          {
-            text: '文章',
-            description: '这是一个文章',
-            color: '#cccccc'
-          },
-          {
-            text: '文章',
-            description: '这是一个文章',
-            color: '#cccccc'
-          }
-        ]
         this.modal.color = ''
         this.modal.description = ''
         this.modal.link = ''
@@ -89,12 +78,18 @@
         this.$refs.theModal.open()
       },
       edit: function (item) {
+        this.modal.color = item.color
+        this.modal.description = item.description
+        this.modal.name = item.text
+        this.modal.title = '编辑分类：' + item.text
+        this.modal.pattern = 'edit'
         this.$refs.theModal.open()
       },
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
-          return false
+        if (this.modal.pattern === 'create') {
+          console.log('分类创建模式')
+        } else if (this.modal.pattern === 'edit') {
+          console.log('分类编辑模式')
         }
       }
     },
@@ -119,10 +114,14 @@
       })
     },
     watch: {
+      items: {
+        deep: true,
+        handler: function (val) {
+        }
+      },
       modal: {
         deep: true,
         handler: function (val) {
-          console.log(val)
         }
       }
     }
@@ -268,7 +267,7 @@
             </div>
             <div slot="footer">
                 <div class="modal-footer">
-                    <button class="btn">保存</button>
+                    <button class="btn btn-primary btn-submit" @click="submit">保存</button>
                 </div>
             </div>
         </modal>
