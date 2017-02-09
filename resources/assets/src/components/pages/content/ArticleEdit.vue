@@ -5,11 +5,6 @@
   import Vue from 'vue'
 
   export default {
-    components: {
-      DatePicker,
-      Editor,
-      Tags
-    },
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/article/find', {
         id: to.params.id
@@ -34,6 +29,11 @@
       }, function (response) {
         window.alert('初始化失败！')
       })
+    },
+    components: {
+      DatePicker,
+      Editor,
+      Tags
     },
     data () {
       return {
