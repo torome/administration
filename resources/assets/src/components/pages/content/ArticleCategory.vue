@@ -1,5 +1,5 @@
 <script>
-  import Modal from 'vue2-bootstrap-modal'
+  import Modal from '../../libraries/Modal'
   import Vue from 'vue'
 
   export default {
@@ -56,6 +56,16 @@
         this.modal.pattern = 'edit'
         this.$refs.theModal.open()
       },
+      remove: function () {
+        if (this.modal.pattern === 'create') {
+          this.$refs.theModal.close()
+        }
+        if (this.modal.pattern === 'edit') {
+          this.$http.post(window.api + '/category/edit', this.modal).then(function (response) {
+          }, function (response) {
+          })
+        }
+      },
       submit: function (e) {
         if (this.modal.pattern === 'create') {
           console.log('分类创建模式')
@@ -101,18 +111,6 @@
           })
         }
       })
-    },
-    watch: {
-      items: {
-        deep: true,
-        handler: function (val) {
-        }
-      },
-      modal: {
-        deep: true,
-        handler: function (val) {
-        }
-      }
     }
   }
 </script>
@@ -172,18 +170,37 @@
         min-height: 5px;
     }
 
-    .modal-content {
-        border: none;
-        box-shadow: none;
+    .form-group:last-child {
+        margin-bottom: 0;
     }
 
-    .modal-content > .form-group:last-child {
-        margin-bottom: 0;
+    .form-group > label {
+        font-weight: normal;
     }
 
     .modal-footer {
         border: none;
         padding: 0;
+    }
+
+    .modal-footer > .btn-delete {
+        background: none;
+        float: right;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-footer > .btn-delete:active {
+        background: none;
+        box-shadow: none;
+    }
+
+    .modal-footer > .btn-delete:hover {
+        text-decoration: underline;
+    }
+
+    .modal-footer > .btn-submit {
+        float: left;
     }
 </style>
 <template>
@@ -235,28 +252,29 @@
                 <div class="modal-title">{{ modal.title }}</div>
             </div>
             <div slot="body">
-                <div class="modal-content">
-                    <div class="form-group">
-                        <label>名称</label>
-                        <input class="form-control" v-model="modal.name">
-                    </div>
-                    <div class="form-group">
-                        <label>内链</label>
-                        <input class="form-control" v-model="modal.link">
-                    </div>
-                    <div class="form-group">
-                        <label>描述</label>
-                        <input class="form-control" v-model="modal.description">
-                    </div>
-                    <div class="form-group">
-                        <label>颜色</label>
-                        <input class="form-control" v-model="modal.color">
-                    </div>
+                <div class="form-group">
+                    <label>名称</label>
+                    <input class="form-control" v-model="modal.name">
                 </div>
-            </div>
-            <div slot="footer">
-                <div class="modal-footer">
+                <div class="form-group">
+                    <label>别名</label>
+                    <input class="form-control" v-model="modal.alias">
+                </div>
+                <div class="form-group">
+                    <label>内链</label>
+                    <input class="form-control" v-model="modal.link">
+                </div>
+                <div class="form-group">
+                    <label>描述</label>
+                    <input class="form-control" v-model="modal.description">
+                </div>
+                <div class="form-group">
+                    <label>颜色</label>
+                    <input class="form-control" v-model="modal.color">
+                </div>
+                <div class="modal-footer clearfix">
                     <button class="btn btn-primary btn-submit" @click="submit">保存</button>
+                    <button class="btn btn-delete" @click="remove">删除分类</button>
                 </div>
             </div>
         </modal>
