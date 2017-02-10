@@ -1,7 +1,6 @@
 <script>
   import Modal from '../../libraries/Modal'
   import Vue from 'vue'
-
   export default {
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/category/fetch').then(function (response) {
@@ -103,9 +102,7 @@
         if (_this.modal.pattern === 'edit') {
           _this.$http.post(window.api + '/category/edit', _this.modal).then(function (response) {
             _this.items = response.body.data
-            _this.$refs.modal.close()
           }, function (response) {
-            _this.$refs.modal.close()
             console.log(response.body)
           })
         }
@@ -139,9 +136,11 @@
         _this.$http.post(window.api + '/category/sort', {
           data: order
         }).then(function (response) {
-          console.log(response.body)
+          _this.items = response.body.data
+          _this.lock = false
         }, function (response) {
           console.log(response.body)
+          _this.lock = false
         })
       })
     }
@@ -253,20 +252,23 @@
                                 <button class="btn" @click="edit(item)"><i class="fa fa-fw fa-pencil"></i></button>
                             </div>
                             <ol class="list-group">
-                                <li class="list-group-item clear-fix" v-for="sub in item.subs" :data-id="sub.id">
+                                <li class="list-group-item clear-fix" v-for="sub in item.children" :data-id="sub.id">
                                     <div class="list-group-item-content">
                                         <em :style="{ background: sub.background_color }"></em>
                                         <span>{{ sub.title }}</span>
                                         <i class="handle"></i>
-                                        <button class="btn" @click="edit(sub)"><i class="fa fa-fw fa-pencil"></i></button>
+                                        <button class="btn" @click="edit(sub)"><i class="fa fa-fw fa-pencil"></i>
+                                        </button>
                                     </div>
                                     <ol class="list-group">
-                                        <li class="list-group-item clear-fix" v-for="child in sub.subs" :data-id="child.id">
+                                        <li class="list-group-item clear-fix" v-for="child in sub.children"
+                                            :data-id="child.id">
                                             <div class="list-group-item-content">
                                                 <em :style="{ background: child.background_color }"></em>
                                                 <span>{{ child.title }}</span>
                                                 <i class="handle"></i>
-                                                <button class="btn" @click="edit(child)"><i class="fa fa-fw fa-pencil"></i></button>
+                                                <button class="btn" @click="edit(child)"><i
+                                                        class="fa fa-fw fa-pencil"></i></button>
                                             </div>
                                         </li>
                                     </ol>
