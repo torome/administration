@@ -189,7 +189,7 @@
             </div>
         </div>
         <div class="box-footer">
-            <button class="btn btn-primary" @click="submit" :disabled="errors.any()">保存</button>
+            <button class="btn btn-primary btn-submit" @click="submit" :disabled="errors.any()">保存</button>
         </div>
     </div>
 </template>

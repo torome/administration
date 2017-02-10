@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="box-footer">
-            <button class="btn btn-primary" :disabled="errors.any()" @click="submit">保存</button>
+            <button class="btn btn-primary btn-submit" :disabled="errors.any()" @click="submit">保存</button>
         </div>
     </div>
 </template>

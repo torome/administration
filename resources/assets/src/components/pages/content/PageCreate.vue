@@ -9,7 +9,7 @@
       return {
         alias: '',
         content: '',
-        enabled: '',
+        enabled: '1',
         title: ''
       }
     },
@@ -43,6 +43,9 @@
     .page-main {
         padding-bottom: 40px;
         padding-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1000px;
     }
     .btn-switch {
         display: block;
@@ -76,7 +79,7 @@
                 <editor height="400" width="100%" v-model="content" content=""></editor>
             </div>
             <div class="btn-group">
-                <button class="btn btn-primary" :disabled="errors.any()" @click="submit">保存</button>
+                <button class="btn btn-primary btn-submit" :disabled="errors.any()" @click="submit">保存</button>
             </div>
         </div>
     </div>
