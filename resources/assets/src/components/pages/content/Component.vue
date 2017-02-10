@@ -103,10 +103,26 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+        _this.$validator.validateAll()
+        if (_this.errors.any()) {
           return false
         }
+        _this.$http.post(window.api + '/content/component', {
+          articleDescription: _this.articleDescription,
+          articleKeyword: _this.articleKeyword,
+          articleTitle: _this.articleTitle,
+          categoryDescription: _this.categoryDescription,
+          categoryKeyword: _this.categoryKeyword,
+          categoryTitle: _this.categoryTitle,
+          pageDescription: _this.pageDescription,
+          pageKeyword: _this.pageKeyword,
+          pageTitle: _this.pageTitle
+        }).then(function (response) {
+          _this.$store.commit('setting', response.body.data)
+        }, function (response) {
+          console.log(response.body)
+        })
       }
     },
     mounted () {
