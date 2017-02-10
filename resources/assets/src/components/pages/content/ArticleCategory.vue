@@ -75,12 +75,17 @@
         this.$refs.modal.open()
       },
       remove: function () {
-        if (this.modal.pattern === 'create') {
-          this.$refs.modal.close()
+        let _this = this
+        if (_this.modal.pattern === 'create') {
+          _this.$refs.modal.close()
         }
-        if (this.modal.pattern === 'edit') {
-          this.$http.post(window.api + '/category/edit', this.modal).then(function (response) {
+        if (_this.modal.pattern === 'edit') {
+          _this.$http.post(window.api + '/category/delete', _this.modal).then(function (response) {
+            _this.items = response.body.data
+            _this.$refs.modal.close()
           }, function (response) {
+            _this.$refs.modal.close()
+            console.log(response.body)
           })
         }
       },
