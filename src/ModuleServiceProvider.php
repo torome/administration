@@ -8,8 +8,10 @@
  */
 namespace Notadd\Administration;
 
+use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Notadd\Administration\Controllers\AdminController;
+use Notadd\Administration\Listeners\CsrfTokenRegister;
 use Notadd\Foundation\Administration\Administration;
 
 /**
@@ -30,6 +32,7 @@ class ModuleServiceProvider extends ServiceProvider
         $administrator->registerPath('admin');
         $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
+        $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make('router')->group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
             $this->app->make('router')->post('token', AdminController::class . '@token');
         });
