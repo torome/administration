@@ -131,7 +131,7 @@
                   return {
                     id: _this.$jquery(this).data('id')
                   }
-                })
+                }).get()
               }
             }).get()
           }
