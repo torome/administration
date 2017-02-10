@@ -87,14 +87,22 @@
       submit: function (e) {
         let _this = this
         if (_this.modal.pattern === 'create') {
-          _this.$http.post(window.api + '/category/create', this.modal).then(function (response) {
+          _this.$http.post(window.api + '/category/create', _this.modal).then(function (response) {
             _this.items = response.body.data
             _this.$refs.modal.close()
           }, function (response) {
+            _this.$refs.modal.close()
             console.log(response.body)
           })
         }
         if (_this.modal.pattern === 'edit') {
+          _this.$http.post(window.api + '/category/edit', _this.modal).then(function (response) {
+            _this.items = response.body.data
+            _this.$refs.modal.close()
+          }, function (response) {
+            _this.$refs.modal.close()
+            console.log(response.body)
+          })
         }
       }
     },
@@ -290,7 +298,7 @@
                 </div>
                 <div class="form-group">
                     <label>颜色</label>
-                    <input class="form-control" v-model="modal.color">
+                    <input class="form-control" v-model="modal.background_color">
                 </div>
                 <div class="modal-footer clearfix">
                     <button class="btn btn-primary btn-submit" @click="submit">保存</button>
