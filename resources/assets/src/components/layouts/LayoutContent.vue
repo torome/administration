@@ -15,6 +15,20 @@
     },
     mounted () {
       fixStyle()
+    },
+    watch: {
+      message: {
+        deep: true,
+        handler: function (val) {
+          let _this = this
+          let _message = _this.$store.state.message
+          _message.type === 'info' && setTimeout(function () {
+            _this.$store.commit('message', {
+              show: false
+            })
+          }, 2000)
+        }
+      }
     }
   }
 </script>
