@@ -42,7 +42,11 @@
           enabled: this.enabled,
           title: this.title
         }).then(function (response) {
-          window.alert(response.body.message)
+          this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: response.body.message
+          })
           this.$router.push('/content/page')
         }, function (response) {
           console.log(response.body)

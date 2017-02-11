@@ -41,7 +41,11 @@
           source: this.source
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
-            window.alert(response.body.message)
+            this.$store.commit('message', {
+              show: true,
+              type: 'info',
+              text: response.body.message
+            })
             this.$router.push('/content/article/all')
           }
         }, function (response) {

@@ -67,7 +67,11 @@
           title: this.title,
           source: this.source
         }).then(function (response) {
-          window.alert(response.body.message)
+          this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: response.body.message
+          })
           this.$router.push('/content/article/all')
         }, function (response) {
           console.log(response.body)
