@@ -26,27 +26,32 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/article/create', {
-          content: this.content,
-          date: this.date,
-          hidden: this.hidden,
-          sticky: this.sticky,
-          summary: this.summary,
-          tags: this.tags,
-          title: this.title,
-          source: this.source
+
+        _this.$http.post(window.api + '/article/create', {
+          content: _this.content,
+          date: _this.date,
+          hidden: _this.hidden,
+          sticky: _this.sticky,
+          summary: _this.summary,
+          tags: _this.tags,
+          title: _this.title,
+          source: _this.source
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
-            this.$store.commit('message', {
+            _this.$store.commit('message', {
               show: true,
               type: 'info',
               text: response.body.message
             })
-            this.$router.push('/content/article/all')
+
+            _this.$router.push('/content/article/all')
           }
         }, function (response) {
           console.log(response.body)

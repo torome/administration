@@ -81,21 +81,25 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/mail', {
-          protocol: this.protocol,
-          encryption: this.encryption,
-          port: this.port,
-          host: this.host,
-          mail: this.mail,
-          username: this.username,
-          password: this.password
+
+        _this.$http.post(window.api + '/mail', {
+          protocol: _this.protocol,
+          encryption: _this.encryption,
+          port: _this.port,
+          host: _this.host,
+          mail: _this.mail,
+          username: _this.username,
+          password: _this.password
         }).then(response => {
-          this.$store.commit('setting', response.body.data)
-          this.$router.push('/email')
+          _this.$store.commit('setting', response.body.data)
+          _this.$router.push('/email')
         }, response => {
           window.alert('更新设置失败！')
         })

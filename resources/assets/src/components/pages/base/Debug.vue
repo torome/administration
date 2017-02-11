@@ -15,15 +15,19 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/debug', {
+
+        _this.$http.post(window.api + '/debug', {
           enabled: this.enabled
         }).then(response => {
-          this.$store.commit('setting', response.body.data)
-          this.$router.push('/debug')
+          _this.$store.commit('setting', response.body.data)
+          _this.$router.push('/debug')
         }, response => {
           window.alert('更新设置失败！')
         })

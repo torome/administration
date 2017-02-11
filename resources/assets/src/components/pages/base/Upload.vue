@@ -131,25 +131,29 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/attachment', {
-          engine: this.imageProcessingEngine,
-          limit_file: this.fileMaxSize,
-          limit_image: this.imageMaxSize,
-          limit_video: this.videoMaxSize,
-          allow_image: this.canUploadImageExtension,
-          allow_catcher: this.canUploadCatcherExtension,
-          allow_video: this.canUploadVideoExtension,
-          allow_file: this.canUploadFileExtension,
-          allow_manager_image: this.canManagementImageExtension,
-          allow_manager_file: this.canManagementFileExtension,
-          allow_watermark: this.enableWatermark
+
+        _this.$http.post(window.api + '/attachment', {
+          engine: _this.imageProcessingEngine,
+          limit_file: _this.fileMaxSize,
+          limit_image: _this.imageMaxSize,
+          limit_video: _this.videoMaxSize,
+          allow_image: _this.canUploadImageExtension,
+          allow_catcher: _this.canUploadCatcherExtension,
+          allow_video: _this.canUploadVideoExtension,
+          allow_file: _this.canUploadFileExtension,
+          allow_manager_image: _this.canManagementImageExtension,
+          allow_manager_file: _this.canManagementFileExtension,
+          allow_watermark: _this.enableWatermark
         }).then(response => {
-          this.$store.commit('setting', response.body.data)
-          this.$router.push('/upload')
+          _this.$store.commit('setting', response.body.data)
+          _this.$router.push('/upload')
         }, response => {
           window.alert('更新设置失败！')
         })

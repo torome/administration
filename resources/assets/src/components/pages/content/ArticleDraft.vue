@@ -20,8 +20,11 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
       }

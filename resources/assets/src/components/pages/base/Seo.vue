@@ -37,17 +37,21 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/seo', {
-          description: this.description,
-          keyword: this.keyword,
-          title: this.title
+
+        _this.$http.post(window.api + '/seo', {
+          description: _this.description,
+          keyword: _this.keyword,
+          title: _this.title
         }).then(response => {
-          this.$store.commit('setting', response.body.data)
-          this.$router.push('/seo')
+          _this.$store.commit('setting', response.body.data)
+          _this.$router.push('/seo')
         }, response => {
           window.alert('更新设置失败！')
         })

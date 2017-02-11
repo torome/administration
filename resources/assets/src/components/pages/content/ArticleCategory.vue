@@ -75,9 +75,11 @@
       },
       remove: function () {
         let _this = this
+
         if (_this.modal.pattern === 'create') {
           _this.$refs.modal.close()
         }
+
         if (_this.modal.pattern === 'edit') {
           _this.$http.post(window.api + '/category/delete', _this.modal).then(function (response) {
             _this.items = response.body.data
@@ -90,6 +92,7 @@
       },
       submit: function (e) {
         let _this = this
+
         if (_this.modal.pattern === 'create') {
           _this.$http.post(window.api + '/category/create', _this.modal).then(function (response) {
             _this.items = response.body.data
@@ -99,6 +102,7 @@
             console.log(response.body)
           })
         }
+
         if (_this.modal.pattern === 'edit') {
           _this.$http.post(window.api + '/category/edit', _this.modal).then(function (response) {
             _this.items = response.body.data
@@ -110,13 +114,16 @@
     },
     mounted () {
       let _this = this
+
       _this.$store.commit('title', '分类管理 - 文章 - Notadd Administration')
     },
     updated () {
       let _this = this
+
       let sort = this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })
+
       _this.$jquery(sort).first().on('sortstop', function () {
         const order = _this.$jquery('ul.list-group > li').map(function () {
           return {
@@ -133,6 +140,7 @@
             }).get()
           }
         }).get()
+
         _this.$http.post(window.api + '/category/sort', {
           data: order
         }).then(function (response) {

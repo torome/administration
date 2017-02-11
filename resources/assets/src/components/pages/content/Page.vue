@@ -24,9 +24,12 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '全部页面 - 页面 - Notadd Administration')
-      this.$http.post(window.api + '/page/fetch').then(function (response) {
-        this.list = response.body.data
+      let _this = this
+
+      _this.$store.commit('title', '全部页面 - 页面 - Notadd Administration')
+
+      _this.$http.post(window.api + '/page/fetch').then(function (response) {
+        _this.list = response.body.data
       }, function (response) {
         console.log(response.body)
       })

@@ -7,26 +7,35 @@
     },
     methods: {
       remove: function (id) {
-        this.$http.post(window.api + '/article/delete', {
+        let _this = this
+
+        _this.$http.post(window.api + '/article/delete', {
           id: id
         }).then(function (response) {
           window.alert(response.body.message)
-          this.$router.push('/content/article')
+
+          _this.$router.push('/content/article')
         }, function (response) {
           console.log(response)
         })
       },
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
       }
     },
     mounted () {
-      this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
-      this.$http.post(window.api + '/article/fetch').then(function (response) {
-        this.list = response.body.data
+      let _this = this
+
+      _this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
+
+      _this.$http.post(window.api + '/article/fetch').then(function (response) {
+        _this.list = response.body.data
       }, function (response) {
         console.log(response.body)
       })

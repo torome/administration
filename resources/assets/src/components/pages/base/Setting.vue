@@ -81,21 +81,25 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/setting/set', {
-          enabled: this.enabled,
-          name: this.name,
-          domain: this.domain,
-          beian: this.beian,
-          company: this.company,
-          copyright: this.copyright,
-          statistics: this.statistics
+
+        _this.$http.post(window.api + '/setting/set', {
+          enabled: _this.enabled,
+          name: _this.name,
+          domain: _this.domain,
+          beian: _this.beian,
+          company: _this.company,
+          copyright: _this.copyright,
+          statistics: _this.statistics
         }).then(response => {
-          this.$store.commit('setting', response.body.data)
-          this.$router.push('/setting')
+          _this.$store.commit('setting', response.body.data)
+          _this.$router.push('/setting')
         }, response => {
           window.alert('更新设置失败！')
         })

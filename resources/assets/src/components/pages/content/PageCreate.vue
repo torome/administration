@@ -15,23 +15,28 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.api + '/page/create', {
-          alias: this.alias,
-          content: this.content,
-          enabled: this.enabled,
-          title: this.title
+
+        _this.$http.post(window.api + '/page/create', {
+          alias: _this.alias,
+          content: _this.content,
+          enabled: _this.enabled,
+          title: _this.title
         }).then(function (response) {
           if (response.body.data.id && response.body.data.id > 0) {
-            this.$store.commit('message', {
+            _this.$store.commit('message', {
               show: true,
               type: 'info',
               text: response.body.message
             })
-            this.$router.push('/content/page')
+
+            _this.$router.push('/content/page')
           }
         }, function (response) {
           console.log(response.body)

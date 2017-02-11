@@ -8,17 +8,21 @@
     },
     methods: {
       open () {
-        this.isShow = true
-        this.$nextTick(function () {
-          this.isOpen = true
-          this.$refs.modal.focus()
+        let _this = this
+
+        _this.isShow = true
+        _this.$nextTick(function () {
+          _this.isOpen = true
+          _this.$refs.modal.focus()
         })
       },
       close () {
-        this.isOpen = false
-        this.$nextTick(function () {
+        let _this = this
+
+        _this.isOpen = false
+        _this.$nextTick(function () {
           setTimeout(() => {
-            this.isShow = false
+            _this.isShow = false
           }, 500)
         })
       }

@@ -8,16 +8,21 @@
     },
     methods: {
       submit: function (e) {
-        this.$validator.validateAll()
-        if (this.errors.any()) {
+        let _this = this
+
+        _this.$validator.validateAll()
+
+        if (_this.errors.any()) {
           return false
         }
-        this.$http.post(window.url + '/token', {
+
+        _this.$http.post(window.url + '/token', {
           name: this.username,
           password: this.password
         }).then(function (response) {
-          this.$store.commit('token', response.body)
-          this.$router.push('/')
+          _this.$store.commit('token', response.body)
+
+          _this.$router.push('/')
         }, function (response) {
           window.alert('请求失败！')
         })
