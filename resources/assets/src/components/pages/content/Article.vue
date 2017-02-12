@@ -49,9 +49,6 @@
             article.checked = false
             _this.list.push(article)
           })
-          _this.list.forEach((article) => {
-            article.checked = false
-          })
           _this.pagination = response.body.pagination
         }, function (response) {
           console.log(response.body)
@@ -186,7 +183,7 @@
         padding-right: 32px;
     }
 
-    .box-body > .table > tbody > tr > td.checked {
+    .box-body > .table > tbody > tr > td:first-child.checked {
         background: #a00;
     }
 

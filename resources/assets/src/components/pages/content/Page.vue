@@ -5,7 +5,11 @@
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/page/fetch').then(function (response) {
         next((vm) => {
-          vm.list = response.body.data
+          vm.list = []
+          response.body.data.forEach((page) => {
+            page.checked = false
+            vm.list.push(page)
+          })
           vm.pagination = response.body.pagination
         })
       }, function (response) {
@@ -24,23 +28,68 @@
       }
     },
     methods: {
+      check: function (page) {
+        page.checked = !page.checked
+      },
+      checkAll: function () {
+        this.list.forEach((page) => {
+          page.checked = true
+        })
+      },
+      checkNone: function () {
+        this.list.forEach((page) => {
+          page.checked = false
+        })
+      },
       paginator: function (page) {
         let _this = this
         _this.$http.post(window.api + '/page/fetch?page=' + page).then(function (response) {
-          _this.list = response.body.data
+          _this.list = []
+          response.body.data.map(function (page) {
+            page.checked = false
+            _this.list.push(page)
+          })
           _this.pagination = response.body.pagination
         }, function (response) {
           console.log(response.body)
         })
       },
       remove: function (id) {
-        this.$http.post(window.api + '/page/delete', {
+        let _this = this
+        _this.$http.post(window.api + '/page/delete', {
           id: id
         }).then(function (response) {
-          window.alert(response.body.message)
-          this.$router.push('/content/page')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            message: response.body.message
+          })
+          _this.$router.push('/content/page')
         }, function (response) {
           console.log(response)
+        })
+      },
+      removeSelected: function () {
+        let _this = this
+        _this.list.forEach((page) => {
+          if (page.checked) {
+            _this.$http.post(window.api + '/page/delete', {
+              id: page.id
+            }).then(function (response) {
+              _this.$http.post(window.api + '/page/fetch').then(function (response) {
+                _this.list = []
+                response.body.data.map(function (article) {
+                  article.checked = false
+                  _this.list.push(article)
+                })
+                _this.pagination = response.body.pagination
+              }, function (response) {
+                console.log(response.body)
+              })
+            }, function (response) {
+              console.log(response)
+            })
+          }
         })
       },
       submit: function (e) {
@@ -131,6 +180,10 @@
         border-radius: 6px;
         padding-left: 32px;
         padding-right: 32px;
+    }
+
+    .box-body > .table > tbody > tr > td:first-child.checked {
+        background: #a00;
     }
 
     .box-body > .table > tbody > tr > td:last-child > .btn,
@@ -240,9 +293,9 @@
             </div>
             <div class="box-extend">
                 <router-link to="page/create" class="btn btn-primary btn-create">添加页面</router-link>
-                <!--<button class="btn btn-primary">全选</button>-->
-                <!--<button class="btn btn-primary" disabled>反选</button>-->
-                <!--<button class="btn btn-danger">删除</button>-->
+                <button class="btn btn-primary" @click="checkAll">全选</button>
+                <button class="btn btn-primary" @click="checkNone">反选</button>
+                <button class="btn btn-danger" @click="removeSelected">删除</button>
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
@@ -255,7 +308,7 @@
                 </colgroup>
                 <tbody>
                     <tr v-for="page in list">
-                        <td>{{ page.title }}</td>
+                        <td :class="{ checked: page.checked }" @click="check(page)">{{ page.title }}</td>
                         <td></td>
                         <td>{{ page.created_at }}</td>
                         <td>
