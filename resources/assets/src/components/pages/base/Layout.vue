@@ -30,7 +30,7 @@
                 text: '上传设置',
                 icon: 'fa fa-file-o',
                 uri: '/upload'
-              },
+              }/* ,
               {
                 text: '存储设置',
                 icon: 'fa fa-cloud',
@@ -45,7 +45,7 @@
                 text: 'CDN 设置',
                 icon: 'fa fa-circle-o',
                 uri: '/cdn'
-              }
+              } */
             ]
           },
           {
