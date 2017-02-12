@@ -5,7 +5,11 @@
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/article/fetch').then(function (response) {
         next((vm) => {
-          vm.list = response.body.data
+          vm.list = []
+          response.body.data.forEach((article) => {
+            article.checked = false
+            vm.list.push(article)
+          })
           vm.pagination = response.body.pagination
         })
       }, function (response) {
@@ -24,10 +28,30 @@
       }
     },
     methods: {
+      check: function (article) {
+        article.checked = !article.checked
+      },
+      checkAll: function () {
+        this.list.forEach((article) => {
+          article.checked = true
+        })
+      },
+      checkNone: function () {
+        this.list.forEach((article) => {
+          article.checked = false
+        })
+      },
       paginator: function (page) {
         let _this = this
         _this.$http.post(window.api + '/article/fetch?page=' + page).then(function (response) {
-          _this.list = response.body.data
+          _this.list = []
+          response.body.data.map(function (article) {
+            article.checked = false
+            _this.list.push(article)
+          })
+          _this.list.forEach((article) => {
+            article.checked = false
+          })
           _this.pagination = response.body.pagination
         }, function (response) {
           console.log(response.body)
@@ -38,10 +62,37 @@
         _this.$http.post(window.api + '/article/delete', {
           id: id
         }).then(function (response) {
-          window.alert(response.body.message)
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            message: response.body.message
+          })
           _this.$router.push('/content/article')
         }, function (response) {
           console.log(response)
+        })
+      },
+      removeSelected: function () {
+        let _this = this
+        _this.list.forEach((article) => {
+          if (article.checked) {
+            _this.$http.post(window.api + '/article/delete', {
+              id: article.id
+            }).then(function (response) {
+              _this.$http.post(window.api + '/article/fetch').then(function (response) {
+                _this.list = []
+                response.body.data.map(function (article) {
+                  article.checked = false
+                  _this.list.push(article)
+                })
+                _this.pagination = response.body.pagination
+              }, function (response) {
+                console.log(response.body)
+              })
+            }, function (response) {
+              console.log(response)
+            })
+          }
         })
       },
       submit: function (e) {
@@ -135,6 +186,10 @@
         padding-right: 32px;
     }
 
+    .box-body > .table > tbody > tr > td.checked {
+        background: #a00;
+    }
+
     .box-body > .table > tbody > tr > td:last-child > .btn,
     .box-header > .box-extend > .btn {
         background: #ffffff;
@@ -213,10 +268,10 @@
             </div>
             <div class="box-extend">
                 <router-link to="/content/article/create" class="btn btn-primary btn-create">添加文章</router-link>
-                <button class="btn btn-primary">全选</button>
-                <button class="btn btn-primary" disabled>反选</button>
+                <button class="btn btn-primary" @click="checkAll">全选</button>
+                <button class="btn btn-primary" @click="checkNone">反选</button>
                 <router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>
-                <button class="btn btn-danger">删除</button>
+                <button class="btn btn-danger" @click="removeSelected">删除</button>
                 <!--<button class="btn btn-danger">彻底删除</button>-->
             </div>
         </div>
@@ -230,7 +285,7 @@
                 </colgroup>
                 <tbody>
                 <tr v-for="article in list">
-                    <td>{{ article.title }}</td>
+                    <td :class="{ checked: article.checked }" @click="check(article)">{{ article.title }}</td>
                     <td>{{ article.category }}</td>
                     <td>{{ article.created_at }}</td>
                     <td>
