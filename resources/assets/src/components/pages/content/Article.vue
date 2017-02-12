@@ -6,10 +6,20 @@
     },
     data () {
       return {
-        list: []
+        list: [],
+        pagination: {}
       }
     },
     methods: {
+      paginator: function (page) {
+        let _this = this
+        _this.$http.post(window.api + '/article/fetch?page=' + page).then(function (response) {
+          _this.list = response.body.data
+          _this.pagination = response.body.pagination
+        }, function (response) {
+          console.log(response.body)
+        })
+      },
       remove: function (id) {
         let _this = this
         _this.$http.post(window.api + '/article/delete', {
@@ -34,6 +44,7 @@
       _this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
       _this.$http.post(window.api + '/article/fetch').then(function (response) {
         _this.list = response.body.data
+        _this.pagination = response.body.pagination
       }, function (response) {
         console.log(response.body)
       })
@@ -227,14 +238,14 @@
             </table>
         </div>
         <div class="box-footer">
-            <paginator :pageCount="20"
+            <paginator :pageCount="pagination.last_page"
                        :pageRange="3"
                        :marginPages="2"
-                       :clickHandler="clickCallback"
-                       :prevText="'上一页'"
-                       :nextText="'下一页'"
-                       :containerClass="'pagination no-margin'"
-                       :pageClass="'page-item'">
+                       :clickHandler="paginator"
+                       prevText="上一页"
+                       nextText="下一页"
+                       containerClass="pagination no-margin"
+                       pageClass="'page-item'">
             </paginator>
         </div>
     </div>
