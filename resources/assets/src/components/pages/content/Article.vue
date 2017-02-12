@@ -1,13 +1,26 @@
 <script>
   import Paginator from '../../libraries/Paginator'
+  import Vue from 'vue'
   export default {
+    beforeRouteEnter (to, from, next) {
+      Vue.http.post(window.api + '/article/fetch').then(function (response) {
+        next((vm) => {
+          vm.list = response.body.data
+          vm.pagination = response.body.pagination
+        })
+      }, function (response) {
+        window.alert('初始化失败！')
+      })
+    },
     components: {
       Paginator
     },
     data () {
       return {
         list: [],
-        pagination: {}
+        pagination: {
+          last_page: 1
+        }
       }
     },
     methods: {
@@ -40,14 +53,7 @@
       }
     },
     mounted () {
-      let _this = this
-      _this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
-      _this.$http.post(window.api + '/article/fetch').then(function (response) {
-        _this.list = response.body.data
-        _this.pagination = response.body.pagination
-      }, function (response) {
-        console.log(response.body)
-      })
+      this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
     }
   }
 </script>
