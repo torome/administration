@@ -1,5 +1,9 @@
 <script>
+  import Paginator from '../../libraries/Paginator'
   export default {
+    components: {
+      Paginator
+    },
     data () {
       return {
         list: []
@@ -8,12 +12,10 @@
     methods: {
       remove: function (id) {
         let _this = this
-
         _this.$http.post(window.api + '/article/delete', {
           id: id
         }).then(function (response) {
           window.alert(response.body.message)
-
           _this.$router.push('/content/article')
         }, function (response) {
           console.log(response)
@@ -21,9 +23,7 @@
       },
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
@@ -31,9 +31,7 @@
     },
     mounted () {
       let _this = this
-
       _this.$store.commit('title', '全部文章 - 文章 - Notadd Administration')
-
       _this.$http.post(window.api + '/article/fetch').then(function (response) {
         _this.list = response.body.data
       }, function (response) {
@@ -184,41 +182,6 @@
     .box-header > .box-extend > .btn-create:focus {
         background: #2b7cb3;
     }
-
-    .pagination > li > a {
-        background: transparent;
-        border-color: transparent;
-        margin: 0 5px;
-    }
-
-    .pagination > li:first-child > a,
-    .pagination > li:last-child > a {
-        border-color: #cccccc;
-        border-radius: 6px;
-        color: #cccccc;
-    }
-
-    .pagination > li:first-child > a {
-        margin-left: 0;
-        margin-right: 10px;
-    }
-
-    .pagination > li:last-child > a {
-        margin-left: 10px;
-        margin-right: 0;
-    }
-
-    .pagination > li > a:hover,
-    .pagination > li.active > a {
-        background: #3498db;
-        border-color: #3498db;
-        border-radius: 6px;
-        color: #ffffff;
-        margin-bottom: 1px;
-        margin-top: 1px;
-        padding-bottom: 5px;
-        padding-top: 5px;
-    }
 </style>
 <template>
     <div class="box">
@@ -233,10 +196,10 @@
             </div>
             <div class="box-extend">
                 <router-link to="/content/article/create" class="btn btn-primary btn-create">添加文章</router-link>
-                <!--<button class="btn btn-primary">全选</button>-->
-                <!--<button class="btn btn-primary" disabled>反选</button>-->
-                <!--<router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>-->
-                <!--<button class="btn btn-danger">删除</button>-->
+                <button class="btn btn-primary">全选</button>
+                <button class="btn btn-primary" disabled>反选</button>
+                <router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>
+                <button class="btn btn-danger">删除</button>
                 <!--<button class="btn btn-danger">彻底删除</button>-->
             </div>
         </div>
@@ -264,13 +227,15 @@
             </table>
         </div>
         <div class="box-footer">
-            <!--<ul class="pagination no-margin">-->
-                <!--<li><a href="#">上一页</a></li>-->
-                <!--<li class="active"><a href="#">1</a></li>-->
-                <!--<li><a href="#">2</a></li>-->
-                <!--<li><a href="#">3</a></li>-->
-                <!--<li><a href="#">下一页</a></li>-->
-            <!--</ul>-->
+            <paginator :pageCount="20"
+                       :pageRange="3"
+                       :marginPages="2"
+                       :clickHandler="clickCallback"
+                       :prevText="'上一页'"
+                       :nextText="'下一页'"
+                       :containerClass="'pagination no-margin'"
+                       :pageClass="'page-item'">
+            </paginator>
         </div>
     </div>
 </template>
