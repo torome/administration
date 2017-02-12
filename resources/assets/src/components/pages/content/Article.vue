@@ -21,6 +21,7 @@
     },
     data () {
       return {
+        keyword: '',
         list: [],
         pagination: {
           last_page: 1
@@ -91,6 +92,26 @@
             })
           }
         })
+      },
+      search: function () {
+        let _this = this
+        if (_this.keyword.length > 0) {
+          _this.$http.post(window.api + '/article/fetch', {
+            search: _this.keyword
+          }).then(function (response) {
+            console.log(response)
+            _this.list = []
+            response.body.data.forEach((article) => {
+              article.checked = false
+              _this.list.push(article)
+            })
+            _this.pagination = response.body.pagination
+          }, function (response) {
+            console.log(response.body)
+          })
+        } else {
+          window.alert('请输入搜索关键字！')
+        }
       },
       submit: function (e) {
         let _this = this
@@ -256,9 +277,9 @@
     <div class="box">
         <div class="box-header">
             <div class="box-search input-group">
-                <input class="form-control pull-right" placeholder="请输入搜索关键字" type="text">
+                <input class="form-control pull-right" placeholder="请输入搜索关键字" v-model="keyword" type="text">
                 <div class="input-group-btn">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" @click="search">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
