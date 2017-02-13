@@ -5,35 +5,35 @@
 
       const style = global.document.createElement('link')
       style.setAttribute('rel', 'stylesheet')
-      style.setAttribute('href', window.asset + '/ueditor/themes/default/css/ueditor.css')
+      style.setAttribute('href', window.asset + '/neditor/themes/default/css/ueditor.min.css')
 
       _this.$el.appendChild(style)
 
       const config = window.document.createElement('script')
-      config.setAttribute('src', window.asset + '/ueditor/ueditor.config.js')
+      config.setAttribute('src', window.asset + '/neditor/neditor.config.js')
 
       _this.$el.appendChild(config)
 
       config.onload = () => {
         const source = window.document.createElement('script')
-        source.setAttribute('src', window.asset + '/ueditor/ueditor.all.js')
+        source.setAttribute('src', window.asset + '/neditor/ueditor.all.min.js')
 
         _this.$el.appendChild(source)
 
         source.onload = () => {
           const editor = window.document.createElement('script')
-          editor.setAttribute('id', 'ueditor')
+          editor.setAttribute('id', 'neditor')
           editor.innerHTML = this.content
 
           _this.$el.appendChild(editor)
 
           const language = global.document.createElement('script')
-          language.setAttribute('src', window.asset + '/ueditor/lang/zh-cn/zh-cn.js')
+          language.setAttribute('src', window.asset + '/neditor/lang/zh-cn/zh-cn.js')
 
           _this.$el.appendChild(language)
 
           language.onload = () => {
-            let ue = window.UE.getEditor('ueditor', {
+            let ue = window.UE.getEditor('neditor', {
               initialFrameHeight: this.height,
               initialFrameWidth: this.width
             })
