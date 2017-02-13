@@ -1,7 +1,7 @@
 /*!
- * UEditor
- * version: ueditor
- * build: Mon Feb 13 2017 16:05:02 GMT+0800 (中国标准时间)
+ * NEditor
+ * version: neditor
+ * build: Mon Feb 13 2017 16:27:37 GMT+0800 (中国标准时间)
  */
 
 (function(){
@@ -943,7 +943,7 @@ var utils = UE.utils = {
                 }
             };
             element.onerror = function () {
-                throw Error('The load ' + (obj.href || obj.src) + ' fails,check the url settings of file ueditor.config.js ')
+                throw Error('The load ' + (obj.href || obj.src) + ' fails,check the url settings of file neditor.config.js ')
             };
             doc.getElementsByTagName("head")[0].appendChild(element);
         }
@@ -12550,7 +12550,7 @@ UE.commands['preview'] = {
         var w = window.open('', '_blank', ''),
             d = w.document;
         d.open();
-        d.write('<!DOCTYPE html><html><head><meta charset="utf-8"/><script src="'+this.options.UEDITOR_HOME_URL+'ueditor.parse.js"></script><script>' +
+        d.write('<!DOCTYPE html><html><head><meta charset="utf-8"/><script src="'+this.options.UEDITOR_HOME_URL+'neditor.parse.js"></script><script>' +
             "setTimeout(function(){uParse('div',{rootPath: '"+ this.options.UEDITOR_HOME_URL +"'})},300)" +
             '</script></head><body><div>'+this.getContent(null,null,true)+'</div></body></html>');
         d.close();
@@ -30530,7 +30530,7 @@ UE.ui = baidu.editor.ui = {};
         var editor = new UE.Editor(options);
         editor.options.editor = editor;
         utils.loadFile(document, {
-            href:editor.options.themePath + editor.options.theme + "/css/ueditor.css",
+            href:editor.options.themePath + editor.options.theme + "/css/neditor.css",
             tag:"link",
             type:"text/css",
             rel:"stylesheet"
