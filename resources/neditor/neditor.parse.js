@@ -1,7 +1,7 @@
 /*!
  * NEditor
  * version: neditor
- * build: Mon Feb 13 2017 16:27:37 GMT+0800 (中国标准时间)
+ * build: Mon Feb 13 2017 17:14:13 GMT+0800 (中国标准时间)
  */
 
 (function(){
