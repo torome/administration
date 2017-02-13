@@ -3,12 +3,6 @@
     mounted () {
       let _this = this
 
-      const style = global.document.createElement('link')
-      style.setAttribute('rel', 'stylesheet')
-      style.setAttribute('href', window.asset + '/neditor/themes/notadd/css/neditor.min.css')
-
-      _this.$el.appendChild(style)
-
       const config = window.document.createElement('script')
       config.setAttribute('src', window.asset + '/neditor/neditor.config.js')
 
