@@ -5,7 +5,7 @@
 
       const style = global.document.createElement('link')
       style.setAttribute('rel', 'stylesheet')
-      style.setAttribute('href', window.asset + '/neditor/themes/default/css/ueditor.min.css')
+      style.setAttribute('href', window.asset + '/neditor/themes/notadd/css/neditor.min.css')
 
       _this.$el.appendChild(style)
 
@@ -16,7 +16,7 @@
 
       config.onload = () => {
         const source = window.document.createElement('script')
-        source.setAttribute('src', window.asset + '/neditor/ueditor.all.min.js')
+        source.setAttribute('src', window.asset + '/neditor/neditor.all.min.js')
 
         _this.$el.appendChild(source)
 
