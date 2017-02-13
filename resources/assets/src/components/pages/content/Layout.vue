@@ -18,17 +18,15 @@
         nav: [
           {
             text: '文章管理',
-            icon: 'fa fa-circle-o',
+            icon: 'fa fa-file-text-o',
             uri: '#',
             menu: [
               {
                 text: '全部文章',
-                icon: 'fa fa-circle-o',
                 uri: '/content/article/all'
               },
               {
                 text: '分类管理',
-                icon: 'fa fa-circle-o',
                 uri: '/content/article/category'
               }/* ,
               {
@@ -50,7 +48,7 @@
           },
           {
             text: '页面管理',
-            icon: 'fa fa-circle-o',
+            icon: 'fa fa-file-o',
             uri: '#',
             menu: [
               {
@@ -67,7 +65,7 @@
           },
           {
             text: '系统组件',
-            icon: 'fa fa-circle-o',
+            icon: 'fa fa-building',
             uri: '#',
             menu: [
               {

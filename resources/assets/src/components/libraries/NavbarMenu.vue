@@ -9,9 +9,6 @@
   }
 </script>
 <style>
-    .icon {
-        padding-left: 100px;
-    }
 </style>
 <template>
     <div class="navbar-custom-menu pull-left">
