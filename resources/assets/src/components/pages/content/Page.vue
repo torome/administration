@@ -203,8 +203,13 @@
         padding-right: 32px;
     }
 
+    .box-body > .table > tbody > tr > td:first-child {
+        background: url("../../../../static/images/unselected.svg") 10px center no-repeat;
+        padding-left: 50px;
+    }
+
     .box-body > .table > tbody > tr > td:first-child.checked {
-        background: #a00;
+        background: url("../../../../static/images/selected.svg") 10px center no-repeat;
     }
 
     .box-body > .table > tbody > tr > td:last-child > .btn,
