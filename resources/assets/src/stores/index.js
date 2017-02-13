@@ -25,7 +25,7 @@ const state = {
   token: {},
   user: {
     avatar: 'https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg',
-    name: 'Administration'
+    name: 'Admin'
   }
 }
 

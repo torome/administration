@@ -74,6 +74,9 @@
         padding-left: 30px;
         padding-right: 30px;
     }
+    .navbar-custom-menu > .navbar-nav > li {
+        margin-right: 24px;
+    }
 </style>
 <template>
     <header class="main-header hidden-xs">
@@ -102,7 +105,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header">
-                                <img :src="avatar" class="img-circle" :alt="username">
+                                <img src="../../../static/images/avatar.svg" class="img-circle" :alt="username">
                                 <p>{{ username }}</p>
                             </li>
                             <li class="user-footer">

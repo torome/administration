@@ -58,19 +58,16 @@
   }
   .sidebar-toggle {
     float: left;
-    background-color: transparent;
-    background-image: none;
-    padding: @navbar-padding-vertical @navbar-padding-horizontal;
-    font-family: fontAwesome;
-    &:before {
-      content: "\f0c9";
-    }
+    background: transparent url("../../../static/images/toggle.svg") center no-repeat;
+    height: 90px;
+    width: 68px;
     &:hover {
       color: #ffffff;
+      background: #f7f7f7 url("../../../static/images/toggle.svg") center no-repeat !important;
     }
     &:focus,
     &:active {
-      background: transparent;
+      background: #f7f7f7 url("../../../static/images/toggle.svg") center no-repeat !important;
     }
   }
   .sidebar-toggle .icon-bar {

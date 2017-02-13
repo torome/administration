@@ -9,12 +9,12 @@
       return {
         menu: [
           {
-            'text': '基础配置',
+            'text': '全局',
             'icon': 'icon icon-home',
             'uri': '/'
           },
           {
-            'text': '内容管理',
+            'text': '文章',
             'icon': 'icon icon-article',
             'uri': '/content'
           }
