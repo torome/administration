@@ -2,7 +2,6 @@
   import DatePicker from 'vuejs-datepicker'
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
-
   export default {
     components: {
       DatePicker,
@@ -27,13 +26,10 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/article/create', {
           content: _this.content,
           date: _this.date,
@@ -50,7 +46,6 @@
               type: 'info',
               text: response.body.message
             })
-
             _this.$router.push('/content/article/all')
           }
         }, function (response) {
@@ -92,7 +87,8 @@
                 <div class="box-body article-main">
                     <div class="form-group" :class="{ 'has-error': errors.has('title') }">
                         <label>标题</label>
-                        <input class="form-control" name="title" placeholder="请在此输入标题" type="text" v-model="title" v-validate data-vv-rules="required">
+                        <input class="form-control" name="title" placeholder="请在此输入标题" type="text" v-model="title"
+                               v-validate data-vv-rules="required">
                     </div>
                     <div class="form-group">
                         <label>摘要</label>

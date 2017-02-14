@@ -9,19 +9,15 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.url + '/token', {
           name: this.username,
           password: this.password
         }).then(function (response) {
           _this.$store.commit('token', response.body)
-
           _this.$router.push('/')
         }, function (response) {
           window.alert('请求失败！')
@@ -41,6 +37,7 @@
     .login-page {
         background: transparent;
     }
+
     .login-bg {
         background-color: #003a6f;
         width: 100%;
@@ -832,11 +829,13 @@
                 <h3>Notadd 后台管理</h3>
                 <div class="account ">
                     <label for="login-account" class="sr-only">登录</label>
-                    <input name="username" type="text" id="login-account" placeholder="登录" v-model="username" v-validate data-vv-rules="required">
+                    <input name="username" type="text" id="login-account" placeholder="登录" v-model="username" v-validate
+                           data-vv-rules="required">
                 </div>
                 <div class="psw">
                     <label for="login-psw" class="sr-only">密码</label>
-                    <input name="password" type="password" id="login-psw" placeholder="密码" v-model="password" v-validate data-vv-rules="required">
+                    <input name="password" type="password" id="login-psw" placeholder="密码" v-model="password" v-validate
+                           data-vv-rules="required">
                 </div>
                 <div class="login-comfirm">
                     <button class="btn btn-lg btn-login" :disabled="errors.any()" @click="submit">登录</button>

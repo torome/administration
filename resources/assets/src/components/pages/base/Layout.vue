@@ -4,7 +4,6 @@
   import LayoutSidebar from '../../layouts/LayoutSidebar'
   import NavbarMenu from '../../libraries/NavbarMenu'
   import SidebarMenu from '../../libraries/SidebarMenu'
-
   export default {
     components: {
       LayoutContent,
@@ -31,21 +30,21 @@
                 icon: 'fa fa-file-o',
                 uri: '/upload'
               }/* ,
-              {
-                text: '存储设置',
-                icon: 'fa fa-cloud',
-                uri: '/storage'
-              },
-              {
-                text: '水印设置',
-                icon: 'fa fa-circle-o',
-                uri: '/watermark'
-              },
-              {
-                text: 'CDN 设置',
-                icon: 'fa fa-circle-o',
-                uri: '/cdn'
-              } */
+                 {
+                 text: '存储设置',
+                 icon: 'fa fa-cloud',
+                 uri: '/storage'
+                 },
+                 {
+                 text: '水印设置',
+                 icon: 'fa fa-circle-o',
+                 uri: '/watermark'
+                 },
+                 {
+                 text: 'CDN 设置',
+                 icon: 'fa fa-circle-o',
+                 uri: '/cdn'
+                 } */
             ]
           },
           {

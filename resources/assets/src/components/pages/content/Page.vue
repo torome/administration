@@ -71,7 +71,6 @@
             type: 'info',
             text: response.body.message
           })
-          _this.$router.push('/content/page')
         }, function (response) {
           console.log(response)
         })

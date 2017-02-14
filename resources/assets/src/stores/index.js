@@ -5,15 +5,12 @@
  * @copyright (c) 2017, iBenchu.org
  * @datetime 2017-01-17 14:16
  */
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import * as mutations from './mutations'
-
 Vue.use(Vuex)
-
 const state = {
   message: {
     show: false,
@@ -28,7 +25,6 @@ const state = {
     name: 'Admin'
   }
 }
-
 const store = new Vuex.Store({
   state,
   actions,
@@ -36,7 +32,6 @@ const store = new Vuex.Store({
   mutations,
   strict: process.env.NODE_ENV !== 'production'
 })
-
 if (module.hot) {
   module.hot.accept([
     './getters',
@@ -48,5 +43,4 @@ if (module.hot) {
     })
   })
 }
-
 export default store

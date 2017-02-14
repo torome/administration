@@ -3,7 +3,6 @@
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
   import Vue from 'vue'
-
   export default {
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/article/find', {
@@ -53,13 +52,10 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/article/edit', {
           content: _this.content,
           date: _this.date,
@@ -76,7 +72,6 @@
             type: 'info',
             text: response.body.message
           })
-
           _this.$router.push('/content/article/all')
         }, function (response) {
           console.log(response.body)

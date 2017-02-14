@@ -12,9 +12,11 @@
     .treeview-menu.menu-open {
         overflow: hidden;
     }
+
     .treeview-menu > li {
         position: relative;
     }
+
     .treeview-menu > li:before {
         border-left: 1px dashed #696c6c;
         bottom: 13px;
@@ -27,10 +29,12 @@
         width: 1px;
         z-index: 1;
     }
+
     .treeview-menu > li > a {
         padding-left: 120px;
         position: relative;
     }
+
     .treeview-menu > li > a:before {
         border-bottom: 1px dashed #696c6c;
         content: "";
@@ -41,6 +45,7 @@
         width: 20px;
         z-index: 1;
     }
+
     .treeview-menu > li > a.active {
         color: #ffffff;
     }

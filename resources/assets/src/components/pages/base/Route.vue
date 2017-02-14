@@ -3,9 +3,7 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
@@ -30,24 +28,33 @@
                     </template>
                     <template v-if="formGroup.text">
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" :placeholder="formGroup.text.placeholder" :field="'form-group-' + $index" v-validate="formGroup.text.validate" v-model="formGroup.text.model">
+                            <input type="text" class="form-control" :placeholder="formGroup.text.placeholder"
+                                   :field="'form-group-' + $index" v-validate="formGroup.text.validate"
+                                   v-model="formGroup.text.model">
                         </div>
                     </template>
                 </div>
-                <div v-for="uiRouter in ui.routers" class="form-group" :class="{ 'has-error': $validation['uiRouter' + $index].invalid }">
+                <div v-for="uiRouter in ui.routers" class="form-group"
+                     :class="{ 'has-error': $validation['uiRouter' + $index].invalid }">
                     <label :for="'uiRouter' + $index" class="col-sm-2 control-label">{{ uiRouter.label }}</label>
                     <div class="col-sm-8">
-                        <input name="model.routers[$index]" :id="'uiRouter' + $index" type="text" class="form-control" :placeholder="uiRouter.text.placeholder" v-validate="uiRouter.text.validate" :field="'uiRouter' + $index">
+                        <input name="model.routers[$index]" :id="'uiRouter' + $index" type="text" class="form-control"
+                               :placeholder="uiRouter.text.placeholder" v-validate="uiRouter.text.validate"
+                               :field="'uiRouter' + $index">
                         <span v-if="$validation['uiRouter' + $index].required" class="help-block">{{ $validation['uiRouter' + $index].required }}</span>
                     </div>
                     <div class="col-sm-2">
-                        <label class="radio-inline"><input type="radio" v-model="model.defaultRouter" :value="uiRouter.radio.value">设为默认</label>
+                        <label class="radio-inline"><input type="radio" v-model="model.defaultRouter"
+                                                           :value="uiRouter.radio.value">设为默认</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">{{ ui.mode.label }}</label>
                     <div class="col-sm-10">
-                        <label v-for="radio in ui.mode.radioGroup" class="radio-inline"><input type="radio" v-model="model.mode" :value="radio.value">{{ radio.label }}</label>
+                        <label v-for="radio in ui.mode.radioGroup" class="radio-inline"><input type="radio"
+                                                                                               v-model="model.mode"
+                                                                                               :value="radio.value">{{
+                            radio.label }}</label>
                     </div>
                 </div>
             </div>

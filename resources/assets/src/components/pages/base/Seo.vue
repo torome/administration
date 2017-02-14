@@ -48,7 +48,6 @@
           title: _this.title
         }).then(response => {
           _this.$store.commit('setting', response.body.data)
-          _this.$router.push('/seo')
           _this.$store.commit('message', {
             show: true,
             type: 'info',

@@ -1,6 +1,5 @@
 <script>
   import TreeViewMenu from './TreeViewMenu'
-
   export default {
     components: {
       TreeViewMenu

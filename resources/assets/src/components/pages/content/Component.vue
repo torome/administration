@@ -104,13 +104,10 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/content/component', {
           articleDescription: _this.articleDescription,
           articleKeyword: _this.articleKeyword,
@@ -143,7 +140,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('articleTitle') }">
                     <label class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-3">
-                        <input name="articleTitle" type="text" class="form-control" placeholder="请输入标题" v-model="articleTitle" v-validate data-vv-rules="required">
+                        <input name="articleTitle" type="text" class="form-control" placeholder="请输入标题"
+                               v-model="articleTitle" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('articleTitle')">标题不能为空</span>
@@ -152,7 +150,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('articleDescription') }">
                     <label class="col-sm-1 control-label">描述</label>
                     <div class="col-sm-3">
-                        <input name="articleDescription" type="text" class="form-control" placeholder="请输入描述" v-model="articleDescription" v-validate data-vv-rules="required">
+                        <input name="articleDescription" type="text" class="form-control" placeholder="请输入描述"
+                               v-model="articleDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('articleDescription')">描述不能为空</span>
@@ -161,7 +160,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('articleKeyword') }">
                     <label class="col-sm-1 control-label">关键字</label>
                     <div class="col-sm-3">
-                        <input name="articleKeyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="articleKeyword" v-validate data-vv-rules="required">
+                        <input name="articleKeyword" type="text" class="form-control" placeholder="请输入关键词名称"
+                               v-model="articleKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('articleKeyword')">关键字不能为空</span>
@@ -177,7 +177,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('categoryTitle') }">
                     <label class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-3">
-                        <input name="categoryTitle" type="text" class="form-control" placeholder="请输入标题" v-model="categoryTitle" v-validate data-vv-rules="required">
+                        <input name="categoryTitle" type="text" class="form-control" placeholder="请输入标题"
+                               v-model="categoryTitle" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('categoryTitle')">标题不能为空</span>
@@ -186,7 +187,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('categoryDescription') }">
                     <label class="col-sm-1 control-label">描述</label>
                     <div class="col-sm-3">
-                        <input name="categoryDescription" type="text" class="form-control" placeholder="请输入描述" v-model="categoryDescription" v-validate data-vv-rules="required">
+                        <input name="categoryDescription" type="text" class="form-control" placeholder="请输入描述"
+                               v-model="categoryDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('categoryDescription')">描述不能为空</span>
@@ -195,7 +197,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('categoryKeyword') }">
                     <label class="col-sm-1 control-label">关键字</label>
                     <div class="col-sm-3">
-                        <input name="categoryKeyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="categoryKeyword" v-validate data-vv-rules="required">
+                        <input name="categoryKeyword" type="text" class="form-control" placeholder="请输入关键词名称"
+                               v-model="categoryKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('categoryKeyword')">关键字不能为空</span>
@@ -211,7 +214,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('pageTitle') }">
                     <label class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-3">
-                        <input name="pageTitle" type="text" class="form-control" placeholder="请输入标题" v-model="pageTitle" v-validate data-vv-rules="required">
+                        <input name="pageTitle" type="text" class="form-control" placeholder="请输入标题" v-model="pageTitle"
+                               v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('pageTitle')">标题不能为空</span>
@@ -220,7 +224,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('pageDescription') }">
                     <label class="col-sm-1 control-label">描述</label>
                     <div class="col-sm-3">
-                        <input name="pageDescription" type="text" class="form-control" placeholder="请输入描述" v-model="pageDescription" v-validate data-vv-rules="required">
+                        <input name="pageDescription" type="text" class="form-control" placeholder="请输入描述"
+                               v-model="pageDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('pageDescription')">描述不能为空</span>
@@ -229,7 +234,8 @@
                 <div class="form-group" :class="{ 'has-error': errors.has('pageKeyword') }">
                     <label class="col-sm-1 control-label">关键字</label>
                     <div class="col-sm-3">
-                        <input name="pageKeyword" type="text" class="form-control" placeholder="请输入关键词名称" v-model="pageKeyword" v-validate data-vv-rules="required">
+                        <input name="pageKeyword" type="text" class="form-control" placeholder="请输入关键词名称"
+                               v-model="pageKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block" v-show="errors.has('pageKeyword')">关键字不能为空</span>

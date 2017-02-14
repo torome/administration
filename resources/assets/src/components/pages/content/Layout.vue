@@ -4,7 +4,6 @@
   import LayoutSidebar from '../../layouts/LayoutSidebar'
   import NavbarMenu from '../../libraries/NavbarMenu'
   import SidebarMenu from '../../libraries/SidebarMenu'
-
   export default {
     components: {
       LayoutContent,
@@ -29,21 +28,21 @@
                 text: '分类管理',
                 uri: '/content/article/category'
               }/* ,
-              {
-                text: '标签管理',
-                icon: 'fa fa-circle-o',
-                uri: '/content/article/tag'
-              },
-              {
-                text: '回收站',
-                icon: 'fa fa-circle-o',
-                uri: '/content/article/recycle'
-              },
-              {
-                text: '草稿箱',
-                icon: 'fa fa-circle-o',
-                uri: '/content/article/draft'
-              } */
+                 {
+                 text: '标签管理',
+                 icon: 'fa fa-circle-o',
+                 uri: '/content/article/tag'
+                 },
+                 {
+                 text: '回收站',
+                 icon: 'fa fa-circle-o',
+                 uri: '/content/article/recycle'
+                 },
+                 {
+                 text: '草稿箱',
+                 icon: 'fa fa-circle-o',
+                 uri: '/content/article/draft'
+                 } */
             ]
           },
           {
@@ -56,11 +55,11 @@
                 icon: 'fa fa-circle-o',
                 uri: '/content/page'
               }/* ,
-              {
-                text: '页面分类',
-                icon: 'fa fa-circle-o',
-                uri: '/content/page/category'
-              } */
+                 {
+                 text: '页面分类',
+                 icon: 'fa fa-circle-o',
+                 uri: '/content/page/category'
+                 } */
             ]
           },
           {
@@ -75,21 +74,21 @@
               }
             ]
           }/* ,
-          {
-            text: '模板管理',
-            icon: 'fa fa-circle-o',
-            uri: '/content/template'
-          },
-          {
-            text: '插件管理',
-            icon: 'fa fa-circle-o',
-            uri: '/content/extension'
-          },
-          {
-            text: '评论功能',
-            icon: 'fa fa-circle-o',
-            uri: '/content/comment'
-          } */
+             {
+             text: '模板管理',
+             icon: 'fa fa-circle-o',
+             uri: '/content/template'
+             },
+             {
+             text: '插件管理',
+             icon: 'fa fa-circle-o',
+             uri: '/content/extension'
+             },
+             {
+             text: '评论功能',
+             icon: 'fa fa-circle-o',
+             uri: '/content/comment'
+             } */
         ]
       }
     }

@@ -16,18 +16,19 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/debug', {
           enabled: this.enabled
         }).then(response => {
           _this.$store.commit('setting', response.body.data)
-          _this.$router.push('/debug')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: '更新SEO设置成功！'
+          })
         }, response => {
           window.alert('更新设置失败！')
         })

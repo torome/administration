@@ -14,7 +14,6 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
         if (_this.errors.any()) {
           return false

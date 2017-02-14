@@ -27,36 +27,44 @@
     .icon {
         padding-left: 36px;
     }
+
     .icon-home {
         background: url("../../../static/images/home.svg") 10px center no-repeat;
         background-size: 20px;
     }
+
     .icon-home:hover {
         background: #f7f7f7 url("../../../static/images/home.svg") 10px center no-repeat !important;
         background-size: 20px !important;
     }
+
     .icon-article {
         background: url("../../../static/images/article-manage.svg") 10px center no-repeat;
         background-size: 20px;
     }
+
     .icon-article:hover {
         background: #f7f7f7 url("../../../static/images/article-manage.svg") 10px center no-repeat !important;
         background-size: 20px !important;
     }
+
     .icon-wechat {
         background: url("../../../static/images/wechat.svg") 10px center no-repeat;
         background-size: 20px;
     }
+
     .icon-wechat:hover {
         background: #f7f7f7 url("../../../static/images/wechat.svg") 10px center no-repeat !important;
         background-size: 20px !important;
     }
+
     .logo-mini {
         background: url(../../../static/images/logo.svg);
         height: 90px;
         margin-left: -15px !important;
         width: 90px;
     }
+
     .logo-lg {
         background: url("../../../static/images/logo-big.svg") 20px center no-repeat;
         height: 90px;
@@ -64,16 +72,20 @@
         padding-top: 5px;
         text-align: left;
     }
+
     .navbar-static-top {
         box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
     }
+
     .extend-menu {
         margin-right: 20px;
     }
+
     .btn-danger {
         padding-left: 30px;
         padding-right: 30px;
     }
+
     .navbar-custom-menu > .navbar-nav > li {
         margin-right: 24px;
     }

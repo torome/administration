@@ -1,7 +1,6 @@
 <script>
   import Editor from '../../libraries/Editor'
   import Vue from 'vue'
-
   export default {
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/page/find', {
@@ -32,13 +31,10 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/page/edit', {
           id: _this.$route.params.id,
           alias: _this.alias,
@@ -51,7 +47,6 @@
             type: 'info',
             text: response.body.message
           })
-
           _this.$router.push('/content/page')
         }, function (response) {
           console.log(response.body)
@@ -68,6 +63,7 @@
         padding-bottom: 40px;
         padding-top: 40px;
     }
+
     .btn-switch {
         display: block;
         overflow: hidden;
@@ -78,7 +74,8 @@
         <div class="box-body page-main">
             <div class="form-group" :class="{ 'has-error': errors.has('title') }">
                 <label>标题</label>
-                <input class="form-control" name="title" placeholder="请在此输入标题" type="text" v-model="title" v-validate data-vv-rules="required">
+                <input class="form-control" name="title" placeholder="请在此输入标题" type="text" v-model="title" v-validate
+                       data-vv-rules="required">
             </div>
             <div class="form-group">
                 <label>别名</label>
