@@ -1,36 +1,61 @@
 <script>
+  import Paginator from '../../libraries/Paginator'
+  import Vue from 'vue'
   export default {
+    beforeRouteEnter (to, from, next) {
+      Vue.http.post(window.api + '/article/fetch', {
+        trashed: true
+      }).then(function (response) {
+        next((vm) => {
+          vm.list = []
+          response.body.data.forEach((article) => {
+            article.checked = false
+            vm.list.push(article)
+          })
+          vm.pagination = response.body.pagination
+        })
+      }, function (response) {
+        window.alert('初始化失败！')
+      })
+    },
+    components: {
+      Paginator
+    },
     data () {
       return {
-        list: [
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          }
-        ]
+        list: [],
+        pagination: {
+          last_page: 1
+        }
       }
     },
     methods: {
+      paginator: function (page) {
+        let _this = this
+        _this.$http.post(window.api + '/article/fetch', {
+          page: page,
+          trashed: true
+        }).then(function (response) {
+          _this.list = []
+          response.body.data.map(function (article) {
+            article.checked = false
+            _this.list.push(article)
+          })
+          _this.pagination = response.body.pagination
+        }, function (response) {
+          console.log(response.body)
+        })
+      },
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
       }
     },
     mounted () {
-      this.$store.commit('title', '编辑文章 - 文章 - Notadd Administration')
+      this.$store.commit('title', '回收站 - 文章 - Notadd Administration')
     }
   }
 </script>
@@ -230,13 +255,15 @@
             </table>
         </div>
         <div class="box-footer">
-            <ul class="pagination no-margin">
-                <li><a href="#">上一页</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">下一页</a></li>
-            </ul>
+            <paginator :pageCount="pagination.last_page"
+                       :pageRange="3"
+                       :marginPages="2"
+                       :clickHandler="paginator"
+                       prevText="上一页"
+                       nextText="下一页"
+                       containerClass="pagination no-margin"
+                       pageClass="'page-item'">
+            </paginator>
         </div>
     </div>
 </template>
