@@ -64,6 +64,31 @@
           console.log(response)
         })
       },
+      forceDeleteSelected: function () {
+        let _this = this
+        _this.list.forEach((article) => {
+          if (article.checked) {
+            _this.$http.post(window.api + '/article/delete', {
+              id: article.id,
+              force: true
+            }).then(function (response) {
+              _this.list = []
+              response.body.data.map(function (article) {
+                article.checked = false
+                _this.list.push(article)
+              })
+              _this.pagination = response.body.pagination
+              _this.$store.commit('message', {
+                show: true,
+                type: 'info',
+                text: '批量强制删除成功！'
+              })
+            }, function (response) {
+              console.log(response)
+            })
+          }
+        })
+      },
       paginator: function (page) {
         let _this = this
         _this.$http.post(window.api + '/article/fetch', {
@@ -286,7 +311,7 @@
             <div class="box-extend">
                 <button class="btn btn-primary" @click="checkAll">全选</button>
                 <button class="btn btn-primary" @click="checkNone">反选</button>
-                <button class="btn btn-danger">彻底删除</button>
+                <button class="btn btn-danger" @click="forceDeleteSelected">彻底删除</button>
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
