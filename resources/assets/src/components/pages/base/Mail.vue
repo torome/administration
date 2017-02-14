@@ -99,7 +99,11 @@
           password: _this.password
         }).then(response => {
           _this.$store.commit('setting', response.body.data)
-          _this.$router.push('/email')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: '更新邮件设置成功！'
+          })
         }, response => {
           window.alert('更新设置失败！')
         })
@@ -118,7 +122,7 @@
         </div>
         <div class="box-body">
             <div class="form-horizontal">
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('protocol') }">
                     <label class="col-sm-1 control-label">协议</label>
                     <div class="col-sm-3">
                         <input name="protocol" type="text" class="form-control" placeholder="请输入协议" v-model="protocol"
@@ -128,7 +132,7 @@
                         <span class="help-block" v-show="errors.has('protocol')">协议不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('encryption') }">
                     <label class="col-sm-1 control-label">加密方式</label>
                     <div class="col-sm-3">
                         <input name="encryption" type="text" class="form-control" placeholder="请输入加密方式"
@@ -138,7 +142,7 @@
                         <span class="help-block" v-show="errors.has('encryption')">加密方式不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('host') }">
                     <label class="col-sm-1 control-label">主机</label>
                     <div class="col-sm-3">
                         <input name="host" type="text" class="form-control" placeholder="请输入主机地址" v-model="host"
@@ -148,7 +152,7 @@
                         <span class="help-block" v-show="errors.has('host')">主机地址不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('mail') }">
                     <label class="col-sm-1 control-label">邮箱</label>
                     <div class="col-sm-3">
                         <input name="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-model="mail"
@@ -158,7 +162,7 @@
                         <span class="help-block" v-show="errors.has('mail')">邮箱不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('username') }">
                     <label class="col-sm-1 control-label">用户名</label>
                     <div class="col-sm-3">
                         <input name="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="username"
@@ -168,7 +172,7 @@
                         <span class="help-block" v-show="errors.has('username')">用户名不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
+                <div class="form-group" :class="{ 'has-error': errors.has('password') }">
                     <label class="col-sm-1 control-label">密码</label>
                     <div class="col-sm-3">
                         <input name="password" type="password" class="form-control" placeholder="请输入密码"
