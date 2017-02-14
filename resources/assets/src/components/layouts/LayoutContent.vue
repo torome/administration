@@ -39,7 +39,7 @@
                 <button type="button" class="close" @click="close">×</button>
                 <div>
                     <h4>提示：</h4>
-                    <p>{{ message.text }}</p>
+                    <p v-for="text in message.text">{{ text }}</p>
                 </div>
             </div>
             <slot></slot>
