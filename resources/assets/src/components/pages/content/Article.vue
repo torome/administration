@@ -60,12 +60,13 @@
         _this.$http.post(window.api + '/article/delete', {
           id: id
         }).then(function (response) {
+          console.log(response.body)
           _this.$store.commit('message', {
             show: true,
             type: 'info',
-            message: response.body.message
+            text: response.body.message
           })
-          _this.$router.push('/content/article')
+          _this.$router.push('/content/article/all')
         }, function (response) {
           console.log(response)
         })
@@ -84,6 +85,11 @@
                   _this.list.push(article)
                 })
                 _this.pagination = response.body.pagination
+                _this.$store.commit('message', {
+                  show: true,
+                  type: 'info',
+                  text: '批量删除成功！'
+                })
               }, function (response) {
                 console.log(response.body)
               })

@@ -63,7 +63,7 @@
           _this.$store.commit('message', {
             show: true,
             type: 'info',
-            message: response.body.message
+            text: response.body.message
           })
           _this.$router.push('/content/page')
         }, function (response) {

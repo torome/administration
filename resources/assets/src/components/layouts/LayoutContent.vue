@@ -26,7 +26,7 @@
             _this.$store.commit('message', {
               show: false
             })
-          }, 2000)
+          }, 2500)
         }
       }
     }
