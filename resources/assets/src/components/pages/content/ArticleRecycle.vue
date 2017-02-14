@@ -59,6 +59,27 @@
           console.log(response.body)
         })
       },
+      restore: function (id) {
+        let _this = this
+        _this.$http.post(window.api + '/article/delete', {
+          id: id,
+          restore: true
+        }).then(function (response) {
+          _this.list = []
+          response.body.data.map(function (article) {
+            article.checked = false
+            _this.list.push(article)
+          })
+          _this.pagination = response.body.pagination
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: response.body.message
+          })
+        }, function (response) {
+          console.log(response)
+        })
+      },
       submit: function (e) {
         let _this = this
         _this.$validator.validateAll()
@@ -261,8 +282,8 @@
                     <td>{{ article.category }}</td>
                     <td>{{ article.date }}</td>
                     <td>
-                        <button class="btn btn-info btn-sm">恢复</button>
-                        <button class="btn btn-danger btn-sm">删除</button>
+                        <button class="btn btn-info btn-sm" @click="restore(article.id)">恢复</button>
+                        <button class="btn btn-danger btn-sm" @click="delete(article.id)">删除</button>
                     </td>
                 </tr>
                 </tbody>
