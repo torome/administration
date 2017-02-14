@@ -60,13 +60,17 @@
         _this.$http.post(window.api + '/article/delete', {
           id: id
         }).then(function (response) {
-          console.log(response.body)
           _this.$store.commit('message', {
             show: true,
             type: 'info',
             text: response.body.message
           })
-          _this.$router.push('/content/article/all')
+          _this.list = []
+          response.body.data.map(function (article) {
+            article.checked = false
+            _this.list.push(article)
+          })
+          _this.pagination = response.body.pagination
         }, function (response) {
           console.log(response)
         })
