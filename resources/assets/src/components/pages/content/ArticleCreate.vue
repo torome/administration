@@ -51,8 +51,6 @@
         _formData.append('tags', _this.tags)
         _formData.append('title', _this.title)
         _formData.append('source', _this.source)
-
-        console.log(_formData.values())
         _this.$http.post(window.api + '/article/create', _formData).then(function (response) {
           console.log(response.body)
           if (response.body.data.id && response.body.data.id > 0) {

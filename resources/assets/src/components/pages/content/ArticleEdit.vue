@@ -15,6 +15,7 @@
           vm.content = article.content
           vm.summary = article.description
           vm.hidden = article.is_hidden.toString()
+          vm.image = window.url + '/' + article.thumb_image
           vm.sticky = article.is_sticky.toString()
           if (article.keyword.length) {
             vm.tags = article.keyword.split(',')
@@ -39,6 +40,7 @@
         content: '',
         date: '',
         hidden: '0',
+        image: '',
         source: {
           author: '',
           link: ''
@@ -50,23 +52,34 @@
       }
     },
     methods: {
+      imageSelected: function (e) {
+        let _file = e.target.files[0]
+        let _this = this
+        const _reader = new global.FileReader()
+        _reader.onload = () => {
+          _this.$refs.image.src = _reader.result
+        }
+        _reader.readAsDataURL(_file)
+        _this.image = _file
+      },
       submit: function (e) {
         let _this = this
         _this.$validator.validateAll()
         if (_this.errors.any()) {
           return false
         }
-        _this.$http.post(window.api + '/article/edit', {
-          content: _this.content,
-          date: _this.date,
-          hidden: _this.hidden,
-          id: _this.$route.params.id,
-          sticky: _this.sticky,
-          summary: _this.summary,
-          tags: _this.tags,
-          title: _this.title,
-          source: _this.source
-        }).then(function (response) {
+        const _formData = new window.FormData()
+        _formData.append('content', _this.content)
+        _formData.append('date', _this.date)
+        _formData.append('hidden', _this.hidden)
+        _formData.append('id', _this.$route.params.id)
+        _formData.append('image', _this.image)
+        _formData.append('sticky', _this.sticky)
+        _formData.append('summary', _this.summary)
+        _formData.append('tags', _this.tags)
+        _formData.append('title', _this.title)
+        _formData.append('source', _this.source)
+        _this.$http.post(window.api + '/article/edit', _formData).then(function (response) {
           _this.$store.commit('message', {
             show: true,
             type: 'info',
@@ -101,6 +114,11 @@
         padding-bottom: 20px;
         padding-top: 20px;
     }
+
+    .img-responsive {
+        border: 2px solid #ccc !important;
+        margin-top: 20px;
+    }
 </style>
 <template>
     <div class="row">
@@ -130,7 +148,11 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label">上传缩略图</label>
                             <div class="col-md-8">
-                                <button class="btn btn-primary"><i class="fa fa-image"></i>上传图片</button>
+                                <button class="btn btn-file btn-primary">
+                                    <i class="fa fa-image"></i>上传图片
+                                    <input type="file" @change="imageSelected">
+                                </button>
+                                <img class="img-responsive" :src="image" ref="image" v-show="image">
                             </div>
                         </div>
                         <div class="form-group">
