@@ -9,6 +9,9 @@
 import Vue from 'vue'
 
 export const message = (state, message) => {
+  if ((typeof message.text) === 'string') {
+    message.text = [message.text]
+  }
   state.message = message
 }
 

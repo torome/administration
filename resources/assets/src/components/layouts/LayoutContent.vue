@@ -18,14 +18,16 @@
     watch: {
       message: {
         deep: true,
-        handler: function (val) {
+        handler: function (val, old) {
           let _this = this
           let _message = _this.$store.state.message
-          _message.type === 'info' && setTimeout(function () {
-            _this.$store.commit('message', {
-              show: false
-            })
-          }, 2500)
+          if (val.show === true && old.show === false) {
+            _message.type === 'info' && setTimeout(function () {
+              _this.$store.commit('message', {
+                show: false
+              })
+            }, 2500)
+          }
         }
       }
     }
