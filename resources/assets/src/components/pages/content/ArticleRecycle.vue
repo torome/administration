@@ -30,6 +30,19 @@
       }
     },
     methods: {
+      check: function (article) {
+        article.checked = !article.checked
+      },
+      checkAll: function () {
+        this.list.forEach((article) => {
+          article.checked = true
+        })
+      },
+      checkNone: function () {
+        this.list.forEach((article) => {
+          article.checked = false
+        })
+      },
       paginator: function (page) {
         let _this = this
         _this.$http.post(window.api + '/article/fetch', {
@@ -137,6 +150,15 @@
         padding-right: 32px;
     }
 
+    .box-body > .table > tbody > tr > td:first-child {
+        background: url("../../../../static/images/unselected.svg") 10px center no-repeat;
+        padding-left: 50px;
+    }
+
+    .box-body > .table > tbody > tr > td:first-child.checked {
+        background: url("../../../../static/images/selected.svg") 10px center no-repeat;
+    }
+
     .box-body > .table > tbody > tr > td:last-child > .btn,
     .box-header > .box-extend > .btn {
         background: #ffffff;
@@ -219,17 +241,9 @@
 <template>
     <div class="box">
         <div class="box-header">
-            <div class="box-search input-group">
-                <input class="form-control pull-right" placeholder="请输入搜索关键字" type="text">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
             <div class="box-extend">
-                <button class="btn btn-primary">全选</button>
-                <button class="btn btn-primary" disabled>反选</button>
+                <button class="btn btn-primary" @click="checkAll">全选</button>
+                <button class="btn btn-primary" @click="checkNone">反选</button>
                 <button class="btn btn-danger">彻底删除</button>
             </div>
         </div>
@@ -243,7 +257,7 @@
                 </colgroup>
                 <tbody>
                 <tr v-for="article in list">
-                    <td>{{ article.title }}</td>
+                    <td :class="{ checked: article.checked }" @click="check(article)">{{ article.title }}</td>
                     <td>{{ article.category }}</td>
                     <td>{{ article.date }}</td>
                     <td>
