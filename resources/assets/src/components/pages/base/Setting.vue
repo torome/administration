@@ -99,7 +99,11 @@
           statistics: _this.statistics
         }).then(response => {
           _this.$store.commit('setting', response.body.data)
-          _this.$router.push('/setting')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: '更新设置成功！'
+          })
         }, response => {
           window.alert('更新设置失败！')
         })
