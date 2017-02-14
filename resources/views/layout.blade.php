@@ -10,10 +10,11 @@
 <body class="skin-blue sidebar-mini fixed">
 <div id="app"></div>
 <script>
-    window.csrf_token = "{{ csrf_token() }}";
+    window.admin = "{{ url('admin') }}";
     window.api = "{{ url('api') }}";
     window.asset = "{{ asset('assets') }}";
-    window.url = "{{ url('admin') }}";
+    window.csrf_token = "{{ csrf_token() }}";
+    window.url = "{{ url('') }}";
     window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";
 </script>
 <script src="{{ asset('/assets/admin/js/manifest.js') }}"></script>

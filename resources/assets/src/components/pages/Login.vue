@@ -13,7 +13,7 @@
         if (_this.errors.any()) {
           return false
         }
-        _this.$http.post(window.url + '/token', {
+        _this.$http.post(window.admin + '/token', {
           name: this.username,
           password: this.password
         }).then(function (response) {
