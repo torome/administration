@@ -60,6 +60,12 @@
         _this.$http.post(window.api + '/page/delete', {
           id: id
         }).then(function (response) {
+          _this.list = []
+          response.body.data.map(function (page) {
+            page.checked = false
+            _this.list.push(page)
+          })
+          _this.pagination = response.body.pagination
           _this.$store.commit('message', {
             show: true,
             type: 'info',
@@ -77,15 +83,16 @@
             _this.$http.post(window.api + '/page/delete', {
               id: page.id
             }).then(function (response) {
-              _this.$http.post(window.api + '/page/fetch').then(function (response) {
-                _this.list = []
-                response.body.data.map(function (article) {
-                  article.checked = false
-                  _this.list.push(article)
-                })
-                _this.pagination = response.body.pagination
-              }, function (response) {
-                console.log(response.body)
+              _this.list = []
+              response.body.data.map(function (article) {
+                article.checked = false
+                _this.list.push(article)
+              })
+              _this.pagination = response.body.pagination
+              _this.$store.commit('message', {
+                show: true,
+                type: 'info',
+                text: '批量删除成功！'
               })
             }, function (response) {
               console.log(response)
