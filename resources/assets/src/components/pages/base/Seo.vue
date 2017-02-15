@@ -59,14 +59,14 @@
       }
     },
     mounted () {
-      this.$store.commit('title', 'SEO配置 - Notadd Administration')
+      this.$store.commit('title', '全局SEO配置 - Notadd Administration')
     }
   }
 </script>
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">SEO管理</h3>
+            <h3 class="box-title">全局SEO配置</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
