@@ -22,6 +22,9 @@
           let _this = this
           let _message = _this.$store.state.message
           if (val.show === true && old.show === false) {
+            _this.$jquery('html, body').animate({
+              scrollTop: 0
+            }, 'slow')
             _message.type === 'info' && setTimeout(function () {
               _this.$store.commit('message', {
                 show: false
