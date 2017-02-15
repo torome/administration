@@ -113,6 +113,7 @@
         })
       },
       submit: function (e) {
+        console.log(e)
         let _this = this
         if (_this.driver === 'mail') {
           _this.$validator.validateAll()
@@ -120,6 +121,8 @@
             return false
           }
         }
+        _this.$jquery(e.target).prop('disabled', true)
+        _this.$jquery(e.target).text('提交中...')
         _this.$http.post(window.api + '/mail', {
           driver: _this.driver,
           encryption: _this.encryption,
@@ -135,8 +138,12 @@
             type: 'info',
             text: '更新邮件设置成功！'
           })
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('保存')
         }, response => {
           window.alert('更新设置失败！')
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('保存')
         })
       },
       test: function () {
@@ -189,7 +196,7 @@
                     <div class="col-sm-3">
                         <div class="btn-group btn-switch">
                             <label class="btn btn-primary" :class="{ active: driver === 'mail' }">
-                                <input type="radio" v-model="driver" value="mail"> Mail
+                                <input type="radio" v-model="driver" value="mail">Send Mail 函数
                             </label>
                             <label class="btn btn-primary" :class="{ active: driver === 'smtp' }">
                                 <input type="radio" v-model="driver" value="smtp"> SMTP

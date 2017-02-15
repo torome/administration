@@ -16,18 +16,27 @@
           })
           return false
         }
+        _this.$jquery(e.target).prop('disabled', true)
+        _this.$jquery(e.target).text('登陆中...')
         _this.$http.post(window.admin + '/token', {
           name: _this.username,
           password: _this.password
         }).then(function (response) {
-          _this.$store.commit('token', response.body)
-          _this.$router.push('/')
-          _this.$store.commit('message', {
-            show: true,
-            type: 'info',
-            text: '欢迎 ' + _this.username + '，登陆成功！'
-          })
+          if (response.body.access_token && response.body.status === 'success') {
+            _this.$jquery(e.target).prop('disabled', false)
+            _this.$jquery(e.target).text('登陆成功！正在跳转...')
+            _this.$store.commit('token', response.body)
+            _this.$router.push('/')
+          } else {
+            _this.$jquery(e.target).prop('disabled', false)
+            _this.$jquery(e.target).text('登陆失败！请检查账号或密码后重试')
+            setTimeout(function () {
+              _this.$jquery(e.target).text('登陆')
+            }, 1000)
+          }
         }, function (response) {
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('登陆')
           window.alert('请求失败！')
         })
       }
@@ -765,12 +774,13 @@
     }
 
     .btn-login {
-        width: 160px;
         height: 50px;
         background-color: #3498d8;
         border: none;
         float: right;
         color: #fff;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     .btn-login:hover {

@@ -42,6 +42,8 @@
         if (_this.errors.any()) {
           return false
         }
+        _this.$jquery(e.target).prop('disabled', true)
+        _this.$jquery(e.target).text('提交中...')
         _this.$http.post(window.api + '/seo', {
           description: _this.description,
           keyword: _this.keyword,
@@ -53,8 +55,12 @@
             type: 'info',
             text: '更新SEO设置成功！'
           })
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('保存')
         }, response => {
           window.alert('更新设置失败！')
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('保存')
         })
       }
     },
