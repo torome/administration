@@ -96,14 +96,22 @@
             _this.$refs.modal.close()
           }, function (response) {
             _this.$refs.modal.close()
-            console.log(response.body)
+            _this.$store.commit('message', {
+              show: true,
+              type: 'error',
+              text: '创建分类失败！'
+            })
           })
         }
         if (_this.modal.pattern === 'edit') {
           _this.$http.post(window.api + '/category/edit', _this.modal).then(function (response) {
             _this.items = response.body.data
           }, function (response) {
-            console.log(response.body)
+            _this.$store.commit('message', {
+              show: true,
+              type: 'error',
+              text: '编辑分类失败！'
+            })
           })
         }
       }
@@ -117,31 +125,37 @@
       let sort = this.$jquery(this.$el).find('ul, ol').sortable({
         connectWith: 'article-category'
       })
-      _this.$jquery(sort).first().on('sortstop', function () {
-        const order = _this.$jquery('ul.list-group > li').map(function () {
-          return {
-            id: _this.$jquery(this).data('id'),
-            children: _this.$jquery(this).children('ol').children('li').map(function () {
+      _this.$jquery(sort).each(function (key, item) {
+        if (key === 0) {
+          _this.$jquery(item).on('sortstop', function () {
+            const order = _this.$jquery('ul.list-group > li').map(function () {
               return {
                 id: _this.$jquery(this).data('id'),
-                children: _this.$jquery(this).find('li').map(function () {
+                children: _this.$jquery(this).children('ol').children('li').map(function () {
                   return {
-                    id: _this.$jquery(this).data('id')
+                    id: _this.$jquery(this).data('id'),
+                    children: _this.$jquery(this).find('li').map(function () {
+                      return {
+                        id: _this.$jquery(this).data('id')
+                      }
+                    }).get()
                   }
                 }).get()
               }
             }).get()
-          }
-        }).get()
-        _this.$http.post(window.api + '/category/sort', {
-          data: order
-        }).then(function (response) {
-          _this.items = response.body.data
-          _this.lock = false
-        }, function (response) {
-          console.log(response.body)
-          _this.lock = false
-        })
+            _this.$http.post(window.api + '/category/sort', {
+              data: order
+            }).then(function (response) {
+              _this.items = response.body.data
+            }, function (response) {
+              _this.$store.commit('message', {
+                show: true,
+                type: 'error',
+                text: '更新排序失败！'
+              })
+            })
+          })
+        }
       })
     }
   }

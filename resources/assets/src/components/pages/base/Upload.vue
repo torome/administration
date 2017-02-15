@@ -14,8 +14,8 @@
       },
       imageProcessingEngineRadioGroup () {
         return [
-          {text: 'GD 库', value: 'gd', checked: 'checked'},
-          {text: 'Image Magic', value: 'imagick'}
+          {text: 'GD 库', value: 'gd', checked: 'checked'}/* ,
+          {text: 'Image Magic', value: 'imagick'} */
         ]
       },
       fileMaxSize: {
@@ -116,18 +116,18 @@
             value: value
           })
         }
-      },
-      enableWatermark: {
-        get () {
-          return this.$store.state.setting['attachment.watermark']
-        },
-        set (value) {
-          this.$store.commit('single', {
-            key: 'attachment.watermark',
-            value: value
-          })
-        }
-      }
+      }/* ,
+         enableWatermark: {
+         get () {
+         return this.$store.state.setting['attachment.watermark']
+         },
+         set (value) {
+         this.$store.commit('single', {
+         key: 'attachment.watermark',
+         value: value
+         })
+         }
+         } */
     },
     methods: {
       submit: function (e) {
@@ -161,7 +161,38 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '上传配置 - Notadd Administration')
+      let _this = this
+      _this.$store.commit('title', '上传配置 - Notadd Administration')
+      if (!_this.imageProcessingEngine) {
+        _this.imageProcessingEngine = 'gd'
+      }
+      if (!_this.fileMaxSize) {
+        _this.fileMaxSize = 2048
+      }
+      if (!_this.imageMaxSize) {
+        _this.imageMaxSize = 2048
+      }
+      if (!_this.videoMaxSize) {
+        _this.videoMaxSize = 2048
+      }
+      if (!_this.canUploadImageExtension) {
+        _this.canUploadImageExtension = '.png,.jpg,.jpeg,.gif,.bmp'
+      }
+      if (!_this.canUploadCatcherExtension) {
+        _this.canUploadCatcherExtension = '.png,.jpg,.jpeg,.gif,.bmp'
+      }
+      if (!_this.canUploadVideoExtension) {
+        _this.canUploadVideoExtension = '.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid'
+      }
+      if (!_this.canUploadFileExtension) {
+        _this.canUploadFileExtension = '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
+      }
+      if (!_this.canManagementImageExtension) {
+        _this.canManagementImageExtension = '.png,.jpg,.jpeg,.gif,.bmp'
+      }
+      if (!_this.canManagementFileExtension) {
+        _this.canManagementFileExtension = '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
+      }
     }
   }
 </script>
@@ -191,7 +222,7 @@
                         <div class="input-group">
                             <input name="fileMaxSize" id="file-max-size" type="text" class="form-control"
                                    placeholder="请输入附件大小" v-model="fileMaxSize" v-validate data-vv-rules="required">
-                            <div class="input-group-addon">MB</div>
+                            <div class="input-group-addon">KB</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -204,7 +235,7 @@
                         <div class="input-group">
                             <input name="imageMaxSize" id="image-max-size" type="text" class="form-control"
                                    placeholder="请输入图片大小" v-model="imageMaxSize" v-validate data-vv-rules="required">
-                            <div class="input-group-addon">MB</div>
+                            <div class="input-group-addon">KB</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -217,7 +248,7 @@
                         <div class="input-group">
                             <input name="videoMaxSize" id="video-max-size" type="text" class="form-control"
                                    placeholder="请输入视频大小" v-model="videoMaxSize" v-validate data-vv-rules="required">
-                            <div class="input-group-addon">MB</div>
+                            <div class="input-group-addon">KB</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -290,19 +321,19 @@
                         <span class="help-block" v-show="errors.has('canManagementFileExtension')">扩展名不能为空</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-1 control-label">开启水印功能</label>
-                    <div class="col-sm-3">
-                        <div class="btn-group btn-switch">
-                            <label class="btn btn-primary" :class="{ 'active': enableWatermark === '1' }">
-                                <input type="radio" autocomplete="off" value="1" v-model="enableWatermark"> 开启
-                            </label>
-                            <label class="btn btn-primary" :class="{ 'active': enableWatermark === '0' }">
-                                <input type="radio" autocomplete="off" value="0" v-model="enableWatermark"> 关闭
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-1 control-label">开启水印功能</label>-->
+                    <!--<div class="col-sm-3">-->
+                        <!--<div class="btn-group btn-switch">-->
+                            <!--<label class="btn btn-primary" :class="{ 'active': enableWatermark === '1' }">-->
+                                <!--<input type="radio" autocomplete="off" value="1" v-model="enableWatermark"> 开启-->
+                            <!--</label>-->
+                            <!--<label class="btn btn-primary" :class="{ 'active': enableWatermark === '0' }">-->
+                                <!--<input type="radio" autocomplete="off" value="0" v-model="enableWatermark"> 关闭-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="box-footer">

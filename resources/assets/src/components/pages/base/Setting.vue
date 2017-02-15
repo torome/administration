@@ -3,7 +3,7 @@
     computed: {
       enabled: {
         get () {
-          return this.$store.state.setting['site.enabled']
+          return this.$store.state.setting['site.enabled'] ? this.$store.state.setting['site.enabled'] : 0
         },
         set (value) {
           this.$store.commit('single', {
