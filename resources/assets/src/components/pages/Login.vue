@@ -884,7 +884,7 @@
                     <span class="help-block" v-show="errors.has('password')">必需填写密码</span>
                 </div>
                 <div class="login-comfirm">
-                    <button class="btn btn-lg btn-login" :disabled="errors.any()" @click="submit">登录</button>
+                    <button class="btn btn-lg btn-login" :disabled="errors.any()" @click="submit" @keyup.enter="submit">登录</button>
                 </div>
             </div>
         </div>
