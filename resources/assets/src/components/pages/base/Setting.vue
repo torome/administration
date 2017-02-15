@@ -82,13 +82,10 @@
     methods: {
       submit: function (e) {
         let _this = this
-
         _this.$validator.validateAll()
-
         if (_this.errors.any()) {
           return false
         }
-
         _this.$http.post(window.api + '/setting/set', {
           enabled: _this.enabled,
           name: _this.name,
@@ -110,7 +107,11 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '配置管理 - Notadd Administration')
+      let _this = this
+      _this.$store.commit('title', '配置管理 - Notadd Administration')
+      if (_this.enabled !== '0' && _this.enabled !== '1') {
+        _this.enabled = '1'
+      }
     }
   }
 </script>

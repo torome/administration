@@ -35,7 +35,11 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '调试管理 - Notadd Administration')
+      let _this = this
+      _this.$store.commit('title', '调试管理 - Notadd Administration')
+      if (_this.enabled !== '0' && _this.enabled !== '1') {
+        _this.enabled = '1'
+      }
     }
   }
 </script>
