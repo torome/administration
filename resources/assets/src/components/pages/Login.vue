@@ -785,7 +785,6 @@
     @media (max-width: 767px) {
         .login-win {
             margin: 80px auto;
-
         }
 
         .btn-login {
@@ -795,6 +794,23 @@
         .cylinder {
             display: none;
         }
+    }
+
+    .has-error {
+        position: relative;
+    }
+
+    .has-error > input {
+        border-color: #a00;
+    }
+
+    .has-error > .help-block {
+        height: 38px;
+        line-height: 38px;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: 20px;
     }
 
 </style>
@@ -835,15 +851,15 @@
         <div class="container">
             <div class="login-win">
                 <h3>Notadd 后台管理</h3>
-                <div class="account ">
+                <div class="account" :class="{ 'has-error': errors.has('username') }">
                     <label for="login-account" class="sr-only">登录</label>
-                    <input name="username" type="text" id="login-account" placeholder="登录" v-model="username" v-validate
-                           data-vv-rules="required">
+                    <input name="username" type="text" id="login-account" placeholder="用户名" v-model="username" v-validate data-vv-rules="required">
+                    <span class="help-block" v-show="errors.has('username')">必需填写用户名</span>
                 </div>
-                <div class="psw">
+                <div class="psw" :class="{ 'has-error': errors.has('password') }">
                     <label for="login-psw" class="sr-only">密码</label>
-                    <input name="password" type="password" id="login-psw" placeholder="密码" v-model="password" v-validate
-                           data-vv-rules="required">
+                    <input name="password" type="password" id="login-psw" placeholder="密码" v-model="password" v-validate data-vv-rules="required">
+                    <span class="help-block" v-show="errors.has('password')">必需填写密码</span>
                 </div>
                 <div class="login-comfirm">
                     <button class="btn btn-lg btn-login" :disabled="errors.any()" @click="submit">登录</button>
