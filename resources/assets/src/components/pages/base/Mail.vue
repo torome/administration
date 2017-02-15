@@ -94,11 +94,20 @@
     methods: {
       send: function () {
         let _this = this
+        if (!_this.modal.to) {
+          window.alert('请填写发送到的邮箱地址！')
+          return false
+        }
         _this.$http.post(window.api + '/mail/test', {
           to: _this.modal.to,
           content: _this.modal.content
         }).then(function (response) {
-          console.log(response.body)
+          _this.$refs.modal.close()
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: '测试邮件发送成功，请查看邮箱验证！'
+          })
         }, function (response) {
           console.log(response.body)
         })
