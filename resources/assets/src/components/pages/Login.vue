@@ -11,14 +11,22 @@
         let _this = this
         _this.$validator.validateAll()
         if (_this.errors.any()) {
+          _this.$jquery(_this.$el).find('input[name=username]').each(function (key, item) {
+            _this.$jquery(item).focus()
+          })
           return false
         }
         _this.$http.post(window.admin + '/token', {
-          name: this.username,
-          password: this.password
+          name: _this.username,
+          password: _this.password
         }).then(function (response) {
           _this.$store.commit('token', response.body)
           _this.$router.push('/')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'info',
+            text: '欢迎 ' + _this.username + '，登陆成功！'
+          })
         }, function (response) {
           window.alert('请求失败！')
         })
