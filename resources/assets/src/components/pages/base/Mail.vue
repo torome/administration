@@ -123,63 +123,62 @@
         <div class="box-body">
             <div class="form-horizontal">
                 <div class="form-group" :class="{ 'has-error': errors.has('protocol') }">
-                    <label class="col-sm-1 control-label">协议</label>
+                    <label class="col-sm-1 control-label">发送方式</label>
                     <div class="col-sm-3">
-                        <input name="protocol" type="text" class="form-control" placeholder="请输入协议" v-model="protocol"
+                        <input name="protocol" type="text" class="form-control" placeholder="发送方式" v-model="protocol"
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('protocol')">协议不能为空</span>
+                        <span class="help-block">mail或smtp，默认为mail</span>
+                        <span class="help-block" v-show="errors.has('protocol')">必需填写发送方式</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('encryption') }">
+                <div class="form-group">
                     <label class="col-sm-1 control-label">加密方式</label>
                     <div class="col-sm-3">
-                        <input name="encryption" type="text" class="form-control" placeholder="请输入加密方式"
-                               v-model="encryption" v-validate data-vv-rules="required">
+                        <input name="encryption" type="text" class="form-control" placeholder="请输入加密方式" v-model="encryption">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('encryption')">加密方式不能为空</span>
+                        <span class="help-block">若要使用SSL协议请输入ssl，若不需要请不填</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('host') }">
-                    <label class="col-sm-1 control-label">主机</label>
+                    <label class="col-sm-1 control-label">服务器地址</label>
                     <div class="col-sm-3">
-                        <input name="host" type="text" class="form-control" placeholder="请输入主机地址" v-model="host"
+                        <input name="host" type="text" class="form-control" placeholder="请输入服务器地址" v-model="host"
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('host')">主机地址不能为空</span>
+                        <span class="help-block" v-show="errors.has('host')">服务器地址不能为空</span>
                     </div>
                 </div>
                 <div class="form-group" :class="{ 'has-error': errors.has('mail') }">
-                    <label class="col-sm-1 control-label">邮箱</label>
+                    <label class="col-sm-1 control-label">发信邮箱地址</label>
                     <div class="col-sm-3">
-                        <input name="mail" type="text" class="form-control" placeholder="请输入邮箱名称" v-model="mail"
+                        <input name="mail" type="text" class="form-control" placeholder="请输入发信邮箱地址" v-model="mail"
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('mail')">邮箱不能为空</span>
+                        <span class="help-block" v-show="errors.has('mail')">发信邮箱地址不能为空</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('username') }">
-                    <label class="col-sm-1 control-label">用户名</label>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">SMTP账号</label>
                     <div class="col-sm-3">
-                        <input name="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="username"
-                               v-validate data-vv-rules="required">
+                        <input name="username" type="text" class="form-control" placeholder="请输入用户名称" v-model="username">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('username')">用户名不能为空</span>
+                        <span class="help-block">用于SMTP发送方式</span>
                     </div>
                 </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('password') }">
-                    <label class="col-sm-1 control-label">密码</label>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">SMTP密码</label>
                     <div class="col-sm-3">
                         <input name="password" type="password" class="form-control" placeholder="请输入密码"
                                v-model="password" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('password')">密码不能为空</span>
+                        <span class="help-block">用于SMTP发送方式</span>
                     </div>
                 </div>
             </div>
