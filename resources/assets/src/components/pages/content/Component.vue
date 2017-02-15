@@ -133,7 +133,7 @@
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">文章默认SEO配置</h3>
+            <h3 class="box-title">文章SEO配置</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
@@ -170,7 +170,7 @@
             </div>
         </div>
         <div class="box-header with-border">
-            <h3 class="box-title">分类默认SEO配置</h3>
+            <h3 class="box-title">分类SEO配置</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">
@@ -207,7 +207,7 @@
             </div>
         </div>
         <div class="box-header with-border">
-            <h3 class="box-title">页面默认SEO配置</h3>
+            <h3 class="box-title">页面SEO配置</h3>
         </div>
         <div class="box-body">
             <div class="form-horizontal">

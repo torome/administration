@@ -33,11 +33,12 @@
       }
     },
     mounted () {
-      this.$jquery(this.$el).css({
-        width: this.$jquery(window).width(),
-        height: this.$jquery(window).height()
+      let _this = this
+      _this.$jquery(_this.$el).css({
+        width: _this.$jquery(window).width(),
+        height: _this.$jquery(window).height()
       })
-      this.$store.commit('title', '登陆 - Notadd Administration')
+      _this.$store.commit('title', '登陆 - Notadd Administration')
     }
   }
 </script>
