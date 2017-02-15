@@ -144,6 +144,7 @@
                                v-model="articleTitle" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{tag}</strong>文章标签，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('articleTitle')">标题不能为空</span>
                     </div>
                 </div>
@@ -154,6 +155,7 @@
                                v-model="articleDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{tag}</strong>文章标签，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('articleDescription')">描述不能为空</span>
                     </div>
                 </div>
@@ -164,6 +166,7 @@
                                v-model="articleKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{tag}</strong>文章标签，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('articleKeyword')">关键字不能为空</span>
                     </div>
                 </div>
@@ -181,6 +184,7 @@
                                v-model="categoryTitle" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('categoryTitle')">标题不能为空</span>
                     </div>
                 </div>
@@ -191,6 +195,7 @@
                                v-model="categoryDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('categoryDescription')">描述不能为空</span>
                     </div>
                 </div>
@@ -201,6 +206,7 @@
                                v-model="categoryKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('categoryKeyword')">关键字不能为空</span>
                     </div>
                 </div>
@@ -218,6 +224,7 @@
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('pageTitle')">标题不能为空</span>
                     </div>
                 </div>
@@ -228,6 +235,7 @@
                                v-model="pageDescription" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('pageDescription')">描述不能为空</span>
                     </div>
                 </div>
@@ -238,6 +246,7 @@
                                v-model="pageKeyword" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称，<strong>{title}</strong>文章标题</span>
                         <span class="help-block" v-show="errors.has('pageKeyword')">关键字不能为空</span>
                     </div>
                 </div>

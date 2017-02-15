@@ -77,6 +77,7 @@
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称</span>
                         <span class="help-block" v-show="errors.has('title')">标题不能为空</span>
                     </div>
                 </div>
@@ -87,6 +88,7 @@
                                v-model="description" v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称</span>
                         <span class="help-block" v-show="errors.has('description')">描述不能为空</span>
                     </div>
                 </div>
@@ -97,6 +99,7 @@
                                v-validate data-vv-rules="required">
                     </div>
                     <div class="col-sm-8">
+                        <span class="help-block">支持的参数：<strong>{site}</strong>网站名称</span>
                         <span class="help-block" v-show="errors.has('keyword')">关键字不能为空</span>
                     </div>
                 </div>

@@ -68,7 +68,7 @@
             uri: '#',
             menu: [
               {
-                text: '组件管理',
+                text: 'SEO配置',
                 icon: 'fa fa-circle-o',
                 uri: '/content/component'
               }
