@@ -29,10 +29,14 @@
             _this.$router.push('/')
           } else {
             _this.$jquery(e.target).prop('disabled', false)
+            _this.$jquery(e.target).addClass('btn-danger')
+            _this.$jquery(e.target).removeClass('btn-login')
             _this.$jquery(e.target).text('登陆失败！请检查账号或密码后重试')
             setTimeout(function () {
+              _this.$jquery(e.target).addClass('btn-login')
+              _this.$jquery(e.target).removeClass('btn-danger')
               _this.$jquery(e.target).text('登陆')
-            }, 1000)
+            }, 2000)
           }
         }, function (response) {
           _this.$jquery(e.target).prop('disabled', false)
@@ -791,6 +795,13 @@
     .btn-login:focus {
         background-color: #2f87c2;
         color: #fff;
+    }
+
+    .btn-danger {
+        float: right;
+        height: 50px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     @media (max-width: 767px) {
