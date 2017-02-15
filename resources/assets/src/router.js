@@ -134,7 +134,7 @@ export default new VueRouter({
               beforeEnter: requireAuth
             },
             {
-              path: 'page',
+              path: 'page/all',
               component: ContentPage,
               beforeEnter: requireAuth
             },

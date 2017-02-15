@@ -53,13 +53,13 @@
               {
                 text: '全部页面',
                 icon: 'fa fa-circle-o',
-                uri: '/content/page'
-              }/* ,
-                 {
-                 text: '页面分类',
-                 icon: 'fa fa-circle-o',
-                 uri: '/content/page/category'
-                 } */
+                uri: '/content/page/all'
+              },
+              {
+                text: '分类管理',
+                icon: 'fa fa-circle-o',
+                uri: '/content/page/category'
+              }
             ]
           },
           {

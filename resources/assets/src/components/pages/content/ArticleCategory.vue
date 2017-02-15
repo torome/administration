@@ -118,7 +118,7 @@
     },
     mounted () {
       let _this = this
-      _this.$store.commit('title', '分类管理 - 文章 - Notadd Administration')
+      _this.$store.commit('title', '文章分类管理 - 文章 - Notadd Administration')
     },
     updated () {
       let _this = this
@@ -252,7 +252,7 @@
 <template>
     <div class="box box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">分类管理</h3>
+            <h3 class="box-title">文章分类管理</h3>
         </div>
         <div class="box-body">
             <div class="row">

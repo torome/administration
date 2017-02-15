@@ -47,7 +47,7 @@
             type: 'info',
             text: response.body.message
           })
-          _this.$router.push('/content/page')
+          _this.$router.push('/content/page/all')
         }, function (response) {
           console.log(response.body)
         })
