@@ -13,7 +13,7 @@
           item: {},
           title: '创建分类'
         },
-        none: false
+        none: true
       }
     },
     methods: {
@@ -171,6 +171,41 @@
     .modal-footer > .btn-submit {
         float: left;
     }
+
+    .none-item {
+        background: url("../../../../static/images/info.svg") left center no-repeat;
+        color: #888;
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+        margin: 20px 0;
+        padding-left: 50px;
+    }
+
+    .group-item {
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    .group-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .group-item > dt {
+        color: #666666;
+        float: left;
+        height: 28px;
+        line-height: 28px;
+    }
+
+    .group-item > dd {
+        float: right;
+    }
+
+    .group-item > dd > .btn {
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
 </style>
 <template>
     <div class="row">
@@ -180,7 +215,7 @@
                     <h3 class="box-title">导航管理</h3>
                 </div>
                 <div class="box-body">
-                    <div class="no-item" v-show="none">目前还没有菜单哦！</div>
+                    <div class="none-item" v-show="none">目前还没有菜单哦！</div>
                     <ul class="list-group">
                         <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">
@@ -225,6 +260,38 @@
                     <h3 class="box-title">分组管理</h3>
                 </div>
                 <div class="box-body">
+                    <dl class="group-item">
+                        <dt>默认分组</dt>
+                        <dd>
+                            <button class="btn btn-primary btn-sm">编辑</button>
+                            <button class="btn btn-info btn-sm">菜单</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                        </dd>
+                    </dl>
+                    <dl class="group-item">
+                        <dt>默认分组</dt>
+                        <dd>
+                            <button class="btn btn-primary btn-sm">编辑</button>
+                            <button class="btn btn-info btn-sm">菜单</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                        </dd>
+                    </dl>
+                    <dl class="group-item">
+                        <dt>默认分组</dt>
+                        <dd>
+                            <button class="btn btn-primary btn-sm">编辑</button>
+                            <button class="btn btn-info btn-sm">菜单</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                        </dd>
+                    </dl>
+                    <dl class="group-item">
+                        <dt>默认分组</dt>
+                        <dd>
+                            <button class="btn btn-primary btn-sm">编辑</button>
+                            <button class="btn btn-info btn-sm">菜单</button>
+                            <button class="btn btn-danger btn-sm">删除</button>
+                        </dd>
+                    </dl>
                     <dl class="group-item">
                         <dt>默认分组</dt>
                         <dd>
