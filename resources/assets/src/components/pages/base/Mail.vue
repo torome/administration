@@ -105,7 +105,7 @@
           _this.$refs.modal.close()
           _this.$store.commit('message', {
             show: true,
-            type: 'info',
+            type: 'notice',
             text: '测试邮件发送成功，请查看邮箱验证！'
           })
         }, function (response) {
@@ -134,7 +134,7 @@
           _this.$store.commit('setting', response.body.data)
           _this.$store.commit('message', {
             show: true,
-            type: 'info',
+            type: 'notice',
             text: '更新邮件设置成功！'
           })
           _this.$jquery(e.target).prop('disabled', false)

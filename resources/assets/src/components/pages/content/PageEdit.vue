@@ -44,7 +44,7 @@
         }).then(function (response) {
           _this.$store.commit('message', {
             show: true,
-            type: 'info',
+            type: 'notice',
             text: response.body.message
           })
           _this.$router.push('/content/page/all')

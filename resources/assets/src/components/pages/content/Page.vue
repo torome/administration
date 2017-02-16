@@ -68,7 +68,7 @@
           _this.pagination = response.body.pagination
           _this.$store.commit('message', {
             show: true,
-            type: 'info',
+            type: 'notice',
             text: response.body.message
           })
         }, function (response) {
@@ -90,7 +90,7 @@
               _this.pagination = response.body.pagination
               _this.$store.commit('message', {
                 show: true,
-                type: 'info',
+                type: 'notice',
                 text: '批量删除成功！'
               })
             }, function (response) {

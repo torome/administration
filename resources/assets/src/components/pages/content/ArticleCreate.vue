@@ -56,7 +56,7 @@
           if (response.body.data.id && response.body.data.id > 0) {
             _this.$store.commit('message', {
               show: true,
-              type: 'info',
+              type: 'notice',
               text: response.body.message
             })
             _this.$router.push('/content/article/all')

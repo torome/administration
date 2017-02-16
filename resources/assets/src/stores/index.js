@@ -14,7 +14,7 @@ Vue.use(Vuex)
 const state = {
   message: {
     show: false,
-    type: 'info',
+    type: 'notice',
     text: 'This is a message'
   },
   setting: {},

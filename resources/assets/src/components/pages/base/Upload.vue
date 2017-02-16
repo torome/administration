@@ -154,7 +154,7 @@
           _this.$store.commit('setting', response.body.data)
           _this.$store.commit('message', {
             show: true,
-            type: 'info',
+            type: 'notice',
             text: '更新SEO设置成功！'
           })
           _this.$jquery(e.target).prop('disabled', false)
