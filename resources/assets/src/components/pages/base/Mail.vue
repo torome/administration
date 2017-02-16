@@ -113,7 +113,6 @@
         })
       },
       submit: function (e) {
-        console.log(e)
         let _this = this
         if (_this.driver === 'mail') {
           _this.$validator.validateAll()
