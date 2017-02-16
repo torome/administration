@@ -48,21 +48,14 @@
             ]
           },
           {
-            text: 'SEO 设置',
+            text: '全局 SEO 设置',
             icon: 'fa fa-search',
             uri: '/seo'
           },
           {
             text: '邮件设置',
             icon: 'fa fa-envelope-o',
-            uri: '/email',
-            menu: [
-              {
-                text: '邮件设置',
-                icon: 'fa fa-envelope-o',
-                uri: '/email'
-              }
-            ]
+            uri: '/email'
           },
           {
             text: '调试工具',
