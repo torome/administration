@@ -33,10 +33,10 @@ class ModuleServiceProvider extends ServiceProvider
         $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
-        $this->app->make('router')->group(['middleware' => ['web'], 'prefix' => 'admin'], function () {
+        $this->app->make('router')->group(['middleware' => ['cross', 'web'], 'prefix' => 'admin'], function () {
             $this->app->make('router')->post('token', AdminController::class . '@token');
         });
-        $this->app->make('router')->group(['middleware' => ['auth:api', 'web'], 'prefix' => 'admin'], function () {
+        $this->app->make('router')->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'admin'], function () {
             $this->app->make('router')->post('/', AdminController::class . '@access');
         });
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
