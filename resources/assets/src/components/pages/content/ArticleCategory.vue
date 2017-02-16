@@ -33,7 +33,8 @@
           seo_description: '',
           title: '创建分类',
           top_image: ''
-        }
+        },
+        none: false
       }
     },
     methods: {
@@ -127,7 +128,7 @@
       })
       _this.$jquery(sort).each(function (key, item) {
         if (key === 0) {
-          _this.$jquery(item).on('sortstop', function () {
+          _this.$jquery(item).off('sortstop').on('sortstop', function () {
             const order = _this.$jquery('ul.list-group > li').map(function () {
               return {
                 id: _this.$jquery(this).data('id'),
@@ -157,6 +158,13 @@
           })
         }
       })
+    },
+    watch: {
+      items: {
+        handler: function (value) {
+          this.none = value.length === 0
+        }
+      }
     }
   }
 </script>
@@ -212,10 +220,6 @@
         padding-left: 26px;
     }
 
-    ol.list-group {
-        min-height: 5px;
-    }
-
     .form-group:last-child {
         margin-bottom: 0;
     }
@@ -248,6 +252,20 @@
     .modal-footer > .btn-submit {
         float: left;
     }
+
+    .none-item {
+        background: url("../../../../static/images/info.svg") left center no-repeat;
+        color: #888;
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+        margin: 20px 0;
+        padding-left: 50px;
+    }
+
+    ol.list-group {
+        min-height: 5px;
+    }
 </style>
 <template>
     <div class="box box-solid">
@@ -257,6 +275,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
+                    <div class="none-item" v-show="none">目前还没有菜单哦！</div>
                     <ul class="list-group">
                         <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">
