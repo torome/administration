@@ -53,6 +53,11 @@
             uri: '/seo'
           },
           {
+            text: '导航管理',
+            icon: 'fa fa-bars',
+            uri: '/navigation'
+          },
+          {
             text: '邮件设置',
             icon: 'fa fa-envelope-o',
             uri: '/email'

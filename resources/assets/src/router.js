@@ -32,6 +32,7 @@ import Debug from './components/pages/base/Debug'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
 import Mail from './components/pages/base/Mail'
+import Navigation from './components/pages/base/Navigation'
 import Seo from './components/pages/base/Seo'
 import Upload from './components/pages/base/Upload'
 import Setting from './components/pages/base/Setting'
@@ -58,23 +59,8 @@ export default new VueRouter({
               beforeEnter: requireAuth
             },
             {
-              path: 'setting',
-              component: Setting,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'upload',
-              component: Upload,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'storage',
-              component: Upload,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'seo',
-              component: Seo,
+              path: 'debug',
+              component: Debug,
               beforeEnter: requireAuth
             },
             {
@@ -83,8 +69,28 @@ export default new VueRouter({
               beforeEnter: requireAuth
             },
             {
-              path: 'debug',
-              component: Debug,
+              path: 'navigation',
+              component: Navigation,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'seo',
+              component: Seo,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'setting',
+              component: Setting,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'storage',
+              component: Upload,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'upload',
+              component: Upload,
               beforeEnter: requireAuth
             }
           ]
