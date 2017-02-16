@@ -14,6 +14,7 @@
     window.api = "{{ url('api') }}";
     window.asset = "{{ asset('assets') }}";
     window.csrf_token = "{{ csrf_token() }}";
+    window.upload = "{{ url('editor') }}";
     window.url = "{{ url('') }}";
     window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";
 </script>
