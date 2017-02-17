@@ -46,23 +46,32 @@
             _this.modal.group.title = ''
             _this.modal.pattern = 'group.create'
             _this.modal.title = '创建分组'
+            this.$refs.modal.open()
             break
           case 'item':
-            _this.modal.item.color = ''
-            _this.modal.item.enabled = ''
-            _this.modal.item.group_id = ''
-            _this.modal.item.icon_image = ''
-            _this.modal.item.link = ''
-            _this.modal.item.order_id = ''
-            _this.modal.item.parent_id = ''
-            _this.modal.pattern = 'item.create'
-            _this.modal.item.target = ''
-            _this.modal.item.title = ''
-            _this.modal.item.tooltip = ''
-            _this.modal.title = '创建菜单'
+            if (_this.item.id > 0) {
+              _this.modal.item.color = ''
+              _this.modal.item.enabled = '1'
+              _this.modal.item.group_id = ''
+              _this.modal.item.icon_image = ''
+              _this.modal.item.link = ''
+              _this.modal.item.order_id = ''
+              _this.modal.item.parent_id = ''
+              _this.modal.pattern = 'item.create'
+              _this.modal.item.target = '_blank'
+              _this.modal.item.title = ''
+              _this.modal.item.tooltip = ''
+              _this.modal.title = '创建菜单'
+              this.$refs.modal.open()
+            } else {
+              _this.$store.commit('message', {
+                show: true,
+                type: 'error',
+                'text': '请先选择菜单分组！'
+              })
+            }
             break
         }
-        this.$refs.modal.open()
       },
       edit: function (item, type) {
         let _this = this
@@ -159,6 +168,28 @@
             })
             break
           case 'item.create':
+            _this.$http.post(window.api + '/navigation/item/create', {
+              color: _this.modal.item.color,
+              enabled: _this.modal.item.enabled,
+              group_id: _this.item.id,
+              icon_image: _this.modal.item.icon_image,
+              link: _this.modal.item.link,
+              order_id: _this.modal.item.order_id,
+              parent_id: _this.modal.item.parent_id,
+              target: _this.modal.item.target,
+              title: _this.modal.item.title,
+              tooltip: _this.modal.item.tooltip
+            }).then(function (response) {
+              _this.items = response.body.data
+              _this.$refs.modal.close()
+              _this.$store.commit('message', {
+                show: true,
+                type: 'notice',
+                text: '创建菜单[' + _this.modal.item.title + ']成功！'
+              })
+            }, function (response) {
+              console.log(response.body)
+            })
             break
           case 'item.edit':
             break
@@ -357,7 +388,7 @@
                     <ul class="list-group">
                         <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">
-                                <em :style="{ background: item.background_color }"></em>
+                                <em :style="{ background: item.color }"></em>
                                 <span>{{ item.title }}</span>
                                 <i class="handle"></i>
                                 <button class="btn" @click="edit(item, 'item')"><i class="fa fa-fw fa-pencil"></i></button>
@@ -423,6 +454,51 @@
                 <div class="form-group" v-if="modal.pattern === 'group.create' || modal.pattern === 'group.edit'">
                     <label>别名</label>
                     <input class="form-control" v-model="modal.group.alias">
+                </div>
+
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>标题</label>
+                    <input class="form-control" v-model="modal.item.title">
+                </div>
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>提示</label>
+                    <input class="form-control" v-model="modal.item.tooltip">
+                </div>
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>链接</label>
+                    <input class="form-control" v-model="modal.item.link">
+                </div>
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>打开方式</label>
+                    <div class="btn-group btn-switch">
+                        <label class="btn btn-primary" :class="{ active: modal.item.target === '_blank' }">
+                            <input type="radio" v-model="modal.item.target" value="_blank"> 新窗口[_blank]
+                        </label>
+                        <label class="btn btn-primary" :class="{ active: modal.item.target === '_self' }">
+                            <input type="radio" v-model="modal.item.target" value="_self"> 本窗口[_self]
+                        </label>
+                        <label class="btn btn-primary" :class="{ active: modal.item.target === '_parent' }">
+                            <input type="radio" v-model="modal.item.target" value="_parent"> 父窗口[_parent]
+                        </label>
+                        <label class="btn btn-primary" :class="{ active: modal.item.target === '_top' }">
+                            <input type="radio" v-model="modal.item.target" value="_top"> 顶层窗口[_top]
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>颜色</label>
+                    <input class="form-control" v-model="modal.item.color">
+                </div>
+                <div class="form-group" v-if="modal.pattern === 'item.create' || modal.pattern === 'item.edit'">
+                    <label>状态</label>
+                    <div class="btn-group btn-switch">
+                        <label class="btn btn-primary" :class="{ active: modal.item.enabled === '1' }">
+                            <input type="radio" v-model="modal.item.enabled" value="1"> 开启
+                        </label>
+                        <label class="btn btn-primary" :class="{ active: modal.item.enabled === '0' }">
+                            <input type="radio" v-model="modal.item.enabled" value="0"> 关闭
+                        </label>
+                    </div>
                 </div>
                 <div class="modal-footer clearfix">
                     <button class="btn btn-primary btn-submit" @click="submit">保存</button>
