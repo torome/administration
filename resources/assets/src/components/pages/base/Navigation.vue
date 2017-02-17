@@ -122,7 +122,6 @@
         _this.$http.post(window.api + '/navigation/item/fetch', {
           group: group.id
         }).then(function (response) {
-          console.log(response)
           _this.item.id = group.id
           _this.item.title = '导航管理[' + group.title + ']'
           _this.items = response.body.data
@@ -378,7 +377,7 @@
 </style>
 <template>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">{{ item.title }}</h3>
@@ -422,14 +421,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">分组管理</h3>
                 </div>
                 <div class="box-body">
                     <dl class="group-item" v-for="group in groups">
-                        <dt>{{ group.title }}</dt>
+                        <dt>{{ group.title }}[{{ group.alias }}]</dt>
                         <dd>
                             <button class="btn btn-primary btn-sm" @click="edit(group, 'group')">编辑</button>
                             <button class="btn btn-info btn-sm" @click="show(group)">菜单</button>
