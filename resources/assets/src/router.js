@@ -14,6 +14,7 @@ import BaseLayout from './components/pages/base/Layout'
 import ContentArticle from './components/pages/content/Article'
 import ContentArticleCreate from './components/pages/content/ArticleCreate'
 import ContentArticleDraft from './components/pages/content/ArticleDraft'
+import ContentArticleDraftEdit from './components/pages/content/ArticleDraftEdit'
 import ContentArticleEdit from './components/pages/content/ArticleEdit'
 import ContentArticleRecycle from './components/pages/content/ArticleRecycle'
 import ContentCategory from './components/pages/content/ArticleCategory'
@@ -112,6 +113,11 @@ export default new VueRouter({
             {
               path: 'article/create',
               component: ContentArticleCreate,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'article/:id/draft',
+              component: ContentArticleDraftEdit,
               beforeEnter: requireAuth
             },
             {
