@@ -3,10 +3,27 @@
   import Editor from '../../libraries/Editor'
   import Tags from '../../libraries/InputTag'
   export default {
+    beforeRouteLeave (to, from, next) {
+      this.working = false
+      next()
+    },
     components: {
       DatePicker,
       Editor,
       Tags
+    },
+    computed: {
+      auto: {
+        get () {
+          return this.$store.state.setting['article.save.auto'] ? this.$store.state.setting['article.save.auto'] : '0'
+        },
+        set (value) {
+          this.$store.commit('single', {
+            key: 'article.save.auto',
+            value: value
+          })
+        }
+      }
     },
     data () {
       return {
@@ -21,7 +38,8 @@
         sticky: '0',
         summary: '',
         tags: [],
-        title: ''
+        title: '',
+        working: false
       }
     },
     methods: {
@@ -68,7 +86,58 @@
       }
     },
     mounted () {
-      this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
+      let _this = this
+      _this.working = true
+      _this.$store.commit('title', '添加文章 - 文章 - Notadd Administration')
+      if (this.auto === '1') {
+        window.setInterval(function () {
+          if (_this.title && _this.working) {
+            const _formData = new window.FormData()
+            _formData.append('content', _this.content)
+            _formData.append('date', _this.date)
+            _formData.append('hidden', _this.hidden)
+            _formData.append('image', _this.image)
+            _formData.append('sticky', _this.sticky)
+            _formData.append('summary', _this.summary)
+            _formData.append('tags', _this.tags)
+            _formData.append('title', _this.title)
+            _formData.append('source_author', _this.source.author)
+            _formData.append('source_link', _this.source.link)
+            _this.$http.post(window.api + '/article/draft/create', _formData).then(function (response) {
+              if (response.body.data.id && response.body.data.id > 0) {
+                _this.$store.commit('message', {
+                  show: true,
+                  type: 'notice',
+                  text: '自动保存草稿成功！'
+                })
+              }
+            }, function (response) {
+              console.log(response.body)
+            })
+          } else {
+            return false
+          }
+        }, 10000)
+      }
+    },
+    watch: {
+      auto: {
+        handler: function (val) {
+          let _this = this
+          _this.$http.post(window.api + '/article/auto', {
+            auto: _this.auto
+          }).then(function (response) {
+            _this.$store.commit('setting', response.body.data)
+            _this.$store.commit('message', {
+              show: true,
+              type: 'notice',
+              text: '更新设置成功！自动保存功能将在下次使用时生效或失效！'
+            })
+          }, function (response) {
+            window.alert('更新设置失败！')
+          })
+        }
+      }
     }
   }
 </script>
@@ -79,19 +148,18 @@
     }
 
     .article-extend {
-        padding-bottom: 40px;
+        padding-bottom: 20px;
         padding-top: 20px;
-    }
-
-    .article-extend > .form-horizontal {
-
     }
 
     .article-extend > .form-horizontal > .form-group {
         border-bottom: 1px solid #f2f2f2;
-        margin-bottom: 15px;
         padding-bottom: 20px;
         padding-top: 20px;
+    }
+
+    .article-extend > .form-horizontal > .form-group:last-child {
+        border-bottom: none;
     }
 
     .img-responsive {
@@ -122,6 +190,26 @@
             </div>
         </div>
         <div class="col-md-4">
+            <div class="box box-solid">
+                <div class="box-body article-extend">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">自动保存草稿</label>
+                            <div class="col-md-8">
+                                <div class="btn-group btn-switch">
+                                    <label class="btn btn-primary" :class="{ active: auto === '1' }">
+                                        <input type="radio" v-model="auto" value="1"> 开启
+                                    </label>
+                                    <label class="btn btn-primary" :class="{ active: auto === '0' }">
+                                        <input type="radio" v-model="auto" value="0"> 关闭
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="color: #999999">10分钟保存一次，更改设置后，下次生效</div>
+                    </div>
+                </div>
+            </div>
             <div class="box box-solid">
                 <div class="box-body article-extend">
                     <div class="form-horizontal">
