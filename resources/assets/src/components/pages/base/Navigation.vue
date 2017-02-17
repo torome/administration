@@ -107,22 +107,40 @@
           case 'group.create':
             _this.$refs.modal.close()
             break
-          case 'group.edit':
-            break
           case 'item.create':
+            _this.$refs.modal.close()
             break
           case 'item.edit':
+            _this.$http.post(window.api + '/navigation/item/delete', {
+              id: _this.modal.item.id,
+              group_id: _this.modal.item.group_id
+            }).then(function (response) {
+              _this.items = response.body.data
+              _this.$refs.modal.close()
+              _this.$store.commit('message', {
+                show: true,
+                type: 'notice',
+                text: '删除菜单[' + _this.modal.item.title + ']成功！'
+              })
+            }, function (response) {
+              console.log(response.body)
+            })
             break
         }
       },
-      removeItem: function (id, type) {
+      removeItem: function (group, type) {
         let _this = this
         switch (type) {
           case 'group':
             _this.$http.post(window.api + '/navigation/group/delete', {
-              id: id
+              id: group.id
             }).then(function (response) {
               _this.groups = response.body.data
+              _this.$store.commit('message', {
+                show: true,
+                type: 'notice',
+                text: '删除分组[' + group.title + ']成功！'
+              })
             }, function (response) {
               console.log(response.body)
             })
@@ -469,7 +487,7 @@
                         <dd>
                             <button class="btn btn-primary btn-sm" @click="edit(group, 'group')">编辑</button>
                             <button class="btn btn-info btn-sm" @click="show(group)">菜单</button>
-                            <button class="btn btn-danger btn-sm" @click="removeItem(group.id, 'group')">删除</button>
+                            <button class="btn btn-danger btn-sm" @click="removeItem(group, 'group')">删除</button>
                         </dd>
                     </dl>
                 </div>
