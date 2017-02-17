@@ -24,6 +24,7 @@
             enabled: '',
             group_id: '',
             icon_image: '',
+            id: 0,
             link: '',
             order_id: '',
             parent_id: '',
@@ -83,6 +84,19 @@
             _this.modal.group.title = item.title
             break
           case 'item':
+            _this.modal.item.color = item.color
+            _this.modal.item.enabled = item.enabled ? '1' : '0'
+            _this.modal.item.group_id = item.group_id
+            _this.modal.item.icon_image = item.icon_image
+            _this.modal.item.id = item.id
+            _this.modal.item.link = item.link
+            _this.modal.item.order_id = item.order_id
+            _this.modal.item.parent_id = item.parent_id
+            _this.modal.pattern = 'item.edit'
+            _this.modal.item.target = item.target
+            _this.modal.item.title = item.title
+            _this.modal.item.tooltip = item.tooltip
+            _this.modal.title = '编辑菜单 - ' + item.title
             break
         }
         this.$refs.modal.open()
@@ -191,6 +205,29 @@
             })
             break
           case 'item.edit':
+            _this.$http.post(window.api + '/navigation/item/edit', {
+              color: _this.modal.item.color,
+              enabled: _this.modal.item.enabled,
+              group_id: _this.item.id,
+              icon_image: _this.modal.item.icon_image,
+              id: _this.modal.item.id,
+              link: _this.modal.item.link,
+              order_id: _this.modal.item.order_id,
+              parent_id: _this.modal.item.parent_id,
+              target: _this.modal.item.target,
+              title: _this.modal.item.title,
+              tooltip: _this.modal.item.tooltip
+            }).then(function (response) {
+              _this.items = response.body.data
+              _this.$refs.modal.close()
+              _this.$store.commit('message', {
+                show: true,
+                type: 'notice',
+                text: '编辑菜单[' + _this.modal.item.title + ']成功！'
+              })
+            }, function (response) {
+              console.log(response.body)
+            })
             break
         }
       }
