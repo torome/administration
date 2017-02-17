@@ -266,7 +266,7 @@
       })
       _this.$jquery(sort).each(function (key, item) {
         if (key === 0) {
-          _this.$jquery(item).on('sortstop', function () {
+          _this.$jquery(item).off('sortstop').on('sortstop', function () {
             const order = _this.$jquery('ul.list-group > li').map(function () {
               return {
                 id: _this.$jquery(this).data('id'),
@@ -282,10 +282,14 @@
                 }).get()
               }
             }).get()
-            _this.$http.post(window.api + '/category/sort', {
-              data: order
+            _this.$http.post(window.api + '/navigation/item/sort', {
+              data: order,
+              group_id: _this.item.id
             }).then(function (response) {
-              _this.items = response.body.data
+              _this.items = []
+              _this.$nextTick(function () {
+                _this.items = response.body.data
+              })
             }, function (response) {
               _this.$store.commit('message', {
                 show: true,
@@ -450,7 +454,7 @@
                             <ol class="list-group">
                                 <li class="list-group-item clear-fix" v-for="sub in item.children" :data-id="sub.id">
                                     <div class="list-group-item-content">
-                                        <em :style="{ background: sub.background_color }"></em>
+                                        <em :style="{ background: sub.color }"></em>
                                         <span>{{ sub.title }}</span>
                                         <i class="handle"></i>
                                         <button class="btn" @click="edit(sub, 'item')"><i class="fa fa-fw fa-pencil"></i>
@@ -459,7 +463,7 @@
                                     <ol class="list-group">
                                         <li class="list-group-item clear-fix" v-for="child in sub.children" :data-id="child.id">
                                             <div class="list-group-item-content">
-                                                <em :style="{ background: child.background_color }"></em>
+                                                <em :style="{ background: child.color }"></em>
                                                 <span>{{ child.title }}</span>
                                                 <i class="handle"></i>
                                                 <button class="btn" @click="edit(child, 'item')"><i class="fa fa-fw fa-pencil"></i></button>
