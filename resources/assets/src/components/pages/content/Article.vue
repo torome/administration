@@ -39,7 +39,7 @@
       },
       checkNone: function () {
         this.list.forEach((article) => {
-          article.checked = false
+          article.checked = !article.checked
         })
       },
       paginator: function (page) {

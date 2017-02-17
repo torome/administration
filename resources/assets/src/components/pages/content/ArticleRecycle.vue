@@ -35,7 +35,7 @@
       },
       checkAll: function () {
         this.list.forEach((article) => {
-          article.checked = true
+          article.checked = !article.checked
         })
       },
       checkNone: function () {
