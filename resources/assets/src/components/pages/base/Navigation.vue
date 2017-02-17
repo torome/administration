@@ -7,6 +7,10 @@
     data () {
       return {
         groups: [],
+        item: {
+          id: 0,
+          title: '导航管理[未选择分组]'
+        },
         items: [],
         modal: {
           current: '',
@@ -103,6 +107,19 @@
           case 'item':
             break
         }
+      },
+      show: function (group) {
+        let _this = this
+        _this.$http.post(window.api + '/navigation/item/fetch', {
+          group: group.id
+        }).then(function (response) {
+          console.log(response)
+          _this.item.id = group.id
+          _this.item.title = '导航管理[' + group.title + ']'
+          _this.items = response.body.data
+        }, function (response) {
+          console.log(response.body)
+        })
       },
       submit: function (e) {
         let _this = this
@@ -333,7 +350,7 @@
         <div class="col-md-8">
             <div class="box box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title">导航管理</h3>
+                    <h3 class="box-title">{{ item.title }}</h3>
                 </div>
                 <div class="box-body">
                     <div class="none-item" v-show="none">目前还没有菜单哦！</div>
@@ -355,8 +372,7 @@
                                         </button>
                                     </div>
                                     <ol class="list-group">
-                                        <li class="list-group-item clear-fix" v-for="child in sub.children"
-                                            :data-id="child.id">
+                                        <li class="list-group-item clear-fix" v-for="child in sub.children" :data-id="child.id">
                                             <div class="list-group-item-content">
                                                 <em :style="{ background: child.background_color }"></em>
                                                 <span>{{ child.title }}</span>
@@ -410,7 +426,7 @@
                 </div>
                 <div class="modal-footer clearfix">
                     <button class="btn btn-primary btn-submit" @click="submit">保存</button>
-                    <button class="btn btn-delete" @click="remove">删除分类</button>
+                    <button class="btn btn-delete" v-if="modal.pattern !== 'group.edit'" @click="remove">删除分类</button>
                 </div>
             </div>
         </modal>
