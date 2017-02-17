@@ -15,7 +15,7 @@
           vm.content = article.content
           vm.summary = article.description
           vm.hidden = article.is_hidden.toString()
-          vm.image = window.url + '/' + article.thumb_image
+          vm.image = article.thumb_image ? window.url + '/' + article.thumb_image : ''
           vm.sticky = article.is_sticky.toString()
           if (article.keyword.length) {
             vm.tags = article.keyword.split(',')
@@ -78,7 +78,8 @@
         _formData.append('summary', _this.summary)
         _formData.append('tags', _this.tags)
         _formData.append('title', _this.title)
-        _formData.append('source', _this.source)
+        _formData.append('source_author', _this.source.author)
+        _formData.append('source_link', _this.source.link)
         _this.$http.post(window.api + '/article/edit', _formData).then(function (response) {
           _this.$store.commit('message', {
             show: true,
