@@ -140,37 +140,35 @@
       _this.$jquery(sort).each(function (key, item) {
         if (key === 0) {
           _this.$jquery(item).off('sortupdate').on('sortupdate', function () {
-            if (_this.lock === false) {
-              _this.lock = true
-              const order = _this.$jquery('ul.list-group > li').map(function () {
-                return {
-                  id: _this.$jquery(this).data('id'),
-                  children: _this.$jquery(this).children('ol').children('li').map(function () {
-                    return {
-                      id: _this.$jquery(this).data('id'),
-                      children: _this.$jquery(this).find('li').map(function () {
-                        return {
-                          id: _this.$jquery(this).data('id')
-                        }
-                      }).get()
-                    }
-                  }).get()
-                }
-              }).get()
-              _this.$http.post(window.api + '/page/category/sort', {
-                data: order
-              }).then(function (response) {
+            const order = _this.$jquery('ul.list-group > li').map(function () {
+              return {
+                id: _this.$jquery(this).data('id'),
+                children: _this.$jquery(this).children('ol').children('li').map(function () {
+                  return {
+                    id: _this.$jquery(this).data('id'),
+                    children: _this.$jquery(this).find('li').map(function () {
+                      return {
+                        id: _this.$jquery(this).data('id')
+                      }
+                    }).get()
+                  }
+                }).get()
+              }
+            }).get()
+            _this.$http.post(window.api + '/page/category/sort', {
+              data: order
+            }).then(function (response) {
+              _this.items = []
+              _this.$nextTick(function () {
                 _this.items = response.body.data
-                _this.lock = false
-              }, function (response) {
-                _this.$store.commit('message', {
-                  show: true,
-                  type: 'error',
-                  text: '更新排序失败！'
-                })
-                _this.lock = false
               })
-            }
+            }, function (response) {
+              _this.$store.commit('message', {
+                show: true,
+                type: 'error',
+                text: '更新排序失败！'
+              })
+            })
           })
         }
       })

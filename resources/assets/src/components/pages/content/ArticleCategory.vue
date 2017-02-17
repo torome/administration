@@ -147,7 +147,10 @@
             _this.$http.post(window.api + '/category/sort', {
               data: order
             }).then(function (response) {
-              _this.items = response.body.data
+              _this.items = []
+              _this.$nextTick(function () {
+                _this.items = response.body.data
+              })
             }, function (response) {
               _this.$store.commit('message', {
                 show: true,
