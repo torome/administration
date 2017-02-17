@@ -40,6 +40,7 @@
           case 'group':
             _this.modal.group.alias = ''
             _this.modal.group.title = ''
+            _this.modal.pattern = 'group.create'
             _this.modal.title = '创建分组'
             break
           case 'item':
@@ -50,6 +51,7 @@
             _this.modal.item.link = ''
             _this.modal.item.order_id = ''
             _this.modal.item.parent_id = ''
+            _this.modal.pattern = 'item.create'
             _this.modal.item.target = ''
             _this.modal.item.title = ''
             _this.modal.item.tooltip = ''
