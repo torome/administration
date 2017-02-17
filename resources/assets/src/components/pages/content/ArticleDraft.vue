@@ -1,24 +1,104 @@
 <script>
+  import Paginator from '../../libraries/Paginator'
+  import Vue from 'vue'
   export default {
+    beforeRouteEnter (to, from, next) {
+      Vue.http.post(window.api + '/article/draft/fetch').then(function (response) {
+        next((vm) => {
+          vm.list = []
+          response.body.data.forEach((article) => {
+            article.checked = false
+            vm.list.push(article)
+          })
+          vm.pagination = response.body.pagination
+        })
+      }, function (response) {
+        console.log(response.body)
+        window.alert('初始化失败！')
+      })
+    },
+    components: {
+      Paginator
+    },
     data () {
       return {
-        list: [
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          },
-          {
-            id: 29,
-            title: 'Everything is Article',
-            date: '2017年1月12日',
-            category: 'Notadd'
-          }
-        ]
+        list: [],
+        pagination: {
+          last_page: 1
+        }
       }
     },
     methods: {
+      check: function (article) {
+        article.checked = !article.checked
+      },
+      checkAll: function () {
+        this.list.forEach((article) => {
+          article.checked = true
+        })
+      },
+      checkNone: function () {
+        this.list.forEach((draft) => {
+          draft.checked = !draft.checked
+        })
+      },
+      paginator: function (page) {
+        let _this = this
+        _this.$http.post(window.api + '/article/draft/fetch?page=' + page).then(function (response) {
+          _this.list = []
+          response.body.data.map(function (draft) {
+            draft.checked = false
+            _this.list.push(draft)
+          })
+          _this.pagination = response.body.pagination
+        }, function (response) {
+          console.log(response.body)
+        })
+      },
+      remove: function (id) {
+        let _this = this
+        _this.$http.post(window.api + '/article/draft/delete', {
+          id: id
+        }).then(function (response) {
+          _this.list = []
+          response.body.data.map(function (draft) {
+            draft.checked = false
+            _this.list.push(draft)
+          })
+          _this.pagination = response.body.pagination
+          _this.$store.commit('message', {
+            show: true,
+            type: 'notice',
+            text: response.body.message
+          })
+        }, function (response) {
+          console.log(response)
+        })
+      },
+      removeSelected: function () {
+        let _this = this
+        _this.list.forEach((draft) => {
+          if (draft.checked) {
+            _this.$http.post(window.api + '/article/draft/delete', {
+              id: draft.id
+            }).then(function (response) {
+              _this.list = []
+              response.body.data.map(function (article) {
+                article.checked = false
+                _this.list.push(article)
+              })
+              _this.pagination = response.body.pagination
+              _this.$store.commit('message', {
+                show: true,
+                type: 'notice',
+                text: '批量删除成功！'
+              })
+            }, function (response) {
+              console.log(response)
+            })
+          }
+        })
+      },
       submit: function (e) {
         let _this = this
 
@@ -112,6 +192,15 @@
         padding-right: 32px;
     }
 
+    .box-body > .table > tbody > tr > td:first-child {
+        background: url("../../../../static/images/unselected.svg") 10px center no-repeat;
+        padding-left: 50px;
+    }
+
+    .box-body > .table > tbody > tr > td:first-child.checked {
+        background: url("../../../../static/images/selected.svg") 10px center no-repeat;
+    }
+
     .box-body > .table > tbody > tr > td:last-child > .btn,
     .box-header > .box-extend > .btn {
         background: #ffffff;
@@ -158,54 +247,32 @@
         color: #ffffff;
     }
 
-    .pagination > li > a {
-        background: transparent;
-        border-color: transparent;
-        margin: 0 5px;
+    .box-header > .box-extend > .btn {
+        letter-spacing: 0;
     }
 
-    .pagination > li:first-child > a,
-    .pagination > li:last-child > a {
-        border-color: #cccccc;
-        border-radius: 6px;
-        color: #cccccc;
-    }
-
-    .pagination > li:first-child > a {
-        margin-left: 0;
-    }
-
-    .pagination > li:last-child > a {
-        margin-right: 0;
-    }
-
-    .pagination > li > a:hover,
-    .pagination > li.active > a {
+    .box-header > .box-extend > .btn-create {
         background: #3498db;
-        border-color: #3498db;
-        border-radius: 6px;
         color: #ffffff;
-        margin-bottom: 1px;
-        margin-top: 1px;
-        padding-bottom: 5px;
-        padding-top: 5px;
+        letter-spacing: 0;
+    }
+
+    .box-header > .box-extend > .btn-create:hover {
+        background: #258cd1;
+    }
+
+    .box-header > .box-extend > .btn-create:active,
+    .box-header > .box-extend > .btn-create:focus {
+        background: #2b7cb3;
     }
 </style>
 <template>
     <div class="box">
         <div class="box-header">
-            <div class="box-search input-group">
-                <input class="form-control pull-right" placeholder="请输入搜索关键字" type="text">
-                <div class="input-group-btn">
-                    <button class="btn btn-primary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
             <div class="box-extend">
-                <button class="btn btn-primary">全选</button>
-                <button class="btn btn-primary" disabled>反选</button>
-                <button class="btn btn-danger">删除</button>
+                <button class="btn btn-primary" @click="checkAll">全选</button>
+                <button class="btn btn-primary" @click="checkNone">反选</button>
+                <button class="btn btn-danger" @click="removeSelected">删除</button>
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
@@ -216,27 +283,28 @@
                     <col class="col-md-2">
                 </colgroup>
                 <tbody>
-                <tr v-for="article in list">
-                    <td>{{ article.title }}</td>
-                    <td>{{ article.date }}</td>
+                <tr v-for="draft in list">
+                    <td :class="{ checked: draft.checked }" @click="check(draft)">{{ draft.title }}</td>
+                    <td>{{ draft.date }}</td>
                     <td>
-                        <button class="btn btn-primary btn-sm">查看</button>
-                        <router-link :to="'content/article/' + article.id + '/edit'" class="btn btn-info btn-sm">编辑
+                        <router-link :to="'/content/article/' + draft.id + '/draft'" class="btn btn-info btn-sm">编辑
                         </router-link>
-                        <button class="btn btn-danger btn-sm">删除</button>
+                        <button class="btn btn-danger btn-sm" @click="remove(draft.id)">删除</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="box-footer">
-            <ul class="pagination no-margin">
-                <li><a href="#">上一页</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">下一页</a></li>
-            </ul>
+            <paginator :pageCount="pagination.last_page"
+                       :pageRange="3"
+                       :marginPages="2"
+                       :clickHandler="paginator"
+                       prevText="上一页"
+                       nextText="下一页"
+                       containerClass="pagination no-margin"
+                       pageClass="'page-item'">
+            </paginator>
         </div>
     </div>
 </template>

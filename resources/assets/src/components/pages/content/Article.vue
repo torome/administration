@@ -302,7 +302,6 @@
                 <router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>
                 <router-link to="/content/article/draft" class="btn btn-info">草稿箱</router-link>
                 <button class="btn btn-danger" @click="removeSelected">删除</button>
-                <!--<button class="btn btn-danger">彻底删除</button>-->
             </div>
         </div>
         <div class="box-body table-responsive no-padding">
