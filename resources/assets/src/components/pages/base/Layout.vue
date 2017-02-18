@@ -58,6 +58,28 @@
             uri: '/navigation'
           },
           {
+            text: '模块配置',
+            icon: 'fa fa-plus-square',
+            uri: '/module'
+          },
+          {
+            text: '系统组件',
+            icon: 'fa fa-object-group',
+            uri: '#',
+            menu: [
+              {
+                text: '多说评论',
+                icon: 'fa fa-comment',
+                uri: '/duoshuo'
+              },
+              {
+                text: '百度搜索',
+                icon: 'fa fa-search',
+                uri: '/search'
+              }
+            ]
+          },
+          {
             text: '邮件设置',
             icon: 'fa fa-envelope-o',
             uri: '/email'
@@ -66,16 +88,6 @@
             text: '调试工具',
             icon: 'fa fa-exclamation',
             uri: '/debug'
-          },
-          {
-            text: '多说评论',
-            icon: 'fa fa-comment',
-            uri: '/duoshuo'
-          },
-          {
-            text: '百度搜索',
-            icon: 'fa fa-search',
-            uri: '/search'
           }
         ]
       }

@@ -35,6 +35,7 @@ import Duoshuo from './components/pages/base/Duoshuo'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
 import Mail from './components/pages/base/Mail'
+import Module from './components/pages/base/Module'
 import Navigation from './components/pages/base/Navigation'
 import Seo from './components/pages/base/Seo'
 import Upload from './components/pages/base/Upload'
@@ -74,6 +75,11 @@ export default new VueRouter({
             {
               path: 'email',
               component: Mail,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'module',
+              component: Module,
               beforeEnter: requireAuth
             },
             {
