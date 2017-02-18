@@ -3,7 +3,7 @@
     computed: {
       enabled: {
         get () {
-          return this.$store.state.setting['debug.enabled']
+          return this.$store.state.setting.hasOwnProperty('debug.enabled') ? this.$store.state.setting['debug.enabled'] : '0'
         },
         set (value) {
           this.$store.commit('single', {
@@ -62,10 +62,10 @@
                     <div class="col-sm-3">
                         <div class="btn-group btn-switch">
                             <label class="btn btn-primary" :class="{ 'active': enabled === '1' }">
-                                <input type="radio" autocomplete="off" value="1" v-model="enabled"> 开启
+                                <input type="radio" value="1" v-model="enabled"> 开启
                             </label>
                             <label class="btn btn-primary" :class="{ 'active': enabled === '0' }">
-                                <input type="radio" autocomplete="off" value="0" v-model="enabled"> 关闭
+                                <input type="radio" value="0" v-model="enabled"> 关闭
                             </label>
                         </div>
                     </div>

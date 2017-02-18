@@ -15,7 +15,7 @@
     computed: {
       auto: {
         get () {
-          return this.$store.state.setting['article.save.auto'] ? this.$store.state.setting['article.save.auto'] : '0'
+          return this.$store.state.setting.hasOwnProperty('article.save.auto') ? this.$store.state.setting['article.save.auto'] : '0'
         },
         set (value) {
           this.$store.commit('single', {

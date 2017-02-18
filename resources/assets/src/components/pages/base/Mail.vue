@@ -7,7 +7,7 @@
     computed: {
       driver: {
         get () {
-          return this.$store.state.setting['mail.driver']
+          return this.$store.state.setting.hasOwnProperty('mail.driver') ? this.$store.state.setting['mail.driver'] : 'mail'
         },
         set (value) {
           this.$store.commit('single', {
@@ -18,7 +18,7 @@
       },
       encryption: {
         get () {
-          return this.$store.state.setting['mail.encryption']
+          return this.$store.state.setting.hasOwnProperty('mail.encryption') ? this.$store.state.setting['mail.encryption'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -29,7 +29,7 @@
       },
       port: {
         get () {
-          return this.$store.state.setting['mail.port']
+          return this.$store.state.setting.hasOwnProperty('mail.port') ? this.$store.state.setting['mail.port'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -40,7 +40,7 @@
       },
       host: {
         get () {
-          return this.$store.state.setting['mail.host']
+          return this.$store.state.setting.hasOwnProperty('mail.host') ? this.$store.state.setting['mail.host'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -51,7 +51,7 @@
       },
       from: {
         get () {
-          return this.$store.state.setting['mail.from']
+          return this.$store.state.setting.hasOwnProperty('mail.from') ? this.$store.state.setting['mail.from'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -62,7 +62,7 @@
       },
       username: {
         get () {
-          return this.$store.state.setting['mail.username']
+          return this.$store.state.setting.hasOwnProperty('mail.username') ? this.$store.state.setting['mail.username'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -73,7 +73,7 @@
       },
       password: {
         get () {
-          return this.$store.state.setting['mail.password']
+          return this.$store.state.setting.hasOwnProperty('mail.password') ? this.$store.state.setting['mail.password'] : ''
         },
         set (value) {
           this.$store.commit('single', {

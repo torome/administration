@@ -3,7 +3,7 @@
     computed: {
       articleDescription: {
         get () {
-          return this.$store.state.setting['content.seo.article.description']
+          return this.$store.state.setting.hasOwnProperty('content.seo.article.description') ? this.$store.state.setting['content.seo.article.description'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -14,7 +14,7 @@
       },
       articleKeyword: {
         get () {
-          return this.$store.state.setting['content.seo.article.keyword']
+          return this.$store.state.setting.hasOwnProperty('content.seo.article.keyword') ? this.$store.state.setting['content.seo.article.keyword'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -25,7 +25,7 @@
       },
       articleTitle: {
         get () {
-          return this.$store.state.setting['content.seo.article.title']
+          return this.$store.state.setting.hasOwnProperty('content.seo.article.title') ? this.$store.state.setting['content.seo.article.title'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -36,7 +36,7 @@
       },
       categoryDescription: {
         get () {
-          return this.$store.state.setting['content.seo.category.description']
+          return this.$store.state.setting.hasOwnProperty('content.seo.category.description') ? this.$store.state.setting['content.seo.category.description'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -47,7 +47,7 @@
       },
       categoryKeyword: {
         get () {
-          return this.$store.state.setting['content.seo.category.keyword']
+          return this.$store.state.setting.hasOwnProperty('content.seo.category.keyword') ? this.$store.state.setting['content.seo.category.keyword'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -58,7 +58,7 @@
       },
       categoryTitle: {
         get () {
-          return this.$store.state.setting['content.seo.category.title']
+          return this.$store.state.setting.hasOwnProperty('content.seo.category.title') ? this.$store.state.setting['content.seo.category.title'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -69,7 +69,7 @@
       },
       pageDescription: {
         get () {
-          return this.$store.state.setting['content.seo.page.description']
+          return this.$store.state.setting.hasOwnProperty('content.seo.page.description') ? this.$store.state.setting['content.seo.page.description'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -80,7 +80,7 @@
       },
       pageKeyword: {
         get () {
-          return this.$store.state.setting['content.seo.page.keyword']
+          return this.$store.state.setting.hasOwnProperty('content.seo.page.keyword') ? this.$store.state.setting['content.seo.page.keyword'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -91,7 +91,7 @@
       },
       pageTitle: {
         get () {
-          return this.$store.state.setting['content.seo.page.title']
+          return this.$store.state.setting.hasOwnProperty('content.seo.page.title') ? this.$store.state.setting['content.seo.page.title'] : ''
         },
         set (value) {
           this.$store.commit('single', {

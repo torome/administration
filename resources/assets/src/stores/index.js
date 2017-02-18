@@ -17,7 +17,7 @@ const state = {
     type: 'notice',
     text: 'This is a message'
   },
-  setting: {},
+  setting: [],
   title: 'Notadd Administration',
   token: {},
   user: {

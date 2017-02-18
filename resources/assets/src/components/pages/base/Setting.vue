@@ -3,7 +3,7 @@
     computed: {
       enabled: {
         get () {
-          return this.$store.state.setting['site.enabled'] ? this.$store.state.setting['site.enabled'] : 0
+          return this.$store.state.setting.hasOwnProperty('site.enabled') ? this.$store.state.setting['site.enabled'] : '1'
         },
         set (value) {
           this.$store.commit('single', {
@@ -14,7 +14,7 @@
       },
       name: {
         get () {
-          return this.$store.state.setting['site.name']
+          return this.$store.state.setting.hasOwnProperty('site.name') ? this.$store.state.setting['site.name'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -25,7 +25,7 @@
       },
       domain: {
         get () {
-          return this.$store.state.setting['site.domain']
+          return this.$store.state.setting.hasOwnProperty('site.domain') ? this.$store.state.setting['site.domain'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -36,7 +36,7 @@
       },
       beian: {
         get () {
-          return this.$store.state.setting['site.beian']
+          return this.$store.state.setting.hasOwnProperty('site.beian') ? this.$store.state.setting['site.beian'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -47,7 +47,7 @@
       },
       company: {
         get () {
-          return this.$store.state.setting['site.company']
+          return this.$store.state.setting.hasOwnProperty('site.company') ? this.$store.state.setting['site.company'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -58,7 +58,7 @@
       },
       copyright: {
         get () {
-          return this.$store.state.setting['site.copyright']
+          return this.$store.state.setting.hasOwnProperty('site.copyright') ? this.$store.state.setting['site.copyright'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -69,7 +69,7 @@
       },
       statistics: {
         get () {
-          return this.$store.state.setting['site.statistics']
+          return this.$store.state.setting.hasOwnProperty('site.statistics') ? this.$store.state.setting['site.statistics'] : ''
         },
         set (value) {
           this.$store.commit('single', {

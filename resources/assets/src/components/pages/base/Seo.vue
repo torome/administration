@@ -3,7 +3,7 @@
     computed: {
       description: {
         get () {
-          return this.$store.state.setting['seo.description']
+          return this.$store.state.setting.hasOwnProperty('seo.description') ? this.$store.state.setting['seo.description'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -14,7 +14,7 @@
       },
       keyword: {
         get () {
-          return this.$store.state.setting['seo.keyword']
+          return this.$store.state.setting.hasOwnProperty('seo.keyword') ? this.$store.state.setting['seo.keyword'] : ''
         },
         set (value) {
           this.$store.commit('single', {
@@ -25,7 +25,7 @@
       },
       title: {
         get () {
-          return this.$store.state.setting['seo.title']
+          return this.$store.state.setting.hasOwnProperty('seo.title') ? this.$store.state.setting['seo.title'] : ''
         },
         set (value) {
           this.$store.commit('single', {

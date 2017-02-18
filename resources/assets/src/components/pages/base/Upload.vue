@@ -3,7 +3,7 @@
     computed: {
       imageProcessingEngine: {
         get () {
-          return this.$store.state.setting['attachment.engine']
+          return this.$store.state.setting.hasOwnProperty('attachment.engine') ? this.$store.state.setting['attachment.engine'] : 'gd'
         },
         set (value) {
           this.$store.commit('single', {
@@ -20,7 +20,7 @@
       },
       fileMaxSize: {
         get () {
-          return this.$store.state.setting['attachment.limit.file']
+          return this.$store.state.setting.hasOwnProperty('attachment.limit.file') ? this.$store.state.setting['attachment.limit.file'] : 2048
         },
         set (value) {
           this.$store.commit('single', {
@@ -31,7 +31,7 @@
       },
       imageMaxSize: {
         get () {
-          return this.$store.state.setting['attachment.limit.image']
+          return this.$store.state.setting.hasOwnProperty('attachment.limit.image') ? this.$store.state.setting['attachment.limit.image'] : 2048
         },
         set (value) {
           this.$store.commit('single', {
@@ -42,7 +42,7 @@
       },
       videoMaxSize: {
         get () {
-          return this.$store.state.setting['attachment.limit.video']
+          return this.$store.state.setting.hasOwnProperty('attachment.limit.video') ? this.$store.state.setting['attachment.limit.video'] : 2048
         },
         set (value) {
           this.$store.commit('single', {
@@ -53,7 +53,7 @@
       },
       canUploadImageExtension: {
         get () {
-          return this.$store.state.setting['attachment.format.image']
+          return this.$store.state.setting.hasOwnProperty('attachment.format.image') ? this.$store.state.setting['attachment.format.image'] : '.png,.jpg,.jpeg,.gif,.bmp'
         },
         set (value) {
           this.$store.commit('single', {
@@ -64,7 +64,7 @@
       },
       canUploadCatcherExtension: {
         get () {
-          return this.$store.state.setting['attachment.format.catcher']
+          return this.$store.state.setting.hasOwnProperty('attachment.format.catcher') ? this.$store.state.setting['attachment.format.catcher'] : '.png,.jpg,.jpeg,.gif,.bmp'
         },
         set (value) {
           this.$store.commit('single', {
@@ -75,7 +75,7 @@
       },
       canUploadVideoExtension: {
         get () {
-          return this.$store.state.setting['attachment.format.video']
+          return this.$store.state.setting.hasOwnProperty('attachment.format.video') ? this.$store.state.setting['attachment.format.video'] : '.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid'
         },
         set (value) {
           this.$store.commit('single', {
@@ -86,7 +86,7 @@
       },
       canUploadFileExtension: {
         get () {
-          return this.$store.state.setting['attachment.format.file']
+          return this.$store.state.setting.hasOwnProperty('attachment.format.file') ? this.$store.state.setting['attachment.format.file'] : '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
         },
         set (value) {
           this.$store.commit('single', {
@@ -97,7 +97,7 @@
       },
       canManagementImageExtension: {
         get () {
-          return this.$store.state.setting['attachment.manager.image']
+          return this.$store.state.setting.hasOwnProperty('attachment.manager.image') ? this.$store.state.setting['attachment.manager.image'] : '.png,.jpg,.jpeg,.gif,.bmp'
         },
         set (value) {
           this.$store.commit('single', {
@@ -108,7 +108,7 @@
       },
       canManagementFileExtension: {
         get () {
-          return this.$store.state.setting['attachment.manager.file']
+          return this.$store.state.setting.hasOwnProperty('attachment.manager.file') ? this.$store.state.setting['attachment.manager.file'] : '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
         },
         set (value) {
           this.$store.commit('single', {
@@ -169,36 +169,6 @@
     mounted () {
       let _this = this
       _this.$store.commit('title', '上传配置 - Notadd Administration')
-      if (!_this.imageProcessingEngine) {
-        _this.imageProcessingEngine = 'gd'
-      }
-      if (!_this.fileMaxSize) {
-        _this.fileMaxSize = 2048
-      }
-      if (!_this.imageMaxSize) {
-        _this.imageMaxSize = 2048
-      }
-      if (!_this.videoMaxSize) {
-        _this.videoMaxSize = 2048
-      }
-      if (!_this.canUploadImageExtension) {
-        _this.canUploadImageExtension = '.png,.jpg,.jpeg,.gif,.bmp'
-      }
-      if (!_this.canUploadCatcherExtension) {
-        _this.canUploadCatcherExtension = '.png,.jpg,.jpeg,.gif,.bmp'
-      }
-      if (!_this.canUploadVideoExtension) {
-        _this.canUploadVideoExtension = '.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid'
-      }
-      if (!_this.canUploadFileExtension) {
-        _this.canUploadFileExtension = '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
-      }
-      if (!_this.canManagementImageExtension) {
-        _this.canManagementImageExtension = '.png,.jpg,.jpeg,.gif,.bmp'
-      }
-      if (!_this.canManagementFileExtension) {
-        _this.canManagementFileExtension = '.png,.jpg,.jpeg,.gif,.bmp,.flv,.swf,.mkv,.avi,.rm,.rmvb,.mpeg,.mpg,.ogg,.ogv,.mov,.wmv,.mp4,.webm,.mp3,.wav,.mid,.rar,.zip,.tar,.gz,.7z,.bz2,.cab,.iso,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,.txt,.md,.xml'
-      }
     }
   }
 </script>
