@@ -13,6 +13,10 @@ use Illuminate\Support\ServiceProvider;
 use Notadd\Administration\Controllers\AdminController;
 use Notadd\Administration\Listeners\CsrfTokenRegister;
 use Notadd\Administration\Listeners\RouteRegister;
+use Notadd\Administration\Observers\ArticleObserver;
+use Notadd\Administration\Observers\PageObserver;
+use Notadd\Content\Models\Article;
+use Notadd\Content\Models\Page;
 use Notadd\Foundation\Administration\Administration;
 
 /**
@@ -40,5 +44,8 @@ class ModuleServiceProvider extends ServiceProvider
             base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
             base_path('modules/administration/resources/neditor') => public_path('assets/neditor'),
         ], 'public');
+
+        class_exists(Article::class) && Article::observe(ArticleObserver::class);
+        class_exists(Page::class) && Page::observe(PageObserver::class);
     }
 }
