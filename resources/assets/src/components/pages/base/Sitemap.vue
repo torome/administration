@@ -1,31 +1,31 @@
 <script>
   export default {
     computed: {
-      enableXmlMap: {
+      xml: {
         get () {
-          return this.$store.state.setting['sitemap.enable.xml']
+          return this.$store.state.setting.hasOwnProperty('sitemap.xml') ? this.$store.state.setting['sitemap.xml'] : '0'
         },
         set (value) {
           this.$store.commit('single', {
-            key: 'sitemap.enable.xml',
+            key: 'sitemap.xml',
             value: value
           })
         }
       },
-      enableHtmlMap: {
+      html: {
         get () {
-          return this.$store.state.setting['sitemap.enable.html']
+          return this.$store.state.setting.hasOwnProperty('sitemap.html') ? this.$store.state.setting['sitemap.html'] : '0'
         },
         set (value) {
           this.$store.commit('single', {
-            key: 'sitemap.enable.html',
+            key: 'sitemap.html',
             value: value
           })
         }
       },
-      updateCycle: {
+      cycle: {
         get () {
-          return this.$store.state.setting['sitemap.cycle']
+          return this.$store.state.setting.hasOwnProperty('sitemap.cycle') ? this.$store.state.setting['sitemap.cycle'] : '24'
         },
         set (value) {
           this.$store.commit('single', {
@@ -34,13 +34,13 @@
           })
         }
       },
-      onlyContainRecentArticles: {
+      recently: {
         get () {
-          return this.$store.state.setting['sitemap.recent']
+          return this.$store.state.setting.hasOwnProperty('sitemap.recently') ? this.$store.state.setting['sitemap.recently'] : '1'
         },
         set (value) {
           this.$store.commit('single', {
-            key: 'sitemap.recent',
+            key: 'sitemap.recently',
             value: value
           })
         }
@@ -52,12 +52,25 @@
     methods: {
       submit: function (e) {
         let _this = this
-
-        _this.$validator.validateAll()
-
-        if (_this.errors.any()) {
-          return false
-        }
+        _this.$jquery(e.target).prop('disabled', true)
+        _this.$jquery(e.target).text('提交中...')
+        _this.$http.post(window.api + '/sitemap', {
+          xml: _this.xml,
+          html: _this.html,
+          cycle: _this.cycle,
+          recently: _this.recently
+        }).then(response => {
+          _this.$store.commit('setting', response.body.data)
+          _this.$store.commit('message', {
+            show: true,
+            type: 'notice',
+            text: '更新设置成功！'
+          })
+          _this.$jquery(e.target).prop('disabled', false)
+          _this.$jquery(e.target).text('保存')
+        }, response => {
+          console.log(response.body)
+        })
       }
     },
     mounted () {
@@ -76,63 +89,69 @@
                 <div class="form-group">
                     <label class="col-sm-1 control-label">生成 XML 地图</label>
                     <div class="col-sm-3">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" v-model="enableXmlMap">启用
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary" :class="{ 'active': xml === '1' }">
+                                <input type="radio" value="1" v-model="xml"> 开启
+                            </label>
+                            <label class="btn btn-primary" :class="{ 'active': xml === '0' }">
+                                <input type="radio" value="0" v-model="xml"> 关闭
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-1 control-label">生成 HTML 地图</label>
                     <div class="col-sm-3">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" v-model="enableHtmlMap">启用
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-
-                    </div>
-                </div>
-                <div class="form-group" :class="{ 'has-error': errors.has('updateCycle') }">
-                    <label class="col-sm-1 control-label">更新周期</label>
-                    <div class="col-sm-3">
-                        <div class="input-group">
-                            <input name="updateCycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="updateCycle" v-validate data-vv-rules="required">
-                            <div class="input-group-addon">小时</div>
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary" :class="{ 'active': html === '1' }">
+                                <input type="radio" value="1" v-model="html"> 开启
+                            </label>
+                            <label class="btn btn-primary" :class="{ 'active': html === '0' }">
+                                <input type="radio" value="0" v-model="html"> 关闭
+                            </label>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <span class="help-block" v-show="errors.has('updateCycle')">{{ errors.first('updateCycle') }}</span>
-                    </div>
                 </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-1 control-label">更新周期</label>-->
+                    <!--<div class="col-sm-3">-->
+                        <!--<div class="input-group">-->
+                            <!--<input name="cycle" type="text" class="form-control" placeholder="请输入更新周期" v-model="cycle" v-validate data-vv-rules="required">-->
+                            <!--<div class="input-group-addon">小时</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-8">-->
+                        <!--<span class="help-block"></span>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="form-group">
                     <label class="col-sm-1 control-label">只包含最近的文章</label>
                     <div class="col-sm-3">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" v-model="onlyContainRecentArticles">启用
-                        </label>
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary" :class="{ 'active': recently === '1' }">
+                                <input type="radio" value="1" v-model="recently"> 开启
+                            </label>
+                            <label class="btn btn-primary" :class="{ 'active': recently === '0' }">
+                                <input type="radio" value="0" v-model="recently"> 关闭
+                            </label>
+                        </div>
                     </div>
                     <div class="col-sm-8">
                         <span class="help-block">包含 1000 以内的文章</span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-1 control-label">链接包括</label>
-                    <div class="col-sm-3">
-                        <label class="checkbox-inline" v-for="enableModule in enableModules">
-                            <input type="checkbox" v-model="enableModule.enable">{{ enableModule.name }}
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-1 control-label">链接包括</label>-->
+                    <!--<div class="col-sm-3">-->
+                        <!--<label class="checkbox-inline" v-for="enableModule in enableModules">-->
+                            <!--<input type="checkbox" v-model="enableModule.enable">{{ enableModule.name }}-->
+                        <!--</label>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
         <div class="box-footer">
-            <button class="btn btn-primary btn-submit" :disabled="errors.any()" @click="submit">保存</button>
+            <button class="btn btn-primary btn-submit" @click="submit">保存</button>
         </div>
     </div>
 </template>

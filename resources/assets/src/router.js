@@ -38,6 +38,7 @@ import Mail from './components/pages/base/Mail'
 import Module from './components/pages/base/Module'
 import Navigation from './components/pages/base/Navigation'
 import Seo from './components/pages/base/Seo'
+import Sitemap from './components/pages/base/Sitemap'
 import Upload from './components/pages/base/Upload'
 import Setting from './components/pages/base/Setting'
 
@@ -100,6 +101,11 @@ export default new VueRouter({
             {
               path: 'setting',
               component: Setting,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'sitemap',
+              component: Sitemap,
               beforeEnter: requireAuth
             },
             {
