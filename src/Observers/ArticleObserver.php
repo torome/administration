@@ -61,7 +61,7 @@ class ArticleObserver
         if($enable && $token) {
             $ch = curl_init();
             $options =  array(
-                CURLOPT_URL => 'http://data.zz.baidu.com/urls?site=' . url() . '&token=' . $token,
+                CURLOPT_URL => 'http://data.zz.baidu.com/urls?site=' . url('') . '&token=' . $token,
                 CURLOPT_POST => true,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POSTFIELDS => url('article/' . $article->getAttribute('id')),
