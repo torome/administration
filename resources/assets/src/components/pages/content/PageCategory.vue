@@ -43,7 +43,7 @@
         this.modal.background_color = ''
         this.modal.background_image = ''
         this.modal.description = ''
-        this.modal.enabled = ''
+        this.modal.enabled = '1'
         this.modal.id = 0
         this.modal.link = ''
         this.modal.name = ''
@@ -91,13 +91,17 @@
       },
       submit: function (e) {
         let _this = this
+        if (!_this.modal.title || !_this.modal.alias) {
+          window.alert('必须填写名称和别名！')
+          return false
+        }
         if (_this.modal.pattern === 'create') {
           _this.$http.post(window.api + '/page/category/create', _this.modal).then(function (response) {
             _this.items = response.body.data
             _this.$refs.modal.close()
             _this.$store.commit('message', {
               show: true,
-              type: 'error',
+              type: 'notice',
               text: '创建分类成功！'
             })
           }, function (response) {
@@ -114,7 +118,7 @@
             _this.items = response.body.data
             _this.$store.commit('message', {
               show: true,
-              type: 'error',
+              type: 'notice',
               text: '编辑分类成功！'
             })
           }, function (response) {
@@ -263,6 +267,16 @@
     .modal-footer > .btn-submit {
         float: left;
     }
+
+    .none-item {
+        background: url("../../../../static/images/info.svg") left center no-repeat;
+        color: #888;
+        font-size: 20px;
+        height: 40px;
+        line-height: 40px;
+        margin: 20px 0;
+        padding-left: 50px;
+    }
 </style>
 <template>
     <div class="box box-solid">
@@ -272,6 +286,7 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
+                    <div class="none-item" v-if="items.length === 0">目前还没有分类哦！</div>
                     <ul class="list-group">
                         <li class="list-group-item clear-fix" v-for="item in items" :data-id="item.id">
                             <div class="list-group-item-content">

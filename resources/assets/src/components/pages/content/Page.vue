@@ -323,7 +323,7 @@
                 </div>
             </div>
             <div class="box-extend">
-                <router-link to="page/create" class="btn btn-primary btn-create">添加页面</router-link>
+                <router-link to="/content/page/create" class="btn btn-primary btn-create">添加页面</router-link>
                 <button class="btn btn-primary" @click="checkAll">全选</button>
                 <button class="btn btn-primary" @click="checkNone">反选</button>
                 <button class="btn btn-danger" @click="removeSelected">删除</button>

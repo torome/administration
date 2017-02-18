@@ -22,12 +22,12 @@
           item: {
             color: '',
             enabled: '',
-            group_id: '',
+            group_id: '0',
             icon_image: '',
             id: 0,
             link: '',
-            order_id: '',
-            parent_id: '',
+            order_id: '0',
+            parent_id: '0',
             target: '',
             title: '',
             tooltip: ''
@@ -165,6 +165,10 @@
         let _this = this
         switch (_this.modal.pattern) {
           case 'group.create':
+            if (!_this.modal.group.alias && !_this.modal.group.title) {
+              window.alert('必须填写名称和别名！')
+              return false
+            }
             _this.$http.post(window.api + '/navigation/group/create', {
               alias: _this.modal.group.alias,
               title: _this.modal.group.title
@@ -181,6 +185,10 @@
             })
             break
           case 'group.edit':
+            if (!_this.modal.group.alias && !_this.modal.group.title) {
+              window.alert('必须填写名称和别名！')
+              return false
+            }
             _this.$http.post(window.api + '/navigation/group/edit', {
               alias: _this.modal.group.alias,
               id: _this.modal.group.id,
@@ -199,6 +207,10 @@
             })
             break
           case 'item.create':
+            if (!_this.modal.item.alias && !_this.modal.item.title) {
+              window.alert('必须填写标题和别名！')
+              return false
+            }
             _this.$http.post(window.api + '/navigation/item/create', {
               color: _this.modal.item.color,
               enabled: _this.modal.item.enabled,
@@ -223,6 +235,10 @@
             })
             break
           case 'item.edit':
+            if (!_this.modal.item.alias && !_this.modal.item.title) {
+              window.alert('必须填写标题和别名！')
+              return false
+            }
             _this.$http.post(window.api + '/navigation/item/edit', {
               color: _this.modal.item.color,
               enabled: _this.modal.item.enabled,
