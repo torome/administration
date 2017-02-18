@@ -30,6 +30,7 @@ import ContentPageEdit from './components/pages/content/PageEdit'
 import ContentTemplate from './components/pages/content/Template'
 import ContentTag from './components/pages/content/ArticleTag'
 import Debug from './components/pages/base/Debug'
+import Duoshuo from './components/pages/base/Duoshuo'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
 import Mail from './components/pages/base/Mail'
@@ -62,6 +63,11 @@ export default new VueRouter({
             {
               path: 'debug',
               component: Debug,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'duoshuo',
+              component: Duoshuo,
               beforeEnter: requireAuth
             },
             {

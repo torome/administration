@@ -29,7 +29,7 @@
           _this.$store.commit('message', {
             show: true,
             type: 'notice',
-            text: '更新SEO设置成功！'
+            text: '更新设置成功！'
           })
           _this.$jquery(e.target).prop('disabled', false)
           _this.$jquery(e.target).text('保存')

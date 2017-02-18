@@ -66,6 +66,16 @@
             text: '调试工具',
             icon: 'fa fa-exclamation',
             uri: '/debug'
+          },
+          {
+            text: '多说评论',
+            icon: 'fa fa-comment',
+            uri: '/duoshuo'
+          },
+          {
+            text: '百度搜索',
+            icon: 'fa fa-comment',
+            uri: '/search'
           }
         ]
       }
