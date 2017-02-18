@@ -9,6 +9,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Baidu from './components/pages/base/Baidu'
 import BaseDashboard from './components/Dashboard'
 import BaseLayout from './components/pages/base/Layout'
 import ContentArticle from './components/pages/content/Article'
@@ -78,6 +79,11 @@ export default new VueRouter({
             {
               path: 'navigation',
               component: Navigation,
+              beforeEnter: requireAuth
+            },
+            {
+              path: 'search',
+              component: Baidu,
               beforeEnter: requireAuth
             },
             {

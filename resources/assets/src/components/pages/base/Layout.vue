@@ -74,7 +74,7 @@
           },
           {
             text: '百度搜索',
-            icon: 'fa fa-comment',
+            icon: 'fa fa-search',
             uri: '/search'
           }
         ]

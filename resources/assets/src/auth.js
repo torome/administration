@@ -21,7 +21,7 @@ export default {
 
         let setting = store.state.setting
 
-        if (JSON.stringify(setting) === '{}') {
+        if (JSON.stringify(setting) === '[]') {
           Vue.http.post(window.api + '/setting/all').then(response => {
             store.commit('setting', response.body.data)
           })

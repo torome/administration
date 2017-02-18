@@ -35,6 +35,7 @@ class CsrfTokenRegister extends EventSubscriber
     public function handle(CsrfTokenRegisterEvent $event)
     {
         $event->registerExcept('admin*');
+        $event->registerExcept('api/baidu*');
         $event->registerExcept('api/duoshuo*');
     }
 }
