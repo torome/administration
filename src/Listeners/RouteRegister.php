@@ -33,7 +33,9 @@ class RouteRegister extends AbstractRouteRegistrar
             $this->router->post('configuration', BaiduController::class . '@configuration');
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/duoshuo'], function () {
+            $this->router->post('backup', DuoshuoController::class . '@backup');
             $this->router->post('configuration', DuoshuoController::class . '@configuration');
+            $this->router->post('number', DuoshuoController::class . '@number');
         });
     }
 }

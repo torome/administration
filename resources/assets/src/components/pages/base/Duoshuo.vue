@@ -47,6 +47,28 @@
       }
     },
     methods: {
+      backup: function (key, length, list, target) {
+        let _this = this
+        if (key + 1 > length) {
+          _this.$jquery(target).prop('disabled', false)
+          _this.$jquery(target).text('同步多说评论到本地')
+          _this.$store.commit('message', {
+            show: true,
+            type: 'notice',
+            text: '同步多说评论到本地完成！'
+          })
+          return false
+        }
+        let current = key + 1
+        _this.$jquery(target).text('获取到' + length + '篇文章，开始同步' + current + '/' + length)
+        _this.$http.post(window.api + '/duoshuo/backup', {
+          id: list[key]
+        }).then(response => {
+          _this.backup(current, length, list, target)
+        }, response => {
+          console.log(response.body)
+        })
+      },
       submit: function (e) {
         let _this = this
         _this.$validator.validateAll()
@@ -76,7 +98,19 @@
           _this.$jquery(e.target).text('保存')
         })
       },
-      sync: function () {
+      sync: function (e) {
+        let _this = this
+        let _length = 0
+        let _target = e.target
+        _this.$jquery(_target).prop('disabled', true)
+        _this.$jquery(_target).text('正在获取文章数量...')
+        _this.$http.post(window.api + '/duoshuo/number').then(response => {
+          _length = response.body.data.number
+          _this.$jquery(_target).text('获取到' + _length + '篇文章，开始同步')
+          _this.backup(0, _length, response.body.data.list, _target)
+        }, response => {
+          console.log(response.body)
+        })
       }
     }
   }

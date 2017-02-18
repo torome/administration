@@ -9,6 +9,7 @@
 namespace Notadd\Administration\Controllers;
 
 use Notadd\Administration\Handlers\Duoshuo\ConfigurationHandler;
+use Notadd\Administration\Handlers\Duoshuo\NumberHandler;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 
 /**
@@ -16,6 +17,11 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
  */
 class DuoshuoController extends Controller
 {
+    public function backup()
+    {
+        
+    }
+    
     /**
      * Configuration handler.
      *
@@ -25,6 +31,19 @@ class DuoshuoController extends Controller
      * @throws \Exception
      */
     public function configuration(ConfigurationHandler $handler)
+    {
+        return $handler->toResponse()->generateHttpResponse();
+    }
+
+    /**
+     * Number handler.
+     *
+     * @param \Notadd\Administration\Handlers\Duoshuo\NumberHandler $handler
+     *
+     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
+     * @throws \Exception
+     */
+    public function number(NumberHandler $handler)
     {
         return $handler->toResponse()->generateHttpResponse();
     }
