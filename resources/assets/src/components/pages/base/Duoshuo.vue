@@ -55,7 +55,7 @@
         }
         _this.$jquery(e.target).prop('disabled', true)
         _this.$jquery(e.target).text('提交中...')
-        _this.$http.post(window.api + '/duoshuo/set', {
+        _this.$http.post(window.api + '/duoshuo/configuration', {
           domain: _this.domain,
           secret: _this.secret,
           back: _this.back,
@@ -70,6 +70,7 @@
           _this.$jquery(e.target).prop('disabled', false)
           _this.$jquery(e.target).text('保存')
         }, response => {
+          console.log(response.body)
           window.alert('更新设置失败！')
           _this.$jquery(e.target).prop('disabled', false)
           _this.$jquery(e.target).text('保存')

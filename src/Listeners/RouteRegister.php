@@ -9,6 +9,7 @@
 namespace Notadd\Administration\Listeners;
 
 use Notadd\Administration\Controllers\AdminController;
+use Notadd\Administration\Controllers\DuoshuoController;
 use Notadd\Foundation\Routing\Abstracts\RouteRegistrar as AbstractRouteRegistrar;
 
 /**
@@ -26,6 +27,9 @@ class RouteRegister extends AbstractRouteRegistrar
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'admin'], function () {
             $this->router->post('/', AdminController::class . '@access');
+        });
+        $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/duoshuo'], function () {
+            $this->router->post('configuration', DuoshuoController::class . '@configuration');
         });
     }
 }
