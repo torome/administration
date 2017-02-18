@@ -89,7 +89,7 @@
                     <td>{{ module.author.join(',') }}</td>
                     <td>{{ module.description }}</td>
                     <td>
-                        <span class="badge">已开启</span>
+                        <span class="badge">开发中</span>
                     </td>
                 </tr>
                 </tbody>

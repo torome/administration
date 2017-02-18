@@ -53,17 +53,34 @@
             uri: '/seo'
           },
           {
-            text: '导航管理',
-            icon: 'fa fa-bars',
-            uri: '/navigation'
-          },
-          {
             text: '模块配置',
             icon: 'fa fa-plus-square',
             uri: '/module'
           },
           {
             text: '系统组件',
+            icon: 'fa fa-object-group',
+            uri: '#',
+            menu: [
+              {
+                text: '导航管理',
+                icon: 'fa fa-bars',
+                uri: '/navigation'
+              },
+              {
+                text: '邮件设置',
+                icon: 'fa fa-envelope-o',
+                uri: '/email'
+              },
+              {
+                text: '调试工具',
+                icon: 'fa fa-exclamation',
+                uri: '/debug'
+              }
+            ]
+          },
+          {
+            text: '插件管理',
             icon: 'fa fa-object-group',
             uri: '#',
             menu: [
@@ -83,16 +100,6 @@
                 uri: '/sitemap'
               }
             ]
-          },
-          {
-            text: '邮件设置',
-            icon: 'fa fa-envelope-o',
-            uri: '/email'
-          },
-          {
-            text: '调试工具',
-            icon: 'fa fa-exclamation',
-            uri: '/debug'
           }
         ]
       }

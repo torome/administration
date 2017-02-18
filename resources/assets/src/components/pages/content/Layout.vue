@@ -63,7 +63,7 @@
             ]
           },
           {
-            text: '系统组件',
+            text: '模块组件',
             icon: 'fa fa-building',
             uri: '#',
             menu: [

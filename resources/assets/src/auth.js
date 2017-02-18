@@ -23,7 +23,11 @@ export default {
 
         if (JSON.stringify(setting) === '[]') {
           Vue.http.post(window.api + '/setting/all').then(response => {
-            store.commit('setting', response.body.data)
+            if (typeof response.body.data === 'undefined') {
+              store.commit('setting', [])
+            } else {
+              store.commit('setting', response.body.data)
+            }
           })
         }
 
