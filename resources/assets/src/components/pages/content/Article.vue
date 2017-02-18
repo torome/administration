@@ -169,7 +169,7 @@
     .box-footer,
     .box-header {
         height: 80px;
-        padding: 22px 0;
+        padding: 23px 0;
         position: relative;
     }
 
@@ -206,8 +206,7 @@
 
     .box-header > .box-extend > .btn {
         border-radius: 6px;
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 6px 32px;
     }
 
     .box-body > .table > tbody > tr > td:first-child {
