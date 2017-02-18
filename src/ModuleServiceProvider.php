@@ -12,6 +12,7 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 use Notadd\Administration\Controllers\AdminController;
 use Notadd\Administration\Listeners\CsrfTokenRegister;
+use Notadd\Administration\Listeners\RouteRegister;
 use Notadd\Foundation\Administration\Administration;
 
 /**
@@ -33,12 +34,7 @@ class ModuleServiceProvider extends ServiceProvider
         $administrator->registerHandler(AdminController::class . '@handle');
         $administration->setAdministrator($administrator);
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
-        $this->app->make('router')->group(['middleware' => ['cross', 'web'], 'prefix' => 'admin'], function () {
-            $this->app->make('router')->post('token', AdminController::class . '@token');
-        });
-        $this->app->make('router')->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'admin'], function () {
-            $this->app->make('router')->post('/', AdminController::class . '@access');
-        });
+        $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
             base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
