@@ -32,11 +32,6 @@
       check: function (article) {
         article.checked = !article.checked
       },
-      checkAll: function () {
-        this.list.forEach((article) => {
-          article.checked = true
-        })
-      },
       checkNone: function () {
         this.list.forEach((article) => {
           article.checked = !article.checked
@@ -296,10 +291,7 @@
             </div>
             <div class="box-extend">
                 <router-link to="/content/article/create" class="btn btn-primary btn-create">添加文章</router-link>
-                <button class="btn btn-primary" @click="checkAll">全选</button>
                 <button class="btn btn-primary" @click="checkNone">反选</button>
-                <router-link to="/content/article/recycle" class="btn btn-info">回收站</router-link>
-                <router-link to="/content/article/draft" class="btn btn-info">草稿箱</router-link>
                 <button class="btn btn-danger" @click="removeSelected">删除</button>
             </div>
         </div>
