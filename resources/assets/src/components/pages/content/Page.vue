@@ -344,7 +344,7 @@
                         <td>{{ page.created_at }}</td>
                         <td>
                             <button class="btn btn-primary btn-sm">查看</button>
-                            <router-link class="btn btn-info btn-sm" :to="'page/' + page.id + '/edit'">编辑</router-link>
+                            <router-link class="btn btn-info btn-sm" :to="'/content/page/' + page.id + '/edit'">编辑</router-link>
                             <button class="btn btn-danger btn-sm" @click="remove(page.id)">删除</button>
                         </td>
                     </tr>
