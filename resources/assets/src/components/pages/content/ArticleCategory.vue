@@ -116,12 +116,14 @@
         if (_this.modal.pattern === 'edit') {
           _this.$http.post(window.api + '/category/edit', _this.modal).then(function (response) {
             _this.items = response.body.data
+            _this.$refs.modal.close()
             _this.$store.commit('message', {
               show: true,
               type: 'notice',
               text: '编辑分类成功！'
             })
           }, function (response) {
+            _this.$refs.modal.close()
             _this.$store.commit('message', {
               show: true,
               type: 'error',
