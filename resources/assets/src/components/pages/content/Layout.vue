@@ -27,22 +27,22 @@
               {
                 text: '分类管理',
                 uri: '/content/article/category'
+              },
+              {
+                text: '回收站',
+                icon: 'fa fa-circle-o',
+                uri: '/content/article/recycle'
+              },
+              {
+                text: '草稿箱',
+                icon: 'fa fa-circle-o',
+                uri: '/content/article/draft'
               }/* ,
                  {
                  text: '标签管理',
                  icon: 'fa fa-circle-o',
                  uri: '/content/article/tag'
-                 },
-                 {
-                 text: '回收站',
-                 icon: 'fa fa-circle-o',
-                 uri: '/content/article/recycle'
-                 },
-                 {
-                 text: '草稿箱',
-                 icon: 'fa fa-circle-o',
-                 uri: '/content/article/draft'
-                 } */
+                 }, */
             ]
           },
           {
