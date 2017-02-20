@@ -12,7 +12,7 @@
         next((vm) => {
           let article = response.body.data
           vm.category.id = article.category ? article.category.id : 0
-          vm.category.text = article.category ? '选择分类[' + article.category.title + '(' + article.category.id + ')]' : '选择分类'
+          vm.category.text = article.category ? '选择分类[' + article.category.title + '(' + article.category.id + ')]' : '选择分类[未分类(0)]'
           vm.title = article.title
           vm.date = article.created_at
           vm.content = article.content
@@ -44,7 +44,7 @@
         category: {
           id: 0,
           list: [],
-          text: '选择分类'
+          text: '选择分类[未分类(0)]'
         },
         content: '',
         date: '',

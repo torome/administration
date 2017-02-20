@@ -11,7 +11,7 @@
           let article = response.body.data
           vm.alias = article.alias
           vm.category.id = article.category ? article.category.id : 0
-          vm.category.text = article.category ? '选择分类[' + article.category.title + '(' + article.category.id + ')]' : '选择'
+          vm.category.text = article.category ? '选择分类[' + article.category.title + '(' + article.category.id + ')]' : '选择分类[未分类(0)]'
           vm.content = article.content
           vm.enabled = article.enabled.toString()
           vm.title = article.title
@@ -30,7 +30,7 @@
         category: {
           id: 0,
           list: [],
-          text: '选择分类'
+          text: '选择分类[未分类(0)]'
         },
         content: '',
         enabled: '',

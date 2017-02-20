@@ -32,7 +32,7 @@
         category: {
           id: 0,
           list: [],
-          text: '选择分类'
+          text: '选择分类[未分类(0)]'
         },
         content: '',
         date: '',
