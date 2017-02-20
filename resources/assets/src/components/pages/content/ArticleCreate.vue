@@ -1,6 +1,7 @@
 <script>
   import DatePicker from 'vuejs-datepicker'
   import Editor from '../../libraries/Editor'
+  import Modal from '../../libraries/Modal'
   import Tags from '../../libraries/InputTag'
   export default {
     beforeRouteLeave (to, from, next) {
@@ -10,6 +11,7 @@
     components: {
       DatePicker,
       Editor,
+      Modal,
       Tags
     },
     computed: {
@@ -27,6 +29,11 @@
     },
     data () {
       return {
+        category: {
+          id: 0,
+          list: [],
+          text: '选择分类'
+        },
         content: '',
         date: '',
         hidden: '0',
@@ -43,6 +50,15 @@
       }
     },
     methods: {
+      categorySelect: function () {
+        this.$refs.modal.open()
+      },
+      categorySelectDone: function (category) {
+        let _this = this
+        _this.category.id = category.id
+        _this.category.text = '选择分类[' + category.title + '(' + category.id + ')]'
+        _this.$refs.modal.close()
+      },
       imageSelected: function (e) {
         let _file = e.target.files[0]
         let _this = this
@@ -61,6 +77,7 @@
         }
         const _formData = new window.FormData()
         _formData.append('content', _this.content)
+        _formData.append('category_id', _this.category.id)
         _formData.append('date', _this.date)
         _formData.append('hidden', _this.hidden)
         _formData.append('image', _this.image)
@@ -71,7 +88,6 @@
         _formData.append('source_author', _this.source.author)
         _formData.append('source_link', _this.source.link)
         _this.$http.post(window.api + '/article/create', _formData).then(function (response) {
-          console.log(response.body)
           if (response.body.data.id && response.body.data.id > 0) {
             _this.$store.commit('message', {
               show: true,
@@ -119,6 +135,10 @@
           }
         }, 10000)
       }
+      _this.$http.post(window.api + '/category/fetch').then(response => {
+        _this.category.list = response.body.data
+        console.log(_this.category.list)
+      })
     },
     watch: {
       auto: {
@@ -165,6 +185,52 @@
     .img-responsive {
         border: 2px solid #ccc !important;
         margin-top: 20px;
+    }
+
+    .list-group > .list-group-item {
+        border-width: 0;
+        padding: 0;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content {
+        border-radius: 4px;
+        cursor: pointer;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 5px;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content:hover {
+        background: #efefef;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content > em {
+        border-radius: 4px;
+        float: left;
+        height: 16px;
+        margin: 7px;
+        width: 16px;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content:hover > em {
+        opacity: 0;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content > .btn {
+        background: transparent;
+        border-radius: 4px 0 0 4px;
+        float: right;
+        opacity: 0;
+        padding: 5px 10px;
+    }
+
+    .list-group > .list-group-item > .list-group-item-content:hover > .btn {
+        opacity: 1;
+    }
+
+    .list-group > .list-group-item > .list-group {
+        margin-bottom: 0;
+        padding-left: 26px;
     }
 </style>
 <template>
@@ -214,10 +280,18 @@
                 <div class="box-body article-extend">
                     <div class="form-horizontal">
                         <div class="form-group">
+                            <label class="col-md-4 control-label">分类</label>
+                            <div class="col-md-8">
+                                <button class="btn btn-file btn-primary" @click="categorySelect">
+                                    <i class="fa fa-inbox"></i> {{ category.text }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-md-4 control-label">上传缩略图</label>
                             <div class="col-md-8">
                                 <button class="btn btn-file btn-primary">
-                                    <i class="fa fa-image"></i>上传图片
+                                    <i class="fa fa-image"></i> 上传图片
                                     <input type="file" @change="imageSelected">
                                 </button>
                                 <img class="img-responsive" :src="image" ref="image" v-show="image">
@@ -275,5 +349,40 @@
                 </div>
             </div>
         </div>
+        <modal ref="modal">
+            <div slot="title">
+                <div class="modal-title">{{ category.text }}</div>
+            </div>
+            <div slot="body">
+                <ul class="list-group">
+                    <li class="list-group-item clear-fix" v-for="item in category.list" @click="categorySelectDone(item)">
+                        <div class="list-group-item-content">
+                            <em :style="{ background: item.background_color }"></em>
+                            <span>{{ item.title }}</span>
+                            <i class="handle"></i>
+                        </div>
+                        <ol class="list-group">
+                            <li class="list-group-item clear-fix" v-for="sub in item.children" @click="categorySelectDone(item)">
+                                <div class="list-group-item-content">
+                                    <em :style="{ background: sub.background_color }"></em>
+                                    <span>{{ sub.title }}</span>
+                                    <i class="handle"></i>
+                                </div>
+                                <ol class="list-group">
+                                    <li class="list-group-item clear-fix" v-for="child in sub.children"
+                                         @click="categorySelectDone(item)">
+                                        <div class="list-group-item-content">
+                                            <em :style="{ background: child.background_color }"></em>
+                                            <span>{{ child.title }}</span>
+                                            <i class="handle"></i>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </modal>
     </div>
 </template>
