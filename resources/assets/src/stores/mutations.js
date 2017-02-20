@@ -20,9 +20,7 @@ export const setting = (state, setting) => {
 }
 
 export const single = (state, payload) => {
-  let _setting = state.setting
-  _setting[payload.key] = payload.value
-  Vue.set(state.setting, _setting)
+  Vue.set(state.setting, payload.key, payload.value)
 }
 
 export const title = (state, title) => {
