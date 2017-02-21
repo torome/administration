@@ -50,10 +50,10 @@
       }
     },
     methods: {
-      submit: function (e) {
+      submit: function () {
         let _this = this
-        _this.$jquery(e.target).prop('disabled', true)
-        _this.$jquery(e.target).text('提交中...')
+        _this.$jquery('button.btn-submit').prop('disabled', true)
+        _this.$jquery('button.btn-submit').text('提交中...')
         _this.$http.post(window.api + '/sitemap', {
           xml: _this.xml,
           html: _this.html,
@@ -66,8 +66,8 @@
             type: 'notice',
             text: '更新设置成功！'
           })
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         }, response => {
           console.log(response.body)
         })
@@ -85,7 +85,7 @@
             <h3 class="box-title">Sitemap 管理</h3>
         </div>
         <div class="box-body">
-            <div class="form-horizontal">
+            <div class="form-horizontal" @keyup.enter="submit">
                 <div class="form-group">
                     <label class="col-sm-1 control-label">生成 XML 地图</label>
                     <div class="col-sm-3">

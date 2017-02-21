@@ -16,31 +16,31 @@
           })
           return false
         }
-        _this.$jquery(e.target).prop('disabled', true)
-        _this.$jquery(e.target).text('登陆中...')
+        _this.$jquery('button.btn-login').prop('disabled', true)
+        _this.$jquery('button.btn-login').text('登陆中...')
         _this.$http.post(window.admin + '/token', {
           name: _this.username,
           password: _this.password
         }).then(function (response) {
           if (response.body.access_token && response.body.status === 'success') {
-            _this.$jquery(e.target).prop('disabled', false)
-            _this.$jquery(e.target).text('登陆成功！正在跳转...')
+            _this.$jquery('button.btn-login').prop('disabled', false)
+            _this.$jquery('button.btn-login').text('登陆成功！正在跳转...')
             _this.$store.commit('token', response.body)
             _this.$router.push('/')
           } else {
-            _this.$jquery(e.target).prop('disabled', false)
-            _this.$jquery(e.target).addClass('btn-danger')
-            _this.$jquery(e.target).removeClass('btn-login')
-            _this.$jquery(e.target).text('登陆失败！请检查账号或密码后重试')
+            _this.$jquery('button.btn-login').prop('disabled', false)
+            _this.$jquery('button.btn-login').addClass('btn-danger')
+            _this.$jquery('button.btn-login').removeClass('btn-login')
+            _this.$jquery('button.btn-login').text('登陆失败！请检查账号或密码后重试')
             setTimeout(function () {
-              _this.$jquery(e.target).addClass('btn-login')
-              _this.$jquery(e.target).removeClass('btn-danger')
-              _this.$jquery(e.target).text('登陆')
+              _this.$jquery('button.btn-login').addClass('btn-login')
+              _this.$jquery('button.btn-login').removeClass('btn-danger')
+              _this.$jquery('button.btn-login').text('登陆')
             }, 2000)
           }
         }, function (response) {
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('登陆')
+          _this.$jquery('button.btn-login').prop('disabled', false)
+          _this.$jquery('button.btn-login').text('登陆')
           window.alert('请求失败！')
         })
       }
@@ -871,7 +871,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="login-win">
+            <div class="login-win" @keyup.enter="submit">
                 <h3>Notadd 后台管理</h3>
                 <div class="account" :class="{ 'has-error': errors.has('username') }">
                     <label for="login-account" class="sr-only">登录</label>

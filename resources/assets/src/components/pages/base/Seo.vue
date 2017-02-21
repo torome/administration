@@ -36,14 +36,14 @@
       }
     },
     methods: {
-      submit: function (e) {
+      submit: function () {
         let _this = this
         _this.$validator.validateAll()
         if (_this.errors.any()) {
           return false
         }
-        _this.$jquery(e.target).prop('disabled', true)
-        _this.$jquery(e.target).text('提交中...')
+        _this.$jquery('button.btn-submit').prop('disabled', true)
+        _this.$jquery('button.btn-submit').text('提交中...')
         _this.$http.post(window.api + '/seo', {
           description: _this.description,
           keyword: _this.keyword,
@@ -55,12 +55,12 @@
             type: 'notice',
             text: '更新SEO设置成功！'
           })
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         }, response => {
           window.alert('更新设置失败！')
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         })
       }
     },
@@ -75,7 +75,7 @@
             <h3 class="box-title">全局SEO配置</h3>
         </div>
         <div class="box-body">
-            <div class="form-horizontal">
+            <div class="form-horizontal" @keyup.enter="submit">
                 <div class="form-group" :class="{ 'has-error': errors.has('title') }">
                     <label class="col-sm-1 control-label">标题</label>
                     <div class="col-sm-3">

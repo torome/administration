@@ -69,14 +69,14 @@
           console.log(response.body)
         })
       },
-      submit: function (e) {
+      submit: function () {
         let _this = this
         _this.$validator.validateAll()
         if (_this.errors.any()) {
           return false
         }
-        _this.$jquery(e.target).prop('disabled', true)
-        _this.$jquery(e.target).text('提交中...')
+        _this.$jquery('button.btn-submit').prop('disabled', true)
+        _this.$jquery('button.btn-submit').text('提交中...')
         _this.$http.post(window.api + '/duoshuo/configuration', {
           domain: _this.domain,
           secret: _this.secret,
@@ -89,13 +89,13 @@
             type: 'notice',
             text: '更新多说设置成功！'
           })
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         }, response => {
           console.log(response.body)
           window.alert('更新设置失败！')
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         })
       },
       sync: function (e) {
@@ -122,7 +122,7 @@
             <h3 class="box-title">多说评论</h3>
         </div>
         <div class="box-body">
-            <div class="form-horizontal">
+            <div class="form-horizontal" @keyup.enter="submit">
                 <div class="form-group" :class="{ 'has-error': errors.has('domain') }">
                     <label class="col-sm-1 control-label">二级域名</label>
                     <div class="col-sm-3">

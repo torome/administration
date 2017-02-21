@@ -112,7 +112,7 @@
           console.log(response.body)
         })
       },
-      submit: function (e) {
+      submit: function () {
         let _this = this
         if (_this.driver === 'mail') {
           _this.$validator.validateAll()
@@ -120,8 +120,8 @@
             return false
           }
         }
-        _this.$jquery(e.target).prop('disabled', true)
-        _this.$jquery(e.target).text('提交中...')
+        _this.$jquery('button.btn-submit').prop('disabled', true)
+        _this.$jquery('button.btn-submit').text('提交中...')
         _this.$http.post(window.api + '/mail', {
           driver: _this.driver,
           encryption: _this.encryption,
@@ -137,12 +137,12 @@
             type: 'notice',
             text: '更新邮件设置成功！'
           })
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         }, response => {
           window.alert('更新设置失败！')
-          _this.$jquery(e.target).prop('disabled', false)
-          _this.$jquery(e.target).text('保存')
+          _this.$jquery('button.btn-submit').prop('disabled', false)
+          _this.$jquery('button.btn-submit').text('保存')
         })
       },
       test: function () {
@@ -189,7 +189,7 @@
             <h3 class="box-title">邮件管理</h3>
         </div>
         <div class="box-body">
-            <div class="form-horizontal">
+            <div class="form-horizontal" @keyup.enter="submit">
                 <div class="form-group" :class="{ 'has-error': errors.has('driver') }">
                     <label class="col-sm-1 control-label">发送方式</label>
                     <div class="col-sm-3">
