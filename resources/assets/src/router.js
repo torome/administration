@@ -46,6 +46,168 @@ import requireAuth from './middlewares/auth'
 
 Vue.use(VueRouter)
 
+let bases = [
+  {
+    path: '/',
+    component: BaseDashboard,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'debug',
+    component: Debug,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'duoshuo',
+    component: Duoshuo,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'email',
+    component: Mail,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'module',
+    component: Module,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'navigation',
+    component: Navigation,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'search',
+    component: Baidu,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'seo',
+    component: Seo,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'setting',
+    component: Setting,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'sitemap',
+    component: Sitemap,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'storage',
+    component: Upload,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'upload',
+    component: Upload,
+    beforeEnter: requireAuth
+  }
+]
+
+let modules = [
+  {
+    path: '/',
+    component: BaseLayout,
+    children: bases
+  },
+  {
+    path: '/content',
+    component: ContentLayout,
+    children: [
+      {
+        path: '/',
+        component: ContentDashboard,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/all',
+        component: ContentArticle,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/create',
+        component: ContentArticleCreate,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/:id/draft',
+        component: ContentArticleDraftEdit,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/:id/edit',
+        component: ContentArticleEdit,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/category',
+        component: ContentCategory,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/tag',
+        component: ContentTag,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/recycle',
+        component: ContentArticleRecycle,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'article/draft',
+        component: ContentArticleDraft,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'page/all',
+        component: ContentPage,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'page/create',
+        component: ContentPageCreate,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'page/:id/edit',
+        component: ContentPageEdit,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'page/category',
+        component: ContentPageCategory,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'component',
+        component: ContentComponent,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'template',
+        component: ContentTemplate,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'extension',
+        component: ContentExtension,
+        beforeEnter: requireAuth
+      },
+      {
+        path: 'comment',
+        component: ContentComment,
+        beforeEnter: requireAuth
+      }
+    ]
+  }
+]
+
 export default new VueRouter({
   mode: 'hash',
   linkActiveClass: 'active',
@@ -53,165 +215,7 @@ export default new VueRouter({
     {
       path: '/',
       component: Layout,
-      children: [
-        {
-          path: '/',
-          component: BaseLayout,
-          children: [
-            {
-              path: '/',
-              component: BaseDashboard,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'debug',
-              component: Debug,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'duoshuo',
-              component: Duoshuo,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'email',
-              component: Mail,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'module',
-              component: Module,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'navigation',
-              component: Navigation,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'search',
-              component: Baidu,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'seo',
-              component: Seo,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'setting',
-              component: Setting,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'sitemap',
-              component: Sitemap,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'storage',
-              component: Upload,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'upload',
-              component: Upload,
-              beforeEnter: requireAuth
-            }
-          ]
-        },
-        {
-          path: '/content',
-          component: ContentLayout,
-          children: [
-            {
-              path: '/',
-              component: ContentDashboard,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/all',
-              component: ContentArticle,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/create',
-              component: ContentArticleCreate,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/:id/draft',
-              component: ContentArticleDraftEdit,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/:id/edit',
-              component: ContentArticleEdit,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/category',
-              component: ContentCategory,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/tag',
-              component: ContentTag,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/recycle',
-              component: ContentArticleRecycle,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'article/draft',
-              component: ContentArticleDraft,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'page/all',
-              component: ContentPage,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'page/create',
-              component: ContentPageCreate,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'page/:id/edit',
-              component: ContentPageEdit,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'page/category',
-              component: ContentPageCategory,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'component',
-              component: ContentComponent,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'template',
-              component: ContentTemplate,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'extension',
-              component: ContentExtension,
-              beforeEnter: requireAuth
-            },
-            {
-              path: 'comment',
-              component: ContentComment,
-              beforeEnter: requireAuth
-            }
-          ]
-        }
-      ]
+      children: modules
     },
     {
       path: '/login',
