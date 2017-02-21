@@ -14,6 +14,8 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Translation\Translator;
 use Laravel\Passport\Client as PassportClient;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
+use Notadd\Foundation\Extension\ExtensionManager;
+use Notadd\Foundation\Module\ModuleManager;
 use Notadd\Foundation\Passport\Responses\ApiResponse;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 
@@ -99,10 +101,16 @@ class AdminController extends Controller
     /**
      * Return index content.
      *
+     * @param \Notadd\Foundation\Extension\ExtensionManager $extension
+     * @param \Notadd\Foundation\Module\ModuleManager       $module
+     *
      * @return \Illuminate\Contracts\View\View
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function handle()
+    public function handle(ExtensionManager $extension, ModuleManager $module)
     {
+        $this->share('extensions', $extension->getExtensions());
+        $this->share('modules', $module->getModules());
         return $this->view('admin::layout');
     }
 

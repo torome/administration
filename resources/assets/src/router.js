@@ -31,7 +31,6 @@ import ContentPageEdit from './components/pages/content/PageEdit'
 import ContentTemplate from './components/pages/content/Template'
 import ContentTag from './components/pages/content/ArticleTag'
 import Debug from './components/pages/base/Debug'
-import Duoshuo from './components/pages/base/Duoshuo'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
 import Mail from './components/pages/base/Mail'
@@ -55,11 +54,6 @@ let bases = [
   {
     path: 'debug',
     component: Debug,
-    beforeEnter: requireAuth
-  },
-  {
-    path: 'duoshuo',
-    component: Duoshuo,
     beforeEnter: requireAuth
   },
   {
@@ -207,6 +201,13 @@ let modules = [
     ]
   }
 ]
+
+if (window.hasOwnProperty('NotaddDuoshuo')) {
+  let duoshuo = window['NotaddDuoshuo'].default
+  duoshuo.router(bases, modules, requireAuth)
+}
+
+console.log(bases)
 
 export default new VueRouter({
   mode: 'hash',

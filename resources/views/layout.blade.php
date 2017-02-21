@@ -20,6 +20,15 @@
 </script>
 <script src="{{ asset('/assets/admin/js/manifest.js') }}"></script>
 <script src="{{ asset('/assets/admin/js/vendor.js') }}"></script>
-<script src="{{ asset('/assets/extensions/duoshuo/js/extension.js') }}"></script>
+@foreach($extensions as $extension)
+    @if($extension->getScript())
+        <script src="{{ $extension->getScript() }}"></script>
+    @endif
+@endforeach
+@foreach($modules as $module)
+    @if($module->getScript())
+        <script src="{{ $module->getScript() }}"></script>
+    @endif
+@endforeach
 <script src="{{ asset('/assets/admin/js/app.js') }}"></script>
 </body>
