@@ -20,5 +20,6 @@
 </script>
 <script src="{{ asset('/assets/admin/js/manifest.js') }}"></script>
 <script src="{{ asset('/assets/admin/js/vendor.js') }}"></script>
+<script src="{{ asset('/assets/extensions/duoshuo/js/extension.js') }}"></script>
 <script src="{{ asset('/assets/admin/js/app.js') }}"></script>
 </body>
