@@ -41,8 +41,8 @@ class ModuleServiceProvider extends ServiceProvider
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
-            base_path('modules/administration/resources/assets/dist/assets/admin') => public_path('assets/admin'),
-            base_path('modules/administration/resources/neditor') => public_path('assets/neditor'),
+            realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/admin') => public_path('assets/admin'),
+            realpath(__DIR__ . '/../resources/mixes/neditor') => public_path('assets/neditor'),
         ], 'public');
 
         class_exists(Article::class) && Article::observe(ArticleObserver::class);

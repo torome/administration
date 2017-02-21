@@ -202,9 +202,15 @@ let modules = [
   }
 ]
 
-if (window.hasOwnProperty('NotaddDuoshuo')) {
-  let duoshuo = window['NotaddDuoshuo'].default
-  duoshuo.router(bases, modules, requireAuth)
+if (window.hasOwnProperty('extensions')) {
+  console.log(window.extensions)
+  window.extensions.forEach(function (key) {
+    if (window.hasOwnProperty(key)) {
+      let extension = window[key].default
+      console.log(extension)
+      extension.router(bases, modules, requireAuth)
+    }
+  })
 }
 
 console.log(bases)
