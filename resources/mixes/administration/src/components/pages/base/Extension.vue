@@ -25,7 +25,7 @@
           _this.$store.commit('message', {
             show: true,
             type: 'notice',
-            text: '开启或关闭模块成功，5秒后将重载网站！'
+            text: '开启或关闭插件成功，5秒后将重载网站！'
           })
           setTimeout(function () {
             window.location.reload()

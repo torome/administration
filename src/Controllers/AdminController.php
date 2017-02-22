@@ -109,8 +109,8 @@ class AdminController extends Controller
      */
     public function handle(ExtensionManager $extension, ModuleManager $module)
     {
-        $this->share('extensions', $extension->getExtensions());
-        $this->share('modules', $module->getModules());
+        $this->share('extensions', $extension->getEnabledExtensions());
+        $this->share('modules', $module->getEnabledModules());
         return $this->view('admin::layout');
     }
 
