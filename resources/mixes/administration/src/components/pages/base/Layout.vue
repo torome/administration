@@ -21,6 +21,11 @@
       let _this = this
       let _extensions = [
         {
+          text: '插件配置',
+          icon: 'fa fa-search',
+          uri: '/extension'
+        },
+        {
           text: '百度搜索',
           icon: 'fa fa-search',
           uri: '/search'

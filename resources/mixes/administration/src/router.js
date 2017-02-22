@@ -13,6 +13,7 @@ import Baidu from './components/pages/base/Baidu'
 import BaseDashboard from './components/Dashboard'
 import BaseLayout from './components/pages/base/Layout'
 import Debug from './components/pages/base/Debug'
+import Extension from './components/pages/base/Extension'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
 import Mail from './components/pages/base/Mail'
@@ -41,6 +42,11 @@ let bases = [
   {
     path: 'email',
     component: Mail,
+    beforeEnter: requireAuth
+  },
+  {
+    path: 'extension',
+    component: Extension,
     beforeEnter: requireAuth
   },
   {
