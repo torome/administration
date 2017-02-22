@@ -12,13 +12,31 @@
             'text': '全局',
             'icon': 'icon icon-home',
             'uri': '/'
-          },
-          {
-            'text': '文章',
-            'icon': 'icon icon-article',
-            'uri': '/content'
           }
         ]
+      }
+    },
+    mounted () {
+      let _this = this
+      if (window.hasOwnProperty('modules')) {
+        window.modules.forEach(function (key) {
+          if (window.hasOwnProperty(key)) {
+            let module = window[key].default
+            if (typeof module === 'object' && typeof module.header === 'function') {
+              module.header(_this.menu)
+            }
+          }
+        })
+      }
+      if (window.hasOwnProperty('extensions')) {
+        window.extensions.forEach(function (key) {
+          if (window.hasOwnProperty(key)) {
+            let extension = window[key].default
+            if (typeof extension === 'object' && typeof extension.header === 'function') {
+              extension.header(_this.menu)
+            }
+          }
+        })
       }
     }
   }

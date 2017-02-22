@@ -202,18 +202,35 @@ let modules = [
   }
 ]
 
-if (window.hasOwnProperty('extensions')) {
-  console.log(window.extensions)
+if (window.hasOwnProperty('modules')) {
   window.extensions.forEach(function (key) {
     if (window.hasOwnProperty(key)) {
-      let extension = window[key].default
-      console.log(extension)
-      extension.router(bases, modules, requireAuth)
+      let module = window[key].default
+      if (typeof extension === 'object' && typeof module.router === 'function') {
+        module.router({
+          auth: requireAuth,
+          bases: bases,
+          modules: modules
+        })
+      }
     }
   })
 }
 
-console.log(bases)
+if (window.hasOwnProperty('extensions')) {
+  window.extensions.forEach(function (key) {
+    if (window.hasOwnProperty(key)) {
+      let extension = window[key].default
+      if (typeof extension === 'object' && typeof extension.router === 'function') {
+        extension.router({
+          auth: requireAuth,
+          bases: bases,
+          modules: modules
+        })
+      }
+    }
+  })
+}
 
 export default new VueRouter({
   mode: 'hash',

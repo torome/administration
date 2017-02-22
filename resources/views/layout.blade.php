@@ -22,6 +22,11 @@
         "{{ $extension->getName() }}",
       @endforeach
     ];
+    window.modules = [
+      @foreach($modules as $module)
+        "{{ $module->getName() }}",
+      @endforeach
+    ];
 </script>
 <script src="{{ asset('assets/admin/js/manifest.js') }}"></script>
 <script src="{{ asset('assets/admin/js/vendor.js') }}"></script>
