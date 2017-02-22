@@ -6,6 +6,20 @@
     <meta name="description" content="{{ seo('description') }}">
     <meta name="keyword" content="{{ seo('keywords') }}">
     <link href="{{ asset('assets/admin/css/app.css') }}" rel="stylesheet">
+    @foreach($extensions as $extension)
+        @if($extension->getStylesheet())
+            @foreach($extension->getStylesheet() as $stylesheet)
+                <link href="{{ $stylesheet }}" rel="stylesheet">
+            @endforeach
+        @endif
+    @endforeach
+    @foreach($modules as $module)
+        @if($module->getStylesheet())
+            @foreach($module->getStylesheet() as $stylesheet)
+                <link href="{{ $stylesheet }}" rel="stylesheet">
+            @endforeach
+        @endif
+    @endforeach
 </head>
 <body class="skin-blue sidebar-mini fixed">
 <div id="app"></div>
