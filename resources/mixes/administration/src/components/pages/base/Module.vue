@@ -17,6 +17,25 @@
       }
     },
     methods: {
+      enabled: function (e) {
+        let _this = this
+        _this.$http.post(window.api + '/module/enable', {
+          name: _this.$jquery(e.target).data('name'),
+          value: _this.$jquery(e.target).val()
+        }).then(function (response) {
+          _this.$store.commit('message', {
+            show: true,
+            type: 'notice',
+            text: '开启或关闭模块成功，5秒后将重载网站！'
+          })
+          setTimeout(function () {
+            window.location.reload()
+          }, 5000)
+        }, function (response) {
+          console.log(response.body)
+          window.alert('开启或关闭模块失败！')
+        })
+      },
       submit: function (e) {
         let _this = this
         _this.$validator.validateAll()
@@ -89,7 +108,14 @@
                     <td>{{ module.author.join(',') }}</td>
                     <td>{{ module.description }}</td>
                     <td>
-                        <span class="badge">开发中</span>
+                        <div class="btn-group btn-switch">
+                            <label class="btn btn-primary" :class="{ active: module.enabled }">
+                                <input type="radio" :data-name="module.name" value="1" @change="enabled"> 开启
+                            </label>
+                            <label class="btn btn-primary" :class="{ active: !module.enabled }">
+                                <input type="radio" :data-name="module.name" value="0" @change="enabled"> 关闭
+                            </label>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
