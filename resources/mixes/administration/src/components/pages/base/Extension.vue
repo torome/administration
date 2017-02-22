@@ -2,10 +2,9 @@
   import Vue from 'vue'
   export default {
     beforeRouteEnter (to, from, next) {
-      Vue.http.post(window.api + '/module').then(function (response) {
+      Vue.http.post(window.api + '/extension').then(function (response) {
         next((vm) => {
           vm.list = response.body.data
-          console.log(vm.list)
         })
       }, function (response) {
         console.log(response.body)
@@ -19,7 +18,7 @@
     methods: {
       enabled: function (e) {
         let _this = this
-        _this.$http.post(window.api + '/module/enable', {
+        _this.$http.post(window.api + '/extension/enable', {
           name: _this.$jquery(e.target).data('name'),
           value: _this.$jquery(e.target).val()
         }).then(function (response) {

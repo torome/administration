@@ -5,7 +5,6 @@
       Vue.http.post(window.api + '/module').then(function (response) {
         next((vm) => {
           vm.list = response.body.data
-          console.log(vm.list)
         })
       }, function (response) {
         console.log(response.body)
