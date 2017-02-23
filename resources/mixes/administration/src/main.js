@@ -27,6 +27,19 @@ Vue.use(VeeValidate)
 Vue.use(VueResource)
 Vue.use(Notadd)
 
+if (window.hasOwnProperty('modules')) {
+  window.modules.forEach(function (key) {
+    if (window.hasOwnProperty(key)) {
+      let module = window[key].default
+      if (typeof module === 'object') {
+        if (typeof module.install === 'function') {
+          module.install(Vue)
+        }
+      }
+    }
+  })
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
