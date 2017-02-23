@@ -33,7 +33,8 @@ if (window.hasOwnProperty('modules')) {
       let module = window[key].default
       if (typeof module === 'object') {
         if (typeof module.install === 'function') {
-          module.install(Vue)
+          console.log(Notadd)
+          module.install(Vue, Notadd)
         }
       }
     }

@@ -96,6 +96,8 @@ export const fixMenu = _fixMenu
 export const fixStyle = _fixStyle
 
 export default {
+  fixMenu: _fixMenu,
+  fixStyle: _fixStyle,
   install: function (Vue) {
     let _this = this
 
@@ -122,5 +124,7 @@ export default {
         }
       }
     })
-  }
+  },
+  layouts: [],
+  libraries: []
 }
