@@ -7,6 +7,7 @@
  */
 
 import 'font-awesome/less/font-awesome.less'
+import 'bootstrap/js/dropdown'
 import 'bootstrap/less/bootstrap.less'
 import 'slimscroll/example/ssmaster/jquery.slimscroll'
 import './assets/less/main.less'
@@ -33,7 +34,6 @@ if (window.hasOwnProperty('modules')) {
       let module = window[key].default
       if (typeof module === 'object') {
         if (typeof module.install === 'function') {
-          console.log(Notadd)
           module.install(Vue, Notadd)
         }
       }

@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: "tree-view",
+    name: 'tree-view',
     props: {
       tree: {
         Type: Object,

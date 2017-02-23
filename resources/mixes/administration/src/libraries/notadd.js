@@ -1,15 +1,7 @@
-/**
- * This file is part of Notadd.
- *
- * @author TwilRoad <269044570@qq.com>
- * @copyright (c) 2017, iBenchu.org
- * @datetime 2017-01-19 17:23
- */
-
-import 'bootstrap/js/dropdown'
-
 import $ from 'jquery'
 import sortable from 'html5sortable'
+
+import {componentMixin, layoutMixin} from '../helpers/mixes'
 
 let _fixMenu = function (menu) {
   let animationSpeed = 500
@@ -92,10 +84,7 @@ let _fixStyle = function () {
   }
 }
 
-export const fixMenu = _fixMenu
-export const fixStyle = _fixStyle
-
-export default {
+let _notadd = {
   fixMenu: _fixMenu,
   fixStyle: _fixStyle,
   install: function (Vue) {
@@ -124,7 +113,13 @@ export default {
         }
       }
     })
-  },
-  layouts: [],
-  libraries: []
+  }
 }
+
+componentMixin(_notadd)
+layoutMixin(_notadd)
+
+export const fixMenu = _fixMenu
+export const fixStyle = _fixStyle
+
+export default _notadd
