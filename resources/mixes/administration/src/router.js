@@ -28,7 +28,7 @@ import requireAuth from './middlewares/auth'
 
 Vue.use(VueRouter)
 
-let bases = [
+let _bases = [
   {
     path: '/',
     component: BaseDashboard,
@@ -91,24 +91,26 @@ let bases = [
   }
 ]
 
-let modules = [
+let _modules = [
   {
     path: '/',
     component: BaseLayout,
-    children: bases
+    children: _bases
   }
 ]
 
 if (window.hasOwnProperty('modules')) {
-  window.extensions.forEach(function (key) {
+  window.modules.forEach(function (key) {
     if (window.hasOwnProperty(key)) {
       let module = window[key].default
-      if (typeof extension === 'object' && typeof module.router === 'function') {
-        module.router({
-          auth: requireAuth,
-          bases: bases,
-          modules: modules
-        })
+      if (typeof module === 'object') {
+        if (typeof module.router === 'function') {
+          module.router({
+            auth: requireAuth,
+            bases: _bases,
+            modules: _modules
+          })
+        }
       }
     }
   })
@@ -121,8 +123,8 @@ if (window.hasOwnProperty('extensions')) {
       if (typeof extension === 'object' && typeof extension.router === 'function') {
         extension.router({
           auth: requireAuth,
-          bases: bases,
-          modules: modules
+          bases: _bases,
+          modules: _modules
         })
       }
     }
@@ -136,7 +138,7 @@ export default new VueRouter({
     {
       path: '/',
       component: Layout,
-      children: modules
+      children: _modules
     },
     {
       path: '/login',
