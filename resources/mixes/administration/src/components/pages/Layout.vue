@@ -26,11 +26,6 @@
           uri: '/extension'
         },
         {
-          text: '百度搜索',
-          icon: 'fa fa-search',
-          uri: '/search'
-        },
-        {
           text: '网站地图',
           icon: 'fa fa-map-signs',
           uri: '/sitemap'

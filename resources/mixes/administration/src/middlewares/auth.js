@@ -6,7 +6,7 @@
  * @datetime 2017-01-17 14:16
  */
 
-import Auth from '../auth'
+import Auth from '../helpers/auth'
 
 export default (to, from, next) => {
   if (Auth.logined()) {
