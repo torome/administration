@@ -17,6 +17,7 @@ const state = {
     type: 'notice',
     text: 'This is a message'
   },
+  progress: 'done',
   setting: [],
   title: 'Notadd Administration',
   token: {},

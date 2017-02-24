@@ -8,6 +8,8 @@
 
 export const message = state => state.message
 
+export const progress = state => state.progress
+
 export const setting = state => state.setting
 
 export const token = state => state.token

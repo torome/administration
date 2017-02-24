@@ -15,6 +15,10 @@ export const message = (state, message) => {
   state.message = message
 }
 
+export const progress = (state, progress) => {
+  state.progress = progress
+}
+
 export const setting = (state, setting) => {
   state.setting = setting
 }
