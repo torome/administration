@@ -1,6 +1,6 @@
 <script>
   import {mapState} from 'vuex'
-  import {fixStyle} from '../../libraries/notadd'
+  import {fixStyle} from '../../notadd'
   export default {
     computed: mapState([
       'message'

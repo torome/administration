@@ -1,15 +1,11 @@
 import $ from 'jquery'
-import sortable from 'html5sortable'
-
-import {componentMixin, layoutMixin} from '../helpers/mixes'
-
+import {componentMixin, initMixin, installMixin, layoutMixin} from './helpers/mixes'
 let _fixMenu = function (menu) {
   let animationSpeed = 500
   $(document).off('click', menu + ' li a')
   .on('click', menu + ' li a', function (e) {
     let $this = $(this)
     let checkElement = $this.next()
-
     if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible')) && (!$('body').hasClass('sidebar-collapse'))) {
       checkElement.slideUp(animationSpeed, function () {
         checkElement.removeClass('menu-open')
@@ -20,7 +16,6 @@ let _fixMenu = function (menu) {
       let ul = parent.find('ul:visible').slideUp(animationSpeed)
       ul.removeClass('menu-open')
       let parentLi = $this.parent('li')
-
       checkElement.slideDown(animationSpeed, function () {
         checkElement.addClass('menu-open')
         parent.find('li.active').removeClass('active')
@@ -33,15 +28,12 @@ let _fixMenu = function (menu) {
     }
   })
 }
-
 let _fixStyle = function () {
   $('body, html, .wrapper').css('height', 'auto')
   $('.layout-boxed > .wrapper').css('overflow', 'hidden')
-
   let neg = $('.main-header').outerHeight() + $('.main-footer').outerHeight()
   let windowHeight = $(window).height()
   let sidebarHeight = $('.sidebar').height()
-
   if ($('body').hasClass('fixed')) {
     $('.content-wrapper, .right-side').css('min-height', windowHeight - $('.main-footer').outerHeight())
   } else {
@@ -53,16 +45,13 @@ let _fixStyle = function () {
       $('.content-wrapper, .right-side').css('min-height', sidebarHeight)
       postSetWidth = sidebarHeight
     }
-
     let controlSidebar = $('.control-sidebar')
-
     if (typeof controlSidebar !== 'undefined') {
       if (controlSidebar.height() > postSetWidth) {
         $('.content-wrapper, .right-side').css('min-height', controlSidebar.height())
       }
     }
   }
-
   if (!$('body').hasClass('fixed')) {
     if (typeof $.fn.slimScroll !== 'undefined') {
       $('.sidebar').slimScroll({destroy: true}).height('auto')
@@ -74,7 +63,6 @@ let _fixStyle = function () {
   if ($.AdminLTE.options.sidebarSlimScroll) {
     if (typeof $.fn.slimScroll !== 'undefined') {
       $('.sidebar').slimScroll({destroy: true}).height('auto')
-
       $('.sidebar').slimscroll({
         height: ($(window).height() - $('.main-header').height()) + 'px',
         color: 'rgba(0,0,0,0.2)',
@@ -86,40 +74,14 @@ let _fixStyle = function () {
 
 let _notadd = {
   fixMenu: _fixMenu,
-  fixStyle: _fixStyle,
-  install: function (Vue) {
-    let _this = this
-
-    if (_this.installed) {
-      return
-    }
-
-    _fixMenu('.sidebar')
-
-    $(window, '.wrapper').resize(function () {
-      _fixStyle()
-    })
-
-    $.fn.sortable = function (options) {
-      return sortable(this, options)
-    }
-
-    Vue.jquery = $
-
-    Object.defineProperties(Vue.prototype, {
-      $jquery: {
-        get () {
-          return Vue.jquery
-        }
-      }
-    })
-  }
+  fixStyle: _fixStyle
 }
 
 componentMixin(_notadd)
+initMixin(_notadd)
+installMixin(_notadd)
 layoutMixin(_notadd)
 
 export const fixMenu = _fixMenu
 export const fixStyle = _fixStyle
-
 export default _notadd

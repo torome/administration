@@ -41,7 +41,7 @@
         }, function (response) {
           _this.$jquery('button.btn-login').prop('disabled', false)
           _this.$jquery('button.btn-login').text('登陆')
-          window.alert('请求失败！')
+          window.alert('网络连接失败！')
         })
       }
     },
