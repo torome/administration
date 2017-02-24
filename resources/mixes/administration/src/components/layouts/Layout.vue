@@ -1,10 +1,15 @@
 <script>
   import LayoutHeader from './LayoutHeader'
-
+  import TopProgress from '../libraries/Progress'
+  import {mapState} from 'vuex'
   export default {
     components: {
-      LayoutHeader
+      LayoutHeader,
+      TopProgress
     },
+    computed: mapState([
+      'progress'
+    ]),
     data: () => {
       return {
         menu: [
@@ -18,6 +23,7 @@
     },
     mounted () {
       let _this = this
+      _this.$store.commit('progress', 'start')
       if (window.hasOwnProperty('modules')) {
         window.modules.forEach(function (key) {
           if (window.hasOwnProperty(key)) {
@@ -38,12 +44,35 @@
           }
         })
       }
+    },
+    watch: {
+      progress: {
+        deep: true,
+        handler: function (val) {
+          let _this = this
+          console.log('val')
+          switch (val) {
+            case 'start':
+              _this.$refs.progress.start()
+              break
+            case 'pause':
+              _this.$refs.progress.pause()
+              break
+            case 'fail':
+              _this.$refs.progress.fail()
+              break
+            default:
+              _this.$refs.progress.done()
+          }
+        }
+      }
     }
   }
 </script>
 <template>
     <div class="wrapper">
         <layout-header :menu="menu"></layout-header>
+        <top-progress color="#3498db" top="90px" ref="progress"></top-progress>
         <router-view></router-view>
     </div>
 </template>
