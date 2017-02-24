@@ -1,9 +1,9 @@
 <script>
-  import LayoutContent from '../../layouts/LayoutContent'
-  import LayoutFooter from '../../layouts/LayoutFooter'
-  import LayoutSidebar from '../../layouts/LayoutSidebar'
-  import NavbarMenu from '../../libraries/NavbarMenu'
-  import SidebarMenu from '../../libraries/SidebarMenu'
+  import LayoutContent from '../layouts/LayoutContent'
+  import LayoutFooter from '../layouts/LayoutFooter'
+  import LayoutSidebar from '../layouts/LayoutSidebar'
+  import NavbarMenu from '../libraries/NavbarMenu'
+  import SidebarMenu from '../libraries/SidebarMenu'
   export default {
     components: {
       LayoutContent,

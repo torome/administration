@@ -1,5 +1,5 @@
 <script>
-  import Modal from '../../libraries/Modal'
+  import Modal from '../libraries/Modal'
   export default {
     components: {
       Modal

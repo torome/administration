@@ -9,20 +9,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Baidu from './components/pages/base/Baidu'
 import BaseDashboard from './components/Dashboard'
-import BaseLayout from './components/pages/base/Layout'
-import Debug from './components/pages/base/Debug'
-import Extension from './components/pages/base/Extension'
+import BaseLayout from './components/pages/Layout'
+import Debug from './components/pages/Debug'
+import Extension from './components/pages/Extension'
 import Layout from './components/layouts/Layout'
 import Login from './components/pages/Login'
-import Mail from './components/pages/base/Mail'
-import Module from './components/pages/base/Module'
-import Navigation from './components/pages/base/Navigation'
-import Seo from './components/pages/base/Seo'
-import Sitemap from './components/pages/base/Sitemap'
-import Upload from './components/pages/base/Upload'
-import Setting from './components/pages/base/Setting'
+import Mail from './components/pages/Mail'
+import Module from './components/pages/Module'
+import Navigation from './components/pages/Navigation'
+import Seo from './components/pages/Seo'
+import Sitemap from './components/pages/Sitemap'
+import Upload from './components/pages/Upload'
+import Setting from './components/pages/Setting'
 
 import requireAuth from './middlewares/auth'
 
@@ -57,11 +56,6 @@ let _bases = [
   {
     path: 'navigation',
     component: Navigation,
-    beforeEnter: requireAuth
-  },
-  {
-    path: 'search',
-    component: Baidu,
     beforeEnter: requireAuth
   },
   {

@@ -2,7 +2,7 @@
   import Vue from 'vue'
   export default {
     beforeRouteEnter (to, from, next) {
-      Vue.http.post(window.api + '/module').then(function (response) {
+      Vue.http.post(window.api + '/extension').then(function (response) {
         next((vm) => {
           vm.list = response.body.data
         })
@@ -18,14 +18,14 @@
     methods: {
       enabled: function (e) {
         let _this = this
-        _this.$http.post(window.api + '/module/enable', {
+        _this.$http.post(window.api + '/extension/enable', {
           name: _this.$jquery(e.target).data('name'),
           value: _this.$jquery(e.target).val()
         }).then(function (response) {
           _this.$store.commit('message', {
             show: true,
             type: 'notice',
-            text: '开启或关闭模块成功，5秒后将重载网站！'
+            text: '开启或关闭插件成功，5秒后将重载网站！'
           })
           setTimeout(function () {
             window.location.reload()
@@ -80,7 +80,7 @@
     }
 
     .none-item {
-        background: url("../../../../static/images/info.svg") left center no-repeat;
+        background: url("../../../static/images/info.svg") left center no-repeat;
         color: #888;
         font-size: 20px;
         height: 40px;
