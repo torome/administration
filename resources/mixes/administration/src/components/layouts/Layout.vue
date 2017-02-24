@@ -23,7 +23,6 @@
     },
     mounted () {
       let _this = this
-      _this.$store.commit('progress', 'start')
       if (window.hasOwnProperty('modules')) {
         window.modules.forEach(function (key) {
           if (window.hasOwnProperty(key)) {

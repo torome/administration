@@ -11,6 +11,7 @@ import LayoutContent from '../components/layouts/LayoutContent'
 import LayoutFooter from '../components/layouts/LayoutFooter'
 import LayoutHeader from '../components/layouts/LayoutHeader'
 import LayoutSidebar from '../components/layouts/LayoutSidebar'
+import store from '../stores'
 export function componentMixin (Notadd) {
   Notadd.components = {
     editor: Editor,
@@ -23,6 +24,7 @@ export function componentMixin (Notadd) {
 }
 export function initMixin (Notadd) {
   Notadd.init = function () {
+    Notadd.store = store
     if (window.hasOwnProperty('modules')) {
       window.modules.forEach(function (key) {
         if (window.hasOwnProperty(key)) {
