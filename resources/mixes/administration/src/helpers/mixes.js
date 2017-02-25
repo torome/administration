@@ -57,6 +57,26 @@ export function installMixin (Notadd) {
       return sortable(this, options)
     }
     Notadd.http = axios
+    Notadd.http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+    Notadd.http.defaults.validateStatus = function (status) {
+      return status >= 200 && status < 600
+    }
+    Notadd.http.interceptors.request.use(configuration => {
+      return configuration
+    }, error => {
+      console.log(error)
+      return Promise.reject(error)
+    })
+    Notadd.http.interceptors.response.use(response => {
+      return response
+    }, function (error) {
+      if (error.message === 'Network Error') {
+        Notadd.Vue.$router.push('login')
+      } else {
+        throw new Error(error)
+      }
+    })
+    Vue.http = Notadd.http
     Vue.jquery = $
     Object.defineProperties(Vue.prototype, {
       $http: {

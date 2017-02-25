@@ -29,7 +29,7 @@ Vue.use(Notadd)
 Notadd.init()
 
 /* eslint-disable no-new */
-new Vue({
+Notadd.Vue = new Vue({
   el: '#app',
   router,
   store,
