@@ -1,7 +1,7 @@
 /*!
  * NEditor
  * version: neditor
- * build: Fri Feb 17 2017 19:33:14 GMT+0800 (中国标准时间)
+ * build: Sat Feb 25 2017 16:34:29 GMT+0800 (中国标准时间)
  */
 
 (function(){
@@ -30530,7 +30530,7 @@ UE.ui = baidu.editor.ui = {};
         var editor = new UE.Editor(options);
         editor.options.editor = editor;
         utils.loadFile(document, {
-            href:editor.options.themePath + editor.options.theme + "/css/neditor.min.css",
+            href:editor.options.themePath + editor.options.theme + "/css/neditor.css",
             tag:"link",
             type:"text/css",
             rel:"stylesheet"
