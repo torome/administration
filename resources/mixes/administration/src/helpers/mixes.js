@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import axios from 'axios'
 import Vue from 'vue'
 import sortable from 'html5sortable'
 import Editor from '../components/libraries/Editor'
@@ -52,8 +53,14 @@ export function installMixin (Notadd) {
     $.fn.sortable = function (options) {
       return sortable(this, options)
     }
+    Vue.http = axios
     Vue.jquery = $
     Object.defineProperties(Vue.prototype, {
+      $http: {
+        get () {
+          return axios
+        }
+      },
       $jquery: {
         get () {
           return Vue.jquery
