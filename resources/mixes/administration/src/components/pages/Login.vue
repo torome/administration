@@ -22,10 +22,10 @@
           name: _this.username,
           password: _this.password
         }).then(function (response) {
-          if (response.body.access_token && response.body.status === 'success') {
+          if (response.data.access_token && response.data.status === 'success') {
             _this.$jquery('button.btn-login').prop('disabled', false)
             _this.$jquery('button.btn-login').text('登陆成功！正在跳转...')
-            _this.$store.commit('token', response.body)
+            _this.$store.commit('token', response.data)
             _this.$router.push('/')
           } else {
             _this.$jquery('button.btn-login').prop('disabled', false)

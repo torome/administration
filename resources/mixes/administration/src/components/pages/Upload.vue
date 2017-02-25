@@ -151,7 +151,7 @@
           allow_manager_file: _this.canManagementFileExtension,
           allow_watermark: _this.enableWatermark
         }).then(response => {
-          _this.$store.commit('setting', response.body.data)
+          _this.$store.commit('setting', response.data.data)
           _this.$store.commit('message', {
             show: true,
             type: 'notice',

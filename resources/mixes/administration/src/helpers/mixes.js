@@ -13,6 +13,7 @@ import LayoutFooter from '../components/layouts/LayoutFooter'
 import LayoutHeader from '../components/layouts/LayoutHeader'
 import LayoutSidebar from '../components/layouts/LayoutSidebar'
 import store from '../stores'
+
 export function componentMixin (Notadd) {
   Notadd.components = {
     editor: Editor,
@@ -23,6 +24,7 @@ export function componentMixin (Notadd) {
     tag: InputTag
   }
 }
+
 export function initMixin (Notadd) {
   Notadd.init = function () {
     Notadd.store = store
@@ -40,6 +42,7 @@ export function initMixin (Notadd) {
     }
   }
 }
+
 export function installMixin (Notadd) {
   Notadd.install = function (Vue) {
     let _this = this
@@ -53,12 +56,12 @@ export function installMixin (Notadd) {
     $.fn.sortable = function (options) {
       return sortable(this, options)
     }
-    Vue.http = axios
+    Notadd.http = axios
     Vue.jquery = $
     Object.defineProperties(Vue.prototype, {
       $http: {
         get () {
-          return axios
+          return Notadd.http
         }
       },
       $jquery: {
@@ -69,6 +72,7 @@ export function installMixin (Notadd) {
     })
   }
 }
+
 export function layoutMixin (Notadd) {
   Notadd.layouts = {
     content: LayoutContent,

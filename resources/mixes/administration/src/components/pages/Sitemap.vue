@@ -60,7 +60,7 @@
           cycle: _this.cycle,
           recently: _this.recently
         }).then(response => {
-          _this.$store.commit('setting', response.body.data)
+          _this.$store.commit('setting', response.data.data)
           _this.$store.commit('message', {
             show: true,
             type: 'notice',
@@ -69,7 +69,7 @@
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
         }, response => {
-          console.log(response.body)
+          console.log(response.data)
         })
       }
     },

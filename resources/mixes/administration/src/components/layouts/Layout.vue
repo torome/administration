@@ -49,7 +49,6 @@
         deep: true,
         handler: function (val) {
           let _this = this
-          console.log('val')
           switch (val) {
             case 'start':
               _this.$refs.progress.start()

@@ -4,10 +4,11 @@
     beforeRouteEnter (to, from, next) {
       Vue.http.post(window.api + '/extension').then(function (response) {
         next((vm) => {
-          vm.list = response.body.data
+          vm.list = response.data.data
         })
-      }, function (response) {
-        console.log(response.body)
+      }).catch(function (response) {
+        console.log(arguments)
+        console.log(response)
       })
     },
     data () {
@@ -31,7 +32,7 @@
             window.location.reload()
           }, 5000)
         }, function (response) {
-          console.log(response.body)
+          console.log(response.data)
           window.alert('开启或关闭模块失败！')
         })
       },

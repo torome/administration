@@ -109,7 +109,7 @@
             text: '测试邮件发送成功，请查看邮箱验证！'
           })
         }, function (response) {
-          console.log(response.body)
+          console.log(response.data)
         })
       },
       submit: function () {
@@ -131,7 +131,7 @@
           username: _this.username,
           password: _this.password
         }).then(response => {
-          _this.$store.commit('setting', response.body.data)
+          _this.$store.commit('setting', response.data.data)
           _this.$store.commit('message', {
             show: true,
             type: 'notice',

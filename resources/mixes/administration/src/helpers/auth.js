@@ -12,17 +12,19 @@ export default {
     let token = JSON.parse(window.localStorage.getItem('token'))
     if (token) {
       if (token.access_token && token.refresh_token) {
-        Vue.http.headers.common['Accept'] = 'application/json'
-        Vue.http.headers.common['Authorization'] = 'Bearer ' + token.access_token
+        Vue.http.defaults.headers.common['Accept'] = 'application/json'
+        Vue.http.defaults.headers.common['Authorization'] = 'Bearer ' + token.access_token
         JSON.stringify(store.state.token) === '{}' && store.commit('token', token)
         let setting = store.state.setting
         if (JSON.stringify(setting) === '[]') {
           Vue.http.post(window.api + '/setting/all').then(response => {
-            if (typeof response.body.data === 'undefined') {
+            if (typeof response.data.data === 'undefined') {
               store.commit('setting', [])
             } else {
-              store.commit('setting', response.body.data)
+              store.commit('setting', response.data.data)
             }
+          }).catch(error => {
+            console.log(error)
           })
         }
         return true
