@@ -67,16 +67,18 @@ export function installMixin (Notadd) {
     Notadd.http.interceptors.response.use(response => {
       return response
     }, function (error) {
-      if (error.response.status >= 400 && error.response.status < 500) {
+      console.log(error)
+      console.log(error.response)
+      console.log(error.response.data)
+      if (error.response.status === 401) {
+        Notadd.Vue.$router.push('/login')
+      }
+      if (error.response.status > 401 && error.response.status < 500) {
         store.commit('message', {
           show: true,
           type: 'error',
           text: error.response.data
         })
-      }
-      console.log(error.response)
-      if (error.message === 'Network Error') {
-        Notadd.Vue.$router.push('login')
       } else {
         throw new Error(error)
       }
