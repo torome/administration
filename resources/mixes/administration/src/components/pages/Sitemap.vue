@@ -68,8 +68,6 @@
           })
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
-        }, response => {
-          console.log(response.data)
         })
       }
     },

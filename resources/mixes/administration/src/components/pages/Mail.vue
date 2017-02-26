@@ -108,8 +108,6 @@
             type: 'notice',
             text: '测试邮件发送成功，请查看邮箱验证！'
           })
-        }, function (response) {
-          console.log(response.data)
         })
       },
       submit: function () {
@@ -139,8 +137,7 @@
           })
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
-        }, response => {
-          window.alert('更新设置失败！')
+        }).catch(() => {
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
         })

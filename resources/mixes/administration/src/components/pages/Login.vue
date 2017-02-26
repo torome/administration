@@ -38,10 +38,9 @@
               _this.$jquery('button.btn-login').text('登陆')
             }, 2000)
           }
-        }, function (response) {
+        }).catch(() => {
           _this.$jquery('button.btn-login').prop('disabled', false)
           _this.$jquery('button.btn-login').text('登陆')
-          window.alert('网络连接失败！')
         })
       }
     },

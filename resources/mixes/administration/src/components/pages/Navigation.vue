@@ -122,8 +122,6 @@
                 type: 'notice',
                 text: '删除菜单[' + _this.modal.item.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
         }
@@ -141,8 +139,6 @@
                 type: 'notice',
                 text: '删除分组[' + group.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
           case 'item':
@@ -157,8 +153,6 @@
           _this.item.id = group.id
           _this.item.title = '导航管理[' + group.title + ']'
           _this.items = response.data.data
-        }, function (response) {
-          console.log(response.data)
         })
       },
       submit: function (e) {
@@ -180,8 +174,6 @@
                 type: 'notice',
                 text: '创建分组[' + _this.modal.group.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
           case 'group.edit':
@@ -202,8 +194,6 @@
                 type: 'notice',
                 text: '编辑分组[' + _this.modal.group.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
           case 'item.create':
@@ -230,8 +220,6 @@
                 type: 'notice',
                 text: '创建菜单[' + _this.modal.item.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
           case 'item.edit':
@@ -259,8 +247,6 @@
                 type: 'notice',
                 text: '编辑菜单[' + _this.modal.item.title + ']成功！'
               })
-            }, function (response) {
-              console.log(response.data)
             })
             break
         }
@@ -271,8 +257,6 @@
       _this.$store.commit('title', '导航管理 - Notadd Administration')
       _this.$http.post(window.api + '/navigation/group/fetch').then(function (response) {
         _this.groups = response.data.data
-      }, function (response) {
-        console.log(response.data)
       })
     },
     updated () {
@@ -305,12 +289,6 @@
               _this.items = []
               _this.$nextTick(function () {
                 _this.items = response.data.data
-              })
-            }, function (response) {
-              _this.$store.commit('message', {
-                show: true,
-                type: 'error',
-                text: '更新排序失败！'
               })
             })
           })

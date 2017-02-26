@@ -159,8 +159,7 @@
           })
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
-        }, response => {
-          window.alert('更新设置失败！')
+        }).catch(() => {
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
         })

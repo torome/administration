@@ -23,8 +23,6 @@ export default {
             } else {
               store.commit('setting', response.data.data)
             }
-          }).catch(error => {
-            console.log(error)
           })
         }
         return true

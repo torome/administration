@@ -6,9 +6,6 @@
         next((vm) => {
           vm.list = response.data.data
         })
-      }).catch(function (response) {
-        console.log(arguments)
-        console.log(response)
       })
     },
     data () {
@@ -31,9 +28,6 @@
           setTimeout(function () {
             window.location.reload()
           }, 5000)
-        }, function (response) {
-          console.log(response.data)
-          window.alert('开启或关闭模块失败！')
         })
       },
       submit: function (e) {

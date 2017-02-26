@@ -25,6 +25,7 @@
         _this.$http.post(window.api + '/debug', {
           enabled: this.enabled
         }).then(response => {
+          console.log(response)
           _this.$store.commit('setting', response.data.data)
           _this.$store.commit('message', {
             show: true,
@@ -33,8 +34,7 @@
           })
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
-        }, response => {
-          window.alert('更新设置失败！')
+        }).catch(() => {
           _this.$jquery('button.btn-submit').prop('disabled', false)
           _this.$jquery('button.btn-submit').text('保存')
         })
