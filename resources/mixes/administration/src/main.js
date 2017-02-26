@@ -7,6 +7,7 @@
  */
 
 import 'font-awesome/less/font-awesome.less'
+import 'bootstrap/js/affix'
 import 'bootstrap/js/dropdown'
 import 'bootstrap/less/bootstrap.less'
 import 'slimscroll/example/ssmaster/jquery.slimscroll'
