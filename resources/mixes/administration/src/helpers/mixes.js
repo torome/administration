@@ -58,9 +58,6 @@ export function installMixin (Notadd) {
     }
     Notadd.http = axios
     Notadd.http.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
-    Notadd.http.defaults.validateStatus = function (status) {
-      return status >= 200 && status < 600
-    }
     Notadd.http.interceptors.request.use(configuration => {
       return configuration
     }, error => {
@@ -70,6 +67,14 @@ export function installMixin (Notadd) {
     Notadd.http.interceptors.response.use(response => {
       return response
     }, function (error) {
+      if (error.response.status >= 400 && error.response.status < 500) {
+        store.commit('message', {
+          show: true,
+          type: 'error',
+          text: error.response.data
+        })
+      }
+      console.log(error.response)
       if (error.message === 'Network Error') {
         Notadd.Vue.$router.push('login')
       } else {
