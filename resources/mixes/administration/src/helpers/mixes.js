@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import axios from 'axios'
+import addFinally from 'promise.prototype.finally'
 import Vue from 'vue'
 import sortable from 'html5sortable'
 import Editor from '../components/libraries/Editor'
@@ -13,6 +14,8 @@ import LayoutFooter from '../components/layouts/LayoutFooter'
 import LayoutHeader from '../components/layouts/LayoutHeader'
 import LayoutSidebar from '../components/layouts/LayoutSidebar'
 import store from '../stores'
+
+addFinally.shim()
 
 export function componentMixin (Notadd) {
   Notadd.components = {
