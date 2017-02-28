@@ -1,13 +1,16 @@
 <script>
   import Vue from 'vue'
+  import store from '../../stores'
   export default {
     beforeRouteEnter (to, from, next) {
+      store.commit('progress', 'start')
       Vue.http.post(window.api + '/module').then(function (response) {
         next((vm) => {
           vm.list = response.data.data
+          store.commit('progress', 'done')
         })
-      }, function (response) {
-        console.log(response.data)
+      }).catch(() => {
+        store.commit('progress', 'fail')
       })
     },
     data () {
