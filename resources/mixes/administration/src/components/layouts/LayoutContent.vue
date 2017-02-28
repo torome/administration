@@ -25,11 +25,12 @@
             _this.$jquery('html, body').animate({
               scrollTop: 0
             }, 'slow')
-            _message.type === 'notice' && setTimeout(function () {
+            let _callback = _message.hasOwnProperty('callback') ? _message.callback : function () {
               _this.$store.commit('message', {
                 show: false
               })
-            }, _message.hasOwnProperty('time') ? _message.time : 2500)
+            }
+            _message.type === 'notice' && setTimeout(_callback, _message.hasOwnProperty('time') ? _message.time : 2500)
           }
         }
       }
