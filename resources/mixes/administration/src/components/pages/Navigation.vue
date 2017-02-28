@@ -1,6 +1,19 @@
 <script>
   import Modal from '../libraries/Modal'
+  import Vue from 'vue'
+  import store from '../../stores'
   export default {
+    beforeRouteEnter (to, from, next) {
+      store.commit('progress', 'start')
+      Vue.http.post(window.api + '/navigation/group/fetch').then(function (response) {
+        next((vm) => {
+          vm.groups = response.data.data
+          store.commit('progress', 'done')
+        })
+      }).catch(() => {
+        store.commit('progress', 'fail')
+      })
+    },
     components: {
       Modal
     },
@@ -253,11 +266,7 @@
       }
     },
     mounted () {
-      let _this = this
-      _this.$store.commit('title', '导航管理 - Notadd Administration')
-      _this.$http.post(window.api + '/navigation/group/fetch').then(function (response) {
-        _this.groups = response.data.data
-      })
+      this.$store.commit('title', '导航管理 - Notadd Administration')
     },
     updated () {
       let _this = this
