@@ -6,6 +6,11 @@
           return this.$store.state.user.avatar
         }
       },
+      url: {
+        get () {
+          return window.url
+        }
+      },
       username: {
         get () {
           return this.$store.state.user.name
@@ -111,6 +116,9 @@
             </div>
             <div class="navbar-custom-menu extend-menu">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a target="_blank" :href="url">返回前台</a>
+                    </li>
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <span class="hidden-xs">欢迎您，</span> {{ username }}
