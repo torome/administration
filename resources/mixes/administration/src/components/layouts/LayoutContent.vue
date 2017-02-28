@@ -29,7 +29,7 @@
               _this.$store.commit('message', {
                 show: false
               })
-            }, 2500)
+            }, _message.hasOwnProperty('time') ? _message.time : 2500)
           }
         }
       }
