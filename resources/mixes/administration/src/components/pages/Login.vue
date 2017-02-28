@@ -23,9 +23,12 @@
           password: _this.password
         }).then(function (response) {
           if (response.data.access_token && response.data.status === 'success') {
+            let timestamp = Date.parse(new Date()) / 1000
+            let token = response.data
+            token.expires_in = timestamp + token.expires_in
             _this.$jquery('button.btn-login').prop('disabled', false)
             _this.$jquery('button.btn-login').text('登陆成功！正在跳转...')
-            _this.$store.commit('token', response.data)
+            _this.$store.commit('token', token)
             _this.$router.push('/')
           } else {
             _this.$jquery('button.btn-login').prop('disabled', false)
