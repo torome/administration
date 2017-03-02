@@ -19,11 +19,13 @@
       }
     },
     methods: {
-      enabled: function (e) {
+      enabled: function (module, event) {
         let _this = this
-        _this.$http.post(window.api + '/module/enable', {
-          name: _this.$jquery(e.target).data('name'),
-          value: _this.$jquery(e.target).val()
+        let now = _this.$jquery(event.target).val()
+        let old = module.enabled ? '1' : '0'
+        now !== old && _this.$http.post(window.api + '/module/enable', {
+          name: module.name,
+          value: now
         }).then(function (response) {
           _this.$store.commit('message', {
             show: true,
@@ -109,10 +111,10 @@
                     <td>
                         <div class="btn-group btn-switch">
                             <label class="btn btn-primary" :class="{ active: module.enabled }">
-                                <input type="radio" :data-name="module.name" value="1" @change="enabled"> 开启
+                                <input type="radio" value="1" @change="enabled(module, $event)"> 开启
                             </label>
                             <label class="btn btn-primary" :class="{ active: !module.enabled }">
-                                <input type="radio" :data-name="module.name" value="0" @change="enabled"> 关闭
+                                <input type="radio" value="0" @change="enabled(module, $event)"> 关闭
                             </label>
                         </div>
                     </td>
