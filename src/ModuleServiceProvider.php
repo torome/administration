@@ -8,8 +8,8 @@
  */
 namespace Notadd\Administration;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Events\Dispatcher;
-use Illuminate\Support\ServiceProvider;
 use Notadd\Administration\Controllers\AdminController;
 use Notadd\Administration\Listeners\CsrfTokenRegister;
 use Notadd\Administration\Listeners\RouteRegister;
@@ -18,25 +18,40 @@ use Notadd\Administration\Observers\PageObserver;
 use Notadd\Content\Models\Article;
 use Notadd\Content\Models\Page;
 use Notadd\Foundation\Administration\Administration;
+use Notadd\Foundation\Module\Abstracts\Module;
 
 /**
  * Class Extension.
  */
-class ModuleServiceProvider extends ServiceProvider
+class ModuleServiceProvider extends Module
 {
+    /**
+     * @var \Notadd\Foundation\Administration\Administration
+     */
+    protected $administration;
+
+    /**
+     * ModuleServiceProvider constructor.
+     *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     */
+    public function __construct(Application $app)
+    {
+        parent::__construct($app);
+        $this->administration = $app[Administration::class];
+    }
+
     /**
      * Boot service provider.
      *
-     * @param \Notadd\Foundation\Administration\Administration $administration
-     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function boot(Administration $administration)
+    public function boot()
     {
         $administrator = new Administrator($this->app['events'], $this->app['router']);
         $administrator->registerPath('admin');
         $administrator->registerHandler(AdminController::class . '@handle');
-        $administration->setAdministrator($administrator);
+        $this->administration->setAdministrator($administrator);
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
@@ -47,5 +62,25 @@ class ModuleServiceProvider extends ServiceProvider
 
         class_exists(Article::class) && Article::observe(ArticleObserver::class);
         class_exists(Page::class) && Page::observe(PageObserver::class);
+    }
+
+    /**
+     * Install module.
+     *
+     * @return bool
+     */
+    public function install()
+    {
+        return true;
+    }
+
+    /**
+     * Uninstall module.
+     *
+     * @return mixed
+     */
+    public function uninstall()
+    {
+        return true;
     }
 }
