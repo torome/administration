@@ -8,6 +8,7 @@
  */
 namespace Notadd\Administration\Controllers;
 
+use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Routing\UrlGenerator;
@@ -75,20 +76,28 @@ class AdminController extends Controller
     public function access(AuthManager $auth, ApiResponse $response)
     {
         if ($auth->guard('api')->user()) {
-            $http = new GuzzleClient();
-            $back = $http->post($this->container->make('url')->to('oauth/access'), [
-                'form_params' => [
-                    'grant_type'    => 'client_credentials',
-                    'client_id'     => $this->client_id,
-                    'client_secret' => $this->client_secret,
-                    'scope'         => '*',
-                ],
-            ]);
-            $back = json_decode((string)$back->getBody(), true);
-            if (isset($back['access_token'])) {
+            try {
+                $http = new GuzzleClient();
+                $back = $http->post($this->container->make('url')->to('oauth/access'), [
+                    'form_params' => [
+                        'grant_type'    => 'client_credentials',
+                        'client_id'     => $this->client_id,
+                        'client_secret' => $this->client_secret,
+                        'scope'         => '*',
+                    ],
+                ]);
+                $back = json_decode((string)$back->getBody(), true);
+                if (isset($back['access_token'])) {
+                    return $response->withParams([
+                        'status' => 'success',
+                    ])->withParams($back)->generateHttpResponse();
+                }
+            } catch (Exception $exception) {
                 return $response->withParams([
-                    'status' => 'success',
-                ])->withParams($back)->generateHttpResponse();
+                    'code' => $exception->getCode(),
+                    'message' => $exception->getMessage(),
+                    'trace' => $exception->getTraceAsString(),
+                ])->generateHttpResponse();
             }
         }
 
@@ -140,22 +149,30 @@ class AdminController extends Controller
         if ($this->guard()->attempt($credentials, $this->request->has('remember'))) {
             $this->request->session()->regenerate();
             $this->clearLoginAttempts($this->request);
-            $http = new GuzzleClient();
-            $back = $http->post($this->url->to('oauth/access'), [
-                'form_params' => [
-                    'grant_type'    => 'password',
-                    'client_id'     => $this->client_id,
-                    'client_secret' => $this->client_secret,
-                    'username'      => $this->request->offsetGet($this->username()),
-                    'password'      => $this->request->offsetGet('password'),
-                    'scope'         => '*',
-                ],
-            ]);
-            $back = json_decode((string)$back->getBody(), true);
-            if (isset($back['access_token']) && isset($back['refresh_token'])) {
+            try {
+                $http = new GuzzleClient();
+                $back = $http->post($this->url->to('oauth/access'), [
+                    'form_params' => [
+                        'grant_type'    => 'password',
+                        'client_id'     => $this->client_id,
+                        'client_secret' => $this->client_secret,
+                        'username'      => $this->request->offsetGet($this->username()),
+                        'password'      => $this->request->offsetGet('password'),
+                        'scope'         => '*',
+                    ],
+                ]);
+                $back = json_decode((string)$back->getBody(), true);
+                if (isset($back['access_token']) && isset($back['refresh_token'])) {
+                    return $response->withParams([
+                        'status' => 'success',
+                    ])->withParams($back)->generateHttpResponse();
+                }
+            } catch (Exception $exception) {
                 return $response->withParams([
-                    'status' => 'success',
-                ])->withParams($back)->generateHttpResponse();
+                    'code' => $exception->getCode(),
+                    'message' => $exception->getMessage(),
+                    'trace' => $exception->getTraceAsString(),
+                ])->generateHttpResponse();
             }
         }
 
