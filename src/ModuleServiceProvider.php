@@ -65,6 +65,16 @@ class ModuleServiceProvider extends Module
     }
 
     /**
+     * Description of module
+     *
+     * @return string
+     */
+    public function description()
+    {
+        return 'Notadd 后台管理模块';
+    }
+
+    /**
      * Install module.
      *
      * @return bool
@@ -72,6 +82,16 @@ class ModuleServiceProvider extends Module
     public function install()
     {
         return true;
+    }
+
+    /**
+     * Name of module.
+     *
+     * @return string
+     */
+    public function name()
+    {
+        return '后台管理模块';
     }
 
     /**
