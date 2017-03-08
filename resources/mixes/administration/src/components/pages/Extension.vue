@@ -17,7 +17,7 @@
       enabled: function (e) {
         let _this = this
         _this.$http.post(window.api + '/extension/enable', {
-          name: _this.$jquery(e.target).data('name'),
+          name: _this.$jquery(e.target).data('identification'),
           value: _this.$jquery(e.target).val()
         }).then(function (response) {
           _this.$store.commit('message', {
@@ -104,10 +104,10 @@
                     <td>
                         <div class="btn-group btn-switch">
                             <label class="btn btn-primary" :class="{ active: module.enabled }">
-                                <input type="radio" :data-name="module.name" value="1" @change="enabled"> 开启
+                                <input type="radio" :data-identification="module.identification" value="1" @change="enabled"> 开启
                             </label>
                             <label class="btn btn-primary" :class="{ active: !module.enabled }">
-                                <input type="radio" :data-name="module.name" value="0" @change="enabled"> 关闭
+                                <input type="radio" :data-identification="module.identification" value="0" @change="enabled"> 关闭
                             </label>
                         </div>
                     </td>
