@@ -33,12 +33,12 @@
     window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";
     window.extensions = [
       @foreach($extensions as $extension)
-        "{{ $extension->getName() }}",
+        "{{ $extension->getIdentification() }}",
       @endforeach
     ];
     window.modules = [
       @foreach($modules as $module)
-        "{{ $module->getName() }}",
+        "{{ $module->getIdentification() }}",
       @endforeach
     ];
 </script>
