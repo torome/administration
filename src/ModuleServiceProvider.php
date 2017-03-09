@@ -79,7 +79,7 @@ class ModuleServiceProvider extends Module
      *
      * @return bool
      */
-    public function install()
+    public static function install()
     {
         return true;
     }
@@ -99,8 +99,18 @@ class ModuleServiceProvider extends Module
      *
      * @return mixed
      */
-    public function uninstall()
+    public static function uninstall()
     {
         return true;
+    }
+
+    /**
+     * Version of module.
+     *
+     * @return string
+     */
+    public static function version()
+    {
+        return '2.0.0';
     }
 }
