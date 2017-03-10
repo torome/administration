@@ -77,7 +77,7 @@ class ModuleHandler extends DataHandler
     public function errors()
     {
         return [
-            '获取全局设置失败！',
+            '获取模块列表失败！',
         ];
     }
 
@@ -89,7 +89,7 @@ class ModuleHandler extends DataHandler
     public function messages()
     {
         return [
-            '获取全局设置成功！',
+            '获取模块列表成功！',
         ];
     }
 }

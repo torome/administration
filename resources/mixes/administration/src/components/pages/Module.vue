@@ -5,7 +5,6 @@
       Vue.http.post(window.api + '/administration/module').then(function (response) {
         next((vm) => {
           vm.list = response.data.data
-          console.log(vm.list)
         })
       })
     },
