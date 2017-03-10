@@ -91,7 +91,7 @@ class ModuleServiceProvider extends Module
      */
     public static function name()
     {
-        return '后台管理模块';
+        return '后台管理';
     }
 
     /**
