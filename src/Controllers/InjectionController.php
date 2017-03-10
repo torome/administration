@@ -8,7 +8,6 @@
  */
 namespace Notadd\Administration\Controllers;
 
-use Notadd\Administration\Handlers\ExtensionHandler;
 use Notadd\Administration\Handlers\ModuleHandler;
 use Notadd\Foundation\Routing\Abstracts\Controller;
 
@@ -17,18 +16,6 @@ use Notadd\Foundation\Routing\Abstracts\Controller;
  */
 class InjectionController extends Controller
 {
-    /**
-     * Extension handler.
-     *
-     * @param \Notadd\Administration\Handlers\ExtensionHandler $handler
-     *
-     * @return \Notadd\Foundation\Passport\Responses\ApiResponse|\Psr\Http\Message\ResponseInterface|\Zend\Diactoros\Response
-     */
-    public function extension(ExtensionHandler $handler)
-    {
-        return $handler->toResponse()->generateHttpResponse();
-    }
-
     /**
      * Module handler.
      *
