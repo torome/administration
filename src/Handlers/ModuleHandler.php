@@ -9,7 +9,6 @@
 namespace Notadd\Administration\Handlers;
 
 use Illuminate\Container\Container;
-use Notadd\Administration\ModuleServiceProvider;
 use Notadd\Foundation\Module\Module;
 use Notadd\Foundation\Module\ModuleManager;
 use Notadd\Foundation\Passport\Abstracts\DataHandler;
@@ -65,7 +64,7 @@ class ModuleHandler extends DataHandler
                 'name' => $module->getName(),
             ];
         });
-        $modules->offsetUnset(ModuleServiceProvider::name());
+        $modules->offsetUnset('notadd/administration');
 
         return $modules->toArray();
     }

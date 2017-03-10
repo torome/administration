@@ -2,7 +2,7 @@
   import Vue from 'vue'
   export default {
     beforeRouteEnter (to, from, next) {
-      Vue.http.post(window.api + '/module').then(function (response) {
+      Vue.http.post(window.api + '/administration/module').then(function (response) {
         next((vm) => {
           vm.list = response.data.data
           console.log(vm.list)
