@@ -9,6 +9,7 @@
 namespace Notadd\Administration\Listeners;
 
 use Notadd\Administration\Controllers\AdminController;
+use Notadd\Administration\Controllers\InjectionController;
 use Notadd\Foundation\Routing\Abstracts\RouteRegister as AbstractRouteRegister;
 
 /**
@@ -28,8 +29,8 @@ class RouteRegister extends AbstractRouteRegister
             $this->router->post('/', AdminController::class . '@access');
         });
         $this->router->group(['middleware' => ['auth:api', 'cross', 'web'], 'prefix' => 'api/administration'], function () {
-            $this->router->post('extension', '');
-            $this->router->post('module', '');
+            $this->router->post('extension', InjectionController::class . '@extension');
+            $this->router->post('module', InjectionController::class . '@module');
         });
     }
 }
