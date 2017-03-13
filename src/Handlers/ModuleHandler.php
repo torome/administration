@@ -55,6 +55,9 @@ class ModuleHandler extends DataHandler
             ];
         });
         $modules->offsetUnset('notadd/administration');
+        $this->messages = [
+            '获取模块列表成功！',
+        ];
 
         return $modules->toArray();
     }
@@ -68,18 +71,6 @@ class ModuleHandler extends DataHandler
     {
         return [
             '获取模块列表失败！',
-        ];
-    }
-
-    /**
-     * Messages for handler.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            '获取模块列表成功！',
         ];
     }
 }
