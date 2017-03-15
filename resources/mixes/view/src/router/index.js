@@ -29,15 +29,15 @@ const configuration = [
   },
 ];
 
+const modules = [];
+
 const routes = [
   {
-    component: Layout,
     children: [
-      {
-        children: configuration,
-        path: '/',
-      },
+      ...configuration,
+      ...modules,
     ],
+    component: Layout,
     path: '/',
   },
   {

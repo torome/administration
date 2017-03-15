@@ -40,10 +40,7 @@
                         <menu-item name="1-3">举报管理</menu-item>
                     </submenu>
                     <submenu name="2">
-                        <template slot="title">
-                            <icon type="ios-people"></icon>
-                            用户管理
-                        </template>
+                        <template slot="title"><icon type="ios-people"></icon>用户管理</template>
                         <menu-item name="2-1">新增用户</menu-item>
                         <menu-item name="2-2">活跃用户</menu-item>
                     </submenu>
