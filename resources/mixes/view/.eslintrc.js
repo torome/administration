@@ -25,6 +25,10 @@ module.exports = {
   // add your custom rules here
   'rules': {
     // don't require .vue extension when importing
+    'arrow-parens': [2, "as-needed", {
+      "requireForBlockBody": false
+    }],
+    // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
