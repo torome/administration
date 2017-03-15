@@ -55,10 +55,12 @@ html, body {
       }
     }
     > .layout-menu-left {
-      background: #3399ff;
+      background: #487cf5;
       > .ivu-menu {
+        &.ivu-menu-dark {
+          background: #487cf5;
+        }
         > .layout-logo-left {
-          background: #5b6270;
           border-radius: 3px;
           color: #fff;
           height: 30px;
@@ -66,6 +68,23 @@ html, body {
           margin: 15px auto;
           text-align: center;
           width: 90%;
+        }
+        > .ivu-menu-submenu {
+          &.ivu-menu-opened {
+            background: #3870ed;
+            > .ivu-menu-submenu-title {
+              background: #3870ed;
+            }
+            > .ivu-menu > .ivu-menu-item {
+              color: #fff;
+            }
+          }
+          > .ivu-menu-submenu-title {
+            color: #fff;
+            :hover {
+              background: #3870ed;
+            }
+          }
         }
       }
     }
