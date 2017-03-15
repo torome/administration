@@ -69,13 +69,44 @@
                     <i-button type="text" @click.native="toggleClick">
                         <icon type="navicon" size="32"></icon>
                     </i-button>
-                </div>
-                <div class="layout-breadcrumb">
-                    <breadcrumb>
-                        <breadcrumb-item href="#">首页</breadcrumb-item>
-                        <breadcrumb-item href="#">应用中心</breadcrumb-item>
-                        <breadcrumb-item>某应用</breadcrumb-item>
-                    </breadcrumb>
+                    <i-menu mode="horizontal" theme="light" active-name="1">
+                        <menu-item name="1">
+                            <icon type="ios-paper"></icon>
+                            内容管理
+                        </menu-item>
+                        <menu-item name="2">
+                            <icon type="ios-people"></icon>
+                            用户管理
+                        </menu-item>
+                        <submenu name="3">
+                            <template slot="title">
+                                <icon type="stats-bars"></icon>
+                                统计分析
+                            </template>
+                            <menu-group title="使用">
+                                <menu-item name="3-1">新增和启动</menu-item>
+                                <menu-item name="3-2">活跃分析</menu-item>
+                                <menu-item name="3-3">时段分析</menu-item>
+                            </menu-group>
+                            <menu-group title="留存">
+                                <menu-item name="3-4">用户留存</menu-item>
+                                <menu-item name="3-5">流失用户</menu-item>
+                            </menu-group>
+                        </submenu>
+                        <menu-item name="4">
+                            <icon type="settings"></icon>
+                            综合设置
+                        </menu-item>
+                    </i-menu>
+                    <i-menu mode="horizontal" theme="light" active-name="1">
+                        <submenu name="3">
+                            <template slot="title">
+                                <icon type="person"></icon>
+                                后台管理员
+                            </template>
+                            <menu-item name="3-1">退出</menu-item>
+                        </submenu>
+                    </i-menu>
                 </div>
                 <div class="layout-content">
                     <div class="layout-content-main">内容区域</div>

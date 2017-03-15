@@ -18,8 +18,21 @@ html, body {
         height: 60px;
         background: #fff;
         box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-        > .ivu-btn {
+        > button.ivu-btn {
+          float: left;
           margin: 6.5px 0;
+        }
+        > .ivu-menu {
+          float: left;
+          &:last-child {
+            float: right;
+          }
+          > .ivu-menu-item {
+            border-color: #fff;
+          }
+          > .ivu-menu-submenu {
+            border-color: #fff;
+          }
         }
       }
       > .layout-breadcrumb {
