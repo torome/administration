@@ -15,8 +15,8 @@
         <form-item label="站点开启">
             <i-col span="9">
                 <radio-group>
-                    <radio value="1">开启</radio>
-                    <radio value="0">关闭</radio>
+                    <radio :value="true">开启</radio>
+                    <radio :value="false">关闭</radio>
                 </radio-group>
             </i-col>
         </form-item>
