@@ -34,10 +34,7 @@
                 <i-menu active-name="1-2" :open-names="['1']" theme="dark" width="auto">
                     <div class="layout-logo-left">Notadd 后台管理</div>
                     <submenu name="1">
-                        <template slot="title">
-                            <icon type="ios-paper"></icon>
-                            内容管理
-                        </template>
+                        <template slot="title"><icon type="ios-paper"></icon>内容管理</template>
                         <menu-item name="1-1">文章管理</menu-item>
                         <menu-item name="1-2">评论管理</menu-item>
                         <menu-item name="1-3">举报管理</menu-item>
@@ -51,10 +48,7 @@
                         <menu-item name="2-2">活跃用户</menu-item>
                     </submenu>
                     <submenu name="3">
-                        <template slot="title">
-                            <icon type="stats-bars"></icon>
-                            统计分析
-                        </template>
+                        <template slot="title"><icon type="stats-bars"></icon>统计分析</template>
                         <menu-group title="使用">
                             <menu-item name="3-1">新增和启动</menu-item>
                             <menu-item name="3-2">活跃分析</menu-item>
@@ -76,10 +70,7 @@
                         <menu-item name="1"><icon type="ios-paper"></icon>内容管理</menu-item>
                         <menu-item name="2"><icon type="ios-people"></icon>用户管理</menu-item>
                         <submenu name="3">
-                            <template slot="title">
-                                <icon type="stats-bars"></icon>
-                                统计分析
-                            </template>
+                            <template slot="title"><icon type="stats-bars"></icon>统计分析</template>
                             <menu-group title="使用">
                                 <menu-item name="3-1">新增和启动</menu-item>
                                 <menu-item name="3-2">活跃分析</menu-item>
@@ -100,7 +91,9 @@
                     </i-menu>
                 </div>
                 <div class="layout-content">
-                    <div class="layout-content-main">内容区域</div>
+                    <div class="layout-content-main">
+                        <router-view></router-view>
+                    </div>
                 </div>
                 <div class="layout-copy">2017 &copy; Notadd</div>
             </i-col>
