@@ -1,5 +1,7 @@
 import Vue from 'vue';
 
+import './assets/less/main.less';
+
 import App from './App';
 import injection from './injection';
 import router from './router';
