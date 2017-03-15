@@ -5,6 +5,7 @@ import Debug from '../pages/Debug';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
 import Setting from '../pages/Setting';
+import Upload from '../pages/Upload';
 
 Vue.use(Router);
 
@@ -16,6 +17,10 @@ const configuration = [
   {
     component: Setting,
     path: 'setting',
+  },
+  {
+    component: Upload,
+    path: 'upload',
   },
 ];
 
