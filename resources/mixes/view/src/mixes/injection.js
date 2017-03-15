@@ -5,11 +5,11 @@ promiseFinally.shim();
 
 export function mixinAxios(injection, Vue) {
   axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-  axios.http.interceptors.request.use(configuration => configuration, error => {
+  axios.interceptors.request.use(configuration => configuration, error => {
     console.log(error);
     return Promise.reject(error);
   });
-  axios.http.interceptors.response.use(response => response, error => {
+  axios.interceptors.response.use(response => response, error => {
     console.log(error);
     console.log(error.response);
     console.log(error.response.data);

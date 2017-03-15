@@ -47,7 +47,7 @@ import { Row, Col } from 'iview/src/components/grid';
 import { Select, Option, OptionGroup } from 'iview/src/components/select';
 import locale from 'iview/src/locale';
 
-import { mixinAxios } from './mixes/injection';
+import { mixinAxios } from '../mixes/injection';
 
 const injection = {
   Affix,
