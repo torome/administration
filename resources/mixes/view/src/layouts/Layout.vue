@@ -29,7 +29,7 @@
         <row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
                 <i-menu active-name="1-2" :open-names="['1']" theme="dark" width="auto">
-                    <div class="layout-logo-left"></div>
+                    <div class="layout-logo-left">Notadd 后台管理</div>
                     <submenu name="1">
                         <template slot="title">
                             <icon type="ios-paper"></icon>
