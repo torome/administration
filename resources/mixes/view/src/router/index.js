@@ -3,16 +3,25 @@ import Router from 'vue-router';
 
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
+import Setting from '../pages/Setting';
 
 Vue.use(Router);
 
-// const base = [
-// ];
+const configuration = [
+  {
+    component: Setting,
+    path: 'setting',
+  },
+];
 
 const routes = [
   {
     component: Layout,
     children: [
+      {
+        children: configuration,
+        path: '/',
+      },
     ],
     path: '/',
   },
