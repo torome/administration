@@ -12,6 +12,9 @@
       },
     },
     methods: {
+      logout() {
+        console.log('Logout!');
+      },
       toggleClick() {
         if (this.spanLeft === 5) {
           this.spanLeft = 2;
@@ -70,14 +73,8 @@
                         <icon type="navicon" size="32"></icon>
                     </i-button>
                     <i-menu mode="horizontal" theme="light" active-name="1">
-                        <menu-item name="1">
-                            <icon type="ios-paper"></icon>
-                            内容管理
-                        </menu-item>
-                        <menu-item name="2">
-                            <icon type="ios-people"></icon>
-                            用户管理
-                        </menu-item>
+                        <menu-item name="1"><icon type="ios-paper"></icon>内容管理</menu-item>
+                        <menu-item name="2"><icon type="ios-people"></icon>用户管理</menu-item>
                         <submenu name="3">
                             <template slot="title">
                                 <icon type="stats-bars"></icon>
@@ -93,18 +90,12 @@
                                 <menu-item name="3-5">流失用户</menu-item>
                             </menu-group>
                         </submenu>
-                        <menu-item name="4">
-                            <icon type="settings"></icon>
-                            综合设置
-                        </menu-item>
+                        <menu-item name="4"><icon type="settings"></icon>综合设置</menu-item>
                     </i-menu>
                     <i-menu mode="horizontal" theme="light" active-name="1">
                         <submenu name="3">
-                            <template slot="title">
-                                <icon type="person"></icon>
-                                后台管理员
-                            </template>
-                            <menu-item name="3-1">退出</menu-item>
+                            <template slot="title"><icon type="person"></icon>后台管理员</template>
+                            <menu-item name="3-1" @click.native="logout">退出</menu-item>
                         </submenu>
                     </i-menu>
                 </div>
