@@ -13,7 +13,6 @@
     },
     methods: {
       toggleClick() {
-        console.log('dfdf');
         if (this.spanLeft === 5) {
           this.spanLeft = 2;
           this.spanRight = 22;
@@ -25,90 +24,49 @@
     },
   };
 </script>
-<style scoped>
-    .layout {
-        border: 1px solid #d7dde4;
-        background: #f5f7f9;
-        position: relative;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-
-    .layout-breadcrumb {
-        padding: 10px 15px 0;
-    }
-
-    .layout-content {
-        min-height: 200px;
-        margin: 15px;
-        overflow: hidden;
-        background: #fff;
-        border-radius: 4px;
-    }
-
-    .layout-content-main {
-        padding: 10px;
-    }
-
-    .layout-copy {
-        text-align: center;
-        padding: 10px 0 20px;
-        color: #9ea7b4;
-    }
-
-    .layout-menu-left {
-        background: #464c5b;
-    }
-
-    .layout-header {
-        height: 60px;
-        background: #fff;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-    }
-
-    .layout-logo-left {
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
-    }
-
-    .layout-ceiling-main a {
-        color: #9ba7b5;
-    }
-
-    .layout-hide-text .layout-text {
-        display: none;
-    }
-
-    .ivu-col {
-        transition: width .2s ease-in-out;
-    }
-</style>
 <template>
     <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
-                <menu active-name="1" theme="dark" width="auto">
+                <i-menu active-name="1-2" :open-names="['1']" theme="dark" width="auto">
                     <div class="layout-logo-left"></div>
-                    <menu-item name="1">
-                        <icon type="ios-navigate" :size="iconSize"></icon>
-                        <span class="layout-text">选项 1</span>
-                    </menu-item>
-                    <menu-item name="2">
-                        <icon type="ios-keypad" :size="iconSize"></icon>
-                        <span class="layout-text">选项 2</span>
-                    </menu-item>
-                    <menu-item name="3">
-                        <icon type="ios-analytics" :size="iconSize"></icon>
-                        <span class="layout-text">选项 3</span>
-                    </menu-item>
-                </menu>
+                    <submenu name="1">
+                        <template slot="title">
+                            <icon type="ios-paper"></icon>
+                            内容管理
+                        </template>
+                        <menu-item name="1-1">文章管理</menu-item>
+                        <menu-item name="1-2">评论管理</menu-item>
+                        <menu-item name="1-3">举报管理</menu-item>
+                    </submenu>
+                    <submenu name="2">
+                        <template slot="title">
+                            <icon type="ios-people"></icon>
+                            用户管理
+                        </template>
+                        <menu-item name="2-1">新增用户</menu-item>
+                        <menu-item name="2-2">活跃用户</menu-item>
+                    </submenu>
+                    <submenu name="3">
+                        <template slot="title">
+                            <icon type="stats-bars"></icon>
+                            统计分析
+                        </template>
+                        <menu-group title="使用">
+                            <menu-item name="3-1">新增和启动</menu-item>
+                            <menu-item name="3-2">活跃分析</menu-item>
+                            <menu-item name="3-3">时段分析</menu-item>
+                        </menu-group>
+                        <menu-group title="留存">
+                            <menu-item name="3-4">用户留存</menu-item>
+                            <menu-item name="3-5">流失用户</menu-item>
+                        </menu-group>
+                    </submenu>
+                </i-menu>
             </i-col>
             <i-col :span="spanRight">
                 <div class="layout-header">
-                    <i-button type="text" @click="toggleClick">
+                    <i-button type="text" @click.native="toggleClick">
                         <icon type="navicon" size="32"></icon>
                     </i-button>
                 </div>
