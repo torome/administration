@@ -47,7 +47,7 @@
         </form-item>
         <form-item label="统计代码">
             <i-col span="9">
-                <i-input placeholder="请输入统计代码"></i-input>
+                <i-input type="textarea" placeholder="请输入统计代码" :autosize="{minRows: 2,maxRows: 5}"></i-input>
             </i-col>
         </form-item>
         <form-item>
