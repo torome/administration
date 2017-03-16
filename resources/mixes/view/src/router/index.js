@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Debug from '../pages/Debug';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
+import Module from '../pages/Module';
 import Seo from '../pages/Seo';
 import Setting from '../pages/Setting';
 import Sitemap from '../pages/Sitemap';
@@ -15,6 +16,10 @@ const configuration = [
     {
         component: Debug,
         path: 'debug',
+    },
+    {
+        component: Module,
+        path: 'module',
     },
     {
         component: Seo,
