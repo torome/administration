@@ -1,7 +1,9 @@
 <script>
+    import state from '../states/setting';
+
     export default {
-        computed() {
-            return {};
+        computed: {
+            ...state,
         },
         methods: {
             submit() {
@@ -16,40 +18,40 @@
         <i-form :label-width="100">
             <form-item label="站点开启">
                 <i-col span="9">
-                    <radio-group>
-                        <radio :value="true">开启</radio>
-                        <radio :value="false">关闭</radio>
+                    <radio-group v-model="enabled">
+                        <radio label="open">开启</radio>
+                        <radio label="close">关闭</radio>
                     </radio-group>
                 </i-col>
             </form-item>
             <form-item label="网站名称">
                 <i-col span="9">
-                    <i-input placeholder="请输入网站名称"></i-input>
+                    <i-input placeholder="请输入网站名称" v-model="name"></i-input>
                 </i-col>
             </form-item>
             <form-item label="网站域名">
                 <i-col span="9">
-                    <i-input placeholder="请输入网站域名"></i-input>
+                    <i-input placeholder="请输入网站域名" v-model="domain"></i-input>
                 </i-col>
             </form-item>
             <form-item label="备案信息">
                 <i-col span="9">
-                    <i-input placeholder="请输入备案信息"></i-input>
+                    <i-input placeholder="请输入备案信息" v-model="beian"></i-input>
                 </i-col>
             </form-item>
             <form-item label="公司名称">
                 <i-col span="9">
-                    <i-input placeholder="请输入公司名称"></i-input>
+                    <i-input placeholder="请输入公司名称" v-model="company"></i-input>
                 </i-col>
             </form-item>
             <form-item label="版权信息">
                 <i-col span="9">
-                    <i-input placeholder="请输入版权信息"></i-input>
+                    <i-input placeholder="请输入版权信息" v-model="copyright"></i-input>
                 </i-col>
             </form-item>
             <form-item label="统计代码">
                 <i-col span="9">
-                    <i-input type="textarea" placeholder="请输入统计代码" :autosize="{minRows: 2,maxRows: 5}"></i-input>
+                    <i-input type="textarea" placeholder="请输入统计代码" v-model="statistics" :autosize="{minRows: 2,maxRows: 5}"></i-input>
                 </i-col>
             </form-item>
             <form-item>

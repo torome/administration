@@ -25,7 +25,7 @@
         <i-form :label-width="100">
             <form-item label="Debug 模式">
                 <i-col span="9">
-                    <radio-group type="button" v-model="enabled">
+                    <radio-group v-model="enabled">
                         <radio label="open">开启</radio>
                         <radio label="close">关闭</radio>
                     </radio-group>
