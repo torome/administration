@@ -1,14 +1,14 @@
 <script>
-  export default {
-    data() {
-      return {};
-    },
-    methods: {
-      submit() {
-        console.log('Submit!');
-      },
-    },
-  };
+    export default {
+        data() {
+            return {};
+        },
+        methods: {
+            submit() {
+                console.log('Submit!');
+            },
+        },
+    };
 </script>
 <template>
     <card>

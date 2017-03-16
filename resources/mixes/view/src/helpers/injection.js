@@ -50,85 +50,85 @@ import locale from 'iview/src/locale';
 import { mixinAxios } from '../mixes/injection';
 
 const injection = {
-  Affix,
-  Alert,
-  BackTop,
-  Badge,
-  Breadcrumb,
-  BreadcrumbItem: Breadcrumb.Item,
-  iButton: Button,
-  ButtonGroup: Button.Group,
-  Card,
-  Carousel,
-  CarouselItem: Carousel.Item,
-  Cascader,
-  Checkbox,
-  CheckboxGroup: Checkbox.Group,
-  iCircle: Circle,
-  DatePicker,
-  Dropdown,
-  DropdownItem: Dropdown.Item,
-  DropdownMenu: Dropdown.Menu,
-  iForm: Form,
-  FormItem: Form.Item,
-  iCol: Col,
-  Collapse,
-  Icon,
-  iInput: Input,
-  InputNumber,
-  LoadingBar,
-  iMenu: Menu,
-  MenuGroup: Menu.Group,
-  MenuItem: Menu.Item,
-  Submenu: Menu.Sub,
-  Message,
-  Modal,
-  Notice,
-  iOption: Option,
-  OptionGroup,
-  Page,
-  Panel: Collapse.Panel,
-  Poptip,
-  iProgress: Progress,
-  Radio,
-  RadioGroup: Radio.Group,
-  Rate,
-  Row,
-  iSelect: Select,
-  Slider,
-  Spin,
-  Step: Steps.Step,
-  Steps,
-  iSwitch: Switch,
-  iTable: Table,
-  Tabs,
-  TabPane: Tabs.Pane,
-  Tag,
-  Timeline,
-  TimelineItem: Timeline.Item,
-  TimePicker,
-  Tooltip,
-  Transfer,
-  Tree,
-  Upload,
+    Affix,
+    Alert,
+    BackTop,
+    Badge,
+    Breadcrumb,
+    BreadcrumbItem: Breadcrumb.Item,
+    iButton: Button,
+    ButtonGroup: Button.Group,
+    Card,
+    Carousel,
+    CarouselItem: Carousel.Item,
+    Cascader,
+    Checkbox,
+    CheckboxGroup: Checkbox.Group,
+    iCircle: Circle,
+    DatePicker,
+    Dropdown,
+    DropdownItem: Dropdown.Item,
+    DropdownMenu: Dropdown.Menu,
+    iForm: Form,
+    FormItem: Form.Item,
+    iCol: Col,
+    Collapse,
+    Icon,
+    iInput: Input,
+    InputNumber,
+    LoadingBar,
+    iMenu: Menu,
+    MenuGroup: Menu.Group,
+    MenuItem: Menu.Item,
+    Submenu: Menu.Sub,
+    Message,
+    Modal,
+    Notice,
+    iOption: Option,
+    OptionGroup,
+    Page,
+    Panel: Collapse.Panel,
+    Poptip,
+    iProgress: Progress,
+    Radio,
+    RadioGroup: Radio.Group,
+    Rate,
+    Row,
+    iSelect: Select,
+    Slider,
+    Spin,
+    Step: Steps.Step,
+    Steps,
+    iSwitch: Switch,
+    iTable: Table,
+    Tabs,
+    TabPane: Tabs.Pane,
+    Tag,
+    Timeline,
+    TimelineItem: Timeline.Item,
+    TimePicker,
+    Tooltip,
+    Transfer,
+    Tree,
+    Upload,
 };
 
 const install = function install(Vue, opts = {}) {
-  locale.use(opts.locale);
-  locale.i18n(opts.i18n);
-  mixinAxios(injection, Vue);
+    locale.use(opts.locale);
+    locale.i18n(opts.i18n);
+    mixinAxios(injection, Vue);
 
-  Object.keys(injection).forEach(key => {
-    Vue.component(decamelize(camelcase(key), '-'), injection[key]);
-  });
+    Object.keys(injection).forEach(key => {
+        Vue.component(decamelize(camelcase(key), '-'), injection[key]);
+    });
 
-  const vue = Vue;
-  vue.prototype.$loading = LoadingBar;
-  vue.prototype.$message = Message;
-  vue.prototype.$modal = Modal;
-  vue.prototype.$notice = Notice;
+    const vue = Vue;
+    vue.prototype.$loading = LoadingBar;
+    vue.prototype.$message = Message;
+    vue.prototype.$modal = Modal;
+    vue.prototype.$notice = Notice;
 };
 
 export default Object.assign(injection, {
-  install,
+    install,
 });

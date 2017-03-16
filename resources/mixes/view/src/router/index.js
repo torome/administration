@@ -11,41 +11,41 @@ import Upload from '../pages/Upload';
 Vue.use(Router);
 
 const configuration = [
-  {
-    component: Debug,
-    path: 'debug',
-  },
-  {
-    component: Setting,
-    path: 'setting',
-  },
-  {
-    component: Sitemap,
-    path: 'sitemap',
-  },
-  {
-    component: Upload,
-    path: 'upload',
-  },
+    {
+        component: Debug,
+        path: 'debug',
+    },
+    {
+        component: Setting,
+        path: 'setting',
+    },
+    {
+        component: Sitemap,
+        path: 'sitemap',
+    },
+    {
+        component: Upload,
+        path: 'upload',
+    },
 ];
 
 const modules = [];
 
 const routes = [
-  {
-    children: [
-      ...configuration,
-      ...modules,
-    ],
-    component: Layout,
-    path: '/',
-  },
-  {
-    component: Login,
-    path: '/login',
-  },
+    {
+        children: [
+            ...configuration,
+            ...modules,
+        ],
+        component: Layout,
+        path: '/',
+    },
+    {
+        component: Login,
+        path: '/login',
+    },
 ];
 
 export default new Router({
-  routes,
+    routes,
 });

@@ -1,67 +1,67 @@
 html, body {
-  height: 100%;
+    height: 100%;
 }
 
 .layout {
-  background: #f5f7f9;
-  border-radius: 4px;
-  height: 100%;
-  position: relative;
-  width: 100%;
-  > .ivu-row-flex {
+    background: #f5f7f9;
+    border-radius: 4px;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: visible;
-    > .ivu-col {
-      transition: width .2s ease-in-out;
-      > .layout-header {
-        height: 60px;
-        background: #fff;
-        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-        > button.ivu-btn {
-          float: left;
-          margin: 6.5px 0;
+    position: relative;
+    width: 100%;
+    > .ivu-row-flex {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: visible;
+        > .ivu-col {
+            transition: width .2s ease-in-out;
+            > .layout-header {
+                height: 60px;
+                background: #fff;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+                > button.ivu-btn {
+                    float: left;
+                    margin: 6.5px 0;
+                }
+                > .ivu-menu {
+                    float: left;
+                    &:last-child {
+                        float: right;
+                    }
+                    > .ivu-menu-item {
+                        border-color: #fff;
+                    }
+                    > .ivu-menu-submenu {
+                        border-color: #fff;
+                    }
+                }
+            }
+            > .layout-breadcrumb {
+                padding: 10px 15px 0;
+            }
+            > .layout-content {
+                margin: 15px;
+                overflow: hidden;
+            }
+            > .layout-copy {
+                color: #9ea7b4;
+                text-align: center;
+                padding: 10px 0 20px;
+            }
         }
-        > .ivu-menu {
-          float: left;
-          &:last-child {
-            float: right;
-          }
-          > .ivu-menu-item {
-            border-color: #fff;
-          }
-          > .ivu-menu-submenu {
-            border-color: #fff;
-          }
+        > .layout-menu-left {
+            background: #464c5b;
+            > .ivu-menu {
+                > .layout-logo-left {
+                    background: #5b6270;
+                    border-radius: 3px;
+                    color: #fff;
+                    height: 30px;
+                    line-height: 30px;
+                    margin: 15px auto;
+                    text-align: center;
+                    width: 90%;
+                }
+            }
         }
-      }
-      > .layout-breadcrumb {
-        padding: 10px 15px 0;
-      }
-      > .layout-content {
-        margin: 15px;
-        overflow: hidden;
-      }
-      > .layout-copy {
-        color: #9ea7b4;
-        text-align: center;
-        padding: 10px 0 20px;
-      }
     }
-    > .layout-menu-left {
-      background: #464c5b;
-      > .ivu-menu {
-        > .layout-logo-left {
-          background: #5b6270;
-          border-radius: 3px;
-          color: #fff;
-          height: 30px;
-          line-height: 30px;
-          margin: 15px auto;
-          text-align: center;
-          width: 90%;
-        }
-      }
-    }
-  }
 }

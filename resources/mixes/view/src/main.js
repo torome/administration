@@ -10,8 +10,8 @@ Vue.config.productionTip = false;
 Vue.use(injection);
 
 injection.vue = new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App },
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App },
 });

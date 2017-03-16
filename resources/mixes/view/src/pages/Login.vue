@@ -1,19 +1,19 @@
 <script>
-  export default {
-    data() {
-      return {
-        form: {
-          password: '',
-          username: '',
+    export default {
+        data() {
+            return {
+                form: {
+                    password: '',
+                    username: '',
+                },
+            };
         },
-      };
-    },
-    methods: {
-      submit() {
-        console.log('Submit!');
-      },
-    },
-  };
+        methods: {
+            submit() {
+                console.log('Submit!');
+            },
+        },
+    };
 </script>
 <template>
     <div class="login-layout">
