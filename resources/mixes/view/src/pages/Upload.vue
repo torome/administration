@@ -14,7 +14,7 @@
             <form-item label="图片处理引擎">
                 <i-col span="9">
                     <radio-group v-model="imageProcessingEngine">
-                        <radio value="gd">GD 库</radio>
+                        <radio label="gd">GD 库</radio>
                     </radio-group>
                 </i-col>
             </form-item>
