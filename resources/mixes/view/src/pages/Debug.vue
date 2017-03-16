@@ -1,11 +1,32 @@
 <script>
     export default {
-        data() {
-            return {};
+        computed: {
+            enabled: {
+                get() {
+                    const state = this.$store.state.setting['debug.enabled'];
+                    if (state === '1' || state === '0') {
+                        return state === '1';
+                    }
+                    return state ? 'open' : 'close';
+                },
+                set(val) {
+                    this.$store.commit('single', {
+                        key: 'debug.enabled',
+                        value: val === 'open',
+                    });
+                },
+            },
         },
         methods: {
             submit() {
                 console.log('Submit!');
+            },
+        },
+        watch: {
+            enabled: {
+                handler(val) {
+                    console.log(val);
+                },
             },
         },
     };
@@ -16,9 +37,9 @@
         <i-form :label-width="100">
             <form-item label="Debug 模式">
                 <i-col span="9">
-                    <radio-group>
-                        <radio :value="true">开启</radio>
-                        <radio :value="false">关闭</radio>
+                    <radio-group v-model="enabled">
+                        <radio label="open">开启</radio>
+                        <radio label="close">关闭</radio>
                     </radio-group>
                 </i-col>
             </form-item>
