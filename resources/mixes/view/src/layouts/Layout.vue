@@ -31,39 +31,51 @@
     <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <row type="flex">
             <i-col :span="spanLeft" class="layout-menu-left">
-                <i-menu active-name="1-2" :open-names="['1']" theme="dark" width="auto">
+                <i-menu :accordion="true" theme="dark" width="auto">
                     <div class="layout-logo-left">Notadd 后台管理</div>
+                    <menu-item name="0">
+                        <router-link to="/setting">
+                            <icon type="ios-cog"></icon>
+                            全局设置
+                        </router-link>
+                    </menu-item>
                     <submenu name="1">
                         <template slot="title">
                             <icon type="ios-paper"></icon>
-                            内容管理
+                            附件设置
                         </template>
-                        <menu-item name="1-1">文章管理</menu-item>
-                        <menu-item name="1-2">评论管理</menu-item>
-                        <menu-item name="1-3">举报管理</menu-item>
+                        <menu-item name="1-1">
+                            <router-link to="/upload">上传设置</router-link>
+                        </menu-item>
                     </submenu>
-                    <submenu name="2">
-                        <template slot="title">
-                            <icon type="ios-people"></icon>
-                            用户管理
-                        </template>
-                        <menu-item name="2-1">新增用户</menu-item>
-                        <menu-item name="2-2">活跃用户</menu-item>
-                    </submenu>
-                    <submenu name="3">
+                    <menu-item name="2">
+                        <router-link to="/seo">
+                            <icon type="ios-browsers"></icon>
+                            全局SEO设置
+                        </router-link>
+                    </menu-item>
+                    <menu-item name="3">
+                        <router-link to="/module">
+                            <icon type="grid"></icon>
+                            模块配置
+                        </router-link>
+                    </menu-item>
+                    <submenu name="4">
                         <template slot="title">
                             <icon type="stats-bars"></icon>
-                            统计分析
+                            系统组件
                         </template>
-                        <menu-group title="使用">
-                            <menu-item name="3-1">新增和启动</menu-item>
-                            <menu-item name="3-2">活跃分析</menu-item>
-                            <menu-item name="3-3">时段分析</menu-item>
-                        </menu-group>
-                        <menu-group title="留存">
-                            <menu-item name="3-4">用户留存</menu-item>
-                            <menu-item name="3-5">流失用户</menu-item>
-                        </menu-group>
+                        <menu-item name="4-1">导航管理</menu-item>
+                        <menu-item name="4-2">邮件设置</menu-item>
+                        <menu-item name="4-3">调试工具</menu-item>
+                    </submenu>
+                    <submenu name="5">
+                        <template slot="title">
+                            <icon type="plus"></icon>
+                            插件管理
+                        </template>
+                        <menu-item name="5-1">插件配置</menu-item>
+                        <menu-item name="5-2">网站地图</menu-item>
                     </submenu>
                 </i-menu>
             </i-col>
