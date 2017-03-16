@@ -13,7 +13,7 @@
         <i-form :label-width="100">
             <form-item label="标题">
                 <i-col span="9">
-                    <i-input placeholder="请输入标题" v-model="description" :autosize="{minRows: 2,maxRows: 5}"></i-input>
+                    <i-input placeholder="请输入标题" v-model="title" :autosize="{minRows: 2,maxRows: 5}"></i-input>
                 </i-col>
             </form-item>
             <form-item label="描述">
