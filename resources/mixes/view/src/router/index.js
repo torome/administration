@@ -5,6 +5,7 @@ import Debug from '../pages/Debug';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
 import Module from '../pages/Module';
+import Navigation from '../pages/Navigation';
 import Seo from '../pages/Seo';
 import Setting from '../pages/Setting';
 import Sitemap from '../pages/Sitemap';
@@ -20,6 +21,10 @@ const configuration = [
     {
         component: Module,
         path: 'module',
+    },
+    {
+        component: Navigation,
+        path: 'navigation',
     },
     {
         component: Seo,
