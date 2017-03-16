@@ -1,21 +1,9 @@
 <script>
+    import state from '../states/debug';
+
     export default {
         computed: {
-            enabled: {
-                get() {
-                    const state = this.$store.state.setting['debug.enabled'];
-                    if (state === '1' || state === '0') {
-                        return state === '1';
-                    }
-                    return state ? 'open' : 'close';
-                },
-                set(val) {
-                    this.$store.commit('single', {
-                        key: 'debug.enabled',
-                        value: val === 'open',
-                    });
-                },
-            },
+            ...state,
         },
         methods: {
             submit() {
@@ -37,7 +25,7 @@
         <i-form :label-width="100">
             <form-item label="Debug 模式">
                 <i-col span="9">
-                    <radio-group v-model="enabled">
+                    <radio-group type="button" v-model="enabled">
                         <radio label="open">开启</radio>
                         <radio label="close">关闭</radio>
                     </radio-group>
