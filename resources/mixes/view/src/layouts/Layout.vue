@@ -65,17 +65,27 @@
                             <icon type="stats-bars"></icon>
                             系统组件
                         </template>
-                        <menu-item name="4-1">导航管理</menu-item>
-                        <menu-item name="4-2">邮件设置</menu-item>
-                        <menu-item name="4-3">调试工具</menu-item>
+                        <menu-item name="4-1">
+                            <router-link to="/navigation">导航管理</router-link>
+                        </menu-item>
+                        <menu-item name="4-2">
+                            <router-link to="/mail">邮件设置</router-link>
+                        </menu-item>
+                        <menu-item name="4-3">
+                            <router-link to="/debug">调试工具</router-link>
+                        </menu-item>
                     </submenu>
                     <submenu name="5">
                         <template slot="title">
                             <icon type="plus"></icon>
                             插件管理
                         </template>
-                        <menu-item name="5-1">插件配置</menu-item>
-                        <menu-item name="5-2">网站地图</menu-item>
+                        <menu-item name="5-1">
+                            <router-link to="/extension">插件配置</router-link>
+                        </menu-item>
+                        <menu-item name="5-2">
+                            <router-link to="/sitemap">网站地图</router-link>
+                        </menu-item>
                     </submenu>
                 </i-menu>
             </i-col>

@@ -61,6 +61,30 @@ html, body {
                     text-align: center;
                     width: 90%;
                 }
+                .ivu-menu-item {
+                    padding: 0;
+                    > a {
+                        color: #9ea7b4;
+                        display: block;
+                        padding: 14px 24px;
+                        > i {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+                .ivu-menu-submenu {
+                    .ivu-menu-item {
+                        &.ivu-menu-item-active,
+                        &.ivu-menu-item-active:hover {
+                            > a {
+                                color: #fff;
+                            }
+                        }
+                        > a {
+                            padding-left: 47px;
+                        }
+                    }
+                }
             }
         }
     }
