@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Debug from '../pages/Debug';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
+import Mail from '../pages/Mail';
 import Module from '../pages/Module';
 import Navigation from '../pages/Navigation';
 import Seo from '../pages/Seo';
@@ -17,6 +18,10 @@ const configuration = [
     {
         component: Debug,
         path: 'debug',
+    },
+    {
+        component: Mail,
+        path: 'mail',
     },
     {
         component: Module,
