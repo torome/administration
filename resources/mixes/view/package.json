@@ -14,7 +14,7 @@
         "camelcase": "^4.0.0",
         "core-js": "^2.4.1",
         "decamelize": "^1.2.0",
-        "iview": "^2.0.0-rc.4",
+        "iview": "^2.0.0-rc.5",
         "promise.prototype.finally": "^2.0.1",
         "vue": "^2.2.2",
         "vue-router": "^2.2.0",

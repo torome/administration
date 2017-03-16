@@ -42,7 +42,7 @@ export default {
             store.commit('single', {
                 key: 'attachment.limit.video',
                 value: val,
-            })
+            });
         },
     },
     canUploadImageExtension: {
