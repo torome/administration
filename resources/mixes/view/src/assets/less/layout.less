@@ -29,6 +29,19 @@ html, body {
                     }
                     > .ivu-menu-item {
                         border-color: #fff;
+                        padding: 0;
+                        &.ivu-menu-item-active,
+                        &:hover {
+                            border-bottom: 2px solid #3399ff;
+                            > a {
+                                color: #3399ff;
+                            }
+                        }
+                        > a {
+                            color: #657180;
+                            display: block;
+                            padding: 0 20px;
+                        }
                     }
                     > .ivu-menu-submenu {
                         border-color: #fff;
