@@ -1,18 +1,27 @@
 <script>
-    import state from '../states/seo';
+    import injection from '../helpers/injection';
 
     export default {
-        computed: {
-            ...state,
+        beforeRouteEnter(to, from, next) {
+            injection.loading.start();
+            injection.http.post(`${window.api}/seo/get`).then(response => {
+                const data = response.data.data;
+                next(vm => {
+                    injection.loading.finish();
+                    vm.form.description = data.description;
+                    vm.form.keyword = data.keyword;
+                    vm.form.title = data.title;
+                });
+            });
         },
         data() {
-            const self = this;
             return {
                 form: {
-                    description: self.description,
-                    keyword: self.keyword,
-                    title: self.title,
+                    description: '',
+                    keyword: '',
+                    title: '',
                 },
+                loading: false,
                 rules: {
                     description: [
                         {
@@ -44,11 +53,19 @@
         methods: {
             submit() {
                 const self = this;
+                self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        console.log(valid);
+                        self.$http.post(`${window.api}/seo/set`, self.form).then(() => {
+                            self.$notice.open({
+                                title: '更新全局 SEO 设置信息成功！',
+                            });
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
-                        this.$notice.error({
+                        self.loading = false;
+                        self.$notice.error({
                             title: '请正确填写 SEO 配置信息！',
                         });
                     }
@@ -87,7 +104,10 @@
             <row>
                 <i-col span="14">
                     <form-item>
-                        <i-button type="primary" @click.native="submit">确认提交</i-button>
+                        <i-button :loading="loading" type="primary" @click.native="submit">
+                            <span v-if="!loading">确认提交</span>
+                            <span v-else>正在提交…</span>
+                        </i-button>
                     </form-item>
                 </i-col>
             </row>

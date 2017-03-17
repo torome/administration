@@ -88,11 +88,10 @@
                 self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        self.$http.post(`${window.api}/setting/set`, self.form).then(response => {
+                        self.$http.post(`${window.api}/setting/set`, self.form).then(() => {
                             self.$notice.open({
                                 title: '更新全局设置信息成功！',
                             });
-                            self.$store.commit('setting', response.data.data);
                         }).finally(() => {
                             self.loading = false;
                         });
