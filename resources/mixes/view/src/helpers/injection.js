@@ -127,6 +127,35 @@ const install = function install(Vue, opts = {}) {
     vue.prototype.$message = Message;
     vue.prototype.$modal = Modal;
     vue.prototype.$notice = Notice;
+
+    Object.defineProperties(injection, {
+        loading: {
+            get() {
+                return LoadingBar;
+            },
+        },
+        message: {
+            get() {
+                return Message;
+            },
+        },
+        modal: {
+            get() {
+                return Modal;
+            },
+        },
+        notice: {
+            get() {
+                return Notice;
+            },
+        },
+    });
+
+    injection.loading.config({
+        color: '#5cb85c',
+        failedColor: '#f0ad4e',
+        height: 2,
+    });
 };
 
 export default Object.assign(injection, {
