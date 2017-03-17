@@ -10,13 +10,6 @@
                 console.log('Submit!');
             },
         },
-        watch: {
-            enabled: {
-                handler(val) {
-                    console.log(val);
-                },
-            },
-        },
     };
 </script>
 <template>

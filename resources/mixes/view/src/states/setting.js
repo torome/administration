@@ -1,43 +1,6 @@
 import store from '../stores';
 
 export default {
-    enabled: {
-        get() {
-            const state = store.state.setting['site.enabled'];
-            if (state === '1' || state === '0') {
-                return state === '1';
-            }
-            return state ? 'open' : 'close';
-        },
-        set(val) {
-            store.commit('single', {
-                key: 'site.enabled',
-                value: val === 'open',
-            });
-        },
-    },
-    name: {
-        get() {
-            return store.state.setting['site.name'];
-        },
-        set(val) {
-            store.commit('single', {
-                key: 'site.name',
-                value: val,
-            });
-        },
-    },
-    domain: {
-        get() {
-            return store.state.setting['site.domain'];
-        },
-        set(val) {
-            store.commit('single', {
-                key: 'site.domain',
-                value: val,
-            });
-        },
-    },
     beian: {
         get() {
             return store.state.setting['site.beian'];
@@ -67,6 +30,43 @@ export default {
         set(val) {
             store.commit('single', {
                 key: 'site.copyright',
+                value: val,
+            });
+        },
+    },
+    domain: {
+        get() {
+            return store.state.setting['site.domain'];
+        },
+        set(val) {
+            store.commit('single', {
+                key: 'site.domain',
+                value: val,
+            });
+        },
+    },
+    enabled: {
+        get() {
+            const state = store.state.setting['site.enabled'];
+            if (state === '1' || state === '0') {
+                return state === '1';
+            }
+            return state ? 'open' : 'close';
+        },
+        set(val) {
+            store.commit('single', {
+                key: 'site.enabled',
+                value: val === 'open',
+            });
+        },
+    },
+    name: {
+        get() {
+            return store.state.setting['site.name'];
+        },
+        set(val) {
+            store.commit('single', {
+                key: 'site.name',
                 value: val,
             });
         },
