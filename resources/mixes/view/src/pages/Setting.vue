@@ -91,10 +91,10 @@
             <row>
                 <i-col span="14">
                     <form-item label="站点开启">
-                        <radio-group v-model="enabled">
-                            <radio label="open">开启</radio>
-                            <radio label="close">关闭</radio>
-                        </radio-group>
+                        <i-switch v-model="enabled" size="large">
+                            <span slot="open">开启</span>
+                            <span slot="close">关闭</span>
+                        </i-switch>
                     </form-item>
                 </i-col>
             </row>

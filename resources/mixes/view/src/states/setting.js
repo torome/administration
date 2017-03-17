@@ -51,12 +51,12 @@ export default {
             if (state === '1' || state === '0') {
                 return state === '1';
             }
-            return state ? 'open' : 'close';
+            return !!state;
         },
         set(val) {
             store.commit('single', {
                 key: 'site.enabled',
-                value: val === 'open',
+                value: val === true,
             });
         },
     },
