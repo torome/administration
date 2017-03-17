@@ -31,7 +31,16 @@
                 const self = this;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        console.log(valid);
+                        self.$http.post(`${window.admin}/token`, {
+                            name: self.form.username,
+                            password: self.form.password,
+                        }).then(response => {
+                            self.$notice.open({
+                                title: '恭喜，登录成功！',
+                            });
+                            self.$store.commit('token', response.data);
+                            self.$router.push('/');
+                        });
                     } else {
                         this.$notice.error({
                             title: '请正确填写账号或密码！',
