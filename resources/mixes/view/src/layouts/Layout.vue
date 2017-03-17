@@ -44,12 +44,6 @@
                         <menu-item name="0-2">
                             <router-link to="/seo">SEO设置</router-link>
                         </menu-item>
-                        <menu-item name="0-3">
-                            <router-link to="/module">模块配置</router-link>
-                        </menu-item>
-                        <menu-item name="0-4">
-                            <router-link to="/extension">插件配置</router-link>
-                        </menu-item>
                     </submenu>
                     <submenu name="1">
                         <template slot="title">
@@ -59,6 +53,39 @@
                         <menu-item name="1-1">
                             <router-link to="/upload">上传设置</router-link>
                         </menu-item>
+                    </submenu>
+                    <submenu name="5">
+                        <template slot="title">
+                            <icon type="plus"></icon>
+                            应用管理
+                        </template>
+                        <menu-item name="5-1">
+                            <router-link to="/module">模块配置</router-link>
+                        </menu-item>
+                        <menu-item name="5-2">
+                            <router-link to="/extension">插件配置</router-link>
+                        </menu-item>
+                        <menu-item name="5-3">
+                            <router-link to="/template">模板配置</router-link>
+                        </menu-item>
+                        <menu-item name="5-4">
+                            <router-link to="/module">拓展配置</router-link>
+                        </menu-item>
+                    </submenu>
+                    <submenu name="6">
+                        <template slot="title">
+                            <icon type="plus"></icon>
+                            全局插件
+                        </template>
+                        <menu-item name="6-2">
+                            <router-link to="/sitemap">网站地图</router-link>
+                        </menu-item>
+                    </submenu>
+                    <submenu name="7">
+                        <template slot="title">
+                            <icon type="plus"></icon>
+                            全局模板
+                        </template>
                     </submenu>
                     <submenu name="4">
                         <template slot="title">
@@ -73,15 +100,6 @@
                         </menu-item>
                         <menu-item name="4-3">
                             <router-link to="/debug">调试工具</router-link>
-                        </menu-item>
-                    </submenu>
-                    <submenu name="5">
-                        <template slot="title">
-                            <icon type="plus"></icon>
-                            插件管理
-                        </template>
-                        <menu-item name="5-2">
-                            <router-link to="/sitemap">网站地图</router-link>
                         </menu-item>
                     </submenu>
                 </i-menu>
