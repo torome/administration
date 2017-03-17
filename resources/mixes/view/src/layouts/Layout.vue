@@ -13,7 +13,8 @@
         },
         methods: {
             logout() {
-                console.log('Logout!');
+                window.localStorage.clear();
+                this.$router.push('/login');
             },
             toggleClick() {
                 if (this.spanLeft === 5) {
