@@ -45,10 +45,11 @@
 <template>
     <div class="login-layout">
         <i-form :model="form" :label-width="0" ref="form" :rules="rules">
-            <form-item prop="username">
+            <div class="login-logo">Notadd 管理后台</div>
+            <form-item label="账号" prop="username">
                 <i-input icon="person" v-model="form.username" placeholder="请输入账号"></i-input>
             </form-item>
-            <form-item prop="password">
+            <form-item label="密码" prop="password">
                 <i-input icon="locked" type="password" v-model="form.password" placeholder="请输入密码"></i-input>
             </form-item>
             <form-item>
