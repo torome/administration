@@ -1,21 +1,35 @@
 <script>
-    import state from '../states/setting';
+    import injection from '../helpers/injection';
 
     export default {
-        computed: {
-            ...state,
+        beforeRouteEnter(to, from, next) {
+            injection.loading.start();
+            injection.http.post(`${window.api}/setting/get`).then(response => {
+                const data = response.data.data;
+                next(vm => {
+                    injection.loading.finish();
+                    vm.form.beian = data.beian;
+                    vm.form.company = data.company;
+                    vm.form.copyright = data.copyright;
+                    vm.form.domain = data.domain;
+                    vm.form.enabled = data.enabled === '1';
+                    vm.form.name = data.name;
+                    vm.form.statistics = data.statistics;
+                });
+            });
         },
         data() {
-            const self = this;
             return {
                 form: {
-                    beian: self.beian,
-                    company: self.company,
-                    copyright: self.copyright,
-                    domain: self.domain,
-                    name: self.name,
-                    statistics: self.statistics,
+                    beian: '',
+                    company: '',
+                    copyright: '',
+                    domain: '',
+                    enabled: true,
+                    name: '',
+                    statistics: '',
                 },
+                loading: false,
                 rules: {
                     beian: [
                         {
@@ -61,7 +75,7 @@
                         {
                             required: true,
                             type: 'string',
-                            message: 'statistics',
+                            message: '请输入统计代码',
                             trigger: 'change',
                         },
                     ],
@@ -71,11 +85,20 @@
         methods: {
             submit() {
                 const self = this;
+                self.loading = true;
                 self.$refs.form.validate(valid => {
                     if (valid) {
-                        console.log(valid);
+                        self.$http.post(`${window.api}/setting/set`, self.form).then(response => {
+                            self.$notice.open({
+                                title: '更新全局设置信息成功！',
+                            });
+                            self.$store.commit('setting', response.data.data);
+                        }).finally(() => {
+                            self.loading = false;
+                        });
                     } else {
-                        this.$notice.error({
+                        self.loading = false;
+                        self.$notice.error({
                             title: '请正确填写设置信息！',
                         });
                     }
@@ -91,7 +114,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="站点开启">
-                        <i-switch v-model="enabled" size="large">
+                        <i-switch v-model="form.enabled" size="large">
                             <span slot="open">开启</span>
                             <span slot="close">关闭</span>
                         </i-switch>
@@ -144,7 +167,10 @@
             <row>
                 <i-col span="14">
                     <form-item>
-                        <i-button type="primary" @click.native="submit">确认提交</i-button>
+                        <i-button :loading="loading" type="primary" @click.native="submit">
+                            <span v-if="!loading">确认提交</span>
+                            <span v-else>正在提交…</span>
+                        </i-button>
                     </form-item>
                 </i-col>
             </row>
