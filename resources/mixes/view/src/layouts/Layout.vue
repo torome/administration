@@ -33,12 +33,24 @@
             <i-col :span="spanLeft" class="layout-menu-left">
                 <i-menu :accordion="true" theme="dark" width="auto">
                     <div class="layout-logo-left">Notadd 后台管理</div>
-                    <menu-item name="0">
-                        <router-link to="/setting">
+                    <submenu name="0">
+                        <template slot="title">
                             <icon type="ios-cog"></icon>
                             全局设置
-                        </router-link>
-                    </menu-item>
+                        </template>
+                        <menu-item name="0-1">
+                            <router-link to="/setting">参数配置</router-link>
+                        </menu-item>
+                        <menu-item name="0-2">
+                            <router-link to="/seo">SEO设置</router-link>
+                        </menu-item>
+                        <menu-item name="0-3">
+                            <router-link to="/module">模块配置</router-link>
+                        </menu-item>
+                        <menu-item name="0-4">
+                            <router-link to="/extension">插件配置</router-link>
+                        </menu-item>
+                    </submenu>
                     <submenu name="1">
                         <template slot="title">
                             <icon type="ios-paper"></icon>
@@ -48,18 +60,6 @@
                             <router-link to="/upload">上传设置</router-link>
                         </menu-item>
                     </submenu>
-                    <menu-item name="2">
-                        <router-link to="/seo">
-                            <icon type="ios-browsers"></icon>
-                            全局SEO设置
-                        </router-link>
-                    </menu-item>
-                    <menu-item name="3">
-                        <router-link to="/module">
-                            <icon type="grid"></icon>
-                            模块配置
-                        </router-link>
-                    </menu-item>
                     <submenu name="4">
                         <template slot="title">
                             <icon type="stats-bars"></icon>
@@ -80,9 +80,6 @@
                             <icon type="plus"></icon>
                             插件管理
                         </template>
-                        <menu-item name="5-1">
-                            <router-link to="/extension">插件配置</router-link>
-                        </menu-item>
                         <menu-item name="5-2">
                             <router-link to="/sitemap">网站地图</router-link>
                         </menu-item>
