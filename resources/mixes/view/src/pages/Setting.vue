@@ -87,9 +87,9 @@
 <template>
     <card>
         <p slot="title">全局设置</p>
-        <i-form :label-width="100" :model="form" ref="form" :rules="rules">
+        <i-form :label-width="200" :model="form" ref="form" :rules="rules">
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="站点开启">
                         <radio-group v-model="enabled">
                             <radio label="open">开启</radio>
@@ -99,42 +99,42 @@
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="网站名称" prop="name">
                         <i-input placeholder="请输入网站名称" v-model="form.name"></i-input>
                     </form-item>
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="网站域名" prop="domain">
                         <i-input placeholder="请输入网站域名" v-model="form.domain"></i-input>
                     </form-item>
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="备案信息" prop="beian">
                         <i-input placeholder="请输入备案信息" v-model="form.beian"></i-input>
                     </form-item>
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="公司名称" prop="company">
                         <i-input placeholder="请输入公司名称" v-model="form.company"></i-input>
                     </form-item>
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="版权信息" prop="copyright">
                         <i-input placeholder="请输入版权信息" v-model="form.copyright"></i-input>
                     </form-item>
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item label="统计代码" prop="statistics">
                         <i-input type="textarea" placeholder="请输入统计代码" v-model="form.statistics"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
@@ -142,7 +142,7 @@
                 </i-col>
             </row>
             <row>
-                <i-col span="9">
+                <i-col span="14">
                     <form-item>
                         <i-button type="primary" @click.native="submit">确认提交</i-button>
                     </form-item>
