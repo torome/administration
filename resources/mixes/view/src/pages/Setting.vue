@@ -142,9 +142,11 @@
                 </i-col>
             </row>
             <row>
-                <form-item>
-                    <i-button type="primary" @click.native="submit">确认提交</i-button>
-                </form-item>
+                <i-col span="9">
+                    <form-item>
+                        <i-button type="primary" @click.native="submit">确认提交</i-button>
+                    </form-item>
+                </i-col>
             </row>
         </i-form>
     </card>

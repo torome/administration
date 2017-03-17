@@ -1,9 +1,9 @@
 import store from '../stores';
 
 export default {
-    xml: {
+    cycle: {
         get() {
-            const state = store.state.setting['sitemap.xml'];
+            const state = store.state.setting['sitemap.cycle'];
             if (state === '1' || state === '0') {
                 return state === '1';
             }
@@ -11,7 +11,7 @@ export default {
         },
         set(val) {
             store.commit('single', {
-                key: 'sitemap.xml',
+                key: 'sitemap.cycle',
                 value: val === 'open',
             });
         },
@@ -31,21 +31,6 @@ export default {
             });
         },
     },
-    cycle: {
-        get() {
-            const state = store.state.setting['sitemap.cycle'];
-            if (state === '1' || state === '0') {
-                return state === '1';
-            }
-            return state ? 'open' : 'close';
-        },
-        set(val) {
-            store.commit('single', {
-                key: 'sitemap.cycle',
-                value: val === 'open',
-            });
-        },
-    },
     recently: {
         get() {
             const state = store.state.setting['sitemap.recently'];
@@ -57,6 +42,21 @@ export default {
         set(val) {
             store.commit('single', {
                 key: 'sitemap.recently',
+                value: val === 'open',
+            });
+        },
+    },
+    xml: {
+        get() {
+            const state = store.state.setting['sitemap.xml'];
+            if (state === '1' || state === '0') {
+                return state === '1';
+            }
+            return state ? 'open' : 'close';
+        },
+        set(val) {
+            store.commit('single', {
+                key: 'sitemap.xml',
                 value: val === 'open',
             });
         },
