@@ -47,7 +47,7 @@ import { Row, Col } from 'iview/src/components/grid';
 import { Select, Option, OptionGroup } from 'iview/src/components/select';
 import locale from 'iview/src/locale';
 
-import { mixinAxios, mixinValidation } from '../mixes/injection';
+import { mixinAxios } from '../mixes/injection';
 
 const injection = {
     Affix,
@@ -117,7 +117,6 @@ const install = function install(Vue, opts = {}) {
     locale.use(opts.locale);
     locale.i18n(opts.i18n);
     mixinAxios(injection, Vue);
-    mixinValidation(Vue);
 
     Object.keys(injection).forEach(key => {
         Vue.component(decamelize(camelcase(key), '-'), injection[key]);

@@ -31,6 +31,7 @@
                 const self = this;
                 self.$refs.form.validate(valid => {
                     if (valid) {
+                        console.log(valid);
                     } else {
                         this.$notice.error({
                             title: '请正确填写账号或密码！',
