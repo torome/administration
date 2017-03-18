@@ -8,10 +8,10 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
-                    vm.form.cycle = data.cycle;
-                    vm.form.html = data.html;
-                    vm.form.recently = data.recently;
-                    vm.form.xml = data.xml;
+                    vm.form.cycle = data.cycle === '1';
+                    vm.form.html = data.html === '1';
+                    vm.form.recently = data.recently === '1';
+                    vm.form.xml = data.xml === '1';
                 });
             });
         },
