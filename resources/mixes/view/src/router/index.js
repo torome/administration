@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Debug from '../pages/Debug';
 import Dashboard from '../pages/Dashboard';
+import Expand from '../pages/Expand';
 import Extension from '../pages/Extension';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
@@ -12,6 +13,7 @@ import Navigation from '../pages/Navigation';
 import Seo from '../pages/Seo';
 import Setting from '../pages/Setting';
 import Sitemap from '../pages/Sitemap';
+import Template from '../pages/Template';
 import Upload from '../pages/Upload';
 
 import requireAuth from '../middlewares/auth';
@@ -23,6 +25,11 @@ const configuration = [
         beforeEnter: requireAuth,
         component: Debug,
         path: 'debug',
+    },
+    {
+        beforeEnter: requireAuth,
+        component: Expand,
+        path: 'expand',
     },
     {
         beforeEnter: requireAuth,
@@ -58,6 +65,11 @@ const configuration = [
         beforeEnter: requireAuth,
         component: Sitemap,
         path: 'sitemap',
+    },
+    {
+        beforeEnter: requireAuth,
+        component: Template,
+        path: 'template',
     },
     {
         beforeEnter: requireAuth,

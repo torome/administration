@@ -70,7 +70,7 @@
                             <router-link to="/template">模板配置</router-link>
                         </menu-item>
                         <menu-item name="5-4">
-                            <router-link to="/module">拓展配置</router-link>
+                            <router-link to="/expand">拓展配置</router-link>
                         </menu-item>
                     </submenu>
                     <submenu name="6">
