@@ -5,6 +5,11 @@
         computed: {
             ...state,
         },
+        data() {
+            return {
+                form: {},
+            };
+        },
         methods: {
             change(status) {
                 const self = this;
@@ -24,7 +29,7 @@
 <template>
     <card>
         <p slot="title">调试工具</p>
-        <i-form :label-width="200">
+        <i-form :label-width="200" :form="form">
             <row>
                 <i-col span="14">
                     <form-item label="Debug 模式">

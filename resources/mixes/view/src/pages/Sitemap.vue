@@ -5,6 +5,16 @@
         computed: {
             ...state,
         },
+        data() {
+            return {
+                form: {
+
+                },
+                rules: {
+
+                },
+            };
+        },
         methods: {
             submit() {
                 console.log('Submit!');
@@ -15,10 +25,10 @@
 <template>
     <card>
         <p slot="title">网站地图</p>
-        <i-form :label-width="200">
+        <i-form :label-width="200" :model="form" ref="form" :rules="rules">
             <row>
                 <i-col span="14">
-                    <form-item label="生成 XML 地图">
+                    <form-item label="生成 XML 地图" prop="">
                         <radio-group v-model="xml">
                             <radio label="open">开启</radio>
                             <radio label="close">关闭</radio>
@@ -28,7 +38,7 @@
             </row>
             <row>
                 <i-col span="14">
-                    <form-item label="生成 HTML 地图">
+                    <form-item label="生成 HTML 地图" prop="">
                         <radio-group v-model="html">
                             <radio label="open">开启</radio>
                             <radio label="close">关闭</radio>
@@ -38,7 +48,7 @@
             </row>
             <row>
                 <i-col span="14">
-                    <form-item label="只包含最近的文章">
+                    <form-item label="只包含最近的文章" prop="">
                         <radio-group v-model="recently">
                             <radio label="open">开启</radio>
                             <radio label="close">关闭</radio>
