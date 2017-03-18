@@ -1,5 +1,17 @@
 <script>
+    import injection from '../helpers/injection';
+
     export default {
+        beforeRouteEnter(to, from, next) {
+            injection.loading.start();
+            injection.http.post(`${window.api}/extension`).then(response => {
+                next(vm => {
+                    injection.loading.finish();
+                    const data = response.data.data;
+                    vm.list = Object.keys(data).map(key => data[key]);
+                });
+            });
+        },
         data() {
             return {
                 columns: [
@@ -26,21 +38,30 @@
                         width: 200,
                     },
                 ],
-                list: [
-                    {
-                        author: 'Notadd <notadd@ibenchu.com>',
-                        enabled: true,
-                        description: '百度搜索插件',
-                        name: '百度搜索',
-                    },
-                ],
+                list: [],
                 self: this,
             };
         },
         methods: {
             statusChanged(index) {
                 const self = this;
-                console.log(self.list[index]);
+                injection.loading.start();
+                const module = self.list[index];
+                injection.http.post(`${window.api}/extension/enable`, {
+                    name: module.identification,
+                    value: module.enabled,
+                }).then(() => {
+                    injection.loading.finish();
+                    injection.notice.open({
+                        title: module.enabled ? `开启模块${module.name}成功！` : `关闭模块${module.name}成功！`,
+                    });
+                    injection.notice.warning({
+                        title: '将在5秒后重载网页！',
+                    });
+                    window.setTimeout(() => {
+                        window.location.reload();
+                    }, 5000);
+                });
             },
         },
     };
