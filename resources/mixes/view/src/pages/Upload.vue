@@ -1,19 +1,43 @@
 <script>
-    import state from '../states/upload';
     import injection from '../helpers/injection';
 
     export default {
-        computed: {
-            ...state,
+        beforeRouteEnter(to, from, next) {
+            injection.loading.start();
+            injection.http.post(`${window.api}/attachment/get`).then(response => {
+                const data = response.data.data;
+                console.log(data);
+                next(vm => {
+                    injection.loading.finish();
+                    vm.form.canManagementFileExtension = data.canManagementFileExtension;
+                    vm.form.canManagementImageExtension = data.canManagementImageExtension;
+                    vm.form.canUploadCatcherExtension = data.canUploadCatcherExtension;
+                    vm.form.canUploadFileExtension = data.canUploadFileExtension;
+                    vm.form.canUploadImageExtension = data.canUploadImageExtension;
+                    vm.form.canUploadVideoExtension = data.canUploadVideoExtension;
+                    vm.form.fileMaxSize = data.fileMaxSize;
+                    vm.form.imageMaxSize = data.imageMaxSize;
+                    vm.form.imageProcessingEngine = data.imageProcessingEngine;
+                    vm.form.videoMaxSize = data.videoMaxSize;
+                });
+            });
         },
         data() {
             return {
                 form: {
+                    canManagementFileExtension: '',
+                    canManagementImageExtension: '',
+                    canUploadCatcherExtension: '',
+                    canUploadFileExtension: '',
+                    canUploadImageExtension: '',
+                    canUploadVideoExtension: '',
+                    fileMaxSize: 0,
+                    imageMaxSize: 0,
+                    imageProcessingEngine: 'gd',
+                    videoMaxSize: 0,
 
                 },
-                rules: {
-
-                },
+                rules: {},
             };
         },
         methods: {
@@ -30,7 +54,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="图片处理引擎" prop="">
-                        <radio-group v-model="imageProcessingEngine">
+                        <radio-group v-model="form.imageProcessingEngine">
                             <radio label="gd">GD 库</radio>
                         </radio-group>
                     </form-item>
@@ -39,7 +63,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="附件大小" prop="">
-                        <i-input placeholder="请输入附件大小" v-model="fileMaxSize">
+                        <i-input placeholder="请输入附件大小" v-model="form.fileMaxSize">
                             <span slot="append">KB</span>
                         </i-input>
                     </form-item>
@@ -48,7 +72,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="图片大小" prop="">
-                        <i-input placeholder="请输入图片大小" v-model="imageMaxSize">
+                        <i-input placeholder="请输入图片大小" v-model="form.imageMaxSize">
                             <span slot="append">KB</span>
                         </i-input>
                     </form-item>
@@ -57,7 +81,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="视频大小" prop="">
-                        <i-input placeholder="请输入视频大小" v-model="videoMaxSize">
+                        <i-input placeholder="请输入视频大小" v-model="form.videoMaxSize">
                             <span slot="append">KB</span>
                         </i-input>
                     </form-item>
@@ -66,7 +90,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="允许图片的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许管理图片的扩展名" v-model="canUploadImageExtension"
+                        <i-input type="textarea" placeholder="请输入允许管理图片的扩展名" v-model="form.canUploadImageExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
@@ -75,7 +99,7 @@
 
                 <i-col span="14">
                     <form-item label="允许上传截图的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许管理截图的扩展名" v-model="canUploadCatcherExtension"
+                        <i-input type="textarea" placeholder="请输入允许管理截图的扩展名" v-model="form.canUploadCatcherExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
@@ -83,7 +107,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="允许上传视频的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许上传视频的扩展名" v-model="canUploadVideoExtension"
+                        <i-input type="textarea" placeholder="请输入允许上传视频的扩展名" v-model="form.canUploadVideoExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
@@ -91,7 +115,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="允许上传文件的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许上传文件的扩展名" v-model="canUploadFileExtension"
+                        <i-input type="textarea" placeholder="请输入允许上传文件的扩展名" v-model="form.canUploadFileExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
@@ -99,7 +123,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="允许管理图片的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许管理图片的扩展名" v-model="canManagementImageExtension"
+                        <i-input type="textarea" placeholder="请输入允许管理图片的扩展名" v-model="form.canManagementImageExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
@@ -107,7 +131,7 @@
             <row>
                 <i-col span="14">
                     <form-item label="允许管理文件的扩展名" prop="">
-                        <i-input type="textarea" placeholder="请输入允许管理文件的扩展名" v-model="canManagementFileExtension"
+                        <i-input type="textarea" placeholder="请输入允许管理文件的扩展名" v-model="form.canManagementFileExtension"
                                  :autosize="{minRows: 2,maxRows: 5}"></i-input>
                     </form-item>
                 </i-col>
