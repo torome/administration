@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Debug from '../pages/Debug';
+import Dashboard from '../pages/Dashboard';
 import Extension from '../pages/Extension';
 import Layout from '../layouts/Layout';
 import Login from '../pages/Login';
@@ -70,6 +71,11 @@ const modules = [];
 const routes = [
     {
         children: [
+            {
+                beforeEnter: requireAuth,
+                component: Dashboard,
+                path: '/',
+            },
             ...configuration,
             ...modules,
         ],
