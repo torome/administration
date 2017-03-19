@@ -8,97 +8,102 @@ html, body {
     height: 100%;
     position: relative;
     width: 100%;
-    > .ivu-row-flex {
+    > .layout-left {
+        background: #464c5b;
         height: 100%;
-        overflow-x: hidden;
-        overflow-y: visible;
-        > .ivu-col {
-            transition: width .2s ease-in-out;
-            > .layout-header {
-                height: 60px;
-                background: #fff;
-                box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-                > button.ivu-btn {
-                    float: left;
-                    margin: 6.5px 0;
-                }
-                > .ivu-menu {
-                    float: left;
-                    &:last-child {
-                        float: right;
-                    }
-                    > .ivu-menu-item {
-                        border-color: #fff;
-                        padding: 0;
-                        &.ivu-menu-item-active,
-                        &:hover {
-                            border-bottom: 2px solid #3399ff;
-                            > a {
-                                color: #3399ff;
-                            }
-                        }
-                        > a {
-                            color: #657180;
-                            display: block;
-                            padding: 0 20px;
-                        }
-                    }
-                    > .ivu-menu-submenu {
-                        border-color: #fff;
-                    }
-                }
-            }
-            > .layout-breadcrumb {
-                padding: 10px 15px 0;
-            }
-            > .layout-content {
-                margin: 15px;
-                overflow: hidden;
-            }
-            > .layout-copy {
-                color: #9ea7b4;
+        left: 0;
+        position: fixed;
+        top: 0;
+        width: 300px;
+        z-index: 11;
+        > .ivu-menu {
+            > .layout-logo-left {
+                background: #5b6270;
+                border-radius: 3px;
+                color: #fff;
+                height: 30px;
+                line-height: 30px;
+                margin: 15px auto;
                 text-align: center;
-                padding: 10px 0 20px;
+                width: 90%;
+            }
+            .ivu-menu-item {
+                padding: 0;
+                > a {
+                    color: #9ea7b4;
+                    display: block;
+                    padding: 14px 24px;
+                    > i {
+                        margin-right: 8px;
+                    }
+                }
+            }
+            .ivu-menu-submenu {
+                .ivu-menu-item {
+                    &.ivu-menu-item-active,
+                    &.ivu-menu-item-active:hover {
+                        > a {
+                            color: #fff;
+                        }
+                    }
+                    > a {
+                        padding-left: 47px;
+                    }
+                }
             }
         }
-        > .layout-menu-left {
-            background: #464c5b;
-            > .ivu-menu {
-                > .layout-logo-left {
-                    background: #5b6270;
-                    border-radius: 3px;
-                    color: #fff;
-                    height: 30px;
-                    line-height: 30px;
-                    margin: 15px auto;
-                    text-align: center;
-                    width: 90%;
-                }
-                .ivu-menu-item {
-                    padding: 0;
+    }
+    > .layout-header {
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+        height: 60px;
+        left: 0;
+        padding-left: 300px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+        > button.ivu-btn {
+            float: left;
+            margin: 6.5px 0;
+        }
+        > .ivu-menu {
+            float: left;
+            &:last-child {
+                float: right;
+            }
+            > .ivu-menu-item {
+                border-color: #fff;
+                padding: 0;
+                &.ivu-menu-item-active,
+                &:hover {
+                    border-bottom: 2px solid #3399ff;
                     > a {
-                        color: #9ea7b4;
-                        display: block;
-                        padding: 14px 24px;
-                        > i {
-                            margin-right: 8px;
-                        }
+                        color: #3399ff;
                     }
                 }
-                .ivu-menu-submenu {
-                    .ivu-menu-item {
-                        &.ivu-menu-item-active,
-                        &.ivu-menu-item-active:hover {
-                            > a {
-                                color: #fff;
-                            }
-                        }
-                        > a {
-                            padding-left: 47px;
-                        }
-                    }
+                > a {
+                    color: #657180;
+                    display: block;
+                    padding: 0 20px;
                 }
             }
+            > .ivu-menu-submenu {
+                border-color: #fff;
+            }
+        }
+    }
+    > .layout-content {
+        margin-top: 60px;
+        margin-left: 300px;
+        padding: 20px;
+        > .layout-copy {
+            color: #9ea7b4;
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+        > .layout-content-main {
+            margin-bottom: 20px;
         }
     }
 }
