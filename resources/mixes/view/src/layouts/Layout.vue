@@ -1,7 +1,10 @@
 <script>
+    import injection from '../helpers/injection';
+
     export default {
         data() {
             return {
+                navigation: injection.navigation,
                 spanLeft: 5,
                 spanRight: 19,
             };
@@ -109,16 +112,10 @@
                 <icon type="navicon" size="32"></icon>
             </i-button>
             <i-menu mode="horizontal" theme="light">
-                <menu-item name="t1">
-                    <router-link to="/">
-                        <icon type="settings"></icon>
-                        全局
-                    </router-link>
-                </menu-item>
-                <menu-item name="t2">
-                    <router-link to="/content">
-                        <icon type="document-text"></icon>
-                        文章
+                <menu-item name="t1" v-for="nav in navigation">
+                    <router-link :to="nav.path">
+                        <icon :type="nav.icon"></icon>
+                        {{ nav.title }}
                     </router-link>
                 </menu-item>
             </i-menu>
