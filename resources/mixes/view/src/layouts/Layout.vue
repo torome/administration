@@ -5,6 +5,7 @@
         data() {
             return {
                 navigation: injection.navigation,
+                sidebar: injection.sidebar.current,
                 spanLeft: 5,
                 spanRight: 19,
             };
@@ -36,75 +37,23 @@
         <div class="layout-left">
             <i-menu :accordion="true" theme="dark" width="auto">
                 <div class="layout-logo-left">Notadd 后台管理</div>
-                <submenu name="0">
-                    <template slot="title">
-                        <icon type="ios-cog"></icon>
-                        全局设置
-                    </template>
-                    <menu-item name="0-1">
-                        <router-link to="/setting">参数配置</router-link>
+                <template v-for="(item, key) in sidebar">
+                    <submenu :name="'sidebar-' + key" v-if="item.children">
+                        <template slot="title">
+                            <icon :type="item.icon"></icon>
+                            {{ item.title }}
+                        </template>
+                        <menu-item :name="'sidebar-' + key + '-' + index" v-for="(sub, index) in item.children" :key="index">
+                            <router-link :to="sub.path">{{ sub.title }}</router-link>
+                        </menu-item>
+                    </submenu>
+                    <menu-item :name="'sidebar-' + key" v-else>
+                        <router-link :to="item.path">
+                            <icon :type="item.icon"></icon>
+                            {{ item.title }}
+                        </router-link>
                     </menu-item>
-                    <menu-item name="0-2">
-                        <router-link to="/seo">SEO设置</router-link>
-                    </menu-item>
-                </submenu>
-                <submenu name="1">
-                    <template slot="title">
-                        <icon type="ios-paper"></icon>
-                        附件设置
-                    </template>
-                    <menu-item name="1-1">
-                        <router-link to="/upload">上传设置</router-link>
-                    </menu-item>
-                </submenu>
-                <submenu name="5">
-                    <template slot="title">
-                        <icon type="plus"></icon>
-                        应用管理
-                    </template>
-                    <menu-item name="5-1">
-                        <router-link to="/module">模块配置</router-link>
-                    </menu-item>
-                    <menu-item name="5-2">
-                        <router-link to="/extension">插件配置</router-link>
-                    </menu-item>
-                    <menu-item name="5-3">
-                        <router-link to="/template">模板配置</router-link>
-                    </menu-item>
-                    <menu-item name="5-4">
-                        <router-link to="/expand">拓展配置</router-link>
-                    </menu-item>
-                </submenu>
-                <submenu name="6">
-                    <template slot="title">
-                        <icon type="plus"></icon>
-                        全局插件
-                    </template>
-                    <menu-item name="6-2">
-                        <router-link to="/sitemap">网站地图</router-link>
-                    </menu-item>
-                </submenu>
-                <submenu name="7">
-                    <template slot="title">
-                        <icon type="plus"></icon>
-                        全局模板
-                    </template>
-                </submenu>
-                <submenu name="4">
-                    <template slot="title">
-                        <icon type="stats-bars"></icon>
-                        系统组件
-                    </template>
-                    <menu-item name="4-1">
-                        <router-link to="/navigation">导航管理</router-link>
-                    </menu-item>
-                    <menu-item name="4-2">
-                        <router-link to="/mail">邮件设置</router-link>
-                    </menu-item>
-                    <menu-item name="4-3">
-                        <router-link to="/debug">调试工具</router-link>
-                    </menu-item>
-                </submenu>
+                </template>
             </i-menu>
         </div>
         <div class="layout-header">
@@ -112,7 +61,7 @@
                 <icon type="navicon" size="32"></icon>
             </i-button>
             <i-menu mode="horizontal" theme="light">
-                <menu-item :name="'nav-' + key" v-for="(nav, key) in navigation">
+                <menu-item :name="'nav-' + key" v-for="(nav, key) in navigation" :key="key">
                     <router-link :to="nav.path">
                         <icon :type="nav.icon"></icon>
                         {{ nav.title }}

@@ -5,6 +5,7 @@ import {
     mixinModule,
     mixinNavigation,
     mixinRouter,
+    mixinSidebar,
     mixinUse,
 } from '../mixes/injection';
 
@@ -15,6 +16,7 @@ function install(Vue) {
     mixinComponent(Vue, injection);
     mixinNavigation(injection);
     mixinRouter(injection);
+    mixinSidebar(injection);
     mixinUse(injection);
     mixinExtension(injection);
     mixinModule(injection);
