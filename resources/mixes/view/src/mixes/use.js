@@ -39,10 +39,12 @@ export default function (injection) {
             });
         },
         useSidebar(key, sidebar) {
-            const data = {};
-            Object.defineProperty(data, key, sidebar);
-            Object.assign(injection.sidebar.lists, data);
-        }
+            Object.defineProperty(injection.sidebar.lists, key, {
+                get() {
+                    return sidebar;
+                },
+            });
+        },
     };
 
     Object.assign(injection, methods);
