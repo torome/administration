@@ -112,7 +112,7 @@
                 <icon type="navicon" size="32"></icon>
             </i-button>
             <i-menu mode="horizontal" theme="light">
-                <menu-item name="t1" v-for="nav in navigation">
+                <menu-item :name="'nav-' + key" v-for="(nav, key) in navigation">
                     <router-link :to="nav.path">
                         <icon :type="nav.icon"></icon>
                         {{ nav.title }}

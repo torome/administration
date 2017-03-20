@@ -26,6 +26,12 @@ export default function (injection) {
                 injection.routes.module.push(value);
             });
         },
+        useNavigation(navigation) {
+            const data = [].concat(navigation);
+            data.forEach(value => {
+                injection.navigation.push(value);
+            });
+        },
         useOtherRoute(routes) {
             const data = [].concat(routes);
             data.forEach(value => {
