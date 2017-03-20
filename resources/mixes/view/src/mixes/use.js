@@ -16,21 +16,21 @@ export default function (injection) {
         },
         useExtensionRoute(routes) {
             const data = [].concat(routes);
-            injection.router.extension.concat(data);
+            data.forEach(value => {
+                injection.routes.extension.push(value);
+            });
         },
         useModuleRoute(routes) {
             const data = [].concat(routes);
-            const tmp = [];
             data.forEach(value => {
                 injection.routes.module.push(value);
-                tmp.push(value);
             });
-            console.log(tmp);
-            console.log(injection.routes.module);
         },
         useOtherRoute(routes) {
             const data = [].concat(routes);
-            injection.router.other.concat(data);
+            data.forEach(value => {
+                injection.routes.other.push(value);
+            });
         },
     };
 

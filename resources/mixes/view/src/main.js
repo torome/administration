@@ -9,6 +9,8 @@ import store from './stores';
 Vue.config.productionTip = false;
 Vue.use(injection);
 
+console.log(injection);
+
 injection.vue = new Vue({
     el: '#app',
     router: injection.router,
