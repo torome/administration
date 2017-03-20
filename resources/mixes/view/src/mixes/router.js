@@ -3,27 +3,21 @@ import VueRouter from '../router';
 import requireAuth from '../middlewares/auth';
 
 export default function (injection) {
-    Object.defineProperties(injection, {
+    Object.assign(injection, {
         middleware: {
-            get() {
-                return {
-                    requireAuth,
-                };
-            },
-        },
-        router: {
-            get() {
-                return VueRouter;
-            },
+            requireAuth,
         },
         routes: {
+            extension: [],
+            module: [],
+            other: [],
+        },
+    });
+
+    Object.defineProperties(injection, {
+        router: {
             get() {
-                return {
-                    base: [],
-                    extension: [],
-                    module: [],
-                    other: [],
-                };
+                return VueRouter.init(injection);
             },
         },
     });

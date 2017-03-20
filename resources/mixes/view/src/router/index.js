@@ -78,28 +78,31 @@ const configuration = [
     },
 ];
 
-const modules = [];
-
-const routes = [
-    {
-        children: [
+export default {
+    init(injection) {
+        const routes = [
             {
-                beforeEnter: requireAuth,
-                component: Dashboard,
+                children: [
+                    {
+                        beforeEnter: requireAuth,
+                        component: Dashboard,
+                        path: '/',
+                    },
+                    ...configuration,
+                    ...injection.routes.extension,
+                    ...injection.routes.module,
+                    ...injection.routes.other,
+                ],
+                component: Layout,
                 path: '/',
             },
-            ...configuration,
-            ...modules,
-        ],
-        component: Layout,
-        path: '/',
+            {
+                component: Login,
+                path: '/login',
+            },
+        ];
+        return new Router({
+            routes,
+        });
     },
-    {
-        component: Login,
-        path: '/login',
-    },
-];
-
-export default new Router({
-    routes,
-});
+};

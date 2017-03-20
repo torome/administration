@@ -14,17 +14,19 @@ export default function (injection) {
             plugin.installed = true;
             return this;
         },
-        useBaseRoute(routes) {
-            const data = [].concat(routes);
-            injection.routes.base.concat(data);
-        },
         useExtensionRoute(routes) {
             const data = [].concat(routes);
             injection.router.extension.concat(data);
         },
         useModuleRoute(routes) {
             const data = [].concat(routes);
-            injection.router.module.concat(data);
+            const tmp = [];
+            data.forEach(value => {
+                injection.routes.module.push(value);
+                tmp.push(value);
+            });
+            console.log(tmp);
+            console.log(injection.routes.module);
         },
         useOtherRoute(routes) {
             const data = [].concat(routes);
