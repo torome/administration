@@ -8,6 +8,7 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     vm.form.canManagementFileExtension = data.canManagementFileExtension;
                     vm.form.canManagementImageExtension = data.canManagementImageExtension;
                     vm.form.canUploadCatcherExtension = data.canUploadCatcherExtension;
@@ -20,7 +21,6 @@
                     vm.form.videoMaxSize = data.videoMaxSize;
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

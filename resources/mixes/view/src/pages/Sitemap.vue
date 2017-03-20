@@ -8,13 +8,13 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     vm.form.cycle = data.cycle === '1';
                     vm.form.html = data.html === '1';
                     vm.form.recently = data.recently === '1';
                     vm.form.xml = data.xml === '1';
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

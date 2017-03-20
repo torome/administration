@@ -9,8 +9,6 @@ import store from './stores';
 Vue.config.productionTip = false;
 Vue.use(injection);
 
-console.log(injection);
-
 injection.vue = new Vue({
     el: '#app',
     router: injection.router,
@@ -19,4 +17,11 @@ injection.vue = new Vue({
     components: {
         App,
     },
+});
+
+injection.vue.$watch(() => injection.sidebar.current, () => {
+    console.log('changed!');
+}, {
+    deep: true,
+    sync: true,
 });

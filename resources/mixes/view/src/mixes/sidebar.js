@@ -1,15 +1,7 @@
 export default function (injection) {
     Object.assign(injection, {
         sidebar: {
-            active(key) {
-                if (injection.sidebar.lists[key]) {
-                    Object.assign(injection.sidebar, {
-                        current: injection.sidebar.lists[key],
-                    });
-                } else {
-                    console.log(`sidebar ${key} do not exists!`);
-                }
-            },
+            active: null,
             current: [],
             lists: {
                 setting: [

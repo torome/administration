@@ -8,6 +8,7 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     vm.form.beian = data.beian;
                     vm.form.company = data.company;
                     vm.form.copyright = data.copyright;
@@ -17,7 +18,6 @@
                     vm.form.statistics = data.statistics;
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

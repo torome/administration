@@ -3,8 +3,9 @@
 
     export default {
         beforeRouteEnter(to, from, next) {
-            injection.sidebar.active('setting');
-            next();
+            next(() => {
+                injection.sidebar.active('setting');
+            });
         },
     };
 </script>

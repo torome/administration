@@ -2,20 +2,32 @@
     import injection from '../helpers/injection';
 
     export default {
-        data() {
-            return {
-                navigation: injection.navigation,
-                sidebar: injection.sidebar.current,
-                spanLeft: 5,
-                spanRight: 19,
-            };
+        beforeRouteEnter(to, from, next) {
+            next(vm => {
+                Object.assign(injection.sidebar, {
+                    active: vm.active,
+                });
+            });
         },
         computed: {
             iconSize() {
                 return this.spanLeft === 5 ? 14 : 24;
             },
         },
+        data() {
+            return {
+                navigation: injection.navigation,
+                sidebar: [],
+                spanLeft: 5,
+                spanRight: 19,
+            };
+        },
         methods: {
+            active(key) {
+                if (injection.sidebar.lists[key]) {
+                    this.sidebar = injection.sidebar.lists[key];
+                }
+            },
             logout() {
                 window.localStorage.clear();
                 this.$router.push('/login');
@@ -28,6 +40,14 @@
                     this.spanLeft = 5;
                     this.spanRight = 19;
                 }
+            },
+        },
+        watch: {
+            navigation: {
+                deep: true,
+                handler(val) {
+                    console.log(val);
+                },
             },
         },
     };
@@ -43,7 +63,8 @@
                             <icon :type="item.icon"></icon>
                             {{ item.title }}
                         </template>
-                        <menu-item :name="'sidebar-' + key + '-' + index" v-for="(sub, index) in item.children" :key="index">
+                        <menu-item :name="'sidebar-' + key + '-' + index" v-for="(sub, index) in item.children"
+                                   :key="index">
                             <router-link :to="sub.path">{{ sub.title }}</router-link>
                         </menu-item>
                     </submenu>

@@ -7,11 +7,11 @@
             injection.http.post(`${window.api}/administration/module`).then(response => {
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     const data = response.data.data;
                     vm.list = Object.keys(data).map(key => data[key]);
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

@@ -7,11 +7,11 @@
             injection.http.post(`${window.api}/debug/get`).then(response => {
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     const data = response.data.data;
                     vm.form.enabled = data.debug === '1';
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

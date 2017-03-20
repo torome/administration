@@ -8,6 +8,7 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     vm.form.driver = data.driver;
                     vm.form.encryption = data.encryption;
                     vm.form.port = data.port;
@@ -17,7 +18,6 @@
                     vm.form.password = data.password;
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {

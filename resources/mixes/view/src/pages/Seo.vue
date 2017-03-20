@@ -8,12 +8,12 @@
                 const data = response.data.data;
                 next(vm => {
                     injection.loading.finish();
+                    injection.sidebar.active('setting');
                     vm.form.description = data.description;
                     vm.form.keyword = data.keyword;
                     vm.form.title = data.title;
                 });
             });
-            injection.sidebar.active('setting');
         },
         data() {
             return {
