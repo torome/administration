@@ -6,13 +6,13 @@ export default function (injection) {
             }
 
             if (typeof plugin.install === 'function') {
-                plugin.install.apply(plugin, injection)
+                plugin.install(injection);
             } else if (typeof plugin === 'function') {
-                plugin.apply(null, injection)
+                plugin(injection);
             }
 
-            plugin.installed = true
-            return this
+            plugin.installed = true;
+            return this;
         },
         useBaseRoute(routes) {
             const data = [].concat(routes);

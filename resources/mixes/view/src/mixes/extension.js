@@ -3,7 +3,9 @@ export default function (injection) {
     const list = [];
     sources.forEach(key => {
         if (window[key]) {
-            list.push(window[key].default);
+            const instance = window[key].default;
+            injection.use(instance);
+            list.push(instance);
         }
     });
 
