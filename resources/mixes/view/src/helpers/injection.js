@@ -47,7 +47,13 @@ import { Row, Col } from 'iview/src/components/grid';
 import { Select, Option, OptionGroup } from 'iview/src/components/select';
 import locale from 'iview/src/locale';
 
-import { mixinAxios } from '../mixes/injection';
+import {
+    mixinAxios,
+    mixinComponent,
+    mixinExtension,
+    mixinModule,
+    mixinRouter,
+} from '../mixes/injection';
 
 const injection = {
     Affix,
@@ -113,50 +119,20 @@ const injection = {
     Upload,
 };
 
-const install = function install(Vue, opts = {}) {
+function install(Vue, opts = {}) {
     locale.use(opts.locale);
     locale.i18n(opts.i18n);
-    mixinAxios(injection, Vue);
 
     Object.keys(injection).forEach(key => {
         Vue.component(decamelize(camelcase(key), '-'), injection[key]);
     });
 
-    const vue = Vue;
-    vue.prototype.$loading = LoadingBar;
-    vue.prototype.$message = Message;
-    vue.prototype.$modal = Modal;
-    vue.prototype.$notice = Notice;
-
-    Object.defineProperties(injection, {
-        loading: {
-            get() {
-                return LoadingBar;
-            },
-        },
-        message: {
-            get() {
-                return Message;
-            },
-        },
-        modal: {
-            get() {
-                return Modal;
-            },
-        },
-        notice: {
-            get() {
-                return Notice;
-            },
-        },
-    });
-
-    injection.loading.config({
-        color: '#5cb85c',
-        failedColor: '#f0ad4e',
-        height: 2,
-    });
-};
+    mixinAxios(injection, Vue);
+    mixinComponent(Vue, injection);
+    mixinRouter(injection);
+    mixinExtension(injection);
+    mixinModule(injection);
+}
 
 export default Object.assign(injection, {
     install,
