@@ -5,6 +5,7 @@ import mixinExtension from './extension';
 import mixinComponent from './component';
 import mixinModule from './module';
 import mixinRouter from './router';
+import mixinUse from './use';
 
 promiseFinally.shim();
 
@@ -14,4 +15,5 @@ export {
     mixinExtension,
     mixinModule,
     mixinRouter,
+    mixinUse,
 };
