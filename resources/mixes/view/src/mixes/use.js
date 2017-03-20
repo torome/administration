@@ -38,6 +38,11 @@ export default function (injection) {
                 injection.routes.other.push(value);
             });
         },
+        useSidebar(key, sidebar) {
+            const data = {};
+            Object.defineProperty(data, key, sidebar);
+            Object.assign(injection.sidebar.lists, data);
+        }
     };
 
     Object.assign(injection, methods);
