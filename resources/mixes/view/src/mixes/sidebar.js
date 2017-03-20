@@ -2,7 +2,6 @@ export default function (injection) {
     Object.assign(injection, {
         sidebar: {
             active: null,
-            current: [],
             lists: {
                 setting: [
                     {

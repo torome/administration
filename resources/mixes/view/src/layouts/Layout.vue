@@ -2,17 +2,15 @@
     import injection from '../helpers/injection';
 
     export default {
-        beforeRouteEnter(to, from, next) {
-            next(vm => {
-                Object.assign(injection.sidebar, {
-                    active: vm.active,
-                });
-            });
-        },
         computed: {
             iconSize() {
                 return this.spanLeft === 5 ? 14 : 24;
             },
+        },
+        created() {
+            Object.assign(injection.sidebar, {
+                active: this.active,
+            });
         },
         data() {
             return {
