@@ -14,5 +14,7 @@ injection.vue = new Vue({
     router: injection.router,
     store,
     template: '<App/>',
-    components: { App },
+    components: {
+        App,
+    },
 });

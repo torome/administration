@@ -6,7 +6,6 @@
             injection.loading.start();
             injection.http.post(`${window.api}/attachment/get`).then(response => {
                 const data = response.data.data;
-                console.log(data);
                 next(vm => {
                     injection.loading.finish();
                     vm.form.canManagementFileExtension = data.canManagementFileExtension;
