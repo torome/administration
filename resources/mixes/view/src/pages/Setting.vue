@@ -17,6 +17,7 @@
                     vm.form.statistics = data.statistics;
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

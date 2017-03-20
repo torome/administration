@@ -13,6 +13,7 @@
                     vm.form.title = data.title;
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

@@ -20,6 +20,7 @@
                     vm.form.videoMaxSize = data.videoMaxSize;
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

@@ -11,6 +11,7 @@
                     vm.form.enabled = data.debug === '1';
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

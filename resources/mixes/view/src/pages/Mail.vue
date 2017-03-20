@@ -17,6 +17,7 @@
                     vm.form.password = data.password;
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

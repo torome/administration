@@ -11,6 +11,7 @@
                     vm.list = Object.keys(data).map(key => data[key]);
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {

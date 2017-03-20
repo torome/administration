@@ -14,6 +14,7 @@
                     vm.form.xml = data.xml === '1';
                 });
             });
+            injection.sidebar.active('setting');
         },
         data() {
             return {
