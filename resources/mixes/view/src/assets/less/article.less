@@ -1,6 +1,16 @@
 .article-wrap {
     > .article-list {
         > .ivu-card {
+            > .ivu-card-body {
+                > .ivu-table-wrapper {
+                    border-left-width: 0;
+                    > .ivu-table {
+                        &:after {
+                            width: 0;
+                        }
+                    }
+                }
+            }
             > .ivu-card-head {
                 &:after {
                     clear: both;
