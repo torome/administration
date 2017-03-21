@@ -1,5 +1,6 @@
 import {
     mixinAxios,
+    mixinBoard,
     mixinComponent,
     mixinExtension,
     mixinModule,
@@ -13,6 +14,7 @@ const injection = {};
 
 function install(Vue) {
     mixinAxios(injection, Vue);
+    mixinBoard(injection);
     mixinComponent(Vue, injection);
     mixinNavigation(injection);
     mixinRouter(injection);
