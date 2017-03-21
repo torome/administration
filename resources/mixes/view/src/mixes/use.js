@@ -14,6 +14,9 @@ export default function (injection) {
             plugin.installed = true;
             return this;
         },
+        useBoard(data) {
+            injection.board.lists.push(data);
+        },
         useExtensionRoute(routes) {
             const data = [].concat(routes);
             data.forEach(value => {
