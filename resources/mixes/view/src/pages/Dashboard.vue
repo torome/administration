@@ -1,4 +1,5 @@
 <script>
+    import iEcharts from 'vue-echarts-v3';
     import injection from '../helpers/injection';
 
     export default {
@@ -6,6 +7,9 @@
             next(() => {
                 injection.sidebar.active('setting');
             });
+        },
+        components: {
+            iEcharts,
         },
         created() {
             this.boards = injection.board.lists;
@@ -46,6 +50,10 @@
                     <template v-else>
                         <i-button long :type="board.theme">{{ board.content }}</i-button>
                     </template>
+                </card>
+                <card v-if="board.type === 'chart'">
+                    <p slot="title" v-if="board.title">{{ board.title }}</p>
+                    <i-echarts :option="board.content" :style="board.style"></i-echarts>
                 </card>
                 <card v-if="board.type === 'html'">
                     <p slot="title" v-if="board.title">{{ board.title }}</p>
