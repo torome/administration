@@ -62,10 +62,10 @@ export default function (injection) {
                     },
                     {
                         children: [
-                            {
-                                path: '/navigation',
-                                title: '导航管理',
-                            },
+                            // {
+                            //     path: '/navigation',
+                            //     title: '导航管理',
+                            // },
                             {
                                 path: '/mail',
                                 title: '邮件设置',
