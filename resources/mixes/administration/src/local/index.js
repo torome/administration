@@ -21,20 +21,13 @@ let i18nHandler = function i18nHandler(...args) {
 };
 
 export function t(path, options, ...args) {
-    let value = i18nHandler.apply(this, args);
+    const value = i18nHandler.apply(this, args);
     if (value !== null && value !== undefined) return value;
 
-    const array = path.split('.');
-    let current = lang;
-
-    for (let i = 0, j = array.length; i < j; i++) {
-        const property = array[i];
-        value = current[property];
-        if (i === j - 1) return format(value, options);
-        if (!value) return '';
-        current = value;
+    if (lang[path]) {
+        return format(lang[path], options);
     }
-    return '';
+    return path;
 }
 
 export function use(l) {
