@@ -8,6 +8,33 @@
  */
 
 return [
-    'header'  => [],
-    'sidebar' => [],
+    'header'  => [
+        'global' => 'Global',
+    ],
+    'sidebar' => [
+        'application' => [
+            'expand'    => 'Expand',
+            'extension' => 'Extension',
+            'group'     => 'Application Manager',
+            'module'    => 'Module',
+            'template'  => 'Template',
+        ],
+        'attachment'  => [
+            'group'  => 'Attachment Setting',
+            'upload' => 'Upload',
+        ],
+        'component'   => [
+            'debug' => 'Debug',
+            'group' => 'Component',
+            'mail'  => 'Mail',
+        ],
+        'extension'   => [
+            'group' => 'Extension',
+        ],
+        'global'      => [
+            'configuration' => 'Configuration',
+            'group'         => 'Global Setting',
+            'seo'           => 'SEO',
+        ],
+    ],
 ];
