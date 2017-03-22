@@ -56,7 +56,7 @@ class ModuleServiceProvider extends Module
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
-            realpath(__DIR__ . '/../resources/mixes/view/dist/assets/admin') => public_path('assets/admin'),
+            realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/admin') => public_path('assets/admin'),
             realpath(__DIR__ . '/../resources/mixes/neditor') => public_path('assets/neditor'),
         ], 'public');
 
