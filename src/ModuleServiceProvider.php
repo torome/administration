@@ -54,10 +54,11 @@ class ModuleServiceProvider extends Module
         $this->administration->setAdministrator($administrator);
         $this->app->make(Dispatcher::class)->subscribe(CsrfTokenRegister::class);
         $this->app->make(Dispatcher::class)->subscribe(RouteRegister::class);
+        $this->loadTranslationsFrom(realpath(__DIR__ . '/../resources/translations'), 'administration');
         $this->loadViewsFrom(realpath(__DIR__ . '/../resources/views'), 'admin');
         $this->publishes([
             realpath(__DIR__ . '/../resources/mixes/administration/dist/assets/admin') => public_path('assets/admin'),
-            realpath(__DIR__ . '/../resources/mixes/neditor') => public_path('assets/neditor'),
+            realpath(__DIR__ . '/../resources/mixes/neditor')                          => public_path('assets/neditor'),
         ], 'public');
 
         class_exists(Article::class) && Article::observe(ArticleObserver::class);
