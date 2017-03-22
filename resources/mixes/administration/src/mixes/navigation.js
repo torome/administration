@@ -4,7 +4,7 @@ export default function (injection) {
             {
                 icon: 'settings',
                 path: '/',
-                title: '全局',
+                title: injection.trans('administration.menu.header.global'),
             },
         ],
     });
