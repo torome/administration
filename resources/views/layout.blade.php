@@ -28,9 +28,6 @@
     window.api = "{{ url('api') }}";
     window.asset = "{{ asset('assets') }}";
     window.csrf_token = "{{ csrf_token() }}";
-    window.upload = "{{ url('editor') }}";
-    window.url = "{{ url('') }}";
-    window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";
     window.extensions = [
       @foreach($extensions as $extension)
         "{{ $extension->getIdentification() }}",
@@ -41,6 +38,10 @@
         "{{ $module->getIdentification() }}",
       @endforeach
     ];
+    window.local = {};
+    window.upload = "{{ url('editor') }}";
+    window.url = "{{ url('') }}";
+    window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";
 </script>
 <script src="{{ asset('assets/admin/js/manifest.js') }}"></script>
 <script src="{{ asset('assets/admin/js/vendor.js') }}"></script>
