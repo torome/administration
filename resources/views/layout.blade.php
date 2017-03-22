@@ -39,7 +39,6 @@
       @endforeach
     ];
     window.local = {!! $translations !!};
-    console.log(window.local);
     window.upload = "{{ url('editor') }}";
     window.url = "{{ url('') }}";
     window.UEDITOR_HOME_URL = "{{ asset('assets/neditor') }}/";

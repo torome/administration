@@ -10,6 +10,7 @@ import {
     mixinSidebar,
     mixinUse,
 } from '../mixes/injection';
+import { t } from '../local';
 
 const injection = {};
 
@@ -25,6 +26,8 @@ function install(Vue) {
     mixinExtension(injection);
     mixinModule(injection);
 }
+
+export const trans = t;
 
 export default Object.assign(injection, {
     install,
