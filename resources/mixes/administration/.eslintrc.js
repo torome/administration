@@ -44,6 +44,9 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'no-param-reassign': ['error', {
             'props': false
+        }],
+        'no-plusplus': ["error", {
+            "allowForLoopAfterthoughts": true
         }]
     }
 }
