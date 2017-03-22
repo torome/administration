@@ -4,6 +4,7 @@ import mixinAxios from './axios';
 import mixinBoard from './board';
 import mixinComponent from './component';
 import mixinExtension from './extension';
+import mixinLocal from './local';
 import mixinModule from './module';
 import mixinNavigation from './navigation';
 import mixinRouter from './router';
@@ -17,6 +18,7 @@ export {
     mixinBoard,
     mixinComponent,
     mixinExtension,
+    mixinLocal,
     mixinModule,
     mixinNavigation,
     mixinRouter,

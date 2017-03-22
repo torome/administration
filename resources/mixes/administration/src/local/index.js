@@ -3,24 +3,25 @@ import deepmerge from 'deepmerge';
 import Format from './format';
 
 const format = Format(Vue);
-let lang = {};
+let lang = window.local || {};
 let merged = false;
-let i18nHandler = function() {
+let i18nHandler = function i18nHandler(...args) {
     const vuei18n = Object.getPrototypeOf(this || Vue).$t;
     if (typeof vuei18n === 'function') {
         if (!merged) {
             merged = true;
             Vue.locale(
                 Vue.config.lang,
-                deepmerge(lang, Vue.locale(Vue.config.lang) || {}, { clone: true })
+                deepmerge(lang, Vue.locale(Vue.config.lang) || {}, { clone: true }),
             );
         }
-        return vuei18n.apply(this, arguments);
+        return vuei18n.apply(this, args);
     }
+    return null;
 };
 
-export const t = function(path, options) {
-    let value = i18nHandler.apply(this, arguments);
+export function t(path, options, ...args) {
+    let value = i18nHandler.apply(this, args);
     if (value !== null && value !== undefined) return value;
 
     const array = path.split('.');
@@ -34,14 +35,14 @@ export const t = function(path, options) {
         current = value;
     }
     return '';
-};
+}
 
-export const use = function(l) {
+export function use(l) {
     lang = l || lang;
-};
+}
 
-export const i18n = function(fn) {
+export function i18n(fn) {
     i18nHandler = fn || i18nHandler;
-};
+}
 
 export default { use, t, i18n };

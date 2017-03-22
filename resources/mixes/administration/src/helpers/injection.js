@@ -3,6 +3,7 @@ import {
     mixinBoard,
     mixinComponent,
     mixinExtension,
+    mixinLocal,
     mixinModule,
     mixinNavigation,
     mixinRouter,
@@ -16,6 +17,7 @@ function install(Vue) {
     mixinAxios(injection, Vue);
     mixinBoard(injection);
     mixinComponent(Vue, injection);
+    mixinLocal(injection);
     mixinNavigation(injection);
     mixinRouter(injection);
     mixinSidebar(injection);
