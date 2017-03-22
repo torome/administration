@@ -12,13 +12,13 @@ use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Routing\UrlGenerator;
-use Illuminate\Translation\Translator;
 use Laravel\Passport\Client as PassportClient;
 use Notadd\Foundation\Auth\AuthenticatesUsers;
 use Notadd\Foundation\Extension\ExtensionManager;
 use Notadd\Foundation\Module\ModuleManager;
 use Notadd\Foundation\Passport\Responses\ApiResponse;
 use Notadd\Foundation\Routing\Abstracts\Controller;
+use Notadd\Foundation\Translation\Translator;
 
 /**
  * Class AdminController.
@@ -43,16 +43,14 @@ class AdminController extends Controller
     protected $url;
 
     /**
-     * @var \Illuminate\Translation\Translator
+     * @var \Notadd\Foundation\Translation\Translator
      */
     protected $translator;
 
     /**
      * AdminController constructor.
      *
-     * @param \Illuminate\Translation\Translator $translator
-     *
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @param \Notadd\Foundation\Translation\Translator $translator
      */
     public function __construct(Translator $translator)
     {
@@ -114,12 +112,12 @@ class AdminController extends Controller
      * @param \Notadd\Foundation\Module\ModuleManager       $module
      *
      * @return \Illuminate\Contracts\View\View
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function handle(ExtensionManager $extension, ModuleManager $module)
     {
         $this->share('extensions', $extension->getEnabledExtensions());
         $this->share('modules', $module->getEnabledModules());
+        $this->share('translations', json_encode($this->translator->fetch('zh-cn')));
         return $this->view('admin::layout');
     }
 
