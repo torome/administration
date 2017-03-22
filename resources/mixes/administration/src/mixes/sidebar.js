@@ -8,47 +8,47 @@ export default function (injection) {
                         children: [
                             {
                                 path: '/setting',
-                                title: '参数配置',
+                                title: injection.trans('administration.menu.sidebar.global.configuration'),
                             },
                             {
                                 path: '/seo',
-                                title: 'SEO设置',
+                                title: injection.trans('administration.menu.sidebar.global.seo'),
                             },
                         ],
                         icon: 'ios-cog',
-                        title: '全局设置',
+                        title: injection.trans('administration.menu.sidebar.global.group'),
                     },
                     {
                         children: [
                             {
                                 path: '/upload',
-                                title: '上传设置',
+                                title: injection.trans('administration.menu.sidebar.attachment.upload'),
                             },
                         ],
                         icon: 'ios-paper',
-                        title: '附件设置',
+                        title: injection.trans('administration.menu.sidebar.attachment.group'),
                     },
                     {
                         children: [
                             {
                                 path: '/module',
-                                title: '模块配置',
+                                title: injection.trans('administration.menu.sidebar.application.module'),
                             },
                             {
                                 path: '/extension',
-                                title: '插件配置',
+                                title: injection.trans('administration.menu.sidebar.application.extension'),
                             },
                             {
                                 path: '/template',
-                                title: '模板配置',
+                                title: injection.trans('administration.menu.sidebar.application.template'),
                             },
                             {
                                 path: '/expand',
-                                title: '拓展配置',
+                                title: injection.trans('administration.menu.sidebar.application.expand'),
                             },
                         ],
                         icon: 'plus',
-                        title: '应用管理',
+                        title: injection.trans('administration.menu.sidebar.application.group'),
                     },
                     {
                         children: [
@@ -58,7 +58,7 @@ export default function (injection) {
                             },
                         ],
                         icon: 'plus',
-                        title: '全局插件',
+                        title: injection.trans('administration.menu.sidebar.extension.group'),
                     },
                     {
                         children: [
@@ -68,15 +68,15 @@ export default function (injection) {
                             // },
                             {
                                 path: '/mail',
-                                title: '邮件设置',
+                                title: injection.trans('administration.menu.sidebar.component.mail'),
                             },
                             {
                                 path: '/debug',
-                                title: '调试工具',
+                                title: injection.trans('administration.menu.sidebar.component.debug'),
                             },
                         ],
                         icon: 'stats-bars',
-                        title: '系统组件',
+                        title: injection.trans('administration.menu.sidebar.component.group'),
                     },
                 ],
             },

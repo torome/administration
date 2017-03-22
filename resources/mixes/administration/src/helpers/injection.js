@@ -15,10 +15,10 @@ import { t } from '../local';
 const injection = {};
 
 function install(Vue) {
+    mixinLocal(injection);
     mixinAxios(injection, Vue);
     mixinBoard(injection);
     mixinComponent(Vue, injection);
-    mixinLocal(injection);
     mixinNavigation(injection);
     mixinRouter(injection);
     mixinSidebar(injection);
