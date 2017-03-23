@@ -5,45 +5,94 @@
         beforeRouteEnter(to, from, next) {
             injection.loading.start();
             injection.http.post(`${window.api}/administration/module`).then(response => {
+                console.log(response);
                 next(vm => {
                     injection.loading.finish();
                     injection.sidebar.active('setting');
-                    const data = response.data.data;
-                    vm.list = Object.keys(data).map(key => data[key]);
+                    const all = response.data.data.all;
+                    const enabled = response.data.data.enabled;
+                    const installed = response.data.data.installed;
+                    const notInstalled = response.data.data.notInstall;
+                    vm.list.all = Object.keys(all).map(key => all[key]);
+                    vm.list.enabled = Object.keys(enabled).map(key => enabled[key]);
+                    vm.list.installed = Object.keys(installed).map(key => installed[key]);
+                    vm.list.notInstalled = Object.keys(notInstalled).map(key => notInstalled[key]);
                 });
             });
         },
         data() {
             return {
-                columns: [
-                    {
-                        key: 'name',
-                        title: '模块名称',
-                        width: 200,
-                    },
-                    {
-                        key: 'author',
-                        title: '作者',
-                        width: 200,
-                    },
-                    {
-                        key: 'description',
-                        title: '描述',
-                    },
-                    {
-                        key: 'handle',
-                        render(row, column, index) {
-                            return `<i-switch v-model="list[${index}].enabled" @on-change="statusChanged(${index})"></i-switch>`;
+                columns: {
+                    installed: [
+                        {
+                            key: 'name',
+                            title: '模块名称',
+                            width: 200,
                         },
-                        title: '操作',
-                        width: 200,
-                    },
-                ],
-                list: [],
+                        {
+                            key: 'author',
+                            title: '作者',
+                            width: 200,
+                        },
+                        {
+                            key: 'description',
+                            title: '描述',
+                        },
+                        {
+                            key: 'status',
+                            render(row, column, index) {
+                                return `<i-switch v-model="list[${index}].enabled" @on-change="statusChanged(${index})"></i-switch>`;
+                            },
+                            title: '状态',
+                            width: 200,
+                        },
+                        {
+                            key: 'handle',
+                            render(row, column, index) {
+                                return `<i-button type="error" @click="uninstall(${index})">卸载</i-button>`;
+                            },
+                            title: '操作',
+                            width: 200,
+                        },
+                    ],
+                    notInstalled: [
+                        {
+                            key: 'name',
+                            title: '模块名称',
+                            width: 200,
+                        },
+                        {
+                            key: 'author',
+                            title: '作者',
+                            width: 200,
+                        },
+                        {
+                            key: 'description',
+                            title: '描述',
+                        },
+                        {
+                            key: 'handle',
+                            render(row, column, index) {
+                                return `<i-button type="primary" @click="install(${index})">安装</i-button>`;
+                            },
+                            title: '操作',
+                            width: 200,
+                        },
+                    ],
+                },
+                list: {
+                    all: [],
+                    enabled: [],
+                    installed: [],
+                    notInstalled: [],
+                },
                 self: this,
             };
         },
         methods: {
+            install(index) {
+                console.log(index);
+            },
             statusChanged(index) {
                 const self = this;
                 injection.loading.start();
@@ -64,12 +113,23 @@
                     }, 5000);
                 });
             },
+            uninstall(index) {
+                console.log(index);
+            },
         },
     };
 </script>
 <template>
-    <card>
-        <p slot="title">模块配置</p>
-        <i-table :columns="columns" :content="self" :data="list" :show-header="false"></i-table>
-    </card>
+    <div class="module-wrap">
+        <card>
+            <tabs value="installed">
+                <tab-pane label="开启模块" name="installed">
+                    <i-table :columns="columns.installed" :content="self" :data="list.installed"></i-table>
+                </tab-pane>
+                <tab-pane label="本地安装" name="no-installed">
+                    <i-table :columns="columns.notInstalled" :content="self" :data="list.notInstalled"></i-table>
+                </tab-pane>
+            </tabs>
+        </card>
+    </div>
 </template>

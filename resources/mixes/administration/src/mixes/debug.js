@@ -1,12 +1,10 @@
 export default function (injection) {
     Object.defineProperties(injection, {
-        debug: {
+        console: {
             get() {
                 return {
-                    console: {
-                        log(...args) {
-                            window.console.log(args);
-                        },
+                    log(...args) {
+                        window.console.log(args);
                     },
                 };
             },
