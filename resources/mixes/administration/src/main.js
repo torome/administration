@@ -18,10 +18,3 @@ injection.vue = new Vue({
         App,
     },
 });
-
-injection.vue.$watch(() => injection.sidebar.current, () => {
-    console.log('changed!');
-}, {
-    deep: true,
-    sync: true,
-});
