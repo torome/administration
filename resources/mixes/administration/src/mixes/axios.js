@@ -14,7 +14,6 @@ export default function (injection, Vue) {
             injection.vue.$router.push('/login');
         }
         if (error.response.status > 401 && error.response.status < 500) {
-            console.log('error');
         } else {
             throw new Error(error);
         }

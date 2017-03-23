@@ -39,15 +39,7 @@
                     this.spanRight = 19;
                 }
             },
-        },
-        watch: {
-            navigation: {
-                deep: true,
-                handler(val) {
-                    console.log(val);
-                },
-            },
-        },
+        }
     };
 </script>
 <template>

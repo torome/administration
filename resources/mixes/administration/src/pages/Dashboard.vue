@@ -18,15 +18,7 @@
             return {
                 boards: [],
             };
-        },
-        watch: {
-            boards: {
-                deep: true,
-                handler(val) {
-                    console.log(val);
-                },
-            },
-        },
+        }
     };
 </script>
 <template>
