@@ -2,6 +2,7 @@ import {
     mixinAxios,
     mixinBoard,
     mixinComponent,
+    mixinDebug,
     mixinExtension,
     mixinLocal,
     mixinModule,
@@ -15,6 +16,7 @@ import { t } from '../local';
 const injection = {};
 
 function install(Vue) {
+    mixinDebug(injection);
     mixinLocal(injection);
     mixinAxios(injection, Vue);
     mixinBoard(injection);

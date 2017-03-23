@@ -18,7 +18,7 @@
             return {
                 boards: [],
             };
-        }
+        },
     };
 </script>
 <template>

@@ -39,7 +39,7 @@
                     this.spanRight = 19;
                 }
             },
-        }
+        },
     };
 </script>
 <template>
