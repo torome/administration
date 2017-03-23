@@ -9,6 +9,7 @@
 namespace Notadd\Administration\Handlers;
 
 use Illuminate\Container\Container;
+use Illuminate\Support\Collection;
 use Notadd\Foundation\Module\Module;
 use Notadd\Foundation\Module\ModuleManager;
 use Notadd\Foundation\Passport\Abstracts\DataHandler;
@@ -44,22 +45,21 @@ class ModuleHandler extends DataHandler
      */
     public function data()
     {
-        $modules = $this->manager->getModules();
-        $modules->transform(function (Module $module) {
-            return [
-                'author' => collect($module->getAuthor())->implode(','),
-                'enabled' => $module->isEnabled(),
-                'description' => $module->getDescription(),
-                'identification' => $module->getIdentification(),
-                'name' => $module->getName(),
-            ];
-        });
-        $modules->offsetUnset('notadd/administration');
+        $all = $this->manager->getModules();
+        $enabled = $this->manager->getEnabledModules();
+        $installed = $this->manager->getInstalledModules();
+        $all->offsetUnset('notadd/administration');
+        $enabled->offsetUnset('notadd/administration');
+        $installed->offsetUnset('notadd/administration');
         $this->messages = [
             '获取模块列表成功！',
         ];
 
-        return $modules->toArray();
+        return [
+            'all' => $this->info($all),
+            'enabled' => $this->info($enabled),
+            'installed' => $this->info($installed),
+        ];
     }
 
     /**
@@ -72,5 +72,27 @@ class ModuleHandler extends DataHandler
         return [
             '获取模块列表失败！',
         ];
+    }
+
+    /**
+     * Info list.
+     *
+     * @param \Illuminate\Support\Collection $list
+     *
+     * @return array
+     */
+    protected function info(Collection $list) {
+        $data = new Collection();
+        $list->each(function (Module $module) use($data) {
+            $data->put($module->getIdentification(), [
+                'author' => collect($module->getAuthor())->implode(','),
+                'enabled' => $module->isEnabled(),
+                'description' => $module->getDescription(),
+                'identification' => $module->getIdentification(),
+                'name' => $module->getName(),
+            ]);
+        });
+
+        return $data->toArray();
     }
 }
