@@ -48,9 +48,11 @@ class ModuleHandler extends DataHandler
         $all = $this->manager->getModules();
         $enabled = $this->manager->getEnabledModules();
         $installed = $this->manager->getInstalledModules();
+        $notInstalled = $this->manager->getNotInstalledModules();
         $all->offsetUnset('notadd/administration');
         $enabled->offsetUnset('notadd/administration');
         $installed->offsetUnset('notadd/administration');
+        $notInstalled->offsetUnset('notadd/administration');
         $this->messages = [
             '获取模块列表成功！',
         ];
@@ -59,6 +61,7 @@ class ModuleHandler extends DataHandler
             'all' => $this->info($all),
             'enabled' => $this->info($enabled),
             'installed' => $this->info($installed),
+            'notInstall' => $this->info($notInstalled),
         ];
     }
 
