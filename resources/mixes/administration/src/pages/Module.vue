@@ -15,8 +15,16 @@
                     const notInstalled = response.data.data.notInstall;
                     vm.list.all = Object.keys(all).map(key => all[key]);
                     vm.list.enabled = Object.keys(enabled).map(key => enabled[key]);
-                    vm.list.installed = Object.keys(installed).map(key => installed[key]);
-                    vm.list.notInstalled = Object.keys(notInstalled).map(key => notInstalled[key]);
+                    vm.list.installed = Object.keys(installed).map(key => {
+                        const data = installed[key];
+                        data.loading = false;
+                        return data;
+                    });
+                    vm.list.notInstalled = Object.keys(notInstalled).map(key => {
+                        const data = notInstalled[key];
+                        data.loading = false;
+                        return data;
+                    });
                 });
             });
         },
@@ -41,7 +49,7 @@
                         {
                             key: 'status',
                             render(row, column, index) {
-                                return `<i-switch v-model="list[${index}].enabled" @on-change="statusChanged(${index})"></i-switch>`;
+                                return `<i-switch v-model="list.installed[${index}].enabled" @on-change="statusChanged(${index})"></i-switch>`;
                             },
                             title: '状态',
                             width: 200,
@@ -49,7 +57,7 @@
                         {
                             key: 'handle',
                             render(row, column, index) {
-                                return `<i-button type="error" @click="uninstall(${index})">卸载</i-button>`;
+                                return `<i-button :loading="list.installed[${index}].loading" type="error" @click="uninstall(${index})">卸载</i-button>`;
                             },
                             title: '操作',
                             width: 200,
@@ -73,7 +81,7 @@
                         {
                             key: 'handle',
                             render(row, column, index) {
-                                return `<i-button type="primary" @click="install(${index})">安装</i-button>`;
+                                return `<i-button :loading="list.notInstalled[${index}].loading" type="primary" @click="install(${index})">安装</i-button>`;
                             },
                             title: '操作',
                             width: 200,
@@ -91,7 +99,14 @@
         },
         methods: {
             install(index) {
-                console.log(index);
+                const self = this;
+                const item = self.list.notInstalled[index];
+                item.loading = true;
+                injection.http.post(`${window.api}/module/install`, {
+                    identification: item.identification,
+                }).then(response => {
+                    console.log(response);
+                });
             },
             statusChanged(index) {
                 const self = this;
@@ -114,7 +129,8 @@
                 });
             },
             uninstall(index) {
-                console.log(index);
+                const self = this;
+                self.list.installed[index].loading = true;
             },
         },
     };
