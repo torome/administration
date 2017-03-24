@@ -5,7 +5,6 @@
         beforeRouteEnter(to, from, next) {
             injection.loading.start();
             injection.http.post(`${window.api}/administration/module`).then(response => {
-                console.log(response);
                 next(vm => {
                     injection.loading.finish();
                     injection.sidebar.active('setting');
@@ -105,7 +104,6 @@
                 injection.http.post(`${window.api}/module/install`, {
                     identification: item.identification,
                 }).then(response => {
-                    console.log(response);
                     const messages = response.data.message;
                     messages.forEach(message => {
                         self.$notice.open({
@@ -117,7 +115,6 @@
                     });
                     injection.loading.start();
                     injection.http.post(`${window.api}/administration/module`).then(result => {
-                        console.log(result);
                         injection.loading.finish();
                         injection.sidebar.active('setting');
                         const all = result.data.data.all;
@@ -175,6 +172,48 @@
                         title: `必须先关闭模块${module.name}，才能卸载！`,
                     });
                     module.loading = false;
+                } else {
+                    injection.http.post(`${window.api}/module/uninstall`, {
+                        identification: module.identification,
+                    }).then(response => {
+                        const messages = response.data.message;
+                        messages.forEach(message => {
+                            self.$notice.open({
+                                title: message,
+                            });
+                        });
+                        self.$notice.open({
+                            title: '正在刷新数据……',
+                        });
+                        injection.loading.start();
+                        injection.http.post(`${window.api}/administration/module`).then(result => {
+                            injection.loading.finish();
+                            injection.sidebar.active('setting');
+                            const all = result.data.data.all;
+                            const enabled = result.data.data.enabled;
+                            const installed = result.data.data.installed;
+                            const notInstalled = result.data.data.notInstall;
+                            self.$nextTick(() => {
+                                self.list.all = Object.keys(all).map(key => all[key]);
+                                self.list.enabled = Object.keys(enabled).map(key => enabled[key]);
+                                self.list.installed = Object.keys(installed).map(key => {
+                                    const data = installed[key];
+                                    data.loading = false;
+                                    return data;
+                                });
+                                self.list.notInstalled = Object.keys(notInstalled).map(key => {
+                                    const data = notInstalled[key];
+                                    data.loading = false;
+                                    return data;
+                                });
+                                self.$notice.open({
+                                    title: '刷新数据完成！',
+                                });
+                            });
+                        });
+                    }).finally(() => {
+                        module.loading = false;
+                    });
                 }
             },
         },
