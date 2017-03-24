@@ -7,17 +7,24 @@ export default function (injection, Vue) {
         return Promise.reject(error);
     });
     axios.interceptors.response.use(response => response, error => {
-        injection.console.log(error);
         injection.console.log(error.response);
         injection.console.log(error.response.data);
-        if (error.response.status === 401) {
+        const data = error.response.data;
+        const response = error.response;
+        if (response.status === 401) {
+            injection.notice.error({
+                title: '请重新登录！',
+            });
             injection.vue.$router.push('/login');
         }
-        if (error.response.status > 401 && error.response.status < 500) {
-            injection.console.log(error);
-        } else {
-            throw new Error(error);
+        if (response.status > 401 && response.status <= 500) {
+            injection.notice.error({
+                title: data.message,
+            });
         }
+        const dispatch = new Error('Error');
+        dispatch.response = response;
+        throw dispatch;
     });
     Object.defineProperties(injection, {
         http: {

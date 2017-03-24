@@ -4,7 +4,9 @@ export default function (injection) {
             get() {
                 return {
                     log(...args) {
-                        window.console.log(args);
+                        args.forEach(arg => {
+                            window.console.log(arg);
+                        });
                     },
                 };
             },
