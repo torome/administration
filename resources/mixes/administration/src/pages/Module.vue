@@ -149,7 +149,7 @@
             statusChanged(index) {
                 const self = this;
                 injection.loading.start();
-                const module = self.list[index];
+                const module = self.list.installed[index];
                 injection.http.post(`${window.api}/module/enable`, {
                     name: module.identification,
                     value: module.enabled,
