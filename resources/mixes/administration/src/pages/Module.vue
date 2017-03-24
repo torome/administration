@@ -159,16 +159,23 @@
                         title: module.enabled ? `开启模块${module.name}成功！` : `关闭模块${module.name}成功！`,
                     });
                     injection.notice.warning({
-                        title: '将在5秒后重载网页！',
+                        title: '将在3秒后重载网页！',
                     });
                     window.setTimeout(() => {
                         window.location.reload();
-                    }, 5000);
+                    }, 3000);
                 });
             },
             uninstall(index) {
                 const self = this;
-                self.list.installed[index].loading = true;
+                const module = self.list.installed[index];
+                module.loading = true;
+                if (module.enabled) {
+                    self.$notice.error({
+                        title: `必须先关闭模块${module.name}，才能卸载！`,
+                    });
+                    module.loading = false;
+                }
             },
         },
     };
