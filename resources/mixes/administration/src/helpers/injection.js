@@ -18,9 +18,9 @@ const injection = {};
 function install(Vue) {
     mixinDebug(injection);
     mixinLocal(injection);
+    mixinComponent(Vue, injection);
     mixinAxios(injection, Vue);
     mixinBoard(injection);
-    mixinComponent(Vue, injection);
     mixinNavigation(injection);
     mixinRouter(injection);
     mixinSidebar(injection);

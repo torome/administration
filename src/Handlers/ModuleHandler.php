@@ -53,9 +53,7 @@ class ModuleHandler extends DataHandler
         $enabled->offsetUnset('notadd/administration');
         $installed->offsetUnset('notadd/administration');
         $notInstalled->offsetUnset('notadd/administration');
-        $this->messages = [
-            '获取模块列表成功！',
-        ];
+        $this->messages->push('获取模块列表成功！');
 
         return [
             'all' => $this->info($all),

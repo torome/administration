@@ -105,7 +105,9 @@
                 injection.http.post(`${window.api}/module/install`, {
                     identification: item.identification,
                 }).then(response => {
-                    console.log(response);
+                    console.log('klkl', response);
+                }).catch(() => {
+                    item.loading = false;
                 });
             },
             statusChanged(index) {
