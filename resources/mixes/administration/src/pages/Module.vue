@@ -105,11 +105,10 @@
                     identification: item.identification,
                 }).then(response => {
                     injection.console.log(response);
+                    injection.console.log(response.data.data);
                     const messages = response.data.message;
                     messages.forEach(message => {
                         self.$notice.open({
-                            desc: `<p>${response.data.data.join('</p><p>')}</p>`,
-                            duration: 0,
                             title: message,
                         });
                     });
@@ -180,11 +179,10 @@
                         identification: module.identification,
                     }).then(response => {
                         injection.console.log(response);
+                        injection.console.log(response.data.data);
                         const messages = response.data.message;
                         messages.forEach(message => {
                             self.$notice.open({
-                                desc: `<p>${response.data.data.join('</p><p>')}</p>`,
-                                duration: 0,
                                 title: message,
                             });
                         });
