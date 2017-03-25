@@ -176,4 +176,8 @@ export default function (Vue, injection) {
         failedColor: '#f0ad4e',
         height: 2,
     });
+    injection.notice.config({
+        duration: 3,
+        top: 80,
+    });
 }
