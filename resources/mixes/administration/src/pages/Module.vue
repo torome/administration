@@ -104,9 +104,12 @@
                 injection.http.post(`${window.api}/module/install`, {
                     identification: item.identification,
                 }).then(response => {
+                    injection.console.log(response);
                     const messages = response.data.message;
                     messages.forEach(message => {
                         self.$notice.open({
+                            desc: `<p>${response.data.data.join('</p><p>')}</p>`,
+                            duration: 0,
                             title: message,
                         });
                     });
@@ -176,9 +179,12 @@
                     injection.http.post(`${window.api}/module/uninstall`, {
                         identification: module.identification,
                     }).then(response => {
+                        injection.console.log(response);
                         const messages = response.data.message;
                         messages.forEach(message => {
                             self.$notice.open({
+                                desc: `<p>${response.data.data.join('</p><p>')}</p>`,
+                                duration: 0,
                                 title: message,
                             });
                         });
